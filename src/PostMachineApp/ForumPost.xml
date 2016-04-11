@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ForumPosts>
+  <ForumPost ThreadID="1">
+    <EnableThread>true</EnableThread>
+    <FirefoxPath>D:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe</FirefoxPath>
+    <Profile>vivo5985656</Profile>
+    <EnableUserAgent>false</EnableUserAgent>
+    <UserAgent/>
+    <StartTime>1459944000000</StartTime>
+    <EnableStopTime>true</EnableStopTime>
+    <StopTime>1461945599000</StopTime>
+    <RefreshPostCount>100</RefreshPostCount>
+    <PostCount>65535</PostCount>
+    <PostInterval>11</PostInterval>
+    <AdditionalRandomTime>0</AdditionalRandomTime>
+    <PostUrl>http://bbs.vivo.com.cn/thread-2182174-1-1.html</PostUrl>
+    <PostContent>我要原生安卓的流畅，我不要太多带来卡钝的定制！！！</PostContent>
+  </ForumPost>
+</ForumPosts>
