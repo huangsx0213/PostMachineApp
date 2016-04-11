@@ -32,7 +32,8 @@ public class PostMachineApp extends javax.swing.JFrame {
         initComponents();
         fillTable();
         ForumPost ForumPost = XMLUtil.getForumPostByID(String.valueOf(1));
-        fillForm(ForumPost);
+        if(ForumPost!=null){
+        fillForm(ForumPost);}
     }
 
     /**
@@ -58,8 +59,6 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextField_ThreadID = new javax.swing.JTextField();
         jLabel_Profile = new javax.swing.JLabel();
         jTextField_Profile = new javax.swing.JTextField();
-        jCheckBox_EnableUserAgent = new javax.swing.JCheckBox();
-        jTextField_UserAgent = new javax.swing.JTextField();
         jLabel_StartTime = new javax.swing.JLabel();
         jTextField_StartTime = new javax.swing.JTextField();
         jCheckBox_EnableStopTime = new javax.swing.JCheckBox();
@@ -68,10 +67,10 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextField_RefreshPostCount = new javax.swing.JTextField();
         jLabel_PostNumber = new javax.swing.JLabel();
         jTextField_PostCount = new javax.swing.JTextField();
-        jLabel_PostInterval = new javax.swing.JLabel();
-        jTextField_PostInterval = new javax.swing.JTextField();
-        jLabel_AdditionalRandomTime = new javax.swing.JLabel();
-        jTextField_AdditionalRandomTime = new javax.swing.JTextField();
+        jLabel_FixedWaitTime = new javax.swing.JLabel();
+        jTextField_FixedWaitTime = new javax.swing.JTextField();
+        jLabel_RandomWaitTime = new javax.swing.JLabel();
+        jTextField_RandomWaitTime = new javax.swing.JTextField();
         jLabel_PostUrl = new javax.swing.JLabel();
         jTextField_PostUrl = new javax.swing.JTextField();
         jLabel_PostContent = new javax.swing.JLabel();
@@ -81,6 +80,8 @@ public class PostMachineApp extends javax.swing.JFrame {
         New = new javax.swing.JButton();
         Run = new javax.swing.JButton();
         RunS = new javax.swing.JButton();
+        jLabel_PostEntity = new javax.swing.JLabel();
+        jComboBox_PostEntity = new javax.swing.JComboBox<>();
         jPanel_Bottom = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
@@ -168,20 +169,6 @@ public class PostMachineApp extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox_EnableUserAgent.setText("User Agent:");
-        jCheckBox_EnableUserAgent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox_EnableUserAgentActionPerformed(evt);
-            }
-        });
-
-        jTextField_UserAgent.setToolTipText("User Agent String");
-        jTextField_UserAgent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_UserAgentActionPerformed(evt);
-            }
-        });
-
         jLabel_StartTime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_StartTime.setText("Start Time:");
 
@@ -222,25 +209,25 @@ public class PostMachineApp extends javax.swing.JFrame {
             }
         });
 
-        jLabel_PostInterval.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel_PostInterval.setText("Post Interval:");
+        jLabel_FixedWaitTime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel_FixedWaitTime.setText("Fixed Wait Time:");
 
-        jTextField_PostInterval.setText("11");
-        jTextField_PostInterval.setToolTipText("Post Interval Time,unit is Second");
-        jTextField_PostInterval.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_FixedWaitTime.setText("11");
+        jTextField_FixedWaitTime.setToolTipText("Post Interval Time,unit is Second");
+        jTextField_FixedWaitTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_PostIntervalActionPerformed(evt);
+                jTextField_FixedWaitTimeActionPerformed(evt);
             }
         });
 
-        jLabel_AdditionalRandomTime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel_AdditionalRandomTime.setText("Additional Random Time:");
+        jLabel_RandomWaitTime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel_RandomWaitTime.setText("Random Wait Time:");
 
-        jTextField_AdditionalRandomTime.setText("5");
-        jTextField_AdditionalRandomTime.setToolTipText("Random Wait Time,unit is Second");
-        jTextField_AdditionalRandomTime.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_RandomWaitTime.setText("5");
+        jTextField_RandomWaitTime.setToolTipText("Random Wait Time,unit is Second");
+        jTextField_RandomWaitTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_AdditionalRandomTimeActionPerformed(evt);
+                jTextField_RandomWaitTimeActionPerformed(evt);
             }
         });
 
@@ -304,6 +291,10 @@ public class PostMachineApp extends javax.swing.JFrame {
             }
         });
 
+        jLabel_PostEntity.setText("PostEntity:");
+
+        jComboBox_PostEntity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vivo", "Oppo", "VivoMobile" }));
+
         javax.swing.GroupLayout jPanel_MiddleLayout = new javax.swing.GroupLayout(jPanel_Middle);
         jPanel_Middle.setLayout(jPanel_MiddleLayout);
         jPanel_MiddleLayout.setHorizontalGroup(
@@ -344,25 +335,24 @@ public class PostMachineApp extends javax.swing.JFrame {
                             .addComponent(jTextField_StartTime, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel_MiddleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel_PostInterval, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel_FixedWaitTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCheckBox_EnableStopTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel_Profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel_MiddleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField_Profile)
-                            .addComponent(jTextField_PostInterval, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField_FixedWaitTime, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField_StopTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel_MiddleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_MiddleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel_RefreshPostCount, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jCheckBox_EnableUserAgent, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jLabel_AdditionalRandomTime))
+                            .addComponent(jLabel_RefreshPostCount, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_PostEntity, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel_RandomWaitTime, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(10, 10, 10)
                         .addGroup(jPanel_MiddleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField_AdditionalRandomTime)
+                            .addComponent(jTextField_RandomWaitTime)
                             .addComponent(jTextField_RefreshPostCount, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_UserAgent, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(jComboBox_PostEntity, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jTextField_PostContent)
                     .addComponent(jTextField_PostUrl))
                 .addContainerGap())
@@ -379,8 +369,8 @@ public class PostMachineApp extends javax.swing.JFrame {
                     .addComponent(jTextField_Profile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_ThreadID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBox_EnableThread)
-                    .addComponent(jCheckBox_EnableUserAgent)
-                    .addComponent(jTextField_UserAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_PostEntity)
+                    .addComponent(jComboBox_PostEntity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_MiddleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_MiddleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -395,10 +385,10 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addGroup(jPanel_MiddleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_PostNumber)
                     .addComponent(jTextField_PostCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_PostInterval)
-                    .addComponent(jTextField_PostInterval, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_AdditionalRandomTime)
-                    .addComponent(jTextField_AdditionalRandomTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_FixedWaitTime)
+                    .addComponent(jTextField_FixedWaitTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_RandomWaitTime)
+                    .addComponent(jTextField_RandomWaitTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_MiddleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_PostUrl)
@@ -425,21 +415,21 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTable.setAutoCreateRowSorter(true);
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Enable", "ThreadID", "ProfileName", "PostCount", "PostInterval", "AdditionalRandomTime", "PostContent"
+                "Enable", "ID", "ProfileName", "PostEntity", "PostCount", "FixedWait", "RandomWait", "PostContent"
             }
         ));
         jTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -452,8 +442,9 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTable.getColumnModel().getColumn(2).setPreferredWidth(35);
         jTable.getColumnModel().getColumn(3).setPreferredWidth(20);
         jTable.getColumnModel().getColumn(4).setPreferredWidth(25);
-        jTable.getColumnModel().getColumn(5).setPreferredWidth(10);
-        jTable.getColumnModel().getColumn(6).setPreferredWidth(300);
+        jTable.getColumnModel().getColumn(5).setPreferredWidth(20);
+        jTable.getColumnModel().getColumn(6).setPreferredWidth(40);
+        jTable.getColumnModel().getColumn(7).setPreferredWidth(260);
         jScrollPane.setViewportView(jTable);
 
         javax.swing.GroupLayout jPanel_BottomLayout = new javax.swing.GroupLayout(jPanel_Bottom);
@@ -509,13 +500,13 @@ public class PostMachineApp extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField_AdditionalRandomTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_AdditionalRandomTimeActionPerformed
+    private void jTextField_RandomWaitTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_RandomWaitTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_AdditionalRandomTimeActionPerformed
+    }//GEN-LAST:event_jTextField_RandomWaitTimeActionPerformed
 
-    private void jTextField_PostIntervalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PostIntervalActionPerformed
+    private void jTextField_FixedWaitTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_FixedWaitTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PostIntervalActionPerformed
+    }//GEN-LAST:event_jTextField_FixedWaitTimeActionPerformed
 
     private void jTextField_PostCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PostCountActionPerformed
         // TODO add your handling code here:
@@ -536,8 +527,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             ThreadID = Integer.parseInt(this.jTextField_ThreadID.getText());
             FirefoxPath = this.jTextField_FirefoxPath.getText();
             Profile = this.jTextField_Profile.getText();
-            EnableUserAgent = this.jCheckBox_EnableUserAgent.isSelected();
-            UserAgent = this.jTextField_UserAgent.getText();
+            PostEntity = (String) this.jComboBox_PostEntity.getSelectedItem();
             StartTimeString = this.jTextField_StartTime.getText();
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date startDate = format.parse(StartTimeString);
@@ -548,11 +538,11 @@ public class PostMachineApp extends javax.swing.JFrame {
             StopTime = stopDate.getTime();
             RefreshPostCount = Integer.parseInt(this.jTextField_RefreshPostCount.getText());
             PostCount = Long.parseLong(this.jTextField_PostCount.getText());
-            PostInterval = Integer.parseInt(this.jTextField_PostInterval.getText());
-            AdditionalRandomTime = Integer.parseInt(this.jTextField_AdditionalRandomTime.getText());
+            FixedWaitTime = Integer.parseInt(this.jTextField_FixedWaitTime.getText());
+            RandomWaitTime = Integer.parseInt(this.jTextField_RandomWaitTime.getText());
             PostUrl = this.jTextField_PostUrl.getText();
             PostContent = this.jTextField_PostContent.getText();
-            ForumPost ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, EnableUserAgent, UserAgent, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, PostInterval, AdditionalRandomTime, PostUrl, PostContent);
+            ForumPost ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
             if (XMLUtil.ThreadIDisExisting(ForumPost)) {
                 XMLUtil.update(ForumPost);
             } else {
@@ -571,14 +561,15 @@ public class PostMachineApp extends javax.swing.JFrame {
         tableModel.setRowCount(0);
         // 填充数据
         for (ForumPost ForumPost : XMLUtil.getAllForumPost()) {
-            String[] arr = new String[7];
+            String[] arr = new String[8];
             arr[0] = ForumPost.getEnableThread().toString();
             arr[1] = ForumPost.getThreadID().toString();
             arr[2] = ForumPost.getProfile();
-            arr[3] = Long.toString(ForumPost.getPostCount());
-            arr[4] = Integer.toString(ForumPost.getPostInterval());
-            arr[5] = Integer.toString(ForumPost.getAdditionalRandomTime());
-            arr[6] = ForumPost.getPostContent();;
+            arr[3] = ForumPost.getPostEntity();
+            arr[4] = Long.toString(ForumPost.getPostCount());
+            arr[5] = Integer.toString(ForumPost.getFixedWaitTime());
+            arr[6] = Integer.toString(ForumPost.getRandomWaitTime());
+            arr[7] = ForumPost.getPostContent();;
 
             // 添加数据到表格
             tableModel.addRow(arr);
@@ -596,14 +587,6 @@ public class PostMachineApp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_RefreshPostCountActionPerformed
 
-    private void jCheckBox_EnableUserAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnableUserAgentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox_EnableUserAgentActionPerformed
-
-    private void jTextField_UserAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UserAgentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_UserAgentActionPerformed
-
     private void jTextField_PostUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PostUrlActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_PostUrlActionPerformed
@@ -619,7 +602,8 @@ public class PostMachineApp extends javax.swing.JFrame {
         System.out.println("Delete successfully！");
         fillTable();
         ForumPost ForumPost = XMLUtil.getForumPostByID(String.valueOf(1));
-        fillForm(ForumPost);
+                if(ForumPost!=null){
+        fillForm(ForumPost);}
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
@@ -632,7 +616,8 @@ public class PostMachineApp extends javax.swing.JFrame {
             ThreadID = Integer.parseInt(tableModel.getValueAt(selectedRowIndex, 1).toString());
         }
         ForumPost ForumPost = XMLUtil.getForumPostByID(ThreadID.toString());
-        fillForm(ForumPost);
+                if(ForumPost!=null){
+        fillForm(ForumPost);}
     }//GEN-LAST:event_jTableMouseClicked
 
     private void NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewActionPerformed
@@ -641,15 +626,14 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextField_ThreadID.setText(Integer.toString(XMLUtil.getMaxId()+1));
         this.jTextField_FirefoxPath.setText("default");
         this.jTextField_Profile.setText("default");
-        this.jCheckBox_EnableUserAgent.setSelected(false);
-        this.jTextField_UserAgent.setText("");
+        this.jComboBox_PostEntity.setSelectedItem("Vivo");
         this.jTextField_StartTime.setText("2016-01-01 00:00:00");
         this.jCheckBox_EnableStopTime.setSelected(false);
         this.jTextField_StopTime.setText("2018-12-31 23:59:59");
         this.jTextField_RefreshPostCount.setText("200");
         this.jTextField_PostCount.setText("65535");
-        this.jTextField_PostInterval.setText("11");
-        this.jTextField_AdditionalRandomTime.setText("30");
+        this.jTextField_FixedWaitTime.setText("11");
+        this.jTextField_RandomWaitTime.setText("30");
         this.jTextField_PostUrl.setText("");
         this.jTextField_PostContent.setText("");
     }//GEN-LAST:event_NewActionPerformed
@@ -678,15 +662,14 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextField_ThreadID.setText(ForumPost.getThreadID().toString());
         this.jTextField_FirefoxPath.setText(ForumPost.getFirefoxPath());
         this.jTextField_Profile.setText(ForumPost.getProfile());
-        this.jCheckBox_EnableUserAgent.setSelected(ForumPost.getEnableUserAgent());
-        this.jTextField_UserAgent.setText(ForumPost.getUserAgent());
+        this.jComboBox_PostEntity.setSelectedItem(ForumPost.getPostEntity());
         this.jTextField_StartTime.setText(new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date(ForumPost.getStartTime())));
         this.jCheckBox_EnableStopTime.setSelected(ForumPost.getEnableStopTime());
         this.jTextField_StopTime.setText(new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date(ForumPost.getStopTime())));
         this.jTextField_RefreshPostCount.setText(String.valueOf(ForumPost.getRefreshPostCount()));
         this.jTextField_PostCount.setText(String.valueOf(ForumPost.getPostCount()));
-        this.jTextField_PostInterval.setText(String.valueOf(ForumPost.getPostInterval()));
-        this.jTextField_AdditionalRandomTime.setText(String.valueOf(ForumPost.getAdditionalRandomTime()));
+        this.jTextField_FixedWaitTime.setText(String.valueOf(ForumPost.getFixedWaitTime()));
+        this.jTextField_RandomWaitTime.setText(String.valueOf(ForumPost.getRandomWaitTime()));
         this.jTextField_PostUrl.setText(ForumPost.getPostUrl());
         this.jTextField_PostContent.setText(ForumPost.getPostContent());
     }
@@ -739,14 +722,15 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JSeparator TitleSeparator2;
     private javax.swing.JCheckBox jCheckBox_EnableStopTime;
     private javax.swing.JCheckBox jCheckBox_EnableThread;
-    private javax.swing.JCheckBox jCheckBox_EnableUserAgent;
-    private javax.swing.JLabel jLabel_AdditionalRandomTime;
+    private javax.swing.JComboBox<String> jComboBox_PostEntity;
     private javax.swing.JLabel jLabel_FirefoxPath;
+    private javax.swing.JLabel jLabel_FixedWaitTime;
     private javax.swing.JLabel jLabel_PostContent;
-    private javax.swing.JLabel jLabel_PostInterval;
+    private javax.swing.JLabel jLabel_PostEntity;
     private javax.swing.JLabel jLabel_PostNumber;
     private javax.swing.JLabel jLabel_PostUrl;
     private javax.swing.JLabel jLabel_Profile;
+    private javax.swing.JLabel jLabel_RandomWaitTime;
     private javax.swing.JLabel jLabel_RefreshPostCount;
     private javax.swing.JLabel jLabel_StartTime;
     private javax.swing.JPanel jPanel_Bottom;
@@ -756,25 +740,23 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JTable jTable;
-    private javax.swing.JTextField jTextField_AdditionalRandomTime;
     private javax.swing.JTextField jTextField_FirefoxPath;
+    private javax.swing.JTextField jTextField_FixedWaitTime;
     private javax.swing.JTextField jTextField_PostContent;
     private javax.swing.JTextField jTextField_PostCount;
-    private javax.swing.JTextField jTextField_PostInterval;
     private javax.swing.JTextField jTextField_PostUrl;
     private javax.swing.JTextField jTextField_Profile;
+    private javax.swing.JTextField jTextField_RandomWaitTime;
     private javax.swing.JTextField jTextField_RefreshPostCount;
     private javax.swing.JTextField jTextField_StartTime;
     private javax.swing.JTextField jTextField_StopTime;
     private javax.swing.JTextField jTextField_ThreadID;
-    private javax.swing.JTextField jTextField_UserAgent;
     // End of variables declaration//GEN-END:variables
     private Boolean EnableThread;
     private Integer ThreadID;
     private String FirefoxPath;
     private String Profile;
-    private Boolean EnableUserAgent;
-    private String UserAgent;
+    private String PostEntity;
     private String StartTimeString;
     private long StartTime;
     private Boolean EnableStopTime;
@@ -782,8 +764,8 @@ public class PostMachineApp extends javax.swing.JFrame {
     private long StopTime;
     private Integer RefreshPostCount;
     private long PostCount;
-    private Integer PostInterval;
-    private Integer AdditionalRandomTime;
+    private Integer FixedWaitTime;
+    private Integer RandomWaitTime;
     private String PostUrl;
     private String PostContent;
 }

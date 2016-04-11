@@ -218,29 +218,27 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel_PostInterval" max="32767" attributes="0"/>
+                                      <Component id="jLabel_FixedWaitTime" max="32767" attributes="0"/>
                                       <Component id="jCheckBox_EnableStopTime" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel_Profile" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jTextField_Profile" max="32767" attributes="0"/>
-                                      <Component id="jTextField_PostInterval" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jTextField_FixedWaitTime" alignment="1" max="32767" attributes="0"/>
                                       <Component id="jTextField_StopTime" alignment="1" pref="129" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel_RefreshPostCount" min="-2" pref="138" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox_EnableUserAgent" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jLabel_AdditionalRandomTime" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel_RefreshPostCount" min="-2" pref="138" max="-2" attributes="0"/>
+                                      <Component id="jLabel_PostEntity" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel_RandomWaitTime" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jTextField_AdditionalRandomTime" max="32767" attributes="0"/>
+                                      <Component id="jTextField_RandomWaitTime" max="32767" attributes="0"/>
                                       <Component id="jTextField_RefreshPostCount" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField_UserAgent" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBox_PostEntity" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jTextField_PostContent" alignment="0" max="32767" attributes="0"/>
@@ -262,8 +260,8 @@
                               <Component id="jTextField_Profile" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField_ThreadID" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jCheckBox_EnableThread" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox_EnableUserAgent" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_UserAgent" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_PostEntity" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBox_PostEntity" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -282,10 +280,10 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel_PostNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField_PostCount" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_PostInterval" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_PostInterval" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_AdditionalRandomTime" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_AdditionalRandomTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_FixedWaitTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_FixedWaitTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_RandomWaitTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_RandomWaitTime" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -356,22 +354,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_ProfileActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox_EnableUserAgent">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="User Agent:"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox_EnableUserAgentActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField_UserAgent">
-                  <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value="User Agent String"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_UserAgentActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel_StartTime">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="4"/>
@@ -430,34 +412,34 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_PostCountActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel_PostInterval">
+                <Component class="javax.swing.JLabel" name="jLabel_FixedWaitTime">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="4"/>
-                    <Property name="text" type="java.lang.String" value="Post Interval:"/>
+                    <Property name="text" type="java.lang.String" value="Fixed Wait Time:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField_PostInterval">
+                <Component class="javax.swing.JTextField" name="jTextField_FixedWaitTime">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="11"/>
                     <Property name="toolTipText" type="java.lang.String" value="Post Interval Time,unit is Second"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_PostIntervalActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_FixedWaitTimeActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel_AdditionalRandomTime">
+                <Component class="javax.swing.JLabel" name="jLabel_RandomWaitTime">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="4"/>
-                    <Property name="text" type="java.lang.String" value="Additional Random Time:"/>
+                    <Property name="text" type="java.lang.String" value="Random Wait Time:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField_AdditionalRandomTime">
+                <Component class="javax.swing.JTextField" name="jTextField_RandomWaitTime">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="5"/>
                     <Property name="toolTipText" type="java.lang.String" value="Random Wait Time,unit is Second"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_AdditionalRandomTimeActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_RandomWaitTimeActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel_PostUrl">
@@ -533,6 +515,25 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RunSActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JLabel" name="jLabel_PostEntity">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="PostEntity:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jComboBox_PostEntity">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="Vivo"/>
+                        <StringItem index="1" value="Oppo"/>
+                        <StringItem index="2" value="VivoMobile"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel_Bottom">
@@ -579,13 +580,14 @@
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="7" rowCount="12">
+                          <Table columnCount="8" rowCount="12">
                             <Column editable="true" title="Enable" type="java.lang.Object"/>
-                            <Column editable="true" title="ThreadID" type="java.lang.Object"/>
+                            <Column editable="true" title="ID" type="java.lang.Object"/>
                             <Column editable="true" title="ProfileName" type="java.lang.Object"/>
+                            <Column editable="true" title="PostEntity" type="java.lang.Object"/>
                             <Column editable="true" title="PostCount" type="java.lang.Object"/>
-                            <Column editable="true" title="PostInterval" type="java.lang.Object"/>
-                            <Column editable="true" title="AdditionalRandomTime" type="java.lang.Object"/>
+                            <Column editable="true" title="FixedWait" type="java.lang.Object"/>
+                            <Column editable="true" title="RandomWait" type="java.lang.Object"/>
                             <Column editable="true" title="PostContent" type="java.lang.Object"/>
                           </Table>
                         </Property>
@@ -621,7 +623,7 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableMouseClicked"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="jTable.getColumnModel().getColumn(0).setPreferredWidth(10);&#xa;jTable.getColumnModel().getColumn(1).setPreferredWidth(10);&#xa;jTable.getColumnModel().getColumn(2).setPreferredWidth(35);&#xa;jTable.getColumnModel().getColumn(3).setPreferredWidth(20);&#xa;jTable.getColumnModel().getColumn(4).setPreferredWidth(25);&#xa;jTable.getColumnModel().getColumn(5).setPreferredWidth(10);&#xa;jTable.getColumnModel().getColumn(6).setPreferredWidth(300);"/>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="jTable.getColumnModel().getColumn(0).setPreferredWidth(10);&#xa;jTable.getColumnModel().getColumn(1).setPreferredWidth(10);&#xa;jTable.getColumnModel().getColumn(2).setPreferredWidth(35);&#xa;jTable.getColumnModel().getColumn(3).setPreferredWidth(20);&#xa;jTable.getColumnModel().getColumn(4).setPreferredWidth(25);&#xa;jTable.getColumnModel().getColumn(5).setPreferredWidth(20);&#xa;jTable.getColumnModel().getColumn(6).setPreferredWidth(40);&#xa;jTable.getColumnModel().getColumn(7).setPreferredWidth(260);"/>
                       </AuxValues>
                     </Component>
                   </SubComponents>

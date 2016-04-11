@@ -18,8 +18,7 @@ public class XMLUtil {
     private static Integer ThreadID;
     private static String FirefoxPath;
     private static String Profile;
-    private static Boolean EnableUserAgent;
-    private static String UserAgent;
+    private static String PostEntity;
     private static String StartTimeString;
     private static long StartTime;
     private static Boolean EnableStopTime;
@@ -27,8 +26,8 @@ public class XMLUtil {
     private static long StopTime;
     private static Integer RefreshPostCount;
     private static long PostCount;
-    private static Integer PostInterval;
-    private static Integer AdditionalRandomTime;
+    private static Integer FixedWaitTime;
+    private static Integer RandomWaitTime;
     private static String PostUrl;
     private static String PostContent;
 
@@ -50,18 +49,17 @@ public class XMLUtil {
             ThreadID = Integer.parseInt(postElement.attribute("ThreadID").getText());
             FirefoxPath = postElement.element("FirefoxPath").getTextTrim();
             Profile = postElement.element("Profile").getTextTrim();
-            EnableUserAgent = Boolean.valueOf(postElement.element("EnableUserAgent").getTextTrim());
-            UserAgent = postElement.element("UserAgent").getTextTrim();
+            PostEntity = postElement.element("PostEntity").getTextTrim();
             StartTime = Long.parseLong(postElement.element("StartTime").getTextTrim());
             EnableStopTime = Boolean.valueOf(postElement.element("EnableStopTime").getTextTrim());
             StopTime = Long.parseLong(postElement.element("StopTime").getTextTrim());
             RefreshPostCount = Integer.parseInt(postElement.element("RefreshPostCount").getText());
             PostCount = Long.parseLong(postElement.element("PostCount").getTextTrim());
-            PostInterval = Integer.parseInt(postElement.element("PostInterval").getText());
-            AdditionalRandomTime = Integer.parseInt(postElement.element("AdditionalRandomTime").getText());
+            FixedWaitTime = Integer.parseInt(postElement.element("FixedWaitTime").getText());
+            RandomWaitTime = Integer.parseInt(postElement.element("RandomWaitTime").getText());
             PostUrl = postElement.element("PostUrl").getTextTrim();
             PostContent = postElement.element("PostContent").getTextTrim();
-            ForumPost ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, EnableUserAgent, UserAgent, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, PostInterval, AdditionalRandomTime, PostUrl, PostContent);
+            ForumPost ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
 
             ForumPosts.add(ForumPost);
         }
@@ -80,18 +78,17 @@ public class XMLUtil {
             ThreadID = Integer.parseInt(postElement.attribute("ThreadID").getText());
             FirefoxPath = postElement.element("FirefoxPath").getTextTrim();
             Profile = postElement.element("Profile").getTextTrim();
-            EnableUserAgent = Boolean.valueOf(postElement.element("EnableUserAgent").getTextTrim());
-            UserAgent = postElement.element("UserAgent").getTextTrim();
+            PostEntity = postElement.element("PostEntity").getTextTrim();
             StartTime = Long.parseLong(postElement.element("StartTime").getTextTrim());
             EnableStopTime = Boolean.valueOf(postElement.element("EnableStopTime").getTextTrim());
             StopTime = Long.parseLong(postElement.element("StopTime").getTextTrim());
             RefreshPostCount = Integer.parseInt(postElement.element("RefreshPostCount").getText());
             PostCount = Long.parseLong(postElement.element("PostCount").getTextTrim());
-            PostInterval = Integer.parseInt(postElement.element("PostInterval").getText());
-            AdditionalRandomTime = Integer.parseInt(postElement.element("AdditionalRandomTime").getText());
+            FixedWaitTime = Integer.parseInt(postElement.element("FixedWaitTime").getText());
+            RandomWaitTime = Integer.parseInt(postElement.element("RandomWaitTime").getText());
             PostUrl = postElement.element("PostUrl").getTextTrim();
             PostContent = postElement.element("PostContent").getTextTrim();
-            ForumPost ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, EnableUserAgent, UserAgent, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, PostInterval, AdditionalRandomTime, PostUrl, PostContent);
+            ForumPost ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
 
             ForumPosts.add(ForumPost);}
         }
@@ -109,18 +106,17 @@ public class XMLUtil {
                 ThreadID = Integer.parseInt(postElement.attribute("ThreadID").getText());
                 FirefoxPath = postElement.element("FirefoxPath").getTextTrim();
                 Profile = postElement.element("Profile").getTextTrim();
-                EnableUserAgent = Boolean.valueOf(postElement.element("EnableUserAgent").getTextTrim());
-                UserAgent = postElement.element("UserAgent").getTextTrim();
+                PostEntity = postElement.element("PostEntity").getTextTrim();
                 StartTime = Long.parseLong(postElement.element("StartTime").getTextTrim());
                 EnableStopTime = Boolean.valueOf(postElement.element("EnableStopTime").getTextTrim());
                 StopTime = Long.parseLong(postElement.element("StopTime").getTextTrim());
                 RefreshPostCount = Integer.parseInt(postElement.element("RefreshPostCount").getText());
                 PostCount = Long.parseLong(postElement.element("PostCount").getTextTrim());
-                PostInterval = Integer.parseInt(postElement.element("PostInterval").getText());
-                AdditionalRandomTime = Integer.parseInt(postElement.element("AdditionalRandomTime").getText());
+                FixedWaitTime = Integer.parseInt(postElement.element("FixedWaitTime").getText());
+                RandomWaitTime = Integer.parseInt(postElement.element("RandomWaitTime").getText());
                 PostUrl = postElement.element("PostUrl").getTextTrim();
                 PostContent = postElement.element("PostContent").getTextTrim();
-                ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, EnableUserAgent, UserAgent, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, PostInterval, AdditionalRandomTime, PostUrl, PostContent);
+                ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
             }
         }
         return ForumPost;
@@ -140,30 +136,28 @@ public class XMLUtil {
         Element EnableThreadElement = postElement.addElement("EnableThread");
         Element FirefoxPathElement = postElement.addElement("FirefoxPath");
         Element ProfileElement = postElement.addElement("Profile");
-        Element EnableUserAgentElement = postElement.addElement("EnableUserAgent");
-        Element UserAgentElement = postElement.addElement("UserAgent");
+        Element PostEntityElement = postElement.addElement("PostEntity");
         Element StartTimeElement = postElement.addElement("StartTime");
         Element EnableStopTimeElement = postElement.addElement("EnableStopTime");
         Element StopTimeElement = postElement.addElement("StopTime");
         Element RefreshPostCountElement = postElement.addElement("RefreshPostCount");
         Element PostCountElement = postElement.addElement("PostCount");
-        Element PostIntervalElement = postElement.addElement("PostInterval");
-        Element AdditionalRandomTimeElement = postElement.addElement("AdditionalRandomTime");
+        Element FixedWaitTimeElement = postElement.addElement("FixedWaitTime");
+        Element RandomWaitTimeElement = postElement.addElement("RandomWaitTime");
         Element PostUrlElement = postElement.addElement("PostUrl");
         Element PostContentElement = postElement.addElement("PostContent");
 
         EnableThreadElement.setText(ForumPost.getEnableThread().toString());
         FirefoxPathElement.setText(ForumPost.getFirefoxPath());
         ProfileElement.setText(ForumPost.getProfile());
-        EnableUserAgentElement.setText(ForumPost.getEnableUserAgent().toString());
-        UserAgentElement.setText(ForumPost.getUserAgent());
+        PostEntityElement.setText(ForumPost.getPostEntity());
         StartTimeElement.setText(Long.toString(ForumPost.getStartTime()));
         EnableStopTimeElement.setText(ForumPost.getEnableStopTime().toString());
         StopTimeElement.setText(Long.toString(ForumPost.getStopTime()));
         RefreshPostCountElement.setText(Integer.toString(ForumPost.getRefreshPostCount()));
         PostCountElement.setText(Long.toString(ForumPost.getPostCount()));
-        PostIntervalElement.setText(Integer.toString(ForumPost.getPostInterval()));
-        AdditionalRandomTimeElement.setText(Integer.toString(ForumPost.getAdditionalRandomTime()));
+        FixedWaitTimeElement.setText(Integer.toString(ForumPost.getFixedWaitTime()));
+        RandomWaitTimeElement.setText(Integer.toString(ForumPost.getRandomWaitTime()));
         PostUrlElement.setText(ForumPost.getPostUrl());
         PostContentElement.setText(ForumPost.getPostContent());
 
@@ -213,11 +207,8 @@ public class XMLUtil {
                 if (!postElement.element("Profile").getText().equals(ForumPost.getProfile())) {
                     postElement.element("Profile").setText(ForumPost.getProfile());
                 }
-                if (!postElement.element("EnableUserAgent").getText().equals(ForumPost.getEnableUserAgent().toString())) {
-                    postElement.element("EnableUserAgent").setText(ForumPost.getEnableUserAgent().toString());
-                }
-                if (!postElement.element("UserAgent").getText().equals(ForumPost.getUserAgent())) {
-                    postElement.element("UserAgent").setText(ForumPost.getUserAgent());
+                if (!postElement.element("PostEntity").getText().equals(ForumPost.getPostEntity())) {
+                    postElement.element("PostEntity").setText(ForumPost.getPostEntity());
                 }
                 if (!postElement.element("StartTime").getText().equals(Long.toString(ForumPost.getStartTime()))) {
                     postElement.element("StartTime").setText(Long.toString(ForumPost.getStartTime()));
@@ -234,11 +225,11 @@ public class XMLUtil {
                 if (!postElement.element("PostCount").getText().equals(Long.toString(ForumPost.getPostCount()))) {
                     postElement.element("PostCount").setText(Long.toString(ForumPost.getPostCount()));
                 }
-                if (!postElement.element("PostInterval").getText().equals(Integer.toString(ForumPost.getPostInterval()))) {
-                    postElement.element("PostInterval").setText(Integer.toString(ForumPost.getPostInterval()));
+                if (!postElement.element("FixedWaitTime").getText().equals(Integer.toString(ForumPost.getFixedWaitTime()))) {
+                    postElement.element("FixedWaitTime").setText(Integer.toString(ForumPost.getFixedWaitTime()));
                 }
-                if (!postElement.element("AdditionalRandomTime").getText().equals(Integer.toString(ForumPost.getAdditionalRandomTime()))) {
-                    postElement.element("AdditionalRandomTime").setText(Integer.toString(ForumPost.getAdditionalRandomTime()));
+                if (!postElement.element("RandomWaitTime").getText().equals(Integer.toString(ForumPost.getRandomWaitTime()))) {
+                    postElement.element("RandomWaitTime").setText(Integer.toString(ForumPost.getRandomWaitTime()));
                 }
                 if (!postElement.element("PostUrl").getText().equals(ForumPost.getPostUrl())) {
                     postElement.element("PostUrl").setText(ForumPost.getPostUrl());

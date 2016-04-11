@@ -15,32 +15,30 @@ final public class ForumPost {
         private final Integer ThreadID;
 	private final String FirefoxPath;
 	private final String Profile;
-        private final Boolean EnableUserAgent;
-        private final String UserAgent;
+        private final String PostEntity;
         private final long StartTime;
         private final Boolean EnableStopTime;
         private final long StopTime;
         private final Integer RefreshPostCount;
         private final long PostCount;
-        private final Integer PostInterval;
-        private final Integer AdditionalRandomTime;
+        private final Integer FixedWaitTime;
+        private final Integer RandomWaitTime;
 	private final String PostUrl;
         private final String PostContent;
 
-	public ForumPost(Boolean EnableThread,Integer ThreadID,String FirefoxPath, String Profile, Boolean EnableUserAgent,String UserAgent,long StartTime,Boolean EnableStopTime,long StopTime,Integer RefreshPostCount,long PostCount,Integer PostInterval,Integer AdditionalRandomTime,String PostUrl,String PostContent) {
+	public ForumPost(Boolean EnableThread,Integer ThreadID,String FirefoxPath, String Profile,String PostEntity,long StartTime,Boolean EnableStopTime,long StopTime,Integer RefreshPostCount,long PostCount,Integer PostInterval,Integer AdditionalRandomTime,String PostUrl,String PostContent) {
 		this.EnableThread = EnableThread;
 		this.ThreadID = ThreadID;
 		this.FirefoxPath = FirefoxPath;
 		this.Profile = Profile;
-		this.EnableUserAgent = EnableUserAgent;
-		this.UserAgent = UserAgent;
+		this.PostEntity = PostEntity;
 		this.StartTime = StartTime;
 		this.EnableStopTime = EnableStopTime;
 		this.StopTime = StopTime;
                 this.RefreshPostCount = RefreshPostCount;
 		this.PostCount = PostCount;
-		this.PostInterval = PostInterval;
-		this.AdditionalRandomTime = AdditionalRandomTime;
+		this.FixedWaitTime = PostInterval;
+		this.RandomWaitTime = AdditionalRandomTime;
 		this.PostUrl = PostUrl;
 		this.PostContent = PostContent;
 	}
@@ -61,12 +59,8 @@ final public class ForumPost {
         return Profile;
     }
 
-    public Boolean getEnableUserAgent() {
-        return EnableUserAgent;
-    }
-
-    public String getUserAgent() {
-        return UserAgent;
+    public String getPostEntity() {
+        return PostEntity;
     }
 
     public long getStartTime() {
@@ -89,12 +83,12 @@ final public class ForumPost {
         return PostCount;
     }
 
-    public Integer getPostInterval() {
-        return PostInterval;
+    public Integer getFixedWaitTime() {
+        return FixedWaitTime;
     }
 
-    public Integer getAdditionalRandomTime() {
-        return AdditionalRandomTime;
+    public Integer getRandomWaitTime() {
+        return RandomWaitTime;
     }
 
     public String getPostUrl() {
@@ -134,7 +128,7 @@ final public class ForumPost {
 			SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]message: " + i+" "+PostContent);
 			try {
-				Thread.sleep(PostInterval * 1000 + (int) (1 + Math.random() * (AdditionalRandomTime - 1 + 1)) * 1000);
+				Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
 			} catch (Exception ex) {
 			}
 			if (i % RefreshPostCount == 0) {
