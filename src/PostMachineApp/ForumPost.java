@@ -107,7 +107,7 @@ final public class ForumPost {
 
    
 	public void sentpost() {
-		// specified firefox's installing path
+		// specified firefox's installing path.
                 if(!this.FirefoxPath.equals("default")){
                     System.setProperty("webdriver.firefox.bin", FirefoxPath);
                 }
