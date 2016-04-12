@@ -3,7 +3,7 @@
 <ForumPosts>
   <ForumPost ThreadID="1">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>default</FirefoxPath>
+    <FirefoxPath>D:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe</FirefoxPath>
     <Profile>default</Profile>
     <PostEntity>Vivo</PostEntity>
     <StartTime>1451577600000</StartTime>
@@ -13,7 +13,22 @@
     <PostCount>65535</PostCount>
     <FixedWaitTime>10</FixedWaitTime>
     <RandomWaitTime>20</RandomWaitTime>
-    <PostUrl>test</PostUrl>
-    <PostContent>tse</PostContent>
+    <PostUrl>http://bbs.vivo.com.cn/thread-2190263-1-1.html</PostUrl>
+    <PostContent>支持一下！！！</PostContent>
+  </ForumPost>
+  <ForumPost ThreadID="2">
+    <EnableThread>true</EnableThread>
+    <FirefoxPath>D:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe</FirefoxPath>
+    <Profile>default</Profile>
+    <PostEntity>Oppo</PostEntity>
+    <StartTime>1451577600000</StartTime>
+    <EnableStopTime>false</EnableStopTime>
+    <StopTime>1546271999000</StopTime>
+    <RefreshPostCount>200</RefreshPostCount>
+    <PostCount>65535</PostCount>
+    <FixedWaitTime>5</FixedWaitTime>
+    <RandomWaitTime>10</RandomWaitTime>
+    <PostUrl>http://bbs.oppo.cn/thread-10669893-1-1.html</PostUrl>
+    <PostContent>支持一下！！！</PostContent>
   </ForumPost>
 </ForumPosts>

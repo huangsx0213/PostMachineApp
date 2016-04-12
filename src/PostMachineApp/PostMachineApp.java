@@ -542,7 +542,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             RandomWaitTime = Integer.parseInt(this.jTextField_RandomWaitTime.getText());
             PostUrl = this.jTextField_PostUrl.getText();
             PostContent = this.jTextField_PostContent.getText();
-            ForumPost ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
+            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
             if (XMLUtil.ThreadIDisExisting(ForumPost)) {
                 XMLUtil.update(ForumPost);
             } else {
@@ -641,7 +641,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private void RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunActionPerformed
         // TODO add your handling code here:
         List<ForumPost> ForumPosts=XMLUtil.getRunForumPost();
-        Post.Post(ForumPosts);
+        RunPost.RunPost(ForumPosts);
     }//GEN-LAST:event_RunActionPerformed
 
     private void jTextField_ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ProfileActionPerformed
@@ -654,7 +654,7 @@ public class PostMachineApp extends javax.swing.JFrame {
        ForumPost ForumPost= XMLUtil.getForumPostByID(id);
        List<ForumPost> ForumPosts=new ArrayList<ForumPost>();
        ForumPosts.add(ForumPost);
-       Post.Post(ForumPosts);
+       RunPost.RunPost(ForumPosts);
     }//GEN-LAST:event_RunSActionPerformed
 
     private void fillForm(ForumPost ForumPost) {

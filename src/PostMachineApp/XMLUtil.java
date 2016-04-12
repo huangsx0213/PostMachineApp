@@ -59,7 +59,7 @@ public class XMLUtil {
             RandomWaitTime = Integer.parseInt(postElement.element("RandomWaitTime").getText());
             PostUrl = postElement.element("PostUrl").getTextTrim();
             PostContent = postElement.element("PostContent").getTextTrim();
-            ForumPost ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
+           ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
 
             ForumPosts.add(ForumPost);
         }
@@ -88,7 +88,7 @@ public class XMLUtil {
             RandomWaitTime = Integer.parseInt(postElement.element("RandomWaitTime").getText());
             PostUrl = postElement.element("PostUrl").getTextTrim();
             PostContent = postElement.element("PostContent").getTextTrim();
-            ForumPost ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
+            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
 
             ForumPosts.add(ForumPost);}
         }
@@ -116,7 +116,7 @@ public class XMLUtil {
                 RandomWaitTime = Integer.parseInt(postElement.element("RandomWaitTime").getText());
                 PostUrl = postElement.element("PostUrl").getTextTrim();
                 PostContent = postElement.element("PostContent").getTextTrim();
-                ForumPost = new ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
+                ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
             }
         }
         return ForumPost;
