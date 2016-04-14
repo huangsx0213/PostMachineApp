@@ -124,6 +124,9 @@ final public class VivoForumPost implements ForumPost {
 
     @Override
     public void sentpost() {
+        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
+
         // specified firefox's installing path.
         if (!this.FirefoxPath.equals("default")) {
             System.setProperty("webdriver.firefox.bin", FirefoxPath);
@@ -148,8 +151,8 @@ final public class VivoForumPost implements ForumPost {
                 element.sendKeys(PostContent + " ");
             }
             element.submit();
-            SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]message: " + i + " " + PostContent);
+
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + PostContent);
             try {
                 Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
             } catch (Exception ex) {
@@ -160,5 +163,6 @@ final public class VivoForumPost implements ForumPost {
 
         }
         driver.quit();
+        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
     }
 }

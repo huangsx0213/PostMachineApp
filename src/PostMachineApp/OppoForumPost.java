@@ -125,6 +125,8 @@ final public class OppoForumPost implements ForumPost {
     @Override
     @SuppressWarnings("SleepWhileInLoop")
     public void sentpost() {
+        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
         // specified firefox's installing path.
         if (!this.FirefoxPath.equals("default")) {
             System.setProperty("webdriver.firefox.bin", FirefoxPath);
@@ -137,7 +139,7 @@ final public class OppoForumPost implements ForumPost {
         WebDriver driver = new FirefoxDriver(FirefoxProfile);
 
         driver.get(PostUrl);
-        
+
         driver.findElement(By.id("fastposteditor")).click();
 
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
@@ -145,15 +147,13 @@ final public class OppoForumPost implements ForumPost {
             WebElement element = driver.findElement(By.id("fastpostmessage"));
 
             element.clear();
-            
-            SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            
+
             element.sendKeys(PostContent + "\n\n [color=#FFFFFF]发表于" + DateFormat.format(new Date()) + "[/color]");
 
             element.submit();
 
             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]message: " + i + " " + PostContent);
-            
+
             try {
                 Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
             } catch (Exception ex) {
@@ -164,5 +164,6 @@ final public class OppoForumPost implements ForumPost {
             }
         }
         driver.quit();
+        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
     }
 }
