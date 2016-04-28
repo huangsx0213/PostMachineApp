@@ -19,6 +19,9 @@ public class ForumPostFactory {
         } else if (PostEntity.equals("VivoMobile")) {
             return new VivoMobileForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
         }
+         else if (PostEntity.equals("Qiku360")) {
+            return new Qiku360ForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
+        }
         return null;
     }
 

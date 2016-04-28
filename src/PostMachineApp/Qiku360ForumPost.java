@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PostMachineApp;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,11 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 
-/**
- *
- * @author vhuang1
- */
-public class VivoMobileForumPost implements ForumPost {
+final public class Qiku360ForumPost implements ForumPost {
 
     private final Boolean EnableThread;
     private final Integer ThreadID;
@@ -35,7 +27,7 @@ public class VivoMobileForumPost implements ForumPost {
     private final String PostUrl;
     private final String PostContent;
 
-    public VivoMobileForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
+    public Qiku360ForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -143,12 +135,11 @@ public class VivoMobileForumPost implements ForumPost {
         ProfilesIni allProfiles = new ProfilesIni();
 
         FirefoxProfile FirefoxProfile = allProfiles.getProfile(Profile);
-        FirefoxProfile.setPreference("general.useragent.override",
-                "Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; iphone 6s/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+
         WebDriver driver = new FirefoxDriver(FirefoxProfile);
 
         driver.get(PostUrl);
-
+        driver.navigate().refresh();
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
 
             WebElement element = driver.findElement(By.id("fastpostmessage"));
@@ -159,10 +150,8 @@ public class VivoMobileForumPost implements ForumPost {
             } else {
                 element.sendKeys(PostContent + " ");
             }
-            //element.click();
             element.submit();
-            //WebElement fastpostsubmit = driver.findElement(By.id("fastpostsubmit"));
-            //fastpostsubmit.click();
+
             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + PostContent);
             try {
                 Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
@@ -171,7 +160,7 @@ public class VivoMobileForumPost implements ForumPost {
             if (i % RefreshPostCount == 0) {
                 driver.navigate().refresh();
             }
-            driver.get(PostUrl);
+
         }
         driver.quit();
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
