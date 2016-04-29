@@ -1,4 +1,4 @@
-package PostMachineApp;
+package PostMachineApp.EntityInterface;
 
 public interface ForumPost {
 

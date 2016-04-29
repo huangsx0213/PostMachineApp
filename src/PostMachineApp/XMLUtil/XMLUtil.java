@@ -1,5 +1,7 @@
-package PostMachineApp;
+package PostMachineApp.XMLUtil;
 
+import PostMachineApp.EntityInterface.ForumPost;
+import PostMachineApp.ForumPostFactory;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;

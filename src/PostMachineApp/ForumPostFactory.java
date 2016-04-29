@@ -5,6 +5,12 @@
  */
 package PostMachineApp;
 
+import PostMachineApp.EntityInterface.Entity.OppoForumPost;
+import PostMachineApp.EntityInterface.Entity.Qiku360ForumPost;
+import PostMachineApp.EntityInterface.Entity.VivoForumPost;
+import PostMachineApp.EntityInterface.Entity.VivoMobileForumPost;
+import PostMachineApp.EntityInterface.ForumPost;
+
 /**
  *
  * @author MyTest

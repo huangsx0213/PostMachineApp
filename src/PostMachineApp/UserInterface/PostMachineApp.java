@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PostMachineApp;
+package PostMachineApp.UserInterface;
 
+import PostMachineApp.EntityInterface.ForumPost;
+import PostMachineApp.ForumPostFactory;
+import PostMachineApp.RunPost;
+import PostMachineApp.XMLUtil.XMLUtil;
 import java.awt.Font;
 import java.io.IOException;
 import java.text.ParseException;

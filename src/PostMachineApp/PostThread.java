@@ -1,5 +1,7 @@
 package PostMachineApp;
 
+import PostMachineApp.EntityInterface.ForumPost;
+
 public class PostThread implements Runnable {
 
     private ForumPost Post;

@@ -1,5 +1,6 @@
-package PostMachineApp;
+package PostMachineApp.EntityInterface.Entity;
 
+import PostMachineApp.EntityInterface.ForumPost;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 
-final public class VivoForumPost implements ForumPost {
+final public class Qiku360ForumPost implements ForumPost {
 
     private final Boolean EnableThread;
     private final Integer ThreadID;
@@ -27,7 +28,7 @@ final public class VivoForumPost implements ForumPost {
     private final String PostUrl;
     private final String PostContent;
 
-    public VivoForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
+    public Qiku360ForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -139,7 +140,7 @@ final public class VivoForumPost implements ForumPost {
         WebDriver driver = new FirefoxDriver(FirefoxProfile);
 
         driver.get(PostUrl);
-
+        driver.navigate().refresh();
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
 
             WebElement element = driver.findElement(By.id("fastpostmessage"));

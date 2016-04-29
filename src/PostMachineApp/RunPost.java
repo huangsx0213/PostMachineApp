@@ -1,6 +1,7 @@
 
 package PostMachineApp;
 
+import PostMachineApp.EntityInterface.ForumPost;
 import java.util.List;
 
 public class RunPost {

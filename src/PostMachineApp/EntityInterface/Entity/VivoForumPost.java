@@ -1,5 +1,6 @@
-package PostMachineApp;
+package PostMachineApp.EntityInterface.Entity;
 
+import PostMachineApp.EntityInterface.ForumPost;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 
-final public class OppoForumPost implements ForumPost {
+final public class VivoForumPost implements ForumPost {
 
     private final Boolean EnableThread;
     private final Integer ThreadID;
@@ -27,7 +28,7 @@ final public class OppoForumPost implements ForumPost {
     private final String PostUrl;
     private final String PostContent;
 
-    public OppoForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
+    public VivoForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -123,10 +124,10 @@ final public class OppoForumPost implements ForumPost {
     }
 
     @Override
-    @SuppressWarnings("SleepWhileInLoop")
     public void sentpost() {
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
+
         // specified firefox's installing path.
         if (!this.FirefoxPath.equals("default")) {
             System.setProperty("webdriver.firefox.bin", FirefoxPath);
@@ -140,28 +141,27 @@ final public class OppoForumPost implements ForumPost {
 
         driver.get(PostUrl);
 
-        driver.findElement(By.id("fastposteditor")).click();
-
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
 
             WebElement element = driver.findElement(By.id("fastpostmessage"));
 
             element.clear();
-
-            element.sendKeys(PostContent + "\n\n [color=#FFFFFF]发表于" + DateFormat.format(new Date()) + "[/color]");
-
+            if (i % 2 == 0) {
+                element.sendKeys(PostContent);
+            } else {
+                element.sendKeys(PostContent + " ");
+            }
             element.submit();
 
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]message: " + i + " " + PostContent);
-
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + PostContent);
             try {
                 Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
             } catch (Exception ex) {
             }
             if (i % RefreshPostCount == 0) {
                 driver.navigate().refresh();
-                driver.findElement(By.id("fastposteditor")).click();
             }
+
         }
         driver.quit();
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
