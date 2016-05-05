@@ -491,14 +491,14 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane.addTab("TaskManagement", jPanel_PostPopSetting);
+        jTabbedPane.addTab("Task Management", jPanel_PostPopSetting);
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.addTab("EntitySetting", jTabbedPane2);
-        jTabbedPane1.addTab("EntityStepSetting", jTabbedPane3);
-        jTabbedPane1.addTab("GlobalSetting", jTabbedPane4);
+        jTabbedPane1.addTab("Entity Setting", jTabbedPane2);
+        jTabbedPane1.addTab("Entity Step Setting", jTabbedPane3);
+        jTabbedPane1.addTab("Global Setting", jTabbedPane4);
 
-        jTabbedPane.addTab("SystemSettings", jTabbedPane1);
+        jTabbedPane.addTab("System Settings", jTabbedPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

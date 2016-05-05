@@ -54,8 +54,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="TaskManagement">
-                <Property name="tabTitle" type="java.lang.String" value="TaskManagement"/>
+              <JTabbedPaneConstraints tabName="Task Management">
+                <Property name="tabTitle" type="java.lang.String" value="Task Management"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -639,8 +639,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="SystemSettings">
-                <Property name="tabTitle" type="java.lang.String" value="SystemSettings"/>
+              <JTabbedPaneConstraints tabName="System Settings">
+                <Property name="tabTitle" type="java.lang.String" value="System Settings"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -650,8 +650,8 @@
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="EntitySetting">
-                    <Property name="tabTitle" type="java.lang.String" value="EntitySetting"/>
+                  <JTabbedPaneConstraints tabName="Entity Setting">
+                    <Property name="tabTitle" type="java.lang.String" value="Entity Setting"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -661,8 +661,8 @@
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane3">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="EntityStepSetting">
-                    <Property name="tabTitle" type="java.lang.String" value="EntityStepSetting"/>
+                  <JTabbedPaneConstraints tabName="Entity Step Setting">
+                    <Property name="tabTitle" type="java.lang.String" value="Entity Step Setting"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -672,8 +672,8 @@
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane4">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="GlobalSetting">
-                    <Property name="tabTitle" type="java.lang.String" value="GlobalSetting"/>
+                  <JTabbedPaneConstraints tabName="Global Setting">
+                    <Property name="tabTitle" type="java.lang.String" value="Global Setting"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
