@@ -523,11 +523,12 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox_PostEntity">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="5">
                         <StringItem index="0" value="Vivo"/>
                         <StringItem index="1" value="Oppo"/>
                         <StringItem index="2" value="VivoMobile"/>
                         <StringItem index="3" value="Qiku360"/>
+                        <StringItem index="4" value="YunOS"/>
                       </StringArray>
                     </Property>
                   </Properties>
