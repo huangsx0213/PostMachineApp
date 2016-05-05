@@ -89,6 +89,10 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_Bottom = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PostMachineApp");
@@ -487,7 +491,14 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane.addTab("PostPopSetting", jPanel_PostPopSetting);
+        jTabbedPane.addTab("TaskManagement", jPanel_PostPopSetting);
+
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.addTab("EntitySetting", jTabbedPane2);
+        jTabbedPane1.addTab("EntityStepSetting", jTabbedPane3);
+        jTabbedPane1.addTab("GlobalSetting", jTabbedPane4);
+
+        jTabbedPane.addTab("SystemSettings", jTabbedPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -743,6 +754,10 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_Top;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTabbedPane jTabbedPane;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTable jTable;
     private javax.swing.JTextField jTextField_FirefoxPath;
     private javax.swing.JTextField jTextField_FixedWaitTime;
