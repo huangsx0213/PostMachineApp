@@ -19,6 +19,7 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.table.DefaultTableModel;
@@ -567,6 +568,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             Logger.getLogger(PostMachineApp.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Save successfully！");
+        JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE); 
         fillTable();
     }//GEN-LAST:event_SaveActionPerformed
 
@@ -612,13 +614,17 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         // TODO add your handling code here:
-        String id = this.jTextField_ThreadID.getText();
-        XMLUtil.deleteById(id);
-        System.out.println("Delete successfully！");
-        fillTable();
-        ForumPost ForumPost = XMLUtil.getForumPostByID(String.valueOf(1));
-                if(ForumPost!=null){
-        fillForm(ForumPost);}
+        int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to delete?", "Delete", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
+        if (YesOrNo == 0) {
+            String id = this.jTextField_ThreadID.getText();
+            XMLUtil.deleteById(id);
+            System.out.println("Delete successfully！");
+            fillTable();
+            ForumPost ForumPost = XMLUtil.getForumPostByID(String.valueOf(1));
+            if (ForumPost != null) {
+                fillForm(ForumPost);
+            }
+        }
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
@@ -655,8 +661,11 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunActionPerformed
         // TODO add your handling code here:
-        List<ForumPost> ForumPosts=XMLUtil.getRunForumPost();
-        RunPost.RunPost(ForumPosts);
+        int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to run all items?", "Run All", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
+        if (YesOrNo == 0) {
+            List<ForumPost> ForumPosts = XMLUtil.getRunForumPost();
+            RunPost.RunPost(ForumPosts);
+        }
     }//GEN-LAST:event_RunActionPerformed
 
     private void jTextField_ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ProfileActionPerformed
@@ -665,11 +674,14 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void RunSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunSActionPerformed
         // TODO add your handling code here:
-        String id = this.jTextField_ThreadID.getText();
-       ForumPost ForumPost= XMLUtil.getForumPostByID(id);
-       List<ForumPost> ForumPosts=new ArrayList<ForumPost>();
-       ForumPosts.add(ForumPost);
-       RunPost.RunPost(ForumPosts);
+        int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to run the seleted item?", "Run Selected", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
+        if (YesOrNo == 0) {
+            String id = this.jTextField_ThreadID.getText();
+            ForumPost ForumPost = XMLUtil.getForumPostByID(id);
+            List<ForumPost> ForumPosts = new ArrayList<ForumPost>();
+            ForumPosts.add(ForumPost);
+            RunPost.RunPost(ForumPosts);
+        }
     }//GEN-LAST:event_RunSActionPerformed
 
     private void fillForm(ForumPost ForumPost) {
