@@ -302,7 +302,7 @@ public class PostMachineApp extends javax.swing.JFrame {
 
         jLabel_PostEntity.setText("PostEntity:");
 
-        jComboBox_PostEntity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vivo", "Oppo", "VivoMobile", "Qiku360", "YunOS" }));
+        jComboBox_PostEntity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vivo", "Oppo", "YunOS", "Huawei", "Qiku360", "VivoMobile" }));
 
         javax.swing.GroupLayout jPanel_MiddleLayout = new javax.swing.GroupLayout(jPanel_Middle);
         jPanel_Middle.setLayout(jPanel_MiddleLayout);

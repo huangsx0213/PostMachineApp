@@ -134,7 +134,8 @@ public class XMLUtil {
         Element rootElement = document.getRootElement();
 
         Element postElement = rootElement.addElement("ForumPost");
-        postElement.addAttribute("ThreadID", getMaxId() + 1 + "");
+        //postElement.addAttribute("ThreadID", getMaxId() + 1 + "");
+        postElement.addAttribute("ThreadID", ForumPost.getThreadID().toString());
         Element EnableThreadElement = postElement.addElement("EnableThread");
         Element FirefoxPathElement = postElement.addElement("FirefoxPath");
         Element ProfileElement = postElement.addElement("Profile");

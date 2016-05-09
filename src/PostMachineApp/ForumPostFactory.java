@@ -5,11 +5,7 @@
  */
 package PostMachineApp;
 
-import PostMachineApp.EntityInterface.Entity.OppoForumPost;
-import PostMachineApp.EntityInterface.Entity.Qiku360ForumPost;
-import PostMachineApp.EntityInterface.Entity.VivoForumPost;
-import PostMachineApp.EntityInterface.Entity.VivoMobileForumPost;
-import PostMachineApp.EntityInterface.Entity.YunOSForumPost;
+import PostMachineApp.EntityInterface.Entity.*;
 import PostMachineApp.EntityInterface.ForumPost;
 
 /**
@@ -31,6 +27,9 @@ public class ForumPostFactory {
         }
          else if (PostEntity.equals("YunOS")) {
             return new YunOSForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
+        }
+        else if (PostEntity.equals("Huawei")) {
+            return new HuaweiForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
         }
         return null;
     }
