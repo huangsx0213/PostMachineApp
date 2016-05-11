@@ -50,7 +50,11 @@ public class PostMachineApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane = new javax.swing.JTabbedPane();
+        jTabbedPaneConsole = new javax.swing.JTabbedPane();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaConsole = new javax.swing.JTextArea();
+        jButtonClearConsole = new javax.swing.JButton();
         jPanel_PostPopSetting = new javax.swing.JPanel();
         jPanel_Top = new javax.swing.JPanel();
         Title1 = new javax.swing.JLabel();
@@ -109,7 +113,39 @@ public class PostMachineApp extends javax.swing.JFrame {
         setTitle("PostMachineApp");
         setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        jTabbedPane.setPreferredSize(new java.awt.Dimension(800, 600));
+        jTabbedPaneConsole.setPreferredSize(new java.awt.Dimension(800, 600));
+
+        jTextAreaConsole.setColumns(20);
+        jTextAreaConsole.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaConsole);
+        new Console(jTextAreaConsole);
+
+        jButtonClearConsole.setText("Clear");
+        jButtonClearConsole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearConsoleActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonClearConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonClearConsole)
+                .addGap(0, 11, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneConsole.addTab("Console", jPanel5);
 
         jPanel_PostPopSetting.setPreferredSize(new java.awt.Dimension(795, 595));
 
@@ -498,11 +534,11 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel_Middle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_Bottom, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                .addComponent(jPanel_Bottom, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane.addTab("Task Management", jPanel_PostPopSetting);
+        jTabbedPaneConsole.addTab("Task Management", jPanel_PostPopSetting);
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
@@ -514,7 +550,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 561, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Entity Setting", jPanel1);
@@ -527,7 +563,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 561, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Entity Step Setting", jPanel2);
@@ -627,17 +663,19 @@ public class PostMachineApp extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Global Setting", jPanel3);
 
-        jTabbedPane.addTab("System Settings", jTabbedPane1);
+        jTabbedPaneConsole.addTab("System Settings", jTabbedPane1);
+
+        jTabbedPaneConsole.setSelectedIndex(1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPaneConsole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(jTabbedPaneConsole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -812,6 +850,11 @@ public class PostMachineApp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_RunSActionPerformed
 
+    private void jButtonClearConsoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearConsoleActionPerformed
+        // TODO add your handling code here:
+        this.jTextAreaConsole.setText("");
+    }//GEN-LAST:event_jButtonClearConsoleActionPerformed
+
     private void fillForm(ForumPost ForumPost) {
         this.jCheckBox_EnableThread.setSelected(ForumPost.getEnableThread());
         this.jTextField_ThreadID.setText(ForumPost.getThreadID().toString());
@@ -878,6 +921,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JSeparator TitleSeparator2;
     private javax.swing.JSeparator TitleSeparator3;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonClearConsole;
     private javax.swing.JCheckBox jCheckBox_EnableStopTime;
     private javax.swing.JCheckBox jCheckBox_EnableThread;
     private javax.swing.JComboBox<String> jComboBox_PostEntity;
@@ -898,14 +942,17 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel_Bottom;
     private javax.swing.JPanel jPanel_Middle;
     private javax.swing.JPanel jPanel_PostPopSetting;
     private javax.swing.JPanel jPanel_Top;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JTabbedPane jTabbedPane;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPaneConsole;
     private javax.swing.JTable jTable;
+    private javax.swing.JTextArea jTextAreaConsole;
     private javax.swing.JTextField jTextField_FirefoxPath;
     private javax.swing.JTextField jTextField_FirefoxPath1;
     private javax.swing.JTextField jTextField_FirefoxPath2;
