@@ -119,7 +119,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextAreaConsole.setRows(5);
         jTextAreaConsole.setPreferredSize(new java.awt.Dimension(144, 400));
         jScrollPane1.setViewportView(jTextAreaConsole);
-        new Console(jTextAreaConsole);
+        new PostMachineConsole(jTextAreaConsole);
 
         jButtonClearConsole.setText("Clear");
         jButtonClearConsole.addActionListener(new java.awt.event.ActionListener() {

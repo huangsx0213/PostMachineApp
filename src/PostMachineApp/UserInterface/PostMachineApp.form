@@ -110,7 +110,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="new Console(jTextAreaConsole);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="new PostMachineApp.UserInterface.PostMachineConsole(jTextAreaConsole);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

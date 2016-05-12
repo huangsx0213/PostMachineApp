@@ -13,7 +13,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Console extends WindowAdapter implements WindowListener, ActionListener, Runnable {
+public class PostMachineConsole extends WindowAdapter implements WindowListener, ActionListener, Runnable {
 
     private JFrame frame;
     private JTextArea textArea;
@@ -26,7 +26,7 @@ public class Console extends WindowAdapter implements WindowListener, ActionList
 
     Thread errorThrower; // just for testing (Throws an Exception at this Console
 
-    public Console(JTextArea jTextAreaConsole) {
+    public PostMachineConsole(JTextArea jTextAreaConsole) {
         textArea = jTextAreaConsole;
         //textArea=new JTextArea();
         textArea.setEditable(false);
