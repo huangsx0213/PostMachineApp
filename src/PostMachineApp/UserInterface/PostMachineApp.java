@@ -139,10 +139,10 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_ConsoleLayout.setVerticalGroup(
             jPanel_ConsoleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ConsoleLayout.createSequentialGroup()
-                .addComponent(jScrollPane_Console, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                .addComponent(jScrollPane_Console, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonClearConsole)
-                .addGap(4, 4, 4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane_PostMachineApp.addTab("Console", jPanel_Console);
@@ -486,7 +486,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addComponent(jPanel_Top, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel_Bottom, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jTabbedPane_PostMachineApp.addTab("Task Management", jPanel_TaskManagement);
@@ -499,7 +499,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         );
         jPanel_EntityManagementLayout.setVerticalGroup(
             jPanel_EntityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 436, Short.MAX_VALUE)
+            .addGap(0, 453, Short.MAX_VALUE)
         );
 
         jTabbedPane_PostMachineApp.addTab("EntityManagement", jPanel_EntityManagement);
@@ -588,7 +588,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
                     .addGap(22, 22, 22)
                     .addComponent(TitleSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(540, Short.MAX_VALUE)))
+                    .addContainerGap(424, Short.MAX_VALUE)))
         );
 
         jTabbedPane_SystemSettings.addTab("Global Setting", jPanel_GlobalSetting);
@@ -603,7 +603,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         );
         jPanel_EntitySettingLayout.setVerticalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 431, Short.MAX_VALUE)
+            .addGap(0, 448, Short.MAX_VALUE)
         );
 
         jTabbedPane_SystemSettings.addTab("Entity Setting", jPanel_EntitySetting);
@@ -620,7 +620,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane_PostMachineApp, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+            .addComponent(jTabbedPane_PostMachineApp, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
         );
 
         pack();
