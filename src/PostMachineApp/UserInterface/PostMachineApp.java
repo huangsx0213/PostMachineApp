@@ -39,8 +39,13 @@ public class PostMachineApp extends javax.swing.JFrame {
         initComponents();
         fillTable();
         ForumPost ForumPost = TaskManagementDAO.getForumPostByID(String.valueOf(1));
-        if(ForumPost!=null){
-        fillForm(ForumPost);}
+        if (ForumPost != null) {
+            fillForm(ForumPost);
+        }
+        GlobalSetting GlobalSetting = GlobalSettingDAO.getGlobalSettingByID(String.valueOf(1));
+        if (GlobalSetting != null) {
+            fillGlobalSetting(GlobalSetting);
+        }
     }
 
     /**
@@ -96,8 +101,8 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_GlobalSetting = new javax.swing.JPanel();
         Title3 = new javax.swing.JLabel();
         TitleSeparator3 = new javax.swing.JSeparator();
-        jLabel_FirefoxPath = new javax.swing.JLabel();
-        jTextField_FirefoxPath = new javax.swing.JTextField();
+        jLabel_FirefoxInstallationPath = new javax.swing.JLabel();
+        jTextField_FirefoxInstallationPath = new javax.swing.JTextField();
         jLabel_UserAgentString = new javax.swing.JLabel();
         jTextField_UserAgentString = new javax.swing.JTextField();
         jLabel_Workstation = new javax.swing.JLabel();
@@ -109,7 +114,6 @@ public class PostMachineApp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PostApp");
         setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        setPreferredSize(new java.awt.Dimension(800, 520));
 
         jTabbedPane_PostMachineApp.setPreferredSize(new java.awt.Dimension(800, 450));
 
@@ -119,7 +123,6 @@ public class PostMachineApp extends javax.swing.JFrame {
 
         jTextArea_Console.setColumns(20);
         jTextArea_Console.setRows(5);
-        jTextArea_Console.setPreferredSize(new java.awt.Dimension(144, 400));
         jScrollPane_Console.setViewportView(jTextArea_Console);
         new PostMachineConsole(jTextArea_Console);
 
@@ -519,21 +522,21 @@ public class PostMachineApp extends javax.swing.JFrame {
         Title3.setToolTipText("");
         Title3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel_FirefoxPath.setText("Firefox Installation Path:");
+        jLabel_FirefoxInstallationPath.setText("Firefox Installation Path:");
 
-        jTextField_FirefoxPath.setText("default");
-        jTextField_FirefoxPath.setToolTipText("Local firefox installation path,eg. D:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe");
+        jTextField_FirefoxInstallationPath.setText("D:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe");
+        jTextField_FirefoxInstallationPath.setToolTipText("Local firefox installation path,eg. D:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe");
 
         jLabel_UserAgentString.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_UserAgentString.setText("User Agent String:");
 
-        jTextField_UserAgentString.setText("default");
+        jTextField_UserAgentString.setText("Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0)");
         jTextField_UserAgentString.setToolTipText("Local firefox installation path,eg. D:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe");
 
         jLabel_Workstation.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_Workstation.setText("Workstation Name");
 
-        jTextField_WorkstationName.setText("Auto Test 1");
+        jTextField_WorkstationName.setText("ComputerName");
         jTextField_WorkstationName.setToolTipText("Local firefox installation path,eg. D:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe");
 
         jButton_GlobalSave.setText("Save");
@@ -563,13 +566,13 @@ public class PostMachineApp extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel_Workstation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel_UserAgentString, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel_FirefoxPath, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel_FirefoxInstallationPath, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton_GlobalSave))
-                    .addComponent(jTextField_FirefoxPath)
+                    .addComponent(jTextField_FirefoxInstallationPath)
                     .addComponent(jTextField_UserAgentString)
                     .addComponent(jTextField_WorkstationName))
                 .addContainerGap())
@@ -585,8 +588,8 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addComponent(Title3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_FirefoxPath)
-                    .addComponent(jTextField_FirefoxPath))
+                    .addComponent(jLabel_FirefoxInstallationPath)
+                    .addComponent(jTextField_FirefoxInstallationPath))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_UserAgentString)
@@ -667,7 +670,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             // TODO add your handling code here:
             EnableThread = this.jCheckBox_EnableThread.isSelected();
             ThreadID = Integer.parseInt(this.jTextField_ThreadID.getText());
-            //FirefoxPath = this.jTextField_FirefoxPath.getText();
+            FirefoxPath = this.jTextField_FirefoxInstallationPath.getText();
             Profile = this.jTextField_Profile.getText();
             PostEntity = (String) this.jComboBox_PostEntity.getSelectedItem();
             StartTimeString = this.jTextField_StartTime.getText();
@@ -694,7 +697,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             Logger.getLogger(PostMachineApp.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Save successfully！");
-        JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE); 
+        JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE);
         fillTable();
     }//GEN-LAST:event_SaveActionPerformed
 
@@ -763,15 +766,16 @@ public class PostMachineApp extends javax.swing.JFrame {
             ThreadID = Integer.parseInt(tableModel.getValueAt(selectedRowIndex, 1).toString());
         }
         ForumPost ForumPost = TaskManagementDAO.getForumPostByID(ThreadID.toString());
-                if(ForumPost!=null){
-        fillForm(ForumPost);}
+        if (ForumPost != null) {
+            fillForm(ForumPost);
+        }
     }//GEN-LAST:event_jTableMouseClicked
 
     private void NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewActionPerformed
         // TODO add your handling code here:
         this.jCheckBox_EnableThread.setSelected(true);
-        this.jTextField_ThreadID.setText(Integer.toString(TaskManagementDAO.getMaxId()+1));
-        //this.jTextField_FirefoxPath.setText("default");
+        this.jTextField_ThreadID.setText(Integer.toString(TaskManagementDAO.getMaxId() + 1));
+        this.jTextField_FirefoxInstallationPath.setText("default");
         this.jTextField_Profile.setText("default");
         this.jComboBox_PostEntity.setSelectedItem("Vivo");
         this.jTextField_StartTime.setText("2016-01-01 00:00:00");
@@ -817,22 +821,24 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void jButton_GlobalSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GlobalSaveActionPerformed
         // TODO add your handling code here:
-        FirefoxInstallationPath=this.jTextField_FirefoxPath.getText();
-        UserAgentString=this.jTextField_UserAgentString.getText();
-        WorkstationName=this.jTextField_WorkstationName.getText();
-        GlobalSettingID=this.jTextField_GlobalSettingID.getText();
-        GlobalSetting GlobalSetting = new GlobalSetting(GlobalSettingID,FirefoxInstallationPath, UserAgentString, WorkstationName);
-          if (GlobalSettingDAO.GlobalSettingIDisExisting(GlobalSetting)) {
-                GlobalSettingDAO.update(GlobalSetting);
-            } else {
-                GlobalSettingDAO.add(GlobalSetting);
-            }       
+        FirefoxInstallationPath = this.jTextField_FirefoxInstallationPath.getText();
+        UserAgentString = this.jTextField_UserAgentString.getText();
+        WorkstationName = this.jTextField_WorkstationName.getText();
+        GlobalSettingID = this.jTextField_GlobalSettingID.getText();
+        GlobalSetting GlobalSetting = new GlobalSetting(GlobalSettingID, FirefoxInstallationPath, UserAgentString, WorkstationName);
+        if (GlobalSettingDAO.GlobalSettingIDisExisting(GlobalSetting)) {
+            GlobalSettingDAO.update(GlobalSetting);
+        } else {
+            GlobalSettingDAO.add(GlobalSetting);
+        }
+        System.out.println("Save successfully！");
+        JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton_GlobalSaveActionPerformed
 
     private void fillForm(ForumPost ForumPost) {
         this.jCheckBox_EnableThread.setSelected(ForumPost.getEnableThread());
         this.jTextField_ThreadID.setText(ForumPost.getThreadID().toString());
-        //this.jTextField_FirefoxPath.setText(ForumPost.getFirefoxPath());
+        this.jTextField_FirefoxInstallationPath.setText(ForumPost.getFirefoxPath());
         this.jTextField_Profile.setText(ForumPost.getProfile());
         this.jComboBox_PostEntity.setSelectedItem(ForumPost.getPostEntity());
         this.jTextField_StartTime.setText(new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date(ForumPost.getStartTime())));
@@ -844,6 +850,12 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextField_RandomWaitTime.setText(String.valueOf(ForumPost.getRandomWaitTime()));
         this.jTextField_PostUrl.setText(ForumPost.getPostUrl());
         this.jTextField_PostContent.setText(ForumPost.getPostContent());
+    }
+
+    private void fillGlobalSetting(GlobalSetting GlobalSetting) {
+        this.jTextField_FirefoxInstallationPath.setText(GlobalSetting.getFirefoxInstallationPath());
+        this.jTextField_UserAgentString.setText(GlobalSetting.getUserAgentString());
+        this.jTextField_WorkstationName.setText(GlobalSetting.getWorkstationName());
     }
 
     /**
@@ -897,7 +909,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox_EnableStopTime;
     private javax.swing.JCheckBox jCheckBox_EnableThread;
     private javax.swing.JComboBox<String> jComboBox_PostEntity;
-    private javax.swing.JLabel jLabel_FirefoxPath;
+    private javax.swing.JLabel jLabel_FirefoxInstallationPath;
     private javax.swing.JLabel jLabel_FixedWaitTime;
     private javax.swing.JLabel jLabel_PostContent;
     private javax.swing.JLabel jLabel_PostEntity;
@@ -922,7 +934,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane_SystemSettings;
     private javax.swing.JTable jTable;
     private javax.swing.JTextArea jTextArea_Console;
-    private javax.swing.JTextField jTextField_FirefoxPath;
+    private javax.swing.JTextField jTextField_FirefoxInstallationPath;
     private javax.swing.JTextField jTextField_FixedWaitTime;
     private javax.swing.JTextField jTextField_GlobalSettingID;
     private javax.swing.JTextField jTextField_PostContent;
@@ -953,8 +965,8 @@ public class PostMachineApp extends javax.swing.JFrame {
     private Integer RandomWaitTime;
     private String PostUrl;
     private String PostContent;
-     private String GlobalSettingID;
-     private String FirefoxInstallationPath;
-      private String UserAgentString;
-       private String WorkstationName;
+    private String GlobalSettingID;
+    private String FirefoxInstallationPath;
+    private String UserAgentString;
+    private String WorkstationName;
 }

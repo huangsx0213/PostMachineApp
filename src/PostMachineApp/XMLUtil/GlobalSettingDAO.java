@@ -18,20 +18,21 @@ public class GlobalSettingDAO {
     private static String FirefoxInstallationPath;
     private static String UserAgentString;
     private static String WorkstationName;
-private static String id;
-    public static GlobalSetting getGlobalSetting() {
+    private static String id;
+
+    public static GlobalSetting getGlobalSettingByID(String id) {
         Document document = getDocument();
         Element rootElement = document.getRootElement();
         GlobalSetting GlobalSetting = null;
         List<Element> postElements = rootElement.elements("GlobalSetting");
         for (Element postElement : postElements) {
-
-            FirefoxInstallationPath = postElement.element("FirefoxInstallationPath").getTextTrim();
-            UserAgentString = postElement.element("UserAgentString").getTextTrim();
-            WorkstationName = postElement.element("WorkstationName").getTextTrim();
-            GlobalSetting = new GlobalSetting(id,FirefoxInstallationPath, UserAgentString, WorkstationName);
+            if (postElement.attributeValue("id").equals(id)) {
+                FirefoxInstallationPath = postElement.element("FirefoxInstallationPath").getTextTrim();
+                UserAgentString = postElement.element("UserAgentString").getTextTrim();
+                WorkstationName = postElement.element("WorkstationName").getTextTrim();
+                GlobalSetting = new GlobalSetting(id, FirefoxInstallationPath, UserAgentString, WorkstationName);
+            }
         }
-
         return GlobalSetting;
     }
 
@@ -39,7 +40,7 @@ private static String id;
      * GlobalSetting
      *
      * @param GlobalSetting
-
+     *
      */
     public static void add(GlobalSetting GlobalSetting) {
         Document document = getDocument();
@@ -55,7 +56,7 @@ private static String id;
         FirefoxInstallationPathElement.setText(GlobalSetting.getFirefoxInstallationPath());
         UserAgentStringElement.setText(GlobalSetting.getUserAgentString());
         WorkstationNameElement.setText(GlobalSetting.getWorkstationName());
-        
+
         write2XML(document);
     }
 
@@ -70,16 +71,17 @@ private static String id;
         Element rootElement = document.getRootElement();
         List<Element> postElements = rootElement.elements("GlobalSetting");
         for (Element postElement : postElements) {
-             if (postElement.attributeValue("id").equals(String.valueOf(GlobalSetting.getId()))) {
-            if (!postElement.element("FirefoxInstallationPath").getText().equals(GlobalSetting.getFirefoxInstallationPath())) {
-                postElement.element("FirefoxInstallationPath").setText(GlobalSetting.getFirefoxInstallationPath());
+            if (postElement.attributeValue("id").equals(String.valueOf(GlobalSetting.getId()))) {
+                if (!postElement.element("FirefoxInstallationPath").getText().equals(GlobalSetting.getFirefoxInstallationPath())) {
+                    postElement.element("FirefoxInstallationPath").setText(GlobalSetting.getFirefoxInstallationPath());
+                }
+                if (!postElement.element("UserAgentString").getText().equals(GlobalSetting.getUserAgentString())) {
+                    postElement.element("UserAgentString").setText(GlobalSetting.getUserAgentString());
+                }
+                if (!postElement.element("WorkstationName").getText().equals(GlobalSetting.getWorkstationName())) {
+                    postElement.element("WorkstationName").setText(GlobalSetting.getWorkstationName());
+                }
             }
-            if (!postElement.element("UserAgentString").getText().equals(GlobalSetting.getUserAgentString())) {
-                postElement.element("UserAgentString").setText(GlobalSetting.getUserAgentString());
-            }
-            if (!postElement.element("WorkstationName").getText().equals(GlobalSetting.getWorkstationName())) {
-                postElement.element("WorkstationName").setText(GlobalSetting.getWorkstationName());
-            }}
         }
 
         write2XML(document);
@@ -121,6 +123,7 @@ private static String id;
             throw new RuntimeException(e);
         }
     }
+
     public static Boolean GlobalSettingIDisExisting(GlobalSetting GlobalSetting) {
         Boolean isExisting = false;
         Document document = getDocument();

@@ -2,8 +2,8 @@
 
 <Settings>
   <GlobalSetting id="1">
-    <FirefoxInstallationPath>default 1</FirefoxInstallationPath>
-    <UserAgentString>default 2</UserAgentString>
-    <WorkstationName>Auto Test2</WorkstationName>
+    <FirefoxInstallationPath>D:\\Program Files\\Mozilla Firefox\\firefox.exe</FirefoxInstallationPath>
+    <UserAgentString>Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0)</UserAgentString>
+    <WorkstationName>ComputerName</WorkstationName>
   </GlobalSetting>
 </Settings>
