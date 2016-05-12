@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Settings>
+  <GlobalSetting id="1">
+    <FirefoxInstallationPath>default 1</FirefoxInstallationPath>
+    <UserAgentString>default 2</UserAgentString>
+    <WorkstationName>Auto Test2</WorkstationName>
+  </GlobalSetting>
+</Settings>

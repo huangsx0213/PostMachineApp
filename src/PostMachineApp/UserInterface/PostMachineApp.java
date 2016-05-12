@@ -7,8 +7,10 @@ package PostMachineApp.UserInterface;
 
 import PostMachineApp.EntityInterface.ForumPost;
 import PostMachineApp.ForumPostFactory;
+import PostMachineApp.GlobalSetting;
 import PostMachineApp.RunPost;
-import PostMachineApp.XMLUtil.XMLUtil;
+import PostMachineApp.XMLUtil.GlobalSettingDAO;
+import PostMachineApp.XMLUtil.TaskManagementDAO;
 import java.awt.Font;
 import java.io.IOException;
 import java.text.ParseException;
@@ -36,7 +38,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     public PostMachineApp() {
         initComponents();
         fillTable();
-        ForumPost ForumPost = XMLUtil.getForumPostByID(String.valueOf(1));
+        ForumPost ForumPost = TaskManagementDAO.getForumPostByID(String.valueOf(1));
         if(ForumPost!=null){
         fillForm(ForumPost);}
     }
@@ -99,8 +101,9 @@ public class PostMachineApp extends javax.swing.JFrame {
         jLabel_UserAgentString = new javax.swing.JLabel();
         jTextField_UserAgentString = new javax.swing.JTextField();
         jLabel_Workstation = new javax.swing.JLabel();
-        jTextField_Workstation = new javax.swing.JTextField();
+        jTextField_WorkstationName = new javax.swing.JTextField();
         jButton_GlobalSave = new javax.swing.JButton();
+        jTextField_GlobalSettingID = new javax.swing.JTextField();
         jPanel_EntitySetting = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -120,7 +123,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jScrollPane_Console.setViewportView(jTextArea_Console);
         new PostMachineConsole(jTextArea_Console);
 
-        jButtonClearConsole.setText("Clear");
+        jButtonClearConsole.setText("Clear All");
         jButtonClearConsole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearConsoleActionPerformed(evt);
@@ -134,7 +137,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             .addComponent(jScrollPane_Console, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_ConsoleLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonClearConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButtonClearConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel_ConsoleLayout.setVerticalGroup(
             jPanel_ConsoleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,12 +531,21 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextField_UserAgentString.setToolTipText("Local firefox installation path,eg. D:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe");
 
         jLabel_Workstation.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel_Workstation.setText("Workstation:");
+        jLabel_Workstation.setText("Workstation Name");
 
-        jTextField_Workstation.setText("Auto Test 1");
-        jTextField_Workstation.setToolTipText("Local firefox installation path,eg. D:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe");
+        jTextField_WorkstationName.setText("Auto Test 1");
+        jTextField_WorkstationName.setToolTipText("Local firefox installation path,eg. D:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe");
 
         jButton_GlobalSave.setText("Save");
+        jButton_GlobalSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_GlobalSaveActionPerformed(evt);
+            }
+        });
+
+        jTextField_GlobalSettingID.setEditable(false);
+        jTextField_GlobalSettingID.setVisible(false);
+        jTextField_GlobalSettingID.setText("1");
 
         javax.swing.GroupLayout jPanel_GlobalSettingLayout = new javax.swing.GroupLayout(jPanel_GlobalSetting);
         jPanel_GlobalSetting.setLayout(jPanel_GlobalSettingLayout);
@@ -541,23 +553,25 @@ public class PostMachineApp extends javax.swing.JFrame {
             jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_GlobalSettingLayout.createSequentialGroup()
                 .addGap(259, 259, 259)
-                .addComponent(Title3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Title3, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                 .addGap(252, 252, 252))
             .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel_Workstation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_GlobalSettingLayout.createSequentialGroup()
+                        .addComponent(jTextField_GlobalSettingID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_Workstation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel_UserAgentString, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel_FirefoxPath, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_GlobalSave))
                     .addComponent(jTextField_FirefoxPath)
                     .addComponent(jTextField_UserAgentString)
-                    .addComponent(jTextField_Workstation))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_GlobalSettingLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_GlobalSave)
+                    .addComponent(jTextField_WorkstationName))
                 .addContainerGap())
             .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
@@ -580,10 +594,11 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_Workstation)
-                    .addComponent(jTextField_Workstation))
+                    .addComponent(jTextField_WorkstationName)
+                    .addComponent(jTextField_GlobalSettingID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_GlobalSave)
-                .addGap(302, 302, 302))
+                .addContainerGap())
             .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
                     .addGap(22, 22, 22)
@@ -670,10 +685,10 @@ public class PostMachineApp extends javax.swing.JFrame {
             PostUrl = this.jTextField_PostUrl.getText();
             PostContent = this.jTextField_PostContent.getText();
             ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
-            if (XMLUtil.ThreadIDisExisting(ForumPost)) {
-                XMLUtil.update(ForumPost);
+            if (TaskManagementDAO.ThreadIDisExisting(ForumPost)) {
+                TaskManagementDAO.update(ForumPost);
             } else {
-                XMLUtil.add(ForumPost);
+                TaskManagementDAO.add(ForumPost);
             }
         } catch (ParseException ex) {
             Logger.getLogger(PostMachineApp.class.getName()).log(Level.SEVERE, null, ex);
@@ -684,11 +699,11 @@ public class PostMachineApp extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveActionPerformed
 
     private void fillTable() {
-        XMLUtil.getAllForumPost();
+        TaskManagementDAO.getAllForumPost();
         DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
         tableModel.setRowCount(0);
         // 填充数据
-        for (ForumPost ForumPost : XMLUtil.getAllForumPost()) {
+        for (ForumPost ForumPost : TaskManagementDAO.getAllForumPost()) {
             String[] arr = new String[8];
             arr[0] = ForumPost.getEnableThread().toString();
             arr[1] = ForumPost.getThreadID().toString();
@@ -728,10 +743,10 @@ public class PostMachineApp extends javax.swing.JFrame {
         int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to delete?", "Delete", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
         if (YesOrNo == 0) {
             String id = this.jTextField_ThreadID.getText();
-            XMLUtil.deleteById(id);
+            TaskManagementDAO.deleteById(id);
             System.out.println("Delete successfully！");
             fillTable();
-            ForumPost ForumPost = XMLUtil.getForumPostByID(String.valueOf(1));
+            ForumPost ForumPost = TaskManagementDAO.getForumPostByID(String.valueOf(1));
             if (ForumPost != null) {
                 fillForm(ForumPost);
             }
@@ -747,7 +762,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             int selectedRowIndex = jTable.getSelectedRow(); // 取得用户所选单行 
             ThreadID = Integer.parseInt(tableModel.getValueAt(selectedRowIndex, 1).toString());
         }
-        ForumPost ForumPost = XMLUtil.getForumPostByID(ThreadID.toString());
+        ForumPost ForumPost = TaskManagementDAO.getForumPostByID(ThreadID.toString());
                 if(ForumPost!=null){
         fillForm(ForumPost);}
     }//GEN-LAST:event_jTableMouseClicked
@@ -755,7 +770,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private void NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewActionPerformed
         // TODO add your handling code here:
         this.jCheckBox_EnableThread.setSelected(true);
-        this.jTextField_ThreadID.setText(Integer.toString(XMLUtil.getMaxId()+1));
+        this.jTextField_ThreadID.setText(Integer.toString(TaskManagementDAO.getMaxId()+1));
         //this.jTextField_FirefoxPath.setText("default");
         this.jTextField_Profile.setText("default");
         this.jComboBox_PostEntity.setSelectedItem("Vivo");
@@ -774,7 +789,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         // TODO add your handling code here:
         int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to run all items?", "Run All", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
         if (YesOrNo == 0) {
-            List<ForumPost> ForumPosts = XMLUtil.getRunForumPost();
+            List<ForumPost> ForumPosts = TaskManagementDAO.getRunForumPost();
             RunPost.RunPost(ForumPosts);
         }
     }//GEN-LAST:event_RunActionPerformed
@@ -788,7 +803,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to run the seleted item?", "Run Selected", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
         if (YesOrNo == 0) {
             String id = this.jTextField_ThreadID.getText();
-            ForumPost ForumPost = XMLUtil.getForumPostByID(id);
+            ForumPost ForumPost = TaskManagementDAO.getForumPostByID(id);
             List<ForumPost> ForumPosts = new ArrayList<ForumPost>();
             ForumPosts.add(ForumPost);
             RunPost.RunPost(ForumPosts);
@@ -799,6 +814,20 @@ public class PostMachineApp extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.jTextArea_Console.setText("");
     }//GEN-LAST:event_jButtonClearConsoleActionPerformed
+
+    private void jButton_GlobalSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GlobalSaveActionPerformed
+        // TODO add your handling code here:
+        FirefoxInstallationPath=this.jTextField_FirefoxPath.getText();
+        UserAgentString=this.jTextField_UserAgentString.getText();
+        WorkstationName=this.jTextField_WorkstationName.getText();
+        GlobalSettingID=this.jTextField_GlobalSettingID.getText();
+        GlobalSetting GlobalSetting = new GlobalSetting(GlobalSettingID,FirefoxInstallationPath, UserAgentString, WorkstationName);
+          if (GlobalSettingDAO.GlobalSettingIDisExisting(GlobalSetting)) {
+                GlobalSettingDAO.update(GlobalSetting);
+            } else {
+                GlobalSettingDAO.add(GlobalSetting);
+            }       
+    }//GEN-LAST:event_jButton_GlobalSaveActionPerformed
 
     private void fillForm(ForumPost ForumPost) {
         this.jCheckBox_EnableThread.setSelected(ForumPost.getEnableThread());
@@ -895,6 +924,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea_Console;
     private javax.swing.JTextField jTextField_FirefoxPath;
     private javax.swing.JTextField jTextField_FixedWaitTime;
+    private javax.swing.JTextField jTextField_GlobalSettingID;
     private javax.swing.JTextField jTextField_PostContent;
     private javax.swing.JTextField jTextField_PostCount;
     private javax.swing.JTextField jTextField_PostUrl;
@@ -905,7 +935,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_StopTime;
     private javax.swing.JTextField jTextField_ThreadID;
     private javax.swing.JTextField jTextField_UserAgentString;
-    private javax.swing.JTextField jTextField_Workstation;
+    private javax.swing.JTextField jTextField_WorkstationName;
     // End of variables declaration//GEN-END:variables
     private Boolean EnableThread;
     private Integer ThreadID;
@@ -923,4 +953,8 @@ public class PostMachineApp extends javax.swing.JFrame {
     private Integer RandomWaitTime;
     private String PostUrl;
     private String PostContent;
+     private String GlobalSettingID;
+     private String FirefoxInstallationPath;
+      private String UserAgentString;
+       private String WorkstationName;
 }

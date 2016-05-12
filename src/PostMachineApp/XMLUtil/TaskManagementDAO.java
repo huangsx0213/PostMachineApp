@@ -13,7 +13,7 @@ import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
-public class XMLUtil {
+public class TaskManagementDAO {
 
     private static String fileName = System.getProperty("user.dir") + "\\ForumPost.xml";
     private static Boolean EnableThread;
