@@ -838,7 +838,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private void fillForm(ForumPost ForumPost) {
         this.jCheckBox_EnableThread.setSelected(ForumPost.getEnableThread());
         this.jTextField_ThreadID.setText(ForumPost.getThreadID().toString());
-        this.jTextField_FirefoxInstallationPath.setText(ForumPost.getFirefoxPath());
+        //this.jTextField_FirefoxInstallationPath.setText(ForumPost.getFirefoxPath());
         this.jTextField_Profile.setText(ForumPost.getProfile());
         this.jComboBox_PostEntity.setSelectedItem(ForumPost.getPostEntity());
         this.jTextField_StartTime.setText(new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date(ForumPost.getStartTime())));
