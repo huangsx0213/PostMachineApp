@@ -5,10 +5,12 @@
  */
 package PostMachineApp.UserInterface;
 
+import PostMachineApp.Entity;
 import PostMachineApp.EntityInterface.ForumPost;
 import PostMachineApp.ForumPostFactory;
 import PostMachineApp.GlobalSetting;
 import PostMachineApp.RunPost;
+import PostMachineApp.XMLUtil.EntityDAO;
 import PostMachineApp.XMLUtil.GlobalSettingDAO;
 import PostMachineApp.XMLUtil.TaskManagementDAO;
 import java.awt.Font;
@@ -38,6 +40,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     public PostMachineApp() {
         initComponents();
         fillTable();
+        fillEntityTable();
         ForumPost ForumPost = TaskManagementDAO.getForumPostByID(String.valueOf(1));
         if (ForumPost != null) {
             fillForm(ForumPost);
@@ -45,6 +48,10 @@ public class PostMachineApp extends javax.swing.JFrame {
         GlobalSetting GlobalSetting = GlobalSettingDAO.getGlobalSettingByID(String.valueOf(1));
         if (GlobalSetting != null) {
             fillGlobalSetting(GlobalSetting);
+        }
+        Entity Entity = EntityDAO.getEntityByID(String.valueOf(1));
+        if (Entity != null) {
+            fillEntity(Entity);
         }
     }
 
@@ -704,12 +711,12 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TitleSeparator_EntiySetting, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel_EntiySettingTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_EntityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel_EntiySettingTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_EntiySettingTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField_EntityID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jCheckBox_EnableEntity)
-                        .addComponent(jLabel_EntityName)))
+                        .addComponent(jLabel_EntityName))
+                    .addComponent(jTextField_EntityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_EntiySettingTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DeleteEntity)
@@ -881,6 +888,23 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTable.invalidate();
     }
 
+    private void fillEntityTable() {
+        EntityDAO.getAllEntity();
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_EntiySetting.getModel();
+        tableModel.setRowCount(0);
+        // 填充数据
+        for (Entity Entity : EntityDAO.getAllEntity()) {
+            String[] arr = new String[3];
+            arr[0] = Entity.getEnableEntity().toString();
+            arr[1] = Entity.getEntityID().toString();
+            arr[2] = Entity.getEntityName();
+            // 添加数据到表格
+            tableModel.addRow(arr);
+        }
+
+        // 更新表格
+        jTable_EntiySetting.invalidate();
+    }
     private void jCheckBox_EnableThreadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnableThreadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox_EnableThreadActionPerformed
@@ -1001,6 +1025,18 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void SaveEntityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveEntityActionPerformed
         // TODO add your handling code here:
+        EnableEntity = this.jCheckBox_EnableEntity.isSelected();
+        EntityID = Integer.parseInt(this.jTextField_EntityID.getText());
+        EntityName = this.jTextField_EntityName.getText();
+        Entity Entity = new Entity(EnableEntity, EntityID, EntityName);
+        if (EntityDAO.EntityIDisExisting(Entity)) {
+            EntityDAO.update(Entity);
+        } else {
+            EntityDAO.add(Entity);
+        }
+        System.out.println("Save successfully！");
+        JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE);
+        fillEntityTable();
     }//GEN-LAST:event_SaveEntityActionPerformed
 
     private void jTextField_EntityNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_EntityNameActionPerformed
@@ -1009,6 +1045,17 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void jTable_EntiySettingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_EntiySettingMouseClicked
         // TODO add your handling code here:
+                int selectRows = jTable_EntiySetting.getSelectedRows().length;// 取得用户所选行的行数
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_EntiySetting.getModel();
+
+        if (selectRows == 1) {
+            int selectedRowIndex = jTable_EntiySetting.getSelectedRow(); // 取得用户所选单行 
+            EntityID = Integer.parseInt(tableModel.getValueAt(selectedRowIndex, 1).toString());
+        }
+        Entity Entity = EntityDAO.getEntityByID(EntityID.toString());
+        if (Entity != null) {
+            fillEntityForm(Entity);
+        }
     }//GEN-LAST:event_jTable_EntiySettingMouseClicked
 
     private void jCheckBox_EnableEntityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnableEntityActionPerformed
@@ -1035,11 +1082,21 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextField_PostUrl.setText(ForumPost.getPostUrl());
         this.jTextField_PostContent.setText(ForumPost.getPostContent());
     }
-
+    private void fillEntityForm(Entity Entity) {
+         this.jCheckBox_EnableEntity.setSelected(Entity.getEnableEntity());
+        this.jTextField_EntityID.setText(Entity.getEntityID().toString());
+        this.jTextField_EntityName.setText(Entity.getEntityName());
+    }
     private void fillGlobalSetting(GlobalSetting GlobalSetting) {
         this.jTextField_FirefoxInstallationPath.setText(GlobalSetting.getFirefoxInstallationPath());
         this.jTextField_UserAgentString.setText(GlobalSetting.getUserAgentString());
         this.jTextField_WorkstationName.setText(GlobalSetting.getWorkstationName());
+    }
+
+    private void fillEntity(Entity Entity) {
+        this.jCheckBox_EnableEntity.setSelected(Entity.getEnableEntity());
+        this.jTextField_EntityID.setText(Entity.getEntityID().toString());
+        this.jTextField_EntityName.setText(Entity.getEntityName());
     }
 
     /**
@@ -1113,8 +1170,6 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_UserAgentString;
     private javax.swing.JLabel jLabel_Workstation;
     private javax.swing.JPanel jPanel_Bottom;
-    private javax.swing.JPanel jPanel_Bottom1;
-    private javax.swing.JPanel jPanel_Bottom2;
     private javax.swing.JPanel jPanel_Console;
     private javax.swing.JPanel jPanel_EntityManagement;
     private javax.swing.JPanel jPanel_EntitySetting;
@@ -1124,15 +1179,11 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_TaskManagement;
     private javax.swing.JPanel jPanel_Top;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane_Console;
     private javax.swing.JScrollPane jScrollPane_EntiySetting;
     private javax.swing.JTabbedPane jTabbedPane_PostMachineApp;
     private javax.swing.JTabbedPane jTabbedPane_SystemSettings;
     private javax.swing.JTable jTable;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable_EntiySetting;
     private javax.swing.JTextArea jTextArea_Console;
     private javax.swing.JTextField jTextField_EntityID;
@@ -1172,4 +1223,11 @@ public class PostMachineApp extends javax.swing.JFrame {
     private String FirefoxInstallationPath;
     private String UserAgentString;
     private String WorkstationName;
+
+    private static Boolean EnableEntity;
+    private static Integer EntityID;
+    private static String EntityName;
+
+
+
 }

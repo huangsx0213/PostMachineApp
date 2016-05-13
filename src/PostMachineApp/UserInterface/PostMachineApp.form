@@ -884,13 +884,13 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="TitleSeparator_EntiySetting" min="-2" pref="2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField_EntityName" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="jTextField_EntityID" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jCheckBox_EnableEntity" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel_EntityName" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="jTextField_EntityName" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">

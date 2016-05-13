@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Entitys>
+  <Entity EntityID="1">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>Vivo</EntityName>
+  </Entity>
+  <Entity EntityID="2">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>Vivo</EntityName>
+  </Entity>
+  <Entity EntityID="3">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>Huawei</EntityName>
+  </Entity>
+</Entitys>
