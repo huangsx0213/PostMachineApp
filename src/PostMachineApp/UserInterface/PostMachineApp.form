@@ -168,73 +168,70 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="TitleSeparator2" max="32767" attributes="0"/>
-                              <Component id="Title2" pref="173" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="New" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Save" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Delete" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="RunS" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Run" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabel_PostNumber" max="32767" attributes="0"/>
-                                  <Component id="jLabel_PostContent" max="32767" attributes="0"/>
-                                  <Component id="jLabel_StartTime" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jCheckBox_EnableThread" alignment="1" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel_PostUrl" min="-2" pref="79" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextField_PostCount" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField_ThreadID" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField_StartTime" alignment="0" pref="127" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel_FixedWaitTime" max="32767" attributes="0"/>
-                                      <Component id="jCheckBox_EnableStopTime" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel_Profile" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextField_Profile" max="32767" attributes="0"/>
-                                      <Component id="jTextField_FixedWaitTime" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jTextField_StopTime" alignment="1" pref="129" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="New" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="Save" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="Delete" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="RunS" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="Run" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel_RefreshPostCount" min="-2" pref="138" max="-2" attributes="0"/>
-                                      <Component id="jLabel_PostEntity" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel_RandomWaitTime" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jLabel_PostNumber" max="32767" attributes="0"/>
+                                          <Component id="jLabel_PostContent" max="32767" attributes="0"/>
+                                          <Component id="jLabel_StartTime" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBox_EnableThread" alignment="1" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel_PostUrl" min="-2" pref="79" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jTextField_RandomWaitTime" max="32767" attributes="0"/>
-                                      <Component id="jTextField_RefreshPostCount" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jComboBox_PostEntity" alignment="0" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jTextField_PostCount" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jTextField_ThreadID" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jTextField_StartTime" alignment="0" pref="127" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jLabel_FixedWaitTime" max="32767" attributes="0"/>
+                                              <Component id="jCheckBox_EnableStopTime" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jLabel_Profile" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jTextField_Profile" max="32767" attributes="0"/>
+                                              <Component id="jTextField_FixedWaitTime" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="jTextField_StopTime" alignment="1" pref="129" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel_RefreshPostCount" min="-2" pref="138" max="-2" attributes="0"/>
+                                              <Component id="jLabel_PostEntity" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel_RandomWaitTime" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="jTextField_RandomWaitTime" max="32767" attributes="0"/>
+                                              <Component id="jTextField_RefreshPostCount" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jComboBox_PostEntity" alignment="0" pref="156" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jTextField_PostContent" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_PostUrl" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jTextField_PostContent" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_PostUrl" alignment="0" max="32767" attributes="0"/>
+                              <Component id="TitleSeparator2" alignment="1" max="32767" attributes="0"/>
+                              <Component id="Title2" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -245,7 +242,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="Title2" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="TitleSeparator2" min="-2" max="-2" attributes="0"/>
+                          <Component id="TitleSeparator2" min="-2" pref="2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel_Profile" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -627,8 +624,8 @@
         <Container class="javax.swing.JPanel" name="jPanel_EntityManagement">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="EntityManagement">
-                <Property name="tabTitle" type="java.lang.String" value="EntityManagement"/>
+              <JTabbedPaneConstraints tabName="Entity Management">
+                <Property name="tabTitle" type="java.lang.String" value="Entity Management"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -680,48 +677,44 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
-                          <Component id="Title3" pref="197" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextField_GlobalSettingID" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel_Workstation" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel_UserAgentString" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel_FirefoxInstallationPath" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jButton_GlobalSave" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jTextField_GlobalSettingID" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel_Workstation" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel_UserAgentString" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel_FirefoxInstallationPath" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="jButton_GlobalSave" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jTextField_FirefoxInstallationPath" max="32767" attributes="0"/>
+                                      <Component id="jTextField_UserAgentString" pref="565" max="32767" attributes="0"/>
+                                      <Component id="jTextField_WorkstationName" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Component id="jTextField_FirefoxInstallationPath" max="32767" attributes="0"/>
-                              <Component id="jTextField_UserAgentString" max="32767" attributes="0"/>
-                              <Component id="jTextField_WorkstationName" alignment="0" max="32767" attributes="0"/>
+                              <Component id="Title5" alignment="0" pref="688" max="32767" attributes="0"/>
+                              <Component id="TitleSeparator5" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
-                              <Component id="TitleSeparator3" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="Title3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="Title5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="TitleSeparator5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel_FirefoxInstallationPath" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField_FirefoxInstallationPath" alignment="3" max="32767" attributes="0"/>
@@ -741,33 +734,10 @@
                           <Component id="jButton_GlobalSave" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="TitleSeparator3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="424" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="Title3">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="12" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="0" red="0" type="rgb"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Global Parameters Setting"/>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="horizontalTextPosition" type="int" value="0"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JSeparator" name="TitleSeparator3">
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel_FirefoxInstallationPath">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Firefox Installation Path:"/>
@@ -817,6 +787,22 @@
                     <Property name="text" type="java.lang.String" value="1"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JSeparator" name="TitleSeparator5">
+                </Component>
+                <Component class="javax.swing.JLabel" name="Title5">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Global Parameters Setting"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                    <Property name="horizontalTextPosition" type="int" value="0"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel_EntitySetting">
@@ -836,15 +822,45 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="690" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="TitleSeparator4" max="32767" attributes="0"/>
+                              <Component id="Title4" pref="688" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="Title4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="TitleSeparator4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="425" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="Title4">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Entity Setting"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                    <Property name="horizontalTextPosition" type="int" value="0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="TitleSeparator4">
+                </Component>
+              </SubComponents>
             </Container>
           </SubComponents>
         </Container>

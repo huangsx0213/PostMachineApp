@@ -99,8 +99,6 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_EntityManagement = new javax.swing.JPanel();
         jTabbedPane_SystemSettings = new javax.swing.JTabbedPane();
         jPanel_GlobalSetting = new javax.swing.JPanel();
-        Title3 = new javax.swing.JLabel();
-        TitleSeparator3 = new javax.swing.JSeparator();
         jLabel_FirefoxInstallationPath = new javax.swing.JLabel();
         jTextField_FirefoxInstallationPath = new javax.swing.JTextField();
         jLabel_UserAgentString = new javax.swing.JLabel();
@@ -109,7 +107,11 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextField_WorkstationName = new javax.swing.JTextField();
         jButton_GlobalSave = new javax.swing.JButton();
         jTextField_GlobalSettingID = new javax.swing.JTextField();
+        TitleSeparator5 = new javax.swing.JSeparator();
+        Title5 = new javax.swing.JLabel();
         jPanel_EntitySetting = new javax.swing.JPanel();
+        Title4 = new javax.swing.JLabel();
+        TitleSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PostApp");
@@ -319,61 +321,58 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_TopLayout.setHorizontalGroup(
             jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_TopLayout.createSequentialGroup()
-                .addGap(300, 300, 300)
-                .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TitleSeparator2)
-                    .addComponent(Title2, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
-                .addGap(300, 300, 300))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_TopLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(New)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Save)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Delete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RunS)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Run)
-                .addContainerGap())
-            .addGroup(jPanel_TopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel_PostNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel_PostContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel_StartTime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox_EnableThread, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel_PostUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_TopLayout.createSequentialGroup()
-                        .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField_PostCount)
-                            .addComponent(jTextField_ThreadID)
-                            .addComponent(jTextField_StartTime, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel_FixedWaitTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox_EnableStopTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel_Profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField_Profile)
-                            .addComponent(jTextField_FixedWaitTime, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField_StopTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_TopLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(New)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Save)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Delete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(RunS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Run))
+                    .addGroup(jPanel_TopLayout.createSequentialGroup()
                         .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_RefreshPostCount, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_PostEntity, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel_RandomWaitTime, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField_RandomWaitTime)
-                            .addComponent(jTextField_RefreshPostCount, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox_PostEntity, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jTextField_PostContent)
-                    .addComponent(jTextField_PostUrl))
+                            .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel_PostNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_PostContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_StartTime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox_EnableThread, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel_PostUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_TopLayout.createSequentialGroup()
+                                .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField_PostCount)
+                                    .addComponent(jTextField_ThreadID)
+                                    .addComponent(jTextField_StartTime, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel_FixedWaitTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jCheckBox_EnableStopTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel_Profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField_Profile)
+                                    .addComponent(jTextField_FixedWaitTime, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextField_StopTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_RefreshPostCount, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel_PostEntity, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel_RandomWaitTime, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextField_RandomWaitTime)
+                                    .addComponent(jTextField_RefreshPostCount, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox_PostEntity, javax.swing.GroupLayout.Alignment.LEADING, 0, 156, Short.MAX_VALUE)))
+                            .addComponent(jTextField_PostContent)
+                            .addComponent(jTextField_PostUrl)))
+                    .addComponent(TitleSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Title2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel_TopLayout.setVerticalGroup(
@@ -381,7 +380,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             .addGroup(jPanel_TopLayout.createSequentialGroup()
                 .addComponent(Title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TitleSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TitleSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_Profile)
@@ -508,19 +507,12 @@ public class PostMachineApp extends javax.swing.JFrame {
             .addGap(0, 453, Short.MAX_VALUE)
         );
 
-        jTabbedPane_PostMachineApp.addTab("EntityManagement", jPanel_EntityManagement);
+        jTabbedPane_PostMachineApp.addTab("Entity Management", jPanel_EntityManagement);
 
         jTabbedPane_SystemSettings.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane_SystemSettings.setPreferredSize(new java.awt.Dimension(795, 450));
 
         jPanel_GlobalSetting.setPreferredSize(new java.awt.Dimension(660, 400));
-
-        Title3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        Title3.setForeground(new java.awt.Color(0, 0, 255));
-        Title3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title3.setText("Global Parameters Setting");
-        Title3.setToolTipText("");
-        Title3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel_FirefoxInstallationPath.setText("Firefox Installation Path:");
 
@@ -550,43 +542,47 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextField_GlobalSettingID.setVisible(false);
         jTextField_GlobalSettingID.setText("1");
 
+        Title5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Title5.setForeground(new java.awt.Color(0, 0, 255));
+        Title5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title5.setText("Global Parameters Setting");
+        Title5.setToolTipText("");
+        Title5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel_GlobalSettingLayout = new javax.swing.GroupLayout(jPanel_GlobalSetting);
         jPanel_GlobalSetting.setLayout(jPanel_GlobalSettingLayout);
         jPanel_GlobalSettingLayout.setHorizontalGroup(
             jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_GlobalSettingLayout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addComponent(Title3, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                .addGap(252, 252, 252))
             .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_GlobalSettingLayout.createSequentialGroup()
-                        .addComponent(jTextField_GlobalSettingID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_Workstation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel_UserAgentString, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel_FirefoxInstallationPath, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton_GlobalSave))
-                    .addComponent(jTextField_FirefoxInstallationPath)
-                    .addComponent(jTextField_UserAgentString)
-                    .addComponent(jTextField_WorkstationName))
+                        .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_GlobalSettingLayout.createSequentialGroup()
+                                .addComponent(jTextField_GlobalSettingID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_Workstation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel_UserAgentString, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel_FirefoxInstallationPath, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton_GlobalSave))
+                            .addComponent(jTextField_FirefoxInstallationPath)
+                            .addComponent(jTextField_UserAgentString, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                            .addComponent(jTextField_WorkstationName)))
+                    .addComponent(Title5, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                    .addComponent(TitleSeparator5))
                 .addContainerGap())
-            .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
-                    .addGap(244, 244, 244)
-                    .addComponent(TitleSeparator3)
-                    .addGap(245, 245, 245)))
         );
         jPanel_GlobalSettingLayout.setVerticalGroup(
             jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
-                .addComponent(Title3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Title5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TitleSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_FirefoxInstallationPath)
                     .addComponent(jTextField_FirefoxInstallationPath))
@@ -602,26 +598,37 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_GlobalSave)
                 .addContainerGap())
-            .addGroup(jPanel_GlobalSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel_GlobalSettingLayout.createSequentialGroup()
-                    .addGap(22, 22, 22)
-                    .addComponent(TitleSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(424, Short.MAX_VALUE)))
         );
 
         jTabbedPane_SystemSettings.addTab("Global Setting", jPanel_GlobalSetting);
 
         jPanel_EntitySetting.setPreferredSize(new java.awt.Dimension(660, 400));
 
+        Title4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Title4.setForeground(new java.awt.Color(0, 0, 255));
+        Title4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title4.setText("Entity Setting");
+        Title4.setToolTipText("");
+        Title4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel_EntitySettingLayout = new javax.swing.GroupLayout(jPanel_EntitySetting);
         jPanel_EntitySetting.setLayout(jPanel_EntitySettingLayout);
         jPanel_EntitySettingLayout.setHorizontalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_EntitySettingLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TitleSeparator4)
+                    .addComponent(Title4, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel_EntitySettingLayout.setVerticalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGroup(jPanel_EntitySettingLayout.createSequentialGroup()
+                .addComponent(Title4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TitleSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 425, Short.MAX_VALUE))
         );
 
         jTabbedPane_SystemSettings.addTab("Entity Setting", jPanel_EntitySetting);
@@ -901,9 +908,11 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JButton RunS;
     private javax.swing.JButton Save;
     private javax.swing.JLabel Title2;
-    private javax.swing.JLabel Title3;
+    private javax.swing.JLabel Title4;
+    private javax.swing.JLabel Title5;
     private javax.swing.JSeparator TitleSeparator2;
-    private javax.swing.JSeparator TitleSeparator3;
+    private javax.swing.JSeparator TitleSeparator4;
+    private javax.swing.JSeparator TitleSeparator5;
     private javax.swing.JButton jButtonClearConsole;
     private javax.swing.JButton jButton_GlobalSave;
     private javax.swing.JCheckBox jCheckBox_EnableStopTime;
