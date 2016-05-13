@@ -110,8 +110,19 @@ public class PostMachineApp extends javax.swing.JFrame {
         TitleSeparator5 = new javax.swing.JSeparator();
         Title5 = new javax.swing.JLabel();
         jPanel_EntitySetting = new javax.swing.JPanel();
-        Title4 = new javax.swing.JLabel();
-        TitleSeparator4 = new javax.swing.JSeparator();
+        jPanel_Top2 = new javax.swing.JPanel();
+        Title6 = new javax.swing.JLabel();
+        TitleSeparator6 = new javax.swing.JSeparator();
+        jTextField_PostUrl2 = new javax.swing.JTextField();
+        Save2 = new javax.swing.JButton();
+        Delete2 = new javax.swing.JButton();
+        New2 = new javax.swing.JButton();
+        jLabel_PostUrl3 = new javax.swing.JLabel();
+        jCheckBox_EnableThread1 = new javax.swing.JCheckBox();
+        jTextField_ThreadID1 = new javax.swing.JTextField();
+        jPanel_Bottom3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PostApp");
@@ -604,31 +615,174 @@ public class PostMachineApp extends javax.swing.JFrame {
 
         jPanel_EntitySetting.setPreferredSize(new java.awt.Dimension(660, 400));
 
-        Title4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        Title4.setForeground(new java.awt.Color(0, 0, 255));
-        Title4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title4.setText("Entity Setting");
-        Title4.setToolTipText("");
-        Title4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel_Top2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        Title6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Title6.setForeground(new java.awt.Color(0, 0, 255));
+        Title6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title6.setText("Entity Setting");
+
+        jTextField_PostUrl2.setToolTipText("Post URL");
+        jTextField_PostUrl2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_PostUrl2ActionPerformed(evt);
+            }
+        });
+
+        Save2.setText("Save");
+        Save2.setToolTipText("Save a new thread or a edited thread");
+        Save2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Save2ActionPerformed(evt);
+            }
+        });
+
+        Delete2.setText("Delete");
+        Delete2.setToolTipText("Delete a seleted thread");
+        Delete2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Delete2ActionPerformed(evt);
+            }
+        });
+
+        New2.setText("New");
+        New2.setToolTipText("Create a new thread form");
+        New2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                New2ActionPerformed(evt);
+            }
+        });
+
+        jLabel_PostUrl3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel_PostUrl3.setText("Entity Name:");
+
+        jCheckBox_EnableThread1.setText("Entity ID:");
+        jCheckBox_EnableThread1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox_EnableThread1ActionPerformed(evt);
+            }
+        });
+
+        jTextField_ThreadID1.setText("1");
+        jTextField_ThreadID1.setToolTipText("Thread ID must be unique");
+        jTextField_ThreadID1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_ThreadID1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel_Top2Layout = new javax.swing.GroupLayout(jPanel_Top2);
+        jPanel_Top2.setLayout(jPanel_Top2Layout);
+        jPanel_Top2Layout.setHorizontalGroup(
+            jPanel_Top2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_Top2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_Top2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_Top2Layout.createSequentialGroup()
+                        .addComponent(jCheckBox_EnableThread1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_ThreadID1, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel_PostUrl3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_PostUrl2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TitleSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Title6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Top2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(New2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Save2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Delete2)))
+                .addContainerGap())
+        );
+        jPanel_Top2Layout.setVerticalGroup(
+            jPanel_Top2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_Top2Layout.createSequentialGroup()
+                .addComponent(Title6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TitleSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_Top2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_PostUrl2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel_Top2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField_ThreadID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCheckBox_EnableThread1)
+                        .addComponent(jLabel_PostUrl3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_Top2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Delete2)
+                    .addComponent(Save2)
+                    .addComponent(New2))
+                .addContainerGap())
+        );
+
+        jPanel_Bottom3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel_Bottom3.setPreferredSize(new java.awt.Dimension(454, 250));
+
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(452, 250));
+
+        jTable3.setAutoCreateRowSorter(true);
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Enable", "Entity ID", "Entity Name"
+            }
+        ));
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
+        jTable.getColumnModel().getColumn(0).setPreferredWidth(10);
+        jTable.getColumnModel().getColumn(1).setPreferredWidth(10);
+        jTable.getColumnModel().getColumn(2).setPreferredWidth(35);
+        jTable.getColumnModel().getColumn(3).setPreferredWidth(20);
+        jTable.getColumnModel().getColumn(4).setPreferredWidth(25);
+        jTable.getColumnModel().getColumn(5).setPreferredWidth(20);
+        jTable.getColumnModel().getColumn(6).setPreferredWidth(40);
+        jTable.getColumnModel().getColumn(7).setPreferredWidth(260);
+        jScrollPane3.setViewportView(jTable3);
+
+        javax.swing.GroupLayout jPanel_Bottom3Layout = new javax.swing.GroupLayout(jPanel_Bottom3);
+        jPanel_Bottom3.setLayout(jPanel_Bottom3Layout);
+        jPanel_Bottom3Layout.setHorizontalGroup(
+            jPanel_Bottom3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel_Bottom3Layout.setVerticalGroup(
+            jPanel_Bottom3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Bottom3Layout.createSequentialGroup()
+                .addGap(0, 13, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout jPanel_EntitySettingLayout = new javax.swing.GroupLayout(jPanel_EntitySetting);
         jPanel_EntitySetting.setLayout(jPanel_EntitySettingLayout);
         jPanel_EntitySettingLayout.setHorizontalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_EntitySettingLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TitleSeparator4)
-                    .addComponent(Title4, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jPanel_Top2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel_Bottom3, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
         );
         jPanel_EntitySettingLayout.setVerticalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_EntitySettingLayout.createSequentialGroup()
-                .addComponent(Title4)
+                .addComponent(jPanel_Top2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TitleSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 425, Short.MAX_VALUE))
+                .addComponent(jPanel_Bottom3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         jTabbedPane_SystemSettings.addTab("Entity Setting", jPanel_EntitySetting);
@@ -842,6 +996,34 @@ public class PostMachineApp extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton_GlobalSaveActionPerformed
 
+    private void New2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_New2ActionPerformed
+
+    private void Delete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Delete2ActionPerformed
+
+    private void Save2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Save2ActionPerformed
+
+    private void jTextField_PostUrl2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PostUrl2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PostUrl2ActionPerformed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable3MouseClicked
+
+    private void jCheckBox_EnableThread1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnableThread1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox_EnableThread1ActionPerformed
+
+    private void jTextField_ThreadID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ThreadID1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_ThreadID1ActionPerformed
+
     private void fillForm(ForumPost ForumPost) {
         this.jCheckBox_EnableThread.setSelected(ForumPost.getEnableThread());
         this.jTextField_ThreadID.setText(ForumPost.getThreadID().toString());
@@ -903,20 +1085,24 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Delete;
+    private javax.swing.JButton Delete2;
     private javax.swing.JButton New;
+    private javax.swing.JButton New2;
     private javax.swing.JButton Run;
     private javax.swing.JButton RunS;
     private javax.swing.JButton Save;
+    private javax.swing.JButton Save2;
     private javax.swing.JLabel Title2;
-    private javax.swing.JLabel Title4;
     private javax.swing.JLabel Title5;
+    private javax.swing.JLabel Title6;
     private javax.swing.JSeparator TitleSeparator2;
-    private javax.swing.JSeparator TitleSeparator4;
     private javax.swing.JSeparator TitleSeparator5;
+    private javax.swing.JSeparator TitleSeparator6;
     private javax.swing.JButton jButtonClearConsole;
     private javax.swing.JButton jButton_GlobalSave;
     private javax.swing.JCheckBox jCheckBox_EnableStopTime;
     private javax.swing.JCheckBox jCheckBox_EnableThread;
+    private javax.swing.JCheckBox jCheckBox_EnableThread1;
     private javax.swing.JComboBox<String> jComboBox_PostEntity;
     private javax.swing.JLabel jLabel_FirefoxInstallationPath;
     private javax.swing.JLabel jLabel_FixedWaitTime;
@@ -924,6 +1110,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_PostEntity;
     private javax.swing.JLabel jLabel_PostNumber;
     private javax.swing.JLabel jLabel_PostUrl;
+    private javax.swing.JLabel jLabel_PostUrl3;
     private javax.swing.JLabel jLabel_Profile;
     private javax.swing.JLabel jLabel_RandomWaitTime;
     private javax.swing.JLabel jLabel_RefreshPostCount;
@@ -931,17 +1118,27 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_UserAgentString;
     private javax.swing.JLabel jLabel_Workstation;
     private javax.swing.JPanel jPanel_Bottom;
+    private javax.swing.JPanel jPanel_Bottom1;
+    private javax.swing.JPanel jPanel_Bottom2;
+    private javax.swing.JPanel jPanel_Bottom3;
     private javax.swing.JPanel jPanel_Console;
     private javax.swing.JPanel jPanel_EntityManagement;
     private javax.swing.JPanel jPanel_EntitySetting;
     private javax.swing.JPanel jPanel_GlobalSetting;
     private javax.swing.JPanel jPanel_TaskManagement;
     private javax.swing.JPanel jPanel_Top;
+    private javax.swing.JPanel jPanel_Top2;
     private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane_Console;
     private javax.swing.JTabbedPane jTabbedPane_PostMachineApp;
     private javax.swing.JTabbedPane jTabbedPane_SystemSettings;
     private javax.swing.JTable jTable;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextArea jTextArea_Console;
     private javax.swing.JTextField jTextField_FirefoxInstallationPath;
     private javax.swing.JTextField jTextField_FixedWaitTime;
@@ -949,12 +1146,14 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_PostContent;
     private javax.swing.JTextField jTextField_PostCount;
     private javax.swing.JTextField jTextField_PostUrl;
+    private javax.swing.JTextField jTextField_PostUrl2;
     private javax.swing.JTextField jTextField_Profile;
     private javax.swing.JTextField jTextField_RandomWaitTime;
     private javax.swing.JTextField jTextField_RefreshPostCount;
     private javax.swing.JTextField jTextField_StartTime;
     private javax.swing.JTextField jTextField_StopTime;
     private javax.swing.JTextField jTextField_ThreadID;
+    private javax.swing.JTextField jTextField_ThreadID1;
     private javax.swing.JTextField jTextField_UserAgentString;
     private javax.swing.JTextField jTextField_WorkstationName;
     // End of variables declaration//GEN-END:variables
