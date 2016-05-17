@@ -1017,10 +1017,24 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void NewEntityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewEntityActionPerformed
         // TODO add your handling code here:
+        this.jCheckBox_EnableEntity.setSelected(true);
+        this.jTextField_EntityID.setText(Integer.toString(EntityDAO.getMaxId() + 1));
+        this.jTextField_EntityName.setText("");
     }//GEN-LAST:event_NewEntityActionPerformed
 
     private void DeleteEntityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteEntityActionPerformed
         // TODO add your handling code here:
+       int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to delete?", "Delete", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
+        if (YesOrNo == 0) {
+            String id = this.jTextField_EntityID.getText();
+            EntityDAO.deleteById(id);
+            System.out.println("Delete successfully！");
+            fillEntityTable();
+            Entity Entity = EntityDAO.getEntityByID(String.valueOf(1));
+            if (Entity != null) {
+                fillEntityForm(Entity);
+            }
+        }
     }//GEN-LAST:event_DeleteEntityActionPerformed
 
     private void SaveEntityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveEntityActionPerformed
