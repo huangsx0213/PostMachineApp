@@ -7,10 +7,14 @@
   </Entity>
   <Entity EntityID="2">
     <EnableEntity>true</EnableEntity>
-    <EntityName>Vivo</EntityName>
+    <EntityName>Oppo</EntityName>
   </Entity>
   <Entity EntityID="3">
     <EnableEntity>true</EnableEntity>
     <EntityName>Huawei</EntityName>
+  </Entity>
+  <Entity EntityID="4">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>YunOS</EntityName>
   </Entity>
 </Entitys>
