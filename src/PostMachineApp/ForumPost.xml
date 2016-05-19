@@ -3,8 +3,8 @@
 <ForumPosts>
   <ForumPost ThreadID="1">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>C:\\Program Files\\Mozilla Firefox\\firefox.exe</FirefoxPath>
-    <Profile>vivo80896188</Profile>
+    <FirefoxPath>D:\Program Files (x86)\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>default</Profile>
     <PostEntity>Vivo</PostEntity>
     <StartTime>1451577600000</StartTime>
     <EnableStopTime>true</EnableStopTime>
@@ -148,7 +148,7 @@
     <PostCount>65535</PostCount>
     <FixedWaitTime>11</FixedWaitTime>
     <RandomWaitTime>30</RandomWaitTime>
-    <PostUrl></PostUrl>
-    <PostContent></PostContent>
+    <PostUrl/>
+    <PostContent/>
   </ForumPost>
 </ForumPosts>

@@ -17,4 +17,12 @@
     <EnableEntity>true</EnableEntity>
     <EntityName>YunOS</EntityName>
   </Entity>
+  <Entity EntityID="5">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>Qiku360</EntityName>
+  </Entity>
+  <Entity EntityID="6">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>VivoMobile</EntityName>
+  </Entity>
 </Entitys>

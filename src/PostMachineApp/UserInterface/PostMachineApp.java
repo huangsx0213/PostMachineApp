@@ -332,7 +332,16 @@ public class PostMachineApp extends javax.swing.JFrame {
 
         jLabel_PostEntity.setText("PostEntity:");
 
-        jComboBox_PostEntity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vivo", "Oppo", "YunOS", "Huawei", "Qiku360", "VivoMobile" }));
+        List<Entity> Entitys = new ArrayList<Entity>();
+        Entitys=EntityDAO.getAllEntity();
+        final int size=Entitys.size();
+        Entity[] EntityArray=(Entity[])Entitys.toArray(new Entity[size]);
+        String[] EntityName=new String[size];
+        for(int i=0;i<size;i++)
+        {
+            EntityName[i]=EntityArray[i].getEntityName();
+        }
+        jComboBox_PostEntity.setModel(new javax.swing.DefaultComboBoxModel<>(EntityName));
 
         javax.swing.GroupLayout jPanel_TopLayout = new javax.swing.GroupLayout(jPanel_Top);
         jPanel_Top.setLayout(jPanel_TopLayout);
@@ -776,7 +785,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_EntitySettingLayout.setHorizontalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_EntiySettingTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
         );
         jPanel_EntitySettingLayout.setVerticalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
