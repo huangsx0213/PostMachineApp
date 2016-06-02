@@ -767,6 +767,15 @@ public class PostMachineApp extends javax.swing.JFrame {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -893,50 +902,49 @@ public class PostMachineApp extends javax.swing.JFrame {
                     .addComponent(TitleSeparator_EntiySetting1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Title_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
-                        .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCheckBox_EnableContentID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel_PostContentPool, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jCheckBox_EnableContentID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
-                                .addComponent(jTextField_ContentID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel_PostEntity2)
-                                .addGap(10, 10, 10)
-                                .addComponent(jComboBox_PostEntity2, 0, 108, Short.MAX_VALUE)
-                                .addGap(322, 322, 322))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_EntiySettingTop1Layout.createSequentialGroup()
-                                .addComponent(jTextField_PostContentPool)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NewEntity1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SaveEntity1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(DeleteEntity1)))))
+                        .addComponent(jTextField_ContentID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_PostEntity2)
+                        .addGap(10, 10, 10)
+                        .addComponent(jComboBox_PostEntity2, 0, 108, Short.MAX_VALUE)
+                        .addGap(324, 324, 324))
+                    .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
+                        .addComponent(jLabel_PostContentPool, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_PostContentPool))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_EntiySettingTop1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(NewEntity1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SaveEntity1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DeleteEntity1)))
                 .addContainerGap())
         );
         jPanel_EntiySettingTop1Layout.setVerticalGroup(
             jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
-                .addComponent(Title_PostContentPool, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Title_PostContentPool)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TitleSeparator_EntiySetting1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TitleSeparator_EntiySetting1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_ContentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBox_EnableContentID)
+                    .addComponent(jTextField_ContentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_PostEntity2)
                     .addComponent(jComboBox_PostEntity2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_PostContentPool)
+                    .addComponent(jTextField_PostContentPool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(DeleteEntity1)
-                        .addComponent(SaveEntity1)
-                        .addComponent(NewEntity1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel_PostContentPool)
-                        .addComponent(jTextField_PostContentPool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DeleteEntity1)
+                    .addComponent(SaveEntity1)
+                    .addComponent(NewEntity1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel_EntiySettingBottom1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -947,6 +955,13 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTable_EntiySetting1.setAutoCreateRowSorter(true);
         jTable_EntiySetting1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -967,9 +982,10 @@ public class PostMachineApp extends javax.swing.JFrame {
                 jTable_EntiySetting1MouseClicked(evt);
             }
         });
-        jTable_EntiySetting.getColumnModel().getColumn(0).setPreferredWidth(20);
-        jTable_EntiySetting.getColumnModel().getColumn(1).setPreferredWidth(20);
-        jTable_EntiySetting.getColumnModel().getColumn(2).setPreferredWidth(400);
+        jTable_EntiySetting1.getColumnModel().getColumn(0).setPreferredWidth(20);
+        jTable_EntiySetting1.getColumnModel().getColumn(1).setPreferredWidth(20);
+        jTable_EntiySetting1.getColumnModel().getColumn(2).setPreferredWidth(20);
+        jTable_EntiySetting1.getColumnModel().getColumn(3).setPreferredWidth(380);
         jScrollPane_EntiySetting1.setViewportView(jTable_EntiySetting1);
 
         javax.swing.GroupLayout jPanel_EntiySettingBottom1Layout = new javax.swing.GroupLayout(jPanel_EntiySettingBottom1);
@@ -980,7 +996,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         );
         jPanel_EntiySettingBottom1Layout.setVerticalGroup(
             jPanel_EntiySettingBottom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_EntiySetting1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+            .addComponent(jScrollPane_EntiySetting1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel_EntitySetting1Layout = new javax.swing.GroupLayout(jPanel_EntitySetting1);
@@ -995,15 +1011,13 @@ public class PostMachineApp extends javax.swing.JFrame {
             .addGroup(jPanel_EntitySetting1Layout.createSequentialGroup()
                 .addComponent(jPanel_EntiySettingTop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_EntiySettingBottom1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                .addComponent(jPanel_EntiySettingBottom1, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane_SystemSettings.addTab("Post Content Pool", jPanel_EntitySetting1);
 
         jTabbedPane_PostMachineApp.addTab("System Settings", jTabbedPane_SystemSettings);
-
-        jTabbedPane_PostMachineApp.setSelectedIndex(1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
