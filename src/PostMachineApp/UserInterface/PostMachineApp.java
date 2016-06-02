@@ -576,7 +576,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextField_UserAgentString.setToolTipText("Local firefox installation path,eg. D:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe");
 
         jLabel_Workstation.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel_Workstation.setText("Workstation Name");
+        jLabel_Workstation.setText("Workstation Name:");
 
         jTextField_WorkstationName.setText("ComputerName");
         jTextField_WorkstationName.setToolTipText("Local firefox installation path,eg. D:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe");
@@ -901,26 +901,27 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TitleSeparator_EntiySetting1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Title_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox_EnableContentID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_ContentID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_PostEntity2)
-                        .addGap(10, 10, 10)
-                        .addComponent(jComboBox_PostEntity2, 0, 108, Short.MAX_VALUE)
-                        .addGap(324, 324, 324))
-                    .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
-                        .addComponent(jLabel_PostContentPool, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_PostContentPool))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_EntiySettingTop1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(NewEntity1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SaveEntity1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DeleteEntity1)))
+                        .addComponent(DeleteEntity1))
+                    .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
+                        .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox_EnableContentID)
+                            .addComponent(jLabel_PostContentPool))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
+                                .addComponent(jTextField_ContentID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_PostEntity2)
+                                .addGap(10, 10, 10)
+                                .addComponent(jComboBox_PostEntity2, 0, 106, Short.MAX_VALUE)
+                                .addGap(324, 324, 324))
+                            .addComponent(jTextField_PostContentPool))))
                 .addContainerGap())
         );
         jPanel_EntiySettingTop1Layout.setVerticalGroup(

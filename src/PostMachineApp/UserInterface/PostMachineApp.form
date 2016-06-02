@@ -773,7 +773,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel_Workstation">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="4"/>
-                    <Property name="text" type="java.lang.String" value="Workstation Name"/>
+                    <Property name="text" type="java.lang.String" value="Workstation Name:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_WorkstationName">
@@ -1109,21 +1109,6 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="TitleSeparator_EntiySetting1" alignment="1" max="32767" attributes="0"/>
                                   <Component id="Title_PostContentPool" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jCheckBox_EnableContentID" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_ContentID" min="-2" pref="45" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel_PostEntity2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="jComboBox_PostEntity2" pref="108" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel_PostContentPool" min="-2" pref="91" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_PostContentPool" max="32767" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="NewEntity1" min="-2" max="-2" attributes="0"/>
@@ -1131,6 +1116,24 @@
                                       <Component id="SaveEntity1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="DeleteEntity1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jCheckBox_EnableContentID" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_PostContentPool" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jTextField_ContentID" min="-2" pref="45" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel_PostEntity2" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                              <Component id="jComboBox_PostEntity2" pref="106" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jTextField_PostContentPool" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
