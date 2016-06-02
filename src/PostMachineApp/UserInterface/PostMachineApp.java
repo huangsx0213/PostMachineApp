@@ -134,8 +134,8 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_PostContentPoolTop = new javax.swing.JPanel();
         Title_PostContentPool = new javax.swing.JLabel();
         TitleSeparator_PostContentPool = new javax.swing.JSeparator();
-        jCheckBox_EnableContentID = new javax.swing.JCheckBox();
-        jTextField_ContentID = new javax.swing.JTextField();
+        jCheckBox_EnablePostContent = new javax.swing.JCheckBox();
+        jTextField_PostContentID = new javax.swing.JTextField();
         jLabel_PostContentPool = new javax.swing.JLabel();
         jTextField_PostContentPool = new javax.swing.JTextField();
         NewPostContent = new javax.swing.JButton();
@@ -830,18 +830,18 @@ public class PostMachineApp extends javax.swing.JFrame {
         Title_PostContentPool.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title_PostContentPool.setText("Post Content Pool");
 
-        jCheckBox_EnableContentID.setText("Content ID:");
-        jCheckBox_EnableContentID.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox_EnablePostContent.setText("Content ID:");
+        jCheckBox_EnablePostContent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox_EnableContentIDActionPerformed(evt);
+                jCheckBox_EnablePostContentActionPerformed(evt);
             }
         });
 
-        jTextField_ContentID.setText("1");
-        jTextField_ContentID.setToolTipText("Thread ID must be unique");
-        jTextField_ContentID.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_PostContentID.setText("1");
+        jTextField_PostContentID.setToolTipText("Thread ID must be unique");
+        jTextField_PostContentID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_ContentIDActionPerformed(evt);
+                jTextField_PostContentIDActionPerformed(evt);
             }
         });
 
@@ -910,12 +910,12 @@ public class PostMachineApp extends javax.swing.JFrame {
                         .addComponent(DeletePostContent))
                     .addGroup(jPanel_PostContentPoolTopLayout.createSequentialGroup()
                         .addGroup(jPanel_PostContentPoolTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCheckBox_EnableContentID)
+                            .addComponent(jCheckBox_EnablePostContent)
                             .addComponent(jLabel_PostContentPool))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel_PostContentPoolTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel_PostContentPoolTopLayout.createSequentialGroup()
-                                .addComponent(jTextField_ContentID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField_PostContentID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel_PostEntity2)
                                 .addGap(10, 10, 10)
@@ -932,8 +932,8 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addComponent(TitleSeparator_PostContentPool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_PostContentPoolTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox_EnableContentID)
-                    .addComponent(jTextField_ContentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox_EnablePostContent)
+                    .addComponent(jTextField_PostContentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_PostEntity2)
                     .addComponent(jComboBox_PostEntity2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1307,13 +1307,13 @@ public class PostMachineApp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_EntityIDActionPerformed
 
-    private void jCheckBox_EnableContentIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnableContentIDActionPerformed
+    private void jCheckBox_EnablePostContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnablePostContentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox_EnableContentIDActionPerformed
+    }//GEN-LAST:event_jCheckBox_EnablePostContentActionPerformed
 
-    private void jTextField_ContentIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ContentIDActionPerformed
+    private void jTextField_PostContentIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PostContentIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_ContentIDActionPerformed
+    }//GEN-LAST:event_jTextField_PostContentIDActionPerformed
 
     private void jTextField_PostContentPoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PostContentPoolActionPerformed
         // TODO add your handling code here:
@@ -1426,8 +1426,8 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JLabel Title_TaskManagement;
     private javax.swing.JButton jButtonClearConsole;
     private javax.swing.JButton jButton_GlobalSettingSave;
-    private javax.swing.JCheckBox jCheckBox_EnableContentID;
     private javax.swing.JCheckBox jCheckBox_EnableEntity;
+    private javax.swing.JCheckBox jCheckBox_EnablePostContent;
     private javax.swing.JCheckBox jCheckBox_EnableStopTime;
     private javax.swing.JCheckBox jCheckBox_EnableThread;
     private javax.swing.JComboBox<String> jComboBox_PostEntity;
@@ -1469,13 +1469,13 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JTable jTable_EntiySetting;
     private javax.swing.JTable jTable_PostContentPool;
     private javax.swing.JTextArea jTextArea_Console;
-    private javax.swing.JTextField jTextField_ContentID;
     private javax.swing.JTextField jTextField_EntityID;
     private javax.swing.JTextField jTextField_EntityName;
     private javax.swing.JTextField jTextField_FirefoxInstallationPath;
     private javax.swing.JTextField jTextField_FixedWaitTime;
     private javax.swing.JTextField jTextField_GlobalSettingID;
     private javax.swing.JTextField jTextField_PostContent;
+    private javax.swing.JTextField jTextField_PostContentID;
     private javax.swing.JTextField jTextField_PostContentPool;
     private javax.swing.JTextField jTextField_PostCount;
     private javax.swing.JTextField jTextField_PostUrl;

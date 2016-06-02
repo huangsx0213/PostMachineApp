@@ -1119,13 +1119,13 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jCheckBox_EnableContentID" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox_EnablePostContent" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel_PostContentPool" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jTextField_ContentID" min="-2" pref="45" max="-2" attributes="0"/>
+                                              <Component id="jTextField_PostContentID" min="-2" pref="45" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel_PostEntity2" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -1148,8 +1148,8 @@
                               <Component id="TitleSeparator_PostContentPool" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jCheckBox_EnableContentID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_ContentID" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox_EnablePostContent" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_PostContentID" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel_PostEntity2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jComboBox_PostEntity2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1184,21 +1184,21 @@
                     </Component>
                     <Component class="javax.swing.JSeparator" name="TitleSeparator_PostContentPool">
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox_EnableContentID">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBox_EnablePostContent">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Content ID:"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox_EnableContentIDActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox_EnablePostContentActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField_ContentID">
+                    <Component class="javax.swing.JTextField" name="jTextField_PostContentID">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="1"/>
                         <Property name="toolTipText" type="java.lang.String" value="Thread ID must be unique"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_ContentIDActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_PostContentIDActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel_PostContentPool">
