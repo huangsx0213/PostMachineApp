@@ -13,6 +13,7 @@ public class PostContentEntity {
 
     Boolean EnablePostContent;
     Integer PostContentID;
+    String PostEntity2;
     String PostContent;
 
     public PostContentEntity(Boolean EnablePostContent, Integer PostContentID, String PostContent) {
