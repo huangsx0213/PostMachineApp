@@ -1111,28 +1111,28 @@
                                   <Component id="Title_PostContentPool" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="NewPostContent" min="-2" max="-2" attributes="0"/>
+                                      <Component id="NewPoolContent" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="SavePostContent" min="-2" max="-2" attributes="0"/>
+                                      <Component id="SavePoolContent" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="DeletePostContent" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DeletePoolContent" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jCheckBox_EnablePostContent" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_PostContentPool" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox_EnablePoolContent" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_PoolContent" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jTextField_PostContentID" min="-2" pref="45" max="-2" attributes="0"/>
+                                              <Component id="jTextField_PoolContentID" min="-2" pref="45" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel_PostEntity2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel_PoolPostEntity" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                              <Component id="jComboBox_PostEntity2" pref="106" max="32767" attributes="0"/>
+                                              <Component id="jComboBox_PoolContentPostEntity" pref="106" max="32767" attributes="0"/>
                                               <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jTextField_PostContentPool" max="32767" attributes="0"/>
+                                          <Component id="jTextField_PoolContent" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1148,21 +1148,21 @@
                               <Component id="TitleSeparator_PostContentPool" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jCheckBox_EnablePostContent" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_PostContentID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_PostEntity2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox_PostEntity2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox_EnablePoolContent" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_PoolContentID" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_PoolPostEntity" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox_PoolContentPostEntity" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel_PostContentPool" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_PostContentPool" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_PoolContent" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_PoolContent" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="DeletePostContent" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="SavePostContent" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="NewPostContent" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeletePoolContent" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SavePoolContent" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="NewPoolContent" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1184,70 +1184,70 @@
                     </Component>
                     <Component class="javax.swing.JSeparator" name="TitleSeparator_PostContentPool">
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox_EnablePostContent">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBox_EnablePoolContent">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Content ID:"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox_EnablePostContentActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox_EnablePoolContentActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField_PostContentID">
+                    <Component class="javax.swing.JTextField" name="jTextField_PoolContentID">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="1"/>
                         <Property name="toolTipText" type="java.lang.String" value="Thread ID must be unique"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_PostContentIDActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_PoolContentIDActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel_PostContentPool">
+                    <Component class="javax.swing.JLabel" name="jLabel_PoolContent">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="4"/>
                         <Property name="text" type="java.lang.String" value="Post Content:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField_PostContentPool">
+                    <Component class="javax.swing.JTextField" name="jTextField_PoolContent">
                       <Properties>
                         <Property name="toolTipText" type="java.lang.String" value="Post URL"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_PostContentPoolActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_PoolContentActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="NewPostContent">
+                    <Component class="javax.swing.JButton" name="NewPoolContent">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="New"/>
                         <Property name="toolTipText" type="java.lang.String" value="Create a new thread form"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewPostContentActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewPoolContentActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="SavePostContent">
+                    <Component class="javax.swing.JButton" name="SavePoolContent">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Save"/>
                         <Property name="toolTipText" type="java.lang.String" value="Save a new thread or a edited thread"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SavePostContentActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SavePoolContentActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="DeletePostContent">
+                    <Component class="javax.swing.JButton" name="DeletePoolContent">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Delete"/>
                         <Property name="toolTipText" type="java.lang.String" value="Delete a seleted thread"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeletePostContentActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeletePoolContentActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel_PostEntity2">
+                    <Component class="javax.swing.JLabel" name="jLabel_PoolPostEntity">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="PostEntity:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox_PostEntity2">
+                    <Component class="javax.swing.JComboBox" name="jComboBox_PoolContentPostEntity">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(EntityName2)" type="code"/>

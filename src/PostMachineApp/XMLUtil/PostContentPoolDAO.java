@@ -14,10 +14,11 @@ import org.dom4j.io.XMLWriter;
 
 public class PostContentPoolDAO {
 
-    private static String fileName = System.getProperty("user.dir") + "\\PostContent.xml";
-    private static Boolean EnablePostContent;
-    private static Integer PostContentID;
-    private static String PostContent;
+    private static String fileName = System.getProperty("user.dir") + "\\PostContentEntity.xml";
+    private static Boolean EnablePoolContent;
+    private static Integer PoolContentID;
+    private static String PoolContentPostEntity;
+        private static String PoolContent;
 
     /**
      * 获取XML中所有的用户信息
@@ -33,10 +34,11 @@ public class PostContentPoolDAO {
         List<Element> PostContentElements = rootElement.elements();
         List<PostContentEntity> PostContents = new ArrayList<PostContentEntity>();
         for (Element PostContentElement : PostContentElements) {
-            EnablePostContent = Boolean.valueOf(PostContentElement.element("EnablePostContent").getTextTrim());
-            PostContentID = Integer.parseInt(PostContentElement.attribute("PostContentID").getText());
-            PostContent = PostContentElement.element("PostContent").getTextTrim();
-           PostContentEntity PostContentEntity = new PostContentEntity(EnablePostContent, PostContentID, PostContent);
+            EnablePoolContent = Boolean.valueOf(PostContentElement.element("EnablePoolContent").getTextTrim());
+            PoolContentID = Integer.parseInt(PostContentElement.attribute("PoolContentID").getText());
+            PoolContentPostEntity = PostContentElement.element("PoolContentPostEntity").getTextTrim();
+            PoolContent = PostContentElement.element("PoolContent").getTextTrim();
+           PostContentEntity PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID,PoolContentPostEntity, PoolContent);
 
             PostContents.add(PostContentEntity);
         }
@@ -47,13 +49,14 @@ public class PostContentPoolDAO {
         Document document = getDocument();
         Element rootElement = document.getRootElement();
         PostContentEntity PostContentEntity=null;
-        List<Element> PostContentElements = rootElement.elements("PostContent");
+        List<Element> PostContentElements = rootElement.elements("PoolContent");
         for (Element PostContentElement : PostContentElements) {
-            if (PostContentElement.attributeValue("PostContentID").equals(id)) {
-                EnablePostContent = Boolean.valueOf(PostContentElement.element("EnablePostContent").getTextTrim());
-                PostContentID = Integer.parseInt(PostContentElement.attribute("PostContentID").getText());
-                PostContent = PostContentElement.element("PostContent").getTextTrim();
-                PostContentEntity = new PostContentEntity(EnablePostContent, PostContentID, PostContent);
+            if (PostContentElement.attributeValue("PoolContentID").equals(id)) {
+                EnablePoolContent = Boolean.valueOf(PostContentElement.element("EnablePoolContent").getTextTrim());
+                PoolContentID = Integer.parseInt(PostContentElement.attribute("PoolContentID").getText());
+                PoolContentPostEntity = PostContentElement.element("PoolContentPostEntity").getTextTrim();
+                 PoolContent = PostContentElement.element("PoolContent").getTextTrim();
+                PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID,PoolContentPostEntity, PoolContent);
             }
         }
         return PostContentEntity;
@@ -68,14 +71,15 @@ public class PostContentPoolDAO {
         Document document = getDocument();
         Element rootElement = document.getRootElement();
 
-        Element PostContentElement = rootElement.addElement("PostContent");
-        PostContentElement.addAttribute("PostContentID", PostContentEntity.getPostContentID().toString());
-        Element EnablePostContentElement = PostContentElement.addElement("EnablePostContent");
-        Element PostContentNameElement = PostContentElement.addElement("PostContent");
+        Element PostContentElement = rootElement.addElement("PoolContent");
+        PostContentElement.addAttribute("PoolContentID", PostContentEntity.getPoolContentID().toString());
+        Element EnablePoolContentElement = PostContentElement.addElement("EnablePoolContent");
+        Element PoolContentPostEntityElement = PostContentElement.addElement("PoolContentPostEntity");
+        Element PoolContentElement = PostContentElement.addElement("PoolContent");
 
-        EnablePostContentElement.setText(PostContentEntity.getEnablePostContent().toString());
-        PostContentNameElement.setText(PostContentEntity.getPostContent());
-
+        EnablePoolContentElement.setText(PostContentEntity.getEnablePoolContent().toString());
+        PoolContentPostEntityElement.setText(PostContentEntity.getPoolContentPostEntity());
+        PoolContentElement.setText(PostContentEntity.getPoolContent());
 
         write2XML(document);
     }
@@ -90,9 +94,9 @@ public class PostContentPoolDAO {
         Document document = getDocument();
         Element rootElement = document.getRootElement();
 
-        List<Element> PostContentElements = rootElement.elements("PostContent");
+        List<Element> PostContentElements = rootElement.elements("PoolContent");
         for (Element PostContentElement : PostContentElements) {
-            if (PostContentElement.attributeValue("PostContentID").equals(id)) {
+            if (PostContentElement.attributeValue("PoolContentID").equals(id)) {
                 //System.out.println("开始删除.....");
                 rootElement.remove(PostContentElement);
                 //System.out.println("删除结束.....");
@@ -113,12 +117,15 @@ public class PostContentPoolDAO {
 
         List<Element> PostContentElements = rootElement.elements();
         for (Element PostContentElement : PostContentElements) {
-            if (PostContentElement.attributeValue("PostContentID").equals(String.valueOf(PostContentEntity.getPostContentID()))) {
-                if (!PostContentElement.element("EnablePostContent").getText().equals(PostContentEntity.getEnablePostContent().toString())) {
-                    PostContentElement.element("EnablePostContent").setText(PostContentEntity.getEnablePostContent().toString());
+            if (PostContentElement.attributeValue("PoolContentID").equals(String.valueOf(PostContentEntity.getPoolContentID()))) {
+                if (!PostContentElement.element("EnablePoolContent").getText().equals(PostContentEntity.getEnablePoolContent().toString())) {
+                    PostContentElement.element("EnablePoolContent").setText(PostContentEntity.getEnablePoolContent().toString());
                 }
-                if (!PostContentElement.element("PostContentName").getText().equals(PostContentEntity.getPostContent())) {
-                    PostContentElement.element("PostContentName").setText(PostContentEntity.getPostContent());
+                if (!PostContentElement.element("PoolContentPostEntity").getText().equals(PostContentEntity.getPoolContentPostEntity())) {
+                    PostContentElement.element("PoolContentPostEntity").setText(PostContentEntity.getPoolContentPostEntity());
+                }
+                 if (!PostContentElement.element("PoolContent").getText().equals(PostContentEntity.getPoolContent())) {
+                    PostContentElement.element("PoolContent").setText(PostContentEntity.getPoolContent());
                 }
             }
         }
@@ -132,7 +139,7 @@ public class PostContentPoolDAO {
 
         List<Element> PostContentElements = rootElement.elements();
         for (Element PostContentElement : PostContentElements) {
-            if (PostContentElement.attributeValue("PostContentID").equals(String.valueOf(PostContentEntity.getPostContentID()))) {
+            if (PostContentElement.attributeValue("PoolContentID").equals(String.valueOf(PostContentEntity.getPoolContentID()))) {
                 isExisting = true;
             }
         }
@@ -146,7 +153,7 @@ public class PostContentPoolDAO {
      */
     public static Document getDocument() {
         try {
-            String fileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\PostContent.xml";
+            String fileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\PostContentEntity.xml";
             SAXReader saxReader = new SAXReader();
             Document document = saxReader.read(new File(fileName));
 
@@ -167,7 +174,7 @@ public class PostContentPoolDAO {
             OutputFormat format = new OutputFormat("  ", true, "utf-8");
             format.setTrimText(true);
             XMLWriter writer = new XMLWriter(format);
-            writer.setOutputStream(new FileOutputStream(System.getProperty("user.dir") + "\\src\\PostMachineApp\\PostContent.xml"));
+            writer.setOutputStream(new FileOutputStream(System.getProperty("user.dir") + "\\src\\PostMachineApp\\PostContentEntity.xml"));
             writer.write(document);
             writer.close();
         } catch (Exception e) {
@@ -188,7 +195,7 @@ public class PostContentPoolDAO {
         Element rootElement = document.getRootElement();
         List<Element> PostContentElements = rootElement.elements();
         for (Element element : PostContentElements) {
-            int id = Integer.valueOf(element.attributeValue("PostContentID"));
+            int id = Integer.valueOf(element.attributeValue("PoolContentID"));
             if (maxId < id) {
                 maxId = id;
             }

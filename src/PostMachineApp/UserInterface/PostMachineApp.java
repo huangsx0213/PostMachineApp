@@ -5,14 +5,11 @@
  */
 package PostMachineApp.UserInterface;
 
-import PostMachineApp.Entity;
+import PostMachineApp.*;
 import PostMachineApp.EntityInterface.ForumPost;
 import PostMachineApp.ForumPostFactory;
-import PostMachineApp.GlobalSetting;
 import PostMachineApp.RunPost;
-import PostMachineApp.XMLUtil.EntityDAO;
-import PostMachineApp.XMLUtil.GlobalSettingDAO;
-import PostMachineApp.XMLUtil.TaskManagementDAO;
+import PostMachineApp.XMLUtil.*;
 import java.awt.Font;
 import java.io.IOException;
 import java.text.ParseException;
@@ -41,17 +38,22 @@ public class PostMachineApp extends javax.swing.JFrame {
         initComponents();
         fillTable();
         fillEntityTable();
+        fillPostContentPoolTable();
         ForumPost ForumPost = TaskManagementDAO.getForumPostByID(String.valueOf(1));
         if (ForumPost != null) {
             fillForm(ForumPost);
         }
         GlobalSetting GlobalSetting = GlobalSettingDAO.getGlobalSettingByID(String.valueOf(1));
         if (GlobalSetting != null) {
-            fillGlobalSetting(GlobalSetting);
+            fillGlobalSettingForm(GlobalSetting);
         }
         Entity Entity = EntityDAO.getEntityByID(String.valueOf(1));
         if (Entity != null) {
-            fillEntity(Entity);
+            fillEntityForm(Entity);
+        }
+        PostContentEntity PostContentEntity = PostContentPoolDAO.getPostContentByID(String.valueOf(1));
+        if (PostContentEntity != null) {
+            fillPostContentForm(PostContentEntity);
         }
     }
 
@@ -134,15 +136,15 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_PostContentPoolTop = new javax.swing.JPanel();
         Title_PostContentPool = new javax.swing.JLabel();
         TitleSeparator_PostContentPool = new javax.swing.JSeparator();
-        jCheckBox_EnablePostContent = new javax.swing.JCheckBox();
-        jTextField_PostContentID = new javax.swing.JTextField();
-        jLabel_PostContentPool = new javax.swing.JLabel();
-        jTextField_PostContentPool = new javax.swing.JTextField();
-        NewPostContent = new javax.swing.JButton();
-        SavePostContent = new javax.swing.JButton();
-        DeletePostContent = new javax.swing.JButton();
-        jLabel_PostEntity2 = new javax.swing.JLabel();
-        jComboBox_PostEntity2 = new javax.swing.JComboBox<>();
+        jCheckBox_EnablePoolContent = new javax.swing.JCheckBox();
+        jTextField_PoolContentID = new javax.swing.JTextField();
+        jLabel_PoolContent = new javax.swing.JLabel();
+        jTextField_PoolContent = new javax.swing.JTextField();
+        NewPoolContent = new javax.swing.JButton();
+        SavePoolContent = new javax.swing.JButton();
+        DeletePoolContent = new javax.swing.JButton();
+        jLabel_PoolPostEntity = new javax.swing.JLabel();
+        jComboBox_PoolContentPostEntity = new javax.swing.JComboBox<>();
         jPanel_PostContentPoolBottom = new javax.swing.JPanel();
         jScrollPane_PostContentPool = new javax.swing.JScrollPane();
         jTable_PostContentPool = new javax.swing.JTable();
@@ -830,56 +832,56 @@ public class PostMachineApp extends javax.swing.JFrame {
         Title_PostContentPool.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title_PostContentPool.setText("Post Content Pool");
 
-        jCheckBox_EnablePostContent.setText("Content ID:");
-        jCheckBox_EnablePostContent.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox_EnablePoolContent.setText("Content ID:");
+        jCheckBox_EnablePoolContent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox_EnablePostContentActionPerformed(evt);
+                jCheckBox_EnablePoolContentActionPerformed(evt);
             }
         });
 
-        jTextField_PostContentID.setText("1");
-        jTextField_PostContentID.setToolTipText("Thread ID must be unique");
-        jTextField_PostContentID.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_PoolContentID.setText("1");
+        jTextField_PoolContentID.setToolTipText("Thread ID must be unique");
+        jTextField_PoolContentID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_PostContentIDActionPerformed(evt);
+                jTextField_PoolContentIDActionPerformed(evt);
             }
         });
 
-        jLabel_PostContentPool.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel_PostContentPool.setText("Post Content:");
+        jLabel_PoolContent.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel_PoolContent.setText("Post Content:");
 
-        jTextField_PostContentPool.setToolTipText("Post URL");
-        jTextField_PostContentPool.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_PoolContent.setToolTipText("Post URL");
+        jTextField_PoolContent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_PostContentPoolActionPerformed(evt);
+                jTextField_PoolContentActionPerformed(evt);
             }
         });
 
-        NewPostContent.setText("New");
-        NewPostContent.setToolTipText("Create a new thread form");
-        NewPostContent.addActionListener(new java.awt.event.ActionListener() {
+        NewPoolContent.setText("New");
+        NewPoolContent.setToolTipText("Create a new thread form");
+        NewPoolContent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewPostContentActionPerformed(evt);
+                NewPoolContentActionPerformed(evt);
             }
         });
 
-        SavePostContent.setText("Save");
-        SavePostContent.setToolTipText("Save a new thread or a edited thread");
-        SavePostContent.addActionListener(new java.awt.event.ActionListener() {
+        SavePoolContent.setText("Save");
+        SavePoolContent.setToolTipText("Save a new thread or a edited thread");
+        SavePoolContent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SavePostContentActionPerformed(evt);
+                SavePoolContentActionPerformed(evt);
             }
         });
 
-        DeletePostContent.setText("Delete");
-        DeletePostContent.setToolTipText("Delete a seleted thread");
-        DeletePostContent.addActionListener(new java.awt.event.ActionListener() {
+        DeletePoolContent.setText("Delete");
+        DeletePoolContent.setToolTipText("Delete a seleted thread");
+        DeletePoolContent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeletePostContentActionPerformed(evt);
+                DeletePoolContentActionPerformed(evt);
             }
         });
 
-        jLabel_PostEntity2.setText("PostEntity:");
+        jLabel_PoolPostEntity.setText("PostEntity:");
 
         List<Entity> Entitys2 = new ArrayList<Entity>();
         Entitys2=EntityDAO.getAllEntity();
@@ -890,7 +892,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         {
             EntityName2[i]=EntityArray[i].getEntityName();
         }
-        jComboBox_PostEntity2.setModel(new javax.swing.DefaultComboBoxModel<>(EntityName2));
+        jComboBox_PoolContentPostEntity.setModel(new javax.swing.DefaultComboBoxModel<>(EntityName2));
 
         javax.swing.GroupLayout jPanel_PostContentPoolTopLayout = new javax.swing.GroupLayout(jPanel_PostContentPoolTop);
         jPanel_PostContentPoolTop.setLayout(jPanel_PostContentPoolTopLayout);
@@ -903,25 +905,25 @@ public class PostMachineApp extends javax.swing.JFrame {
                     .addComponent(Title_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_PostContentPoolTopLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(NewPostContent)
+                        .addComponent(NewPoolContent)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SavePostContent)
+                        .addComponent(SavePoolContent)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DeletePostContent))
+                        .addComponent(DeletePoolContent))
                     .addGroup(jPanel_PostContentPoolTopLayout.createSequentialGroup()
                         .addGroup(jPanel_PostContentPoolTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCheckBox_EnablePostContent)
-                            .addComponent(jLabel_PostContentPool))
+                            .addComponent(jCheckBox_EnablePoolContent)
+                            .addComponent(jLabel_PoolContent))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel_PostContentPoolTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel_PostContentPoolTopLayout.createSequentialGroup()
-                                .addComponent(jTextField_PostContentID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField_PoolContentID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel_PostEntity2)
+                                .addComponent(jLabel_PoolPostEntity)
                                 .addGap(10, 10, 10)
-                                .addComponent(jComboBox_PostEntity2, 0, 106, Short.MAX_VALUE)
+                                .addComponent(jComboBox_PoolContentPostEntity, 0, 106, Short.MAX_VALUE)
                                 .addGap(324, 324, 324))
-                            .addComponent(jTextField_PostContentPool))))
+                            .addComponent(jTextField_PoolContent))))
                 .addContainerGap())
         );
         jPanel_PostContentPoolTopLayout.setVerticalGroup(
@@ -932,19 +934,19 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addComponent(TitleSeparator_PostContentPool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_PostContentPoolTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox_EnablePostContent)
-                    .addComponent(jTextField_PostContentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_PostEntity2)
-                    .addComponent(jComboBox_PostEntity2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCheckBox_EnablePoolContent)
+                    .addComponent(jTextField_PoolContentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_PoolPostEntity)
+                    .addComponent(jComboBox_PoolContentPostEntity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_PostContentPoolTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_PostContentPool)
-                    .addComponent(jTextField_PostContentPool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_PoolContent)
+                    .addComponent(jTextField_PoolContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_PostContentPoolTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DeletePostContent)
-                    .addComponent(SavePostContent)
-                    .addComponent(NewPostContent))
+                    .addComponent(DeletePoolContent)
+                    .addComponent(SavePoolContent)
+                    .addComponent(NewPoolContent))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1132,6 +1134,26 @@ public class PostMachineApp extends javax.swing.JFrame {
         // 更新表格
         jTable_EntiySetting.invalidate();
     }
+
+    private void fillPostContentPoolTable() {
+        PostContentPoolDAO.getAllPostContent();
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_PostContentPool.getModel();
+        tableModel.setRowCount(0);
+        // 填充数据
+        for (PostContentEntity PostContentEntity : PostContentPoolDAO.getAllPostContent()) {
+            String[] arr = new String[4];
+            arr[0] = PostContentEntity.getEnablePoolContent().toString();
+            arr[1] = PostContentEntity.getPoolContentID().toString();
+            arr[2] = PostContentEntity.getPoolContentPostEntity();
+            arr[3] = PostContentEntity.getPoolContent();
+            // 添加数据到表格
+            tableModel.addRow(arr);
+        }
+
+        // 更新表格
+        jTable_EntiySetting.invalidate();
+    }
+
     private void jCheckBox_EnableThreadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnableThreadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox_EnableThreadActionPerformed
@@ -1251,7 +1273,7 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void DeleteEntityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteEntityActionPerformed
         // TODO add your handling code here:
-       int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to delete?", "Delete", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
+        int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to delete?", "Delete", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
         if (YesOrNo == 0) {
             String id = this.jTextField_EntityID.getText();
             EntityDAO.deleteById(id);
@@ -1286,7 +1308,7 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void jTable_EntiySettingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_EntiySettingMouseClicked
         // TODO add your handling code here:
-                int selectRows = jTable_EntiySetting.getSelectedRows().length;// 取得用户所选行的行数
+        int selectRows = jTable_EntiySetting.getSelectedRows().length;// 取得用户所选行的行数
         DefaultTableModel tableModel = (DefaultTableModel) jTable_EntiySetting.getModel();
 
         if (selectRows == 1) {
@@ -1307,32 +1329,71 @@ public class PostMachineApp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_EntityIDActionPerformed
 
-    private void jCheckBox_EnablePostContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnablePostContentActionPerformed
+    private void jCheckBox_EnablePoolContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnablePoolContentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox_EnablePostContentActionPerformed
+    }//GEN-LAST:event_jCheckBox_EnablePoolContentActionPerformed
 
-    private void jTextField_PostContentIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PostContentIDActionPerformed
+    private void jTextField_PoolContentIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PoolContentIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PostContentIDActionPerformed
+    }//GEN-LAST:event_jTextField_PoolContentIDActionPerformed
 
-    private void jTextField_PostContentPoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PostContentPoolActionPerformed
+    private void jTextField_PoolContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PoolContentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PostContentPoolActionPerformed
+    }//GEN-LAST:event_jTextField_PoolContentActionPerformed
 
-    private void NewPostContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPostContentActionPerformed
+    private void NewPoolContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPoolContentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NewPostContentActionPerformed
+         this.jCheckBox_EnablePoolContent.setSelected(true);
+        this.jTextField_PoolContentID.setText(Integer.toString(PostContentPoolDAO.getMaxId() + 1));
+        this.jComboBox_PoolContentPostEntity.setSelectedItem("Vivo");
+        this.jTextField_PoolContent.setText("");
+    }//GEN-LAST:event_NewPoolContentActionPerformed
 
-    private void SavePostContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavePostContentActionPerformed
+    private void SavePoolContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavePoolContentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SavePostContentActionPerformed
+        EnablePoolContent = this.jCheckBox_EnablePoolContent.isSelected();
+        PoolContentID = Integer.parseInt(this.jTextField_PoolContentID.getText());
+        PoolContentPostEntity = (String) this.jComboBox_PoolContentPostEntity.getSelectedItem();
+        PoolContent = this.jTextField_PoolContent.getText();
+        PostContentEntity PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID, PoolContentPostEntity, PoolContent);
+        if (PostContentPoolDAO.PostContentIDisExisting(PostContentEntity)) {
+            PostContentPoolDAO.update(PostContentEntity);
+        } else {
+            PostContentPoolDAO.add(PostContentEntity);
+        }
+        System.out.println("Save successfully！");
+        JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE);
+        fillPostContentPoolTable();
+    }//GEN-LAST:event_SavePoolContentActionPerformed
 
-    private void DeletePostContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletePostContentActionPerformed
+    private void DeletePoolContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletePoolContentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DeletePostContentActionPerformed
+           int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to delete?", "Delete", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
+        if (YesOrNo == 0) {
+            String id = this.jTextField_PoolContentID.getText();
+            PostContentPoolDAO.deleteById(id);
+            System.out.println("Delete successfully！");
+            fillPostContentPoolTable();
+            PostContentEntity PostContentEntity = PostContentPoolDAO.getPostContentByID(String.valueOf(1));
+            if (PostContentEntity != null) {
+                fillPostContentForm(PostContentEntity);
+            }
+        }
+    }//GEN-LAST:event_DeletePoolContentActionPerformed
 
     private void jTable_PostContentPoolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_PostContentPoolMouseClicked
         // TODO add your handling code here:
+                int selectRows = jTable_PostContentPool.getSelectedRows().length;// 取得用户所选行的行数
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_PostContentPool.getModel();
+
+        if (selectRows == 1) {
+            int selectedRowIndex = jTable_PostContentPool.getSelectedRow(); // 取得用户所选单行 
+            PoolContentID = Integer.parseInt(tableModel.getValueAt(selectedRowIndex, 1).toString());
+        }
+        PostContentEntity PostContentEntity = PostContentPoolDAO.getPostContentByID(PoolContentID.toString());
+        if (PostContentEntity != null) {
+            fillPostContentForm(PostContentEntity);
+        }
     }//GEN-LAST:event_jTable_PostContentPoolMouseClicked
 
     private void fillForm(ForumPost ForumPost) {
@@ -1351,21 +1412,24 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextField_PostUrl.setText(ForumPost.getPostUrl());
         this.jTextField_PostContent.setText(ForumPost.getPostContent());
     }
+
     private void fillEntityForm(Entity Entity) {
-         this.jCheckBox_EnableEntity.setSelected(Entity.getEnableEntity());
+        this.jCheckBox_EnableEntity.setSelected(Entity.getEnableEntity());
         this.jTextField_EntityID.setText(Entity.getEntityID().toString());
         this.jTextField_EntityName.setText(Entity.getEntityName());
     }
-    private void fillGlobalSetting(GlobalSetting GlobalSetting) {
+
+    private void fillGlobalSettingForm(GlobalSetting GlobalSetting) {
         this.jTextField_FirefoxInstallationPath.setText(GlobalSetting.getFirefoxInstallationPath());
         this.jTextField_UserAgentString.setText(GlobalSetting.getUserAgentString());
         this.jTextField_WorkstationName.setText(GlobalSetting.getWorkstationName());
     }
 
-    private void fillEntity(Entity Entity) {
-        this.jCheckBox_EnableEntity.setSelected(Entity.getEnableEntity());
-        this.jTextField_EntityID.setText(Entity.getEntityID().toString());
-        this.jTextField_EntityName.setText(Entity.getEntityName());
+    private void fillPostContentForm(PostContentEntity PostContentEntity) {
+        this.jCheckBox_EnablePoolContent.setSelected(PostContentEntity.getEnablePoolContent());
+        this.jTextField_PoolContentID.setText(PostContentEntity.getPoolContentID().toString());
+        this.jComboBox_PoolContentPostEntity.setSelectedItem(PostContentEntity.getPoolContentPostEntity());
+        this.jTextField_PoolContent.setText(PostContentEntity.getPoolContent());
     }
 
     /**
@@ -1407,15 +1471,15 @@ public class PostMachineApp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Delete;
     private javax.swing.JButton DeleteEntity;
-    private javax.swing.JButton DeletePostContent;
+    private javax.swing.JButton DeletePoolContent;
     private javax.swing.JButton New;
     private javax.swing.JButton NewEntity;
-    private javax.swing.JButton NewPostContent;
+    private javax.swing.JButton NewPoolContent;
     private javax.swing.JButton Run;
     private javax.swing.JButton RunS;
     private javax.swing.JButton Save;
     private javax.swing.JButton SaveEntity;
-    private javax.swing.JButton SavePostContent;
+    private javax.swing.JButton SavePoolContent;
     private javax.swing.JSeparator TitleSeparator_EntiySetting;
     private javax.swing.JSeparator TitleSeparator_GlobalParametersSetting;
     private javax.swing.JSeparator TitleSeparator_PostContentPool;
@@ -1427,18 +1491,18 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClearConsole;
     private javax.swing.JButton jButton_GlobalSettingSave;
     private javax.swing.JCheckBox jCheckBox_EnableEntity;
-    private javax.swing.JCheckBox jCheckBox_EnablePostContent;
+    private javax.swing.JCheckBox jCheckBox_EnablePoolContent;
     private javax.swing.JCheckBox jCheckBox_EnableStopTime;
     private javax.swing.JCheckBox jCheckBox_EnableThread;
+    private javax.swing.JComboBox<String> jComboBox_PoolContentPostEntity;
     private javax.swing.JComboBox<String> jComboBox_PostEntity;
-    private javax.swing.JComboBox<String> jComboBox_PostEntity2;
     private javax.swing.JLabel jLabel_EntityName;
     private javax.swing.JLabel jLabel_FirefoxInstallationPath;
     private javax.swing.JLabel jLabel_FixedWaitTime;
+    private javax.swing.JLabel jLabel_PoolContent;
+    private javax.swing.JLabel jLabel_PoolPostEntity;
     private javax.swing.JLabel jLabel_PostContent;
-    private javax.swing.JLabel jLabel_PostContentPool;
     private javax.swing.JLabel jLabel_PostEntity;
-    private javax.swing.JLabel jLabel_PostEntity2;
     private javax.swing.JLabel jLabel_PostNumber;
     private javax.swing.JLabel jLabel_PostUrl;
     private javax.swing.JLabel jLabel_Profile;
@@ -1474,9 +1538,9 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_FirefoxInstallationPath;
     private javax.swing.JTextField jTextField_FixedWaitTime;
     private javax.swing.JTextField jTextField_GlobalSettingID;
+    private javax.swing.JTextField jTextField_PoolContent;
+    private javax.swing.JTextField jTextField_PoolContentID;
     private javax.swing.JTextField jTextField_PostContent;
-    private javax.swing.JTextField jTextField_PostContentID;
-    private javax.swing.JTextField jTextField_PostContentPool;
     private javax.swing.JTextField jTextField_PostCount;
     private javax.swing.JTextField jTextField_PostUrl;
     private javax.swing.JTextField jTextField_Profile;
@@ -1513,6 +1577,9 @@ public class PostMachineApp extends javax.swing.JFrame {
     private static Integer EntityID;
     private static String EntityName;
 
-
+    private static Boolean EnablePoolContent;
+    private static Integer PoolContentID;
+    private static String PoolContentPostEntity;
+    private static String PoolContent;
 
 }

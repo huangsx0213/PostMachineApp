@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PostContentEntitys>
+  <PoolContent PoolContentID="1">
+    <EnablePoolContent>false</EnablePoolContent>
+    <PoolContentPostEntity>Vivo</PoolContentPostEntity>
+    <PoolContent>test1</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="2">
+    <EnablePoolContent>false</EnablePoolContent>
+    <PoolContentPostEntity>Oppo</PoolContentPostEntity>
+    <PoolContent>test2</PoolContent>
+  </PoolContent>
+</PostContentEntitys>

@@ -11,39 +11,49 @@ package PostMachineApp;
  */
 public class PostContentEntity {
 
-    Boolean EnablePostContent;
-    Integer PostContentID;
-    String PostEntity2;
-    String PostContent;
+    Boolean EnablePoolContent;
+    Integer PoolContentID;
+    String PoolContentPostEntity;
+    String PoolContent;
 
-    public PostContentEntity(Boolean EnablePostContent, Integer PostContentID, String PostContent) {
-        this.EnablePostContent = EnablePostContent;
-        this.PostContentID = PostContentID;
-        this.PostContent = PostContent;
+    public PostContentEntity(Boolean EnablePostContent, Integer PostContentID,String PoolContentPostEntity, String PostContent) {
+        this.EnablePoolContent = EnablePostContent;
+        this.PoolContentID = PostContentID;
+        this.PoolContentPostEntity = PoolContentPostEntity;
+        this.PoolContent = PostContent;
     }
 
-    public Boolean getEnablePostContent() {
-        return EnablePostContent;
+    public Boolean getEnablePoolContent() {
+        return EnablePoolContent;
     }
 
-    public void setEnablePostContent(Boolean EnablePostContent) {
-        this.EnablePostContent = EnablePostContent;
+    public void setEnablePoolContent(Boolean EnablePoolContent) {
+        this.EnablePoolContent = EnablePoolContent;
     }
 
-    public Integer getPostContentID() {
-        return PostContentID;
+    public Integer getPoolContentID() {
+        return PoolContentID;
     }
 
-    public void setPostContentID(Integer PostContentID) {
-        this.PostContentID = PostContentID;
+    public void setPoolContentID(Integer PoolContentID) {
+        this.PoolContentID = PoolContentID;
     }
 
-    public String getPostContent() {
-        return PostContent;
+    public String getPoolContentPostEntity() {
+        return PoolContentPostEntity;
     }
 
-    public void setPostContent(String PostContent) {
-        this.PostContent = PostContent;
+    public void setPoolContentPostEntity(String PoolContentPostEntity) {
+        this.PoolContentPostEntity = PoolContentPostEntity;
     }
-    
+
+    public String getPoolContent() {
+        return PoolContent;
+    }
+
+    public void setPoolContent(String PoolContent) {
+        this.PoolContent = PoolContent;
+    }
+
+       
 }
