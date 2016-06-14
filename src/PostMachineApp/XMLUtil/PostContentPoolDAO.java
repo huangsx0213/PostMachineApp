@@ -17,7 +17,7 @@ public class PostContentPoolDAO {
     private static String fileName = System.getProperty("user.dir") + "\\PostContentEntity.xml";
     private static Boolean EnablePoolContent;
     private static Integer PoolContentID;
-    private static String PoolContentPostEntity;
+    private static String PoolFirefoxProfile;
         private static String PoolContent;
 
     /**
@@ -36,9 +36,9 @@ public class PostContentPoolDAO {
         for (Element PostContentElement : PostContentElements) {
             EnablePoolContent = Boolean.valueOf(PostContentElement.element("EnablePoolContent").getTextTrim());
             PoolContentID = Integer.parseInt(PostContentElement.attribute("PoolContentID").getText());
-            PoolContentPostEntity = PostContentElement.element("PoolContentPostEntity").getTextTrim();
+            PoolFirefoxProfile = PostContentElement.element("PoolFirefoxProfile").getTextTrim();
             PoolContent = PostContentElement.element("PoolContent").getTextTrim();
-           PostContentEntity PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID,PoolContentPostEntity, PoolContent);
+           PostContentEntity PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID,PoolFirefoxProfile, PoolContent);
 
             PostContents.add(PostContentEntity);
         }
@@ -54,9 +54,9 @@ public class PostContentPoolDAO {
             if (PostContentElement.attributeValue("PoolContentID").equals(id)) {
                 EnablePoolContent = Boolean.valueOf(PostContentElement.element("EnablePoolContent").getTextTrim());
                 PoolContentID = Integer.parseInt(PostContentElement.attribute("PoolContentID").getText());
-                PoolContentPostEntity = PostContentElement.element("PoolContentPostEntity").getTextTrim();
+                PoolFirefoxProfile = PostContentElement.element("PoolFirefoxProfile").getTextTrim();
                  PoolContent = PostContentElement.element("PoolContent").getTextTrim();
-                PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID,PoolContentPostEntity, PoolContent);
+                PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID,PoolFirefoxProfile, PoolContent);
             }
         }
         return PostContentEntity;
@@ -74,11 +74,11 @@ public class PostContentPoolDAO {
         Element PostContentElement = rootElement.addElement("PoolContent");
         PostContentElement.addAttribute("PoolContentID", PostContentEntity.getPoolContentID().toString());
         Element EnablePoolContentElement = PostContentElement.addElement("EnablePoolContent");
-        Element PoolContentPostEntityElement = PostContentElement.addElement("PoolContentPostEntity");
+        Element PoolFirefoxProfileElement = PostContentElement.addElement("PoolFirefoxProfile");
         Element PoolContentElement = PostContentElement.addElement("PoolContent");
 
         EnablePoolContentElement.setText(PostContentEntity.getEnablePoolContent().toString());
-        PoolContentPostEntityElement.setText(PostContentEntity.getPoolContentPostEntity());
+        PoolFirefoxProfileElement.setText(PostContentEntity.getPoolFirefoxProfile());
         PoolContentElement.setText(PostContentEntity.getPoolContent());
 
         write2XML(document);
@@ -121,8 +121,8 @@ public class PostContentPoolDAO {
                 if (!PostContentElement.element("EnablePoolContent").getText().equals(PostContentEntity.getEnablePoolContent().toString())) {
                     PostContentElement.element("EnablePoolContent").setText(PostContentEntity.getEnablePoolContent().toString());
                 }
-                if (!PostContentElement.element("PoolContentPostEntity").getText().equals(PostContentEntity.getPoolContentPostEntity())) {
-                    PostContentElement.element("PoolContentPostEntity").setText(PostContentEntity.getPoolContentPostEntity());
+                if (!PostContentElement.element("PoolFirefoxProfile").getText().equals(PostContentEntity.getPoolFirefoxProfile())) {
+                    PostContentElement.element("PoolFirefoxProfile").setText(PostContentEntity.getPoolFirefoxProfile());
                 }
                  if (!PostContentElement.element("PoolContent").getText().equals(PostContentEntity.getPoolContent())) {
                     PostContentElement.element("PoolContent").setText(PostContentEntity.getPoolContent());

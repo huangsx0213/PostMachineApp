@@ -2,13 +2,18 @@
 
 <PostContentEntitys>
   <PoolContent PoolContentID="1">
-    <EnablePoolContent>false</EnablePoolContent>
-    <PoolContentPostEntity>Vivo</PoolContentPostEntity>
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>gqy93331529</PoolFirefoxProfile>
     <PoolContent>test1</PoolContent>
   </PoolContent>
   <PoolContent PoolContentID="2">
-    <EnablePoolContent>false</EnablePoolContent>
-    <PoolContentPostEntity>Oppo</PoolContentPostEntity>
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>huawei163</PoolFirefoxProfile>
     <PoolContent>test2</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="3">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>huawei163</PoolFirefoxProfile>
+    <PoolContent>test3</PoolContent>
   </PoolContent>
 </PostContentEntitys>

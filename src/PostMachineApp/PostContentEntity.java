@@ -13,13 +13,13 @@ public class PostContentEntity {
 
     Boolean EnablePoolContent;
     Integer PoolContentID;
-    String PoolContentPostEntity;
+    String PoolFirefoxProfile;
     String PoolContent;
 
-    public PostContentEntity(Boolean EnablePostContent, Integer PostContentID,String PoolContentPostEntity, String PostContent) {
+    public PostContentEntity(Boolean EnablePostContent, Integer PostContentID,String PoolFirefoxProfile, String PostContent) {
         this.EnablePoolContent = EnablePostContent;
         this.PoolContentID = PostContentID;
-        this.PoolContentPostEntity = PoolContentPostEntity;
+        this.PoolFirefoxProfile = PoolFirefoxProfile;
         this.PoolContent = PostContent;
     }
 
@@ -39,12 +39,12 @@ public class PostContentEntity {
         this.PoolContentID = PoolContentID;
     }
 
-    public String getPoolContentPostEntity() {
-        return PoolContentPostEntity;
+    public String getPoolFirefoxProfile() {
+        return PoolFirefoxProfile;
     }
 
-    public void setPoolContentPostEntity(String PoolContentPostEntity) {
-        this.PoolContentPostEntity = PoolContentPostEntity;
+    public void setPoolFirefoxProfile(String PoolFirefoxProfile) {
+        this.PoolFirefoxProfile = PoolFirefoxProfile;
     }
 
     public String getPoolContent() {

@@ -144,7 +144,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         SavePoolContent = new javax.swing.JButton();
         DeletePoolContent = new javax.swing.JButton();
         jLabel_PoolPostEntity = new javax.swing.JLabel();
-        jComboBox_PoolContentPostEntity = new javax.swing.JComboBox<>();
+        jComboBox_PoolFirefoxProfile = new javax.swing.JComboBox<>();
         jPanel_PostContentPoolBottom = new javax.swing.JPanel();
         jScrollPane_PostContentPool = new javax.swing.JScrollPane();
         jTable_PostContentPool = new javax.swing.JTable();
@@ -810,7 +810,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_EntitySettingLayout.setHorizontalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_EntiySettingTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         jPanel_EntitySettingLayout.setVerticalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -881,18 +881,18 @@ public class PostMachineApp extends javax.swing.JFrame {
             }
         });
 
-        jLabel_PoolPostEntity.setText("PostEntity:");
+        jLabel_PoolPostEntity.setText("Pool Firefox Profile:");
 
-        List<Entity> Entitys2 = new ArrayList<Entity>();
-        Entitys2=EntityDAO.getAllEntity();
-        final int size2=Entitys.size();
-        Entity[] EntityArray2=(Entity[])Entitys2.toArray(new Entity[size2]);
-        String[] EntityName2=new String[size2];
-        for(int i=0;i<size;i++)
+        List<ForumPost> ForumPosts = new ArrayList<ForumPost>();
+        ForumPosts=TaskManagementDAO.getAllForumPost();
+        final int ForumPostsSize=ForumPosts.size();
+        ForumPost[] ForumPostArray=(ForumPost[])ForumPosts.toArray(new ForumPost[ForumPostsSize]);
+        String[] id=new String[ForumPostsSize];
+        for(int i=0;i<ForumPostsSize;i++)
         {
-            EntityName2[i]=EntityArray[i].getEntityName();
+            id[i]=ForumPostArray[i].getProfile();
         }
-        jComboBox_PoolContentPostEntity.setModel(new javax.swing.DefaultComboBoxModel<>(EntityName2));
+        jComboBox_PoolFirefoxProfile.setModel(new javax.swing.DefaultComboBoxModel<>(id));
 
         javax.swing.GroupLayout jPanel_PostContentPoolTopLayout = new javax.swing.GroupLayout(jPanel_PostContentPoolTop);
         jPanel_PostContentPoolTop.setLayout(jPanel_PostContentPoolTopLayout);
@@ -921,8 +921,8 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel_PoolPostEntity)
                                 .addGap(10, 10, 10)
-                                .addComponent(jComboBox_PoolContentPostEntity, 0, 106, Short.MAX_VALUE)
-                                .addGap(324, 324, 324))
+                                .addComponent(jComboBox_PoolFirefoxProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jTextField_PoolContent))))
                 .addContainerGap())
         );
@@ -937,7 +937,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                     .addComponent(jCheckBox_EnablePoolContent)
                     .addComponent(jTextField_PoolContentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_PoolPostEntity)
-                    .addComponent(jComboBox_PoolContentPostEntity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox_PoolFirefoxProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_PostContentPoolTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_PoolContent)
@@ -977,7 +977,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Enable", "Content ID", "Post Entity", "Post Content"
+                "Enable", "Content ID", "Firefox Profile", "Post Content"
             }
         ));
         jTable_PostContentPool.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -987,15 +987,15 @@ public class PostMachineApp extends javax.swing.JFrame {
         });
         jTable_PostContentPool.getColumnModel().getColumn(0).setPreferredWidth(20);
         jTable_PostContentPool.getColumnModel().getColumn(1).setPreferredWidth(20);
-        jTable_PostContentPool.getColumnModel().getColumn(2).setPreferredWidth(20);
-        jTable_PostContentPool.getColumnModel().getColumn(3).setPreferredWidth(380);
+        jTable_PostContentPool.getColumnModel().getColumn(2).setPreferredWidth(50);
+        jTable_PostContentPool.getColumnModel().getColumn(3).setPreferredWidth(350);
         jScrollPane_PostContentPool.setViewportView(jTable_PostContentPool);
 
         javax.swing.GroupLayout jPanel_PostContentPoolBottomLayout = new javax.swing.GroupLayout(jPanel_PostContentPoolBottom);
         jPanel_PostContentPoolBottom.setLayout(jPanel_PostContentPoolBottomLayout);
         jPanel_PostContentPoolBottomLayout.setHorizontalGroup(
             jPanel_PostContentPoolBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
         );
         jPanel_PostContentPoolBottomLayout.setVerticalGroup(
             jPanel_PostContentPoolBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1007,7 +1007,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_PostContentPoolLayout.setHorizontalGroup(
             jPanel_PostContentPoolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_PostContentPoolTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         jPanel_PostContentPoolLayout.setVerticalGroup(
             jPanel_PostContentPoolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1144,7 +1144,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             String[] arr = new String[4];
             arr[0] = PostContentEntity.getEnablePoolContent().toString();
             arr[1] = PostContentEntity.getPoolContentID().toString();
-            arr[2] = PostContentEntity.getPoolContentPostEntity();
+            arr[2] = PostContentEntity.getPoolFirefoxProfile();
             arr[3] = PostContentEntity.getPoolContent();
             // 添加数据到表格
             tableModel.addRow(arr);
@@ -1345,7 +1345,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         // TODO add your handling code here:
          this.jCheckBox_EnablePoolContent.setSelected(true);
         this.jTextField_PoolContentID.setText(Integer.toString(PostContentPoolDAO.getMaxId() + 1));
-        this.jComboBox_PoolContentPostEntity.setSelectedItem("Vivo");
+        this.jComboBox_PoolFirefoxProfile.setSelectedItem("Vivo");
         this.jTextField_PoolContent.setText("");
     }//GEN-LAST:event_NewPoolContentActionPerformed
 
@@ -1353,9 +1353,9 @@ public class PostMachineApp extends javax.swing.JFrame {
         // TODO add your handling code here:
         EnablePoolContent = this.jCheckBox_EnablePoolContent.isSelected();
         PoolContentID = Integer.parseInt(this.jTextField_PoolContentID.getText());
-        PoolContentPostEntity = (String) this.jComboBox_PoolContentPostEntity.getSelectedItem();
+        PoolFirefoxProfile = (String) this.jComboBox_PoolFirefoxProfile.getSelectedItem();
         PoolContent = this.jTextField_PoolContent.getText();
-        PostContentEntity PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID, PoolContentPostEntity, PoolContent);
+        PostContentEntity PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID, PoolFirefoxProfile, PoolContent);
         if (PostContentPoolDAO.PostContentIDisExisting(PostContentEntity)) {
             PostContentPoolDAO.update(PostContentEntity);
         } else {
@@ -1428,7 +1428,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private void fillPostContentForm(PostContentEntity PostContentEntity) {
         this.jCheckBox_EnablePoolContent.setSelected(PostContentEntity.getEnablePoolContent());
         this.jTextField_PoolContentID.setText(PostContentEntity.getPoolContentID().toString());
-        this.jComboBox_PoolContentPostEntity.setSelectedItem(PostContentEntity.getPoolContentPostEntity());
+        this.jComboBox_PoolFirefoxProfile.setSelectedItem(PostContentEntity.getPoolFirefoxProfile());
         this.jTextField_PoolContent.setText(PostContentEntity.getPoolContent());
     }
 
@@ -1494,7 +1494,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox_EnablePoolContent;
     private javax.swing.JCheckBox jCheckBox_EnableStopTime;
     private javax.swing.JCheckBox jCheckBox_EnableThread;
-    private javax.swing.JComboBox<String> jComboBox_PoolContentPostEntity;
+    private javax.swing.JComboBox<String> jComboBox_PoolFirefoxProfile;
     private javax.swing.JComboBox<String> jComboBox_PostEntity;
     private javax.swing.JLabel jLabel_EntityName;
     private javax.swing.JLabel jLabel_FirefoxInstallationPath;
@@ -1579,7 +1579,7 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private static Boolean EnablePoolContent;
     private static Integer PoolContentID;
-    private static String PoolContentPostEntity;
+    private static String PoolFirefoxProfile;
     private static String PoolContent;
 
 }
