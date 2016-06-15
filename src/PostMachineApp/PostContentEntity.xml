@@ -3,17 +3,27 @@
 <PostContentEntitys>
   <PoolContent PoolContentID="1">
     <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>gqy93331529</PoolFirefoxProfile>
+    <PoolFirefoxProfile>default</PoolFirefoxProfile>
     <PoolContent>test1</PoolContent>
   </PoolContent>
   <PoolContent PoolContentID="2">
     <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>huawei163</PoolFirefoxProfile>
+    <PoolFirefoxProfile>default</PoolFirefoxProfile>
     <PoolContent>test2</PoolContent>
   </PoolContent>
   <PoolContent PoolContentID="3">
     <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>huawei163</PoolFirefoxProfile>
+    <PoolFirefoxProfile>default</PoolFirefoxProfile>
     <PoolContent>test3</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="4">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>default</PoolFirefoxProfile>
+    <PoolContent>test4</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="5">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>default</PoolFirefoxProfile>
+    <PoolContent>test5</PoolContent>
   </PoolContent>
 </PostContentEntitys>

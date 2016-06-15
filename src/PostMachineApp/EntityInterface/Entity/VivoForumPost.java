@@ -1,8 +1,13 @@
 package PostMachineApp.EntityInterface.Entity;
 
 import PostMachineApp.EntityInterface.ForumPost;
+import PostMachineApp.PostContentEntity;
+import PostMachineApp.XMLUtil.PostContentPoolDAO;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +32,7 @@ final public class VivoForumPost implements ForumPost {
     private final Integer RandomWaitTime;
     private final String PostUrl;
     private final String PostContent;
+    private String tempPostContent;
 
     public VivoForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
@@ -45,6 +51,11 @@ final public class VivoForumPost implements ForumPost {
         this.PostContent = PostContent;
     }
 
+    /**
+     *
+     * @param PofileName
+     * @return
+     */
     @Override
     public Boolean getEnableThread() {
         return EnableThread;
@@ -125,6 +136,9 @@ final public class VivoForumPost implements ForumPost {
 
     @Override
     public void sentpost() {
+        List<PostContentEntity> PostContentEntitys = new ArrayList<PostContentEntity>();
+        PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
+        tempPostContent = this.PostContent;
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
 
@@ -142,16 +156,22 @@ final public class VivoForumPost implements ForumPost {
         driver.get(PostUrl);
 
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
+            if (this.PostContent.equals("[Pool]")) {
+                while (!tempPostContent.equals(getRandomPostContent(PostContentEntitys).getEnablePoolContent())) {
+                    tempPostContent = getRandomPostContent(PostContentEntitys).getPoolContent();
+                }
+
+            }
 
             WebElement element = driver.findElement(By.id("fastpostmessage"));
 
             element.clear();
             if (i % 2 == 0) {
-                element.sendKeys(PostContent);
+                element.sendKeys(tempPostContent);
             } else {
-                element.sendKeys(PostContent + " ");
+                element.sendKeys(tempPostContent + " ");
             }
-            element.submit();
+            //element.submit();
 
             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + PostContent);
             try {
@@ -165,5 +185,12 @@ final public class VivoForumPost implements ForumPost {
         }
         driver.quit();
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
+    }
+
+    public PostContentEntity getRandomPostContent(List<PostContentEntity> MyList) {
+        Random mRandom = new Random();
+        int a = (int) (Math.random() * (MyList.size()));
+        PostContentEntity value = MyList.get(a);
+        return value;
     }
 }

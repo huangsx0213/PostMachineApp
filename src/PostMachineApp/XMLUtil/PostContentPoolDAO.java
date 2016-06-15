@@ -18,7 +18,7 @@ public class PostContentPoolDAO {
     private static Boolean EnablePoolContent;
     private static Integer PoolContentID;
     private static String PoolFirefoxProfile;
-        private static String PoolContent;
+    private static String PoolContent;
 
     /**
      * 获取XML中所有的用户信息
@@ -38,25 +38,45 @@ public class PostContentPoolDAO {
             PoolContentID = Integer.parseInt(PostContentElement.attribute("PoolContentID").getText());
             PoolFirefoxProfile = PostContentElement.element("PoolFirefoxProfile").getTextTrim();
             PoolContent = PostContentElement.element("PoolContent").getTextTrim();
-           PostContentEntity PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID,PoolFirefoxProfile, PoolContent);
+            PostContentEntity PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID, PoolFirefoxProfile, PoolContent);
 
             PostContents.add(PostContentEntity);
         }
         return PostContents;
     }
-    
+
+    public static List<PostContentEntity> getPostContentByPofileName(String ProfileName) {
+        Document document = getDocument();
+        Element rootElement = document.getRootElement();
+
+        List<Element> PostContentElements = rootElement.elements();
+        List<PostContentEntity> PostContents = new ArrayList<PostContentEntity>();
+        for (Element PostContentElement : PostContentElements) {
+            if (PostContentElement.element("PoolFirefoxProfile").getTextTrim().equals(ProfileName)) {
+                EnablePoolContent = Boolean.valueOf(PostContentElement.element("EnablePoolContent").getTextTrim());
+                PoolContentID = Integer.parseInt(PostContentElement.attribute("PoolContentID").getText());
+                PoolFirefoxProfile = PostContentElement.element("PoolFirefoxProfile").getTextTrim();
+                PoolContent = PostContentElement.element("PoolContent").getTextTrim();
+                PostContentEntity PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID, PoolFirefoxProfile, PoolContent);
+
+                PostContents.add(PostContentEntity);
+            }
+        }
+        return PostContents;
+    }
+
     public static PostContentEntity getPostContentByID(String id) {
         Document document = getDocument();
         Element rootElement = document.getRootElement();
-        PostContentEntity PostContentEntity=null;
+        PostContentEntity PostContentEntity = null;
         List<Element> PostContentElements = rootElement.elements("PoolContent");
         for (Element PostContentElement : PostContentElements) {
             if (PostContentElement.attributeValue("PoolContentID").equals(id)) {
                 EnablePoolContent = Boolean.valueOf(PostContentElement.element("EnablePoolContent").getTextTrim());
                 PoolContentID = Integer.parseInt(PostContentElement.attribute("PoolContentID").getText());
                 PoolFirefoxProfile = PostContentElement.element("PoolFirefoxProfile").getTextTrim();
-                 PoolContent = PostContentElement.element("PoolContent").getTextTrim();
-                PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID,PoolFirefoxProfile, PoolContent);
+                PoolContent = PostContentElement.element("PoolContent").getTextTrim();
+                PostContentEntity = new PostContentEntity(EnablePoolContent, PoolContentID, PoolFirefoxProfile, PoolContent);
             }
         }
         return PostContentEntity;
@@ -124,7 +144,7 @@ public class PostContentPoolDAO {
                 if (!PostContentElement.element("PoolFirefoxProfile").getText().equals(PostContentEntity.getPoolFirefoxProfile())) {
                     PostContentElement.element("PoolFirefoxProfile").setText(PostContentEntity.getPoolFirefoxProfile());
                 }
-                 if (!PostContentElement.element("PoolContent").getText().equals(PostContentEntity.getPoolContent())) {
+                if (!PostContentElement.element("PoolContent").getText().equals(PostContentEntity.getPoolContent())) {
                     PostContentElement.element("PoolContent").setText(PostContentEntity.getPoolContent());
                 }
             }
