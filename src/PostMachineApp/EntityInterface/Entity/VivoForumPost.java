@@ -157,6 +157,7 @@ final public class VivoForumPost implements ForumPost {
         driver.get(PostUrl);
 
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
+           
             if (this.PostContent.equals("[Pool]")) {
                 while (true) {
                     temp = getRandomPostContent(PostContentEntitys).getPoolContent();
@@ -166,7 +167,6 @@ final public class VivoForumPost implements ForumPost {
                     }
 
                 }
-
             }
 
             WebElement element = driver.findElement(By.id("fastpostmessage"));
