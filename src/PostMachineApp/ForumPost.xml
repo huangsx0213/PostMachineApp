@@ -10,11 +10,11 @@
     <EnableStopTime>false</EnableStopTime>
     <StopTime>1462636799000</StopTime>
     <RefreshPostCount>200</RefreshPostCount>
-    <PostCount>3</PostCount>
-    <FixedWaitTime>600</FixedWaitTime>
-    <RandomWaitTime>900</RandomWaitTime>
+    <PostCount>1000</PostCount>
+    <FixedWaitTime>2</FixedWaitTime>
+    <RandomWaitTime>2</RandomWaitTime>
     <PostUrl>http://bbs.vivo.com.cn/thread-2274151-9999-1.html</PostUrl>
-    <PostContent>[Pool]</PostContent>
+    <PostContent>test</PostContent>
   </ForumPost>
   <ForumPost ThreadID="2">
     <EnableThread>true</EnableThread>

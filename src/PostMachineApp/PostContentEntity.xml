@@ -26,4 +26,54 @@
     <PoolFirefoxProfile>default</PoolFirefoxProfile>
     <PoolContent>test5</PoolContent>
   </PoolContent>
+  <PoolContent PoolContentID="6">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>default</PoolFirefoxProfile>
+    <PoolContent>test6</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="7">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>default</PoolFirefoxProfile>
+    <PoolContent>test7</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="8">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>default</PoolFirefoxProfile>
+    <PoolContent>test8</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="9">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>default</PoolFirefoxProfile>
+    <PoolContent>test9</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="10">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>default</PoolFirefoxProfile>
+    <PoolContent>test10</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="11">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
+    <PoolContent>test11</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="12">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
+    <PoolContent>test12</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="13">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
+    <PoolContent>test13</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="14">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
+    <PoolContent>test14</PoolContent>
+  </PoolContent>
+  <PoolContent PoolContentID="15">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
+    <PoolContent>test15</PoolContent>
+  </PoolContent>
 </PostContentEntitys>
