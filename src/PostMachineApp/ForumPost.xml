@@ -18,18 +18,18 @@
   </ForumPost>
   <ForumPost ThreadID="2">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\\Program Files\\Mozilla Firefox\\firefox.exe</FirefoxPath>
+    <FirefoxPath>D:\Program Files (x86)\Mozilla Firefox\firefox.exe</FirefoxPath>
     <Profile>oppo82958013</Profile>
     <PostEntity>Oppo</PostEntity>
     <StartTime>1451577600000</StartTime>
-    <EnableStopTime>true</EnableStopTime>
+    <EnableStopTime>false</EnableStopTime>
     <StopTime>1463133599000</StopTime>
     <RefreshPostCount>30</RefreshPostCount>
     <PostCount>200</PostCount>
-    <FixedWaitTime>10</FixedWaitTime>
-    <RandomWaitTime>360</RandomWaitTime>
-    <PostUrl>http://bbs.oppo.cn/thread-10983417-999-1.html</PostUrl>
-    <PostContent>最爱A37的NFC支付和点对点传输，碰一碰，快速传输图片、视频、音乐等文件@OPPO</PostContent>
+    <FixedWaitTime>2</FixedWaitTime>
+    <RandomWaitTime>2</RandomWaitTime>
+    <PostUrl>http://bbs.oppo.cn/thread-11434251-1-1.html</PostUrl>
+    <PostContent>[Pool]1</PostContent>
   </ForumPost>
   <ForumPost ThreadID="3">
     <EnableThread>true</EnableThread>

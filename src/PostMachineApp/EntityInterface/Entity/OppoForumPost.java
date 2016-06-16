@@ -1,8 +1,12 @@
 package PostMachineApp.EntityInterface.Entity;
 
 import PostMachineApp.EntityInterface.ForumPost;
+import PostMachineApp.PostContentEntity;
+import PostMachineApp.XMLUtil.PostContentPoolDAO;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +31,8 @@ final public class OppoForumPost implements ForumPost {
     private final Integer RandomWaitTime;
     private final String PostUrl;
     private final String PostContent;
+        private String tempPostContent;
+    private String temp;
 
     public OppoForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
@@ -126,6 +132,7 @@ final public class OppoForumPost implements ForumPost {
     @Override
     @SuppressWarnings("SleepWhileInLoop")
     public void sentpost() {
+        tempPostContent = this.PostContent;
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
         // specified firefox's installing path.
@@ -144,16 +151,18 @@ final public class OppoForumPost implements ForumPost {
         driver.findElement(By.id("fastposteditor")).click();
 
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
+            
+            getTempPostContent();
 
             WebElement element = driver.findElement(By.id("fastpostmessage"));
 
             element.clear();
 
-            element.sendKeys(PostContent + "\n\n [color=#FFFFFF]发表于" + DateFormat.format(new Date()) + "[/color]");
+            element.sendKeys(tempPostContent + "\n\n [color=#FFFFFF]发表于" + DateFormat.format(new Date()) + "[/color]");
 
             element.submit();
 
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]message: " + i + " " + PostContent);
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]message: " + i + " " + tempPostContent);
 
             try {
                 Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
@@ -166,5 +175,26 @@ final public class OppoForumPost implements ForumPost {
         }
         driver.quit();
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
+    }
+        private String getTempPostContent() {
+        if (this.PostContent.equals("[Pool]")) {
+            while (true) {
+                temp = getRandomPostContent().getPoolContent();
+                if (!tempPostContent.equals(temp)) {
+                    tempPostContent = temp;
+                    break;
+                }
+                
+            }
+        }
+        return tempPostContent;
+    }
+
+    public PostContentEntity getRandomPostContent() {
+        List<PostContentEntity> PostContentEntitys = new ArrayList<PostContentEntity>();
+        PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
+        int MyListIndex = (int) (Math.random() * (PostContentEntitys.size()));
+        PostContentEntity value = PostContentEntitys.get(MyListIndex);
+        return value;
     }
 }

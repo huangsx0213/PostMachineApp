@@ -167,7 +167,7 @@ final public class VivoForumPost implements ForumPost {
             } else {
                 element.sendKeys(tempPostContent + " ");
             }
-            //element.submit();
+            element.submit();
 
             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
             try {
