@@ -33,6 +33,7 @@ final public class VivoForumPost implements ForumPost {
     private final String PostUrl;
     private final String PostContent;
     private String tempPostContent;
+    private String temp;
 
     public VivoForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
@@ -157,8 +158,13 @@ final public class VivoForumPost implements ForumPost {
 
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
             if (this.PostContent.equals("[Pool]")) {
-                while (!tempPostContent.equals(getRandomPostContent(PostContentEntitys).getEnablePoolContent())) {
-                    tempPostContent = getRandomPostContent(PostContentEntitys).getPoolContent();
+                while (true) {
+                    temp = getRandomPostContent(PostContentEntitys).getPoolContent();
+                    if (!tempPostContent.equals(temp)) {
+                        tempPostContent = temp;
+                        break;
+                    }
+
                 }
 
             }
@@ -173,7 +179,7 @@ final public class VivoForumPost implements ForumPost {
             }
             //element.submit();
 
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + PostContent);
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
             try {
                 Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
             } catch (Exception ex) {
@@ -188,9 +194,8 @@ final public class VivoForumPost implements ForumPost {
     }
 
     public PostContentEntity getRandomPostContent(List<PostContentEntity> MyList) {
-        Random mRandom = new Random();
-        int a = (int) (Math.random() * (MyList.size()));
-        PostContentEntity value = MyList.get(a);
+        int MyListIndex = (int) (Math.random() * (MyList.size()));
+        PostContentEntity value = MyList.get(MyListIndex);
         return value;
     }
 }

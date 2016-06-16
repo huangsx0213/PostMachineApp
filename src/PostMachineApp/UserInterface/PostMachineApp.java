@@ -921,8 +921,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel_PoolPostEntity)
                                 .addGap(10, 10, 10)
-                                .addComponent(jComboBox_PoolFirefoxProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jComboBox_PoolFirefoxProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTextField_PoolContent))))
                 .addContainerGap())
         );
@@ -1021,6 +1020,8 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTabbedPane_SystemSettings.addTab("Post Content Pool", jPanel_PostContentPool);
 
         jTabbedPane_PostMachineApp.addTab("System Settings", jTabbedPane_SystemSettings);
+
+        jTabbedPane_PostMachineApp.setSelectedIndex(1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
