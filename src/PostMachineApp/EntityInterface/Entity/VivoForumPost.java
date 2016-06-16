@@ -137,8 +137,7 @@ final public class VivoForumPost implements ForumPost {
 
     @Override
     public void sentpost() {
-        List<PostContentEntity> PostContentEntitys = new ArrayList<PostContentEntity>();
-        PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
+
         tempPostContent = this.PostContent;
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
@@ -157,17 +156,8 @@ final public class VivoForumPost implements ForumPost {
         driver.get(PostUrl);
 
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
-           
-            if (this.PostContent.equals("[Pool]")) {
-                while (true) {
-                    temp = getRandomPostContent(PostContentEntitys).getPoolContent();
-                    if (!tempPostContent.equals(temp)) {
-                        tempPostContent = temp;
-                        break;
-                    }
 
-                }
-            }
+            getTempPostContent();
 
             WebElement element = driver.findElement(By.id("fastpostmessage"));
 
@@ -193,9 +183,25 @@ final public class VivoForumPost implements ForumPost {
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
     }
 
-    public PostContentEntity getRandomPostContent(List<PostContentEntity> MyList) {
-        int MyListIndex = (int) (Math.random() * (MyList.size()));
-        PostContentEntity value = MyList.get(MyListIndex);
+    private String getTempPostContent() {
+        if (this.PostContent.equals("[Pool]")) {
+            while (true) {
+                temp = getRandomPostContent().getPoolContent();
+                if (!tempPostContent.equals(temp)) {
+                    tempPostContent = temp;
+                    break;
+                }
+                
+            }
+        }
+        return tempPostContent;
+    }
+
+    public PostContentEntity getRandomPostContent() {
+        List<PostContentEntity> PostContentEntitys = new ArrayList<PostContentEntity>();
+        PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
+        int MyListIndex = (int) (Math.random() * (PostContentEntitys.size()));
+        PostContentEntity value = PostContentEntitys.get(MyListIndex);
         return value;
     }
 }

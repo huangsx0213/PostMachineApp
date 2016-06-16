@@ -14,7 +14,7 @@
     <FixedWaitTime>2</FixedWaitTime>
     <RandomWaitTime>2</RandomWaitTime>
     <PostUrl>http://bbs.vivo.com.cn/thread-2274151-9999-1.html</PostUrl>
-    <PostContent>test</PostContent>
+    <PostContent>[Pool]</PostContent>
   </ForumPost>
   <ForumPost ThreadID="2">
     <EnableThread>true</EnableThread>
