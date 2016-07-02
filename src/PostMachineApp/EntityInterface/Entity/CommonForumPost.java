@@ -16,7 +16,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 
-final public class VivoForumPost implements ForumPost {
+final public class CommonForumPost implements ForumPost {
 
     private final Boolean EnableThread;
     private final Integer ThreadID;
@@ -35,7 +35,7 @@ final public class VivoForumPost implements ForumPost {
     private String tempPostContent;
     private String temp;
 
-    public VivoForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
+    public CommonForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -167,9 +167,7 @@ final public class VivoForumPost implements ForumPost {
             } else {
                 element.sendKeys(tempPostContent + " ");
             }
-            //element.submit();
-            WebElement fastpostsubmit = driver.findElement(By.id("fastpostsubmit"));
-            fastpostsubmit.click();
+            element.submit();
 
             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
             try {

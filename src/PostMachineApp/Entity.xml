@@ -25,4 +25,8 @@
     <EnableEntity>true</EnableEntity>
     <EntityName>VivoMobile</EntityName>
   </Entity>
+  <Entity EntityID="7">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>Common</EntityName>
+  </Entity>
 </Entitys>
