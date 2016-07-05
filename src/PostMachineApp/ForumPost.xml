@@ -138,9 +138,9 @@
   </ForumPost>
   <ForumPost ThreadID="10">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>default</FirefoxPath>
+    <FirefoxPath>D:\Program Files (x86)\Mozilla Firefox\firefox.exe</FirefoxPath>
     <Profile>default</Profile>
-    <PostEntity>Vivo</PostEntity>
+    <PostEntity>WangYi</PostEntity>
     <StartTime>1451577600000</StartTime>
     <EnableStopTime>false</EnableStopTime>
     <StopTime>1546271999000</StopTime>
@@ -148,7 +148,7 @@
     <PostCount>65535</PostCount>
     <FixedWaitTime>11</FixedWaitTime>
     <RandomWaitTime>30</RandomWaitTime>
-    <PostUrl/>
-    <PostContent/>
+    <PostUrl>http://club.tech.163.com/bbs/mobile_activ/612508157.html#</PostUrl>
+    <PostContent>我最喜欢1600万柔光自拍，照亮你的美 vivo X7的0.2秒急速指纹</PostContent>
   </ForumPost>
 </ForumPosts>
