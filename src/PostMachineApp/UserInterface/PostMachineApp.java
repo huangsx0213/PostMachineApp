@@ -1205,7 +1205,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.jCheckBox_EnableThread.setSelected(true);
         this.jTextField_ThreadID.setText(Integer.toString(TaskManagementDAO.getMaxId() + 1));
-        this.jTextField_FirefoxInstallationPath.setText("default");
+        //this.jTextField_FirefoxInstallationPath.setText("default");
         this.jTextField_Profile.setText("default");
         this.jComboBox_PostEntity.setSelectedItem("Vivo");
         this.jTextField_StartTime.setText("2016-01-01 00:00:00");
