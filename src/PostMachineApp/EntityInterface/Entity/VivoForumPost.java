@@ -3,6 +3,7 @@ package PostMachineApp.EntityInterface.Entity;
 import PostMachineApp.EntityInterface.ForumPost;
 import PostMachineApp.PostContentEntity;
 import PostMachineApp.XMLUtil.PostContentPoolDAO;
+import static PostMachineApp.XMLUtil.TextUtil.TextFile2ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -185,25 +186,41 @@ final public class VivoForumPost implements ForumPost {
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
     }
 
-    private String getTempPostContent() {
+    public String getTempPostContent() {
         if (this.PostContent.equals("[Pool]")) {
             while (true) {
-                temp = getRandomPostContent().getPoolContent();
+                temp = getRandomPostContentFromPool().getPoolContent();
                 if (!tempPostContent.equals(temp)) {
                     tempPostContent = temp;
                     break;
                 }
-                
+
+            }
+        } else if (this.PostContent.equals("[TextFile]")) {
+            while (true) {
+                String fileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\" + Profile + ".txt";
+                System.out.println(fileName);
+                temp = getRandomPostContentFromTextFile(TextFile2ArrayList(fileName));
+                if (!tempPostContent.equals(temp)) {
+                    tempPostContent = temp;
+                    break;
+                }
             }
         }
         return tempPostContent;
     }
 
-    public PostContentEntity getRandomPostContent() {
+    public PostContentEntity getRandomPostContentFromPool() {
         List<PostContentEntity> PostContentEntitys = new ArrayList<PostContentEntity>();
         PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
         int MyListIndex = (int) (Math.random() * (PostContentEntitys.size()));
         PostContentEntity value = PostContentEntitys.get(MyListIndex);
+        return value;
+    }
+
+    public String getRandomPostContentFromTextFile(List<String> TextLineList) {
+        int MyListIndex = (int) (Math.random() * (TextLineList.size()));
+        String value = TextLineList.get(MyListIndex);
         return value;
     }
 }
