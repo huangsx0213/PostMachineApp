@@ -195,39 +195,47 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jTextField_PostContent" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTextField_PostCount" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField_ThreadID" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField_StartTime" alignment="0" pref="127" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel_FixedWaitTime" max="32767" attributes="0"/>
-                                              <Component id="jCheckBox_EnableStopTime" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel_Profile" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTextField_Profile" max="32767" attributes="0"/>
-                                              <Component id="jTextField_FixedWaitTime" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jTextField_StopTime" alignment="1" pref="129" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="jTextField_PostUrl" alignment="0" max="32767" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="jTextField_PostCount" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jTextField_ThreadID" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jTextField_StartTime" alignment="0" pref="127" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="jLabel_FixedWaitTime" max="32767" attributes="0"/>
+                                                      <Component id="jCheckBox_EnableStopTime" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jLabel_Profile" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="jTextField_Profile" max="32767" attributes="0"/>
+                                                      <Component id="jTextField_FixedWaitTime" alignment="1" max="32767" attributes="0"/>
+                                                      <Component id="jTextField_StopTime" alignment="1" pref="129" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel_RefreshPostCount" min="-2" pref="138" max="-2" attributes="0"/>
-                                              <Component id="jLabel_PostEntity" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel_RandomWaitTime" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel_RefreshPostCount" min="-2" pref="138" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_PostEntity" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_RandomWaitTime" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabel_RestWaitTime" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jTextField_RandomWaitTime" max="32767" attributes="0"/>
                                               <Component id="jTextField_RefreshPostCount" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jComboBox_PostEntity" alignment="0" pref="134" max="32767" attributes="0"/>
+                                              <Component id="jComboBox_PostEntity" alignment="0" pref="156" max="32767" attributes="0"/>
+                                              <Component id="jTextField_RestWaitTime" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jTextField_PostContent" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField_PostUrl" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="TitleSeparator_TaskManagement" alignment="1" max="32767" attributes="0"/>
@@ -278,6 +286,8 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel_PostUrl" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField_PostUrl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_RestWaitTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_RestWaitTime" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -519,6 +529,16 @@
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Entity&gt; Entitys = new ArrayList&lt;Entity&gt;();&#xa;Entitys=EntityDAO.getAllEntity();&#xa;final int size=Entitys.size();&#xa;Entity[] EntityArray=(Entity[])Entitys.toArray(new Entity[size]);&#xa;String[] EntityName=new String[size];&#xa;for(int i=0;i&lt;size;i++)&#xa;{&#xa;EntityName[i]=EntityArray[i].getEntityName();&#xa;}"/>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextField_RestWaitTime">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value="Rest Wait Time,unit is Second"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel_RestWaitTime">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Rest Wait Time:"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
