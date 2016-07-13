@@ -28,6 +28,8 @@ public interface ForumPost {
 
     public Integer getRestWaitTime();
     
+    public Integer getRestWaitPostCount();
+    
     public String getPostUrl();
 
     public String getPostContent();

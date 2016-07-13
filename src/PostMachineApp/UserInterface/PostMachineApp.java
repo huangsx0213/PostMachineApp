@@ -1105,9 +1105,10 @@ public class PostMachineApp extends javax.swing.JFrame {
             FixedWaitTime = Integer.parseInt(this.jTextField_FixedWaitTime.getText());
             RandomWaitTime = Integer.parseInt(this.jTextField_RandomWaitTime.getText());
             RestWaitTime = Integer.parseInt(this.jTextField_RestWaitTime.getText());
+            RestWaitPostCount = Integer.parseInt(this.jTextField_RestWaitPostCount.getText());
             PostUrl = this.jTextField_PostUrl.getText();
             PostContent = this.jTextField_PostContent.getText();
-            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime, PostUrl, PostContent);
+            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount, PostUrl, PostContent);
             if (TaskManagementDAO.ThreadIDisExisting(ForumPost)) {
                 TaskManagementDAO.update(ForumPost);
             } else {
@@ -1243,6 +1244,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextField_FixedWaitTime.setText("11");
         this.jTextField_RandomWaitTime.setText("30");
         this.jTextField_RestWaitTime.setText("0");
+        this.jTextField_RestWaitPostCount.setText("0");
         this.jTextField_PostUrl.setText("");
         this.jTextField_PostContent.setText("");
     }//GEN-LAST:event_NewActionPerformed
@@ -1372,7 +1374,7 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void NewPoolContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPoolContentActionPerformed
         // TODO add your handling code here:
-         this.jCheckBox_EnablePoolContent.setSelected(true);
+        this.jCheckBox_EnablePoolContent.setSelected(true);
         this.jTextField_PoolContentID.setText(Integer.toString(PostContentPoolDAO.getMaxId() + 1));
         this.jComboBox_PoolFirefoxProfile.setSelectedItem("Vivo");
         this.jTextField_PoolContent.setText("");
@@ -1397,7 +1399,7 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void DeletePoolContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletePoolContentActionPerformed
         // TODO add your handling code here:
-           int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to delete?", "Delete", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
+        int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to delete?", "Delete", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1  
         if (YesOrNo == 0) {
             String id = this.jTextField_PoolContentID.getText();
             PostContentPoolDAO.deleteById(id);
@@ -1412,7 +1414,7 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void jTable_PostContentPoolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_PostContentPoolMouseClicked
         // TODO add your handling code here:
-                int selectRows = jTable_PostContentPool.getSelectedRows().length;// 取得用户所选行的行数
+        int selectRows = jTable_PostContentPool.getSelectedRows().length;// 取得用户所选行的行数
         DefaultTableModel tableModel = (DefaultTableModel) jTable_PostContentPool.getModel();
 
         if (selectRows == 1) {
@@ -1439,6 +1441,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextField_FixedWaitTime.setText(String.valueOf(ForumPost.getFixedWaitTime()));
         this.jTextField_RandomWaitTime.setText(String.valueOf(ForumPost.getRandomWaitTime()));
         this.jTextField_RestWaitTime.setText(String.valueOf(ForumPost.getRestWaitTime()));
+        this.jTextField_RestWaitPostCount.setText(String.valueOf(ForumPost.getRestWaitPostCount()));
         this.jTextField_PostUrl.setText(ForumPost.getPostUrl());
         this.jTextField_PostContent.setText(ForumPost.getPostContent());
     }
@@ -1601,6 +1604,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private Integer FixedWaitTime;
     private Integer RandomWaitTime;
     private Integer RestWaitTime;
+    private Integer RestWaitPostCount;
     private String PostUrl;
     private String PostContent;
     private String GlobalSettingID;

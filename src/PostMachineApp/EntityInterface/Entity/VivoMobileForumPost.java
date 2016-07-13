@@ -38,13 +38,14 @@ public class VivoMobileForumPost implements ForumPost {
     private final long PostCount;
     private final Integer FixedWaitTime;
     private final Integer RandomWaitTime;
-        private final Integer RestWaitTime;
+    private final Integer RestWaitTime;
+    private final Integer RestWaitPostCount;
     private final String PostUrl;
     private final String PostContent;
     private String tempPostContent;
     private String temp;
 
-    public VivoMobileForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime,Integer RestWaitTime, String PostUrl, String PostContent) {
+    public VivoMobileForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -58,6 +59,7 @@ public class VivoMobileForumPost implements ForumPost {
         this.FixedWaitTime = FixedWaitTime;
         this.RandomWaitTime = RandomWaitTime;
         this.RestWaitTime = RestWaitTime;
+        this.RestWaitPostCount = RestWaitPostCount;
         this.PostUrl = PostUrl;
         this.PostContent = PostContent;
     }
@@ -129,10 +131,17 @@ public class VivoMobileForumPost implements ForumPost {
     public Integer getRandomWaitTime() {
         return RandomWaitTime;
     }
+
     @Override
     public Integer getRestWaitTime() {
         return RestWaitTime;
     }
+
+    @Override
+    public Integer getRestWaitPostCount() {
+        return RestWaitPostCount;
+    }
+
     @Override
     public String getPostUrl() {
         return PostUrl;
@@ -145,16 +154,16 @@ public class VivoMobileForumPost implements ForumPost {
 
     @Override
     public void sentpost() {
-        
+
         tempPostContent = this.PostContent;
-        
+
         List<PostContentEntity> PostContentEntitys = new ArrayList<PostContentEntity>();
         PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
 
         String fileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\" + Profile + ".txt";
         List<String> FileTextLinesList = new ArrayList<>();
         FileTextLinesList = TextFile2ArrayList(fileName);
-        
+
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
 
@@ -173,9 +182,9 @@ public class VivoMobileForumPost implements ForumPost {
         driver.get(PostUrl);
 
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
-            
+
             getTempPostContent(PostContentEntitys, FileTextLinesList);
-            
+
             WebElement element = driver.findElement(By.id("fastpostmessage"));
 
             element.clear();

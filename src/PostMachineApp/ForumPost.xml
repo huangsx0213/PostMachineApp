@@ -13,7 +13,8 @@
     <PostCount>1000</PostCount>
     <FixedWaitTime>2</FixedWaitTime>
     <RandomWaitTime>2</RandomWaitTime>
-    <RestWaitTime>1</RestWaitTime>
+    <RestWaitTime>60</RestWaitTime>
+    <RestWaitPostCount>20</RestWaitPostCount>
     <PostUrl>http://bbs.vivo.com.cn/thread-2274151-9999-1.html</PostUrl>
     <PostContent>[Pool]</PostContent>
   </ForumPost>
@@ -30,8 +31,9 @@
     <FixedWaitTime>2</FixedWaitTime>
     <RandomWaitTime>2</RandomWaitTime>
     <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
     <PostUrl>http://bbs.oppo.cn/thread-11434251-1-1.html</PostUrl>
-    <PostContent>[Pool]1</PostContent>
+    <PostContent>[Pool]</PostContent>
   </ForumPost>
   <ForumPost ThreadID="3">
     <EnableThread>true</EnableThread>
@@ -46,6 +48,7 @@
     <FixedWaitTime>60</FixedWaitTime>
     <RandomWaitTime>600</RandomWaitTime>
     <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
     <PostUrl>http://www.hdpfans.com/thread-689146-1-1.html</PostUrl>
     <PostContent>祝青柠电影业务蒸蒸日上，祝高清范红红火火，帅哥美女越来越多！</PostContent>
   </ForumPost>
@@ -62,6 +65,7 @@
     <FixedWaitTime>10</FixedWaitTime>
     <RandomWaitTime>30</RandomWaitTime>
     <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
     <PostUrl>http://www.znds.com/tv-399113-5729-1.html</PostUrl>
     <PostContent>我是智能电视网的花开若相惜。，我最喜欢酷比魔方可以当笔记本用</PostContent>
   </ForumPost>
@@ -78,6 +82,7 @@
     <FixedWaitTime>20</FixedWaitTime>
     <RandomWaitTime>60</RandomWaitTime>
     <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
     <PostUrl>http://club.huawei.com/thread-9202889-1-1.html</PostUrl>
     <PostContent>#一起唤醒∞#+预祝V8发布会圆满成功,荣耀手机越做越好！</PostContent>
   </ForumPost>
@@ -94,6 +99,7 @@
     <FixedWaitTime>120</FixedWaitTime>
     <RandomWaitTime>120</RandomWaitTime>
     <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
     <PostUrl>http://bbs.xgimi.cn/thread-64916-1-1.html</PostUrl>
     <PostContent>wokesmart智能冰箱宝，智能生活，尽在掌握！炫酷的智能生活就要从wokesmart智能冰箱宝开始！</PostContent>
   </ForumPost>
@@ -110,6 +116,7 @@
     <FixedWaitTime>20</FixedWaitTime>
     <RandomWaitTime>120</RandomWaitTime>
     <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
     <PostUrl>http://bbs.yunos.com/read/263333298</PostUrl>
     <PostContent>支持yunos成为第三大手机操作系统，为国产争气，为国人争光！</PostContent>
   </ForumPost>
@@ -126,6 +133,7 @@
     <FixedWaitTime>10</FixedWaitTime>
     <RandomWaitTime>10</RandomWaitTime>
     <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
     <PostUrl>http://bbs.uc.cn/thread-5445104-1-1.html</PostUrl>
     <PostContent>[img=600,1066]http://bbs.uc.cn/data/attachment/forum/201605/11/072032oi171vvfv5wwwsz8.png[/img]</PostContent>
   </ForumPost>
@@ -142,6 +150,7 @@
     <FixedWaitTime>60</FixedWaitTime>
     <RandomWaitTime>60</RandomWaitTime>
     <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
     <PostUrl>http://shequ.mall.360.com/thread-6222803-1-1.html</PostUrl>
     <PostContent>实智插排，传统插排的杀手。</PostContent>
   </ForumPost>
@@ -158,6 +167,7 @@
     <FixedWaitTime>11</FixedWaitTime>
     <RandomWaitTime>30</RandomWaitTime>
     <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
     <PostUrl>http://club.tech.163.com/bbs/mobile_activ/612508157.html#</PostUrl>
     <PostContent>我最喜欢1600万柔光自拍，照亮你的美 vivo X7的0.2秒急速指纹</PostContent>
   </ForumPost>
