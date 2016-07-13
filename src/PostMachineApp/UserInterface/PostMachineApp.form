@@ -232,8 +232,14 @@
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jTextField_RandomWaitTime" max="32767" attributes="0"/>
                                               <Component id="jTextField_RefreshPostCount" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jComboBox_PostEntity" alignment="0" pref="156" max="32767" attributes="0"/>
-                                              <Component id="jTextField_RestWaitTime" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jComboBox_PostEntity" alignment="0" pref="134" max="32767" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jTextField_RestWaitTime" max="32767" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jLabel_RestWaitPostCount" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jTextField_RestWaitPostCount" min="-2" pref="46" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -288,6 +294,8 @@
                               <Component id="jTextField_PostUrl" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField_RestWaitTime" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel_RestWaitTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_RestWaitPostCount" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_RestWaitPostCount" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -538,6 +546,16 @@
                 <Component class="javax.swing.JLabel" name="jLabel_RestWaitTime">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Rest Wait Time:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextField_RestWaitPostCount">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value="Rest Wait Post Count"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel_RestWaitPostCount">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="/"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -837,7 +855,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel_EntiySettingTop" max="32767" attributes="0"/>
-                      <Component id="jPanel_EntiySettingBottom" alignment="0" pref="688" max="32767" attributes="0"/>
+                      <Component id="jPanel_EntiySettingBottom" alignment="0" pref="672" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1098,7 +1116,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel_PostContentPoolTop" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jPanel_PostContentPoolBottom" alignment="0" pref="688" max="32767" attributes="0"/>
+                      <Component id="jPanel_PostContentPoolBottom" alignment="0" pref="672" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1295,7 +1313,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane_PostContentPool" alignment="1" pref="686" max="32767" attributes="0"/>
+                          <Component id="jScrollPane_PostContentPool" alignment="1" pref="670" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">

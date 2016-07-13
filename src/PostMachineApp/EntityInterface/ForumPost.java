@@ -26,6 +26,8 @@ public interface ForumPost {
 
     public Integer getRandomWaitTime();
 
+    public Integer getRestWaitTime();
+    
     public String getPostUrl();
 
     public String getPostContent();

@@ -30,6 +30,7 @@ public class TaskManagementDAO {
     private static long PostCount;
     private static Integer FixedWaitTime;
     private static Integer RandomWaitTime;
+    private static Integer RestWaitTime;
     private static String PostUrl;
     private static String PostContent;
 
@@ -59,9 +60,10 @@ public class TaskManagementDAO {
             PostCount = Long.parseLong(postElement.element("PostCount").getTextTrim());
             FixedWaitTime = Integer.parseInt(postElement.element("FixedWaitTime").getText());
             RandomWaitTime = Integer.parseInt(postElement.element("RandomWaitTime").getText());
+            RestWaitTime = Integer.parseInt(postElement.element("RestWaitTime").getText());
             PostUrl = postElement.element("PostUrl").getTextTrim();
             PostContent = postElement.element("PostContent").getTextTrim();
-           ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
+           ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime, PostUrl, PostContent);
 
             ForumPosts.add(ForumPost);
         }
@@ -88,9 +90,10 @@ public class TaskManagementDAO {
             PostCount = Long.parseLong(postElement.element("PostCount").getTextTrim());
             FixedWaitTime = Integer.parseInt(postElement.element("FixedWaitTime").getText());
             RandomWaitTime = Integer.parseInt(postElement.element("RandomWaitTime").getText());
+            RestWaitTime = Integer.parseInt(postElement.element("RestWaitTime").getText());
             PostUrl = postElement.element("PostUrl").getTextTrim();
             PostContent = postElement.element("PostContent").getTextTrim();
-            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
+            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime, PostUrl, PostContent);
 
             ForumPosts.add(ForumPost);}
         }
@@ -116,9 +119,10 @@ public class TaskManagementDAO {
                 PostCount = Long.parseLong(postElement.element("PostCount").getTextTrim());
                 FixedWaitTime = Integer.parseInt(postElement.element("FixedWaitTime").getText());
                 RandomWaitTime = Integer.parseInt(postElement.element("RandomWaitTime").getText());
+                RestWaitTime = Integer.parseInt(postElement.element("RestWaitTime").getText());
                 PostUrl = postElement.element("PostUrl").getTextTrim();
                 PostContent = postElement.element("PostContent").getTextTrim();
-                ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, PostUrl, PostContent);
+                ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime, PostUrl, PostContent);
             }
         }
         return ForumPost;
@@ -147,6 +151,7 @@ public class TaskManagementDAO {
         Element PostCountElement = postElement.addElement("PostCount");
         Element FixedWaitTimeElement = postElement.addElement("FixedWaitTime");
         Element RandomWaitTimeElement = postElement.addElement("RandomWaitTime");
+        Element RestWaitTimeElement = postElement.addElement("RestWaitTime");
         Element PostUrlElement = postElement.addElement("PostUrl");
         Element PostContentElement = postElement.addElement("PostContent");
 
@@ -161,6 +166,7 @@ public class TaskManagementDAO {
         PostCountElement.setText(Long.toString(ForumPost.getPostCount()));
         FixedWaitTimeElement.setText(Integer.toString(ForumPost.getFixedWaitTime()));
         RandomWaitTimeElement.setText(Integer.toString(ForumPost.getRandomWaitTime()));
+        RestWaitTimeElement.setText(Integer.toString(ForumPost.getRestWaitTime()));
         PostUrlElement.setText(ForumPost.getPostUrl());
         PostContentElement.setText(ForumPost.getPostContent());
 
@@ -233,6 +239,9 @@ public class TaskManagementDAO {
                 }
                 if (!postElement.element("RandomWaitTime").getText().equals(Integer.toString(ForumPost.getRandomWaitTime()))) {
                     postElement.element("RandomWaitTime").setText(Integer.toString(ForumPost.getRandomWaitTime()));
+                }
+                if (!postElement.element("RestWaitTime").getText().equals(Integer.toString(ForumPost.getRestWaitTime()))) {
+                    postElement.element("RestWaitTime").setText(Integer.toString(ForumPost.getRestWaitTime()));
                 }
                 if (!postElement.element("PostUrl").getText().equals(ForumPost.getPostUrl())) {
                     postElement.element("PostUrl").setText(ForumPost.getPostUrl());

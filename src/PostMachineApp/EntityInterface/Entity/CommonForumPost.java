@@ -30,12 +30,13 @@ final public class CommonForumPost implements ForumPost {
     private final long PostCount;
     private final Integer FixedWaitTime;
     private final Integer RandomWaitTime;
+    private final Integer RestWaitTime;
     private final String PostUrl;
     private final String PostContent;
     private String tempPostContent;
     private String temp;
 
-    public CommonForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
+    public CommonForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -48,6 +49,7 @@ final public class CommonForumPost implements ForumPost {
         this.PostCount = PostCount;
         this.FixedWaitTime = FixedWaitTime;
         this.RandomWaitTime = RandomWaitTime;
+        this.RestWaitTime = RestWaitTime;
         this.PostUrl = PostUrl;
         this.PostContent = PostContent;
     }
@@ -125,6 +127,11 @@ final public class CommonForumPost implements ForumPost {
         return RandomWaitTime;
     }
 
+        @Override
+    public Integer getRestWaitTime() {
+        return RestWaitTime;
+    }
+    
     @Override
     public String getPostUrl() {
         return PostUrl;
