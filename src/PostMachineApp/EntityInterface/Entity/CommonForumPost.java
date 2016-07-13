@@ -4,15 +4,10 @@ import PostMachineApp.EntityInterface.ForumPost;
 import PostMachineApp.PostContentEntity;
 import PostMachineApp.XMLUtil.PostContentPoolDAO;
 import static PostMachineApp.XMLUtil.TextUtil.TextFile2ArrayList;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -144,6 +139,14 @@ final public class CommonForumPost implements ForumPost {
     public void sentpost() {
 
         tempPostContent = this.PostContent;
+
+        List<PostContentEntity> PostContentEntitys = new ArrayList<PostContentEntity>();
+        PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
+
+        String fileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\" + Profile + ".txt";
+        List<String> FileTextLinesList = new ArrayList<>();
+        FileTextLinesList = TextFile2ArrayList(fileName);
+
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
 
@@ -162,7 +165,7 @@ final public class CommonForumPost implements ForumPost {
 
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
 
-            getTempPostContent();
+            getTempPostContent(PostContentEntitys, FileTextLinesList);
 
             WebElement element = driver.findElement(By.id("fastpostmessage"));
 
@@ -188,10 +191,10 @@ final public class CommonForumPost implements ForumPost {
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
     }
 
-    public String getTempPostContent() {
+    public String getTempPostContent(List<PostContentEntity> PostContentEntitys, List<String> FileTextLinesList) {
         if (this.PostContent.equals("[Pool]")) {
             while (true) {
-                temp = getRandomPostContentFromPool().getPoolContent();
+                temp = getRandomPostContentFromPool(PostContentEntitys).getPoolContent();
                 if (!tempPostContent.equals(temp)) {
                     tempPostContent = temp;
                     break;
@@ -200,9 +203,7 @@ final public class CommonForumPost implements ForumPost {
             }
         } else if (this.PostContent.equals("[TextFile]")) {
             while (true) {
-                String fileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\" + Profile + ".txt";
-                System.out.println(fileName);
-                temp = getRandomPostContentFromTextFile(TextFile2ArrayList(fileName));
+                temp = getRandomPostContentFromTextFile(FileTextLinesList);
                 if (!tempPostContent.equals(temp)) {
                     tempPostContent = temp;
                     break;
@@ -212,17 +213,15 @@ final public class CommonForumPost implements ForumPost {
         return tempPostContent;
     }
 
-    public PostContentEntity getRandomPostContentFromPool() {
-        List<PostContentEntity> PostContentEntitys = new ArrayList<PostContentEntity>();
-        PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
+    public PostContentEntity getRandomPostContentFromPool(List<PostContentEntity> PostContentEntitys) {
         int MyListIndex = (int) (Math.random() * (PostContentEntitys.size()));
         PostContentEntity value = PostContentEntitys.get(MyListIndex);
         return value;
     }
 
-    public String getRandomPostContentFromTextFile(List<String> TextLineList) {
-        int MyListIndex = (int) (Math.random() * (TextLineList.size()));
-        String value = TextLineList.get(MyListIndex);
+    public String getRandomPostContentFromTextFile(List<String> FileTextLinesList) {
+        int MyListIndex = (int) (Math.random() * (FileTextLinesList.size()));
+        String value = FileTextLinesList.get(MyListIndex);
         return value;
     }
 

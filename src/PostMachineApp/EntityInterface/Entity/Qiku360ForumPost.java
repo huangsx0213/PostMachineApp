@@ -1,8 +1,13 @@
 package PostMachineApp.EntityInterface.Entity;
 
 import PostMachineApp.EntityInterface.ForumPost;
+import PostMachineApp.PostContentEntity;
+import PostMachineApp.XMLUtil.PostContentPoolDAO;
+import static PostMachineApp.XMLUtil.TextUtil.TextFile2ArrayList;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +32,8 @@ final public class Qiku360ForumPost implements ForumPost {
     private final Integer RandomWaitTime;
     private final String PostUrl;
     private final String PostContent;
+    private String tempPostContent;
+    private String temp;
 
     public Qiku360ForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
@@ -125,6 +132,16 @@ final public class Qiku360ForumPost implements ForumPost {
 
     @Override
     public void sentpost() {
+        
+        tempPostContent = this.PostContent;
+        
+        List<PostContentEntity> PostContentEntitys = new ArrayList<PostContentEntity>();
+        PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
+
+        String fileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\" + Profile + ".txt";
+        List<String> FileTextLinesList = new ArrayList<>();
+        FileTextLinesList = TextFile2ArrayList(fileName);
+        
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
 
@@ -142,18 +159,20 @@ final public class Qiku360ForumPost implements ForumPost {
         driver.get(PostUrl);
         driver.navigate().refresh();
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
-
+            
+            getTempPostContent(PostContentEntitys, FileTextLinesList);
+            
             WebElement element = driver.findElement(By.id("fastpostmessage"));
 
             element.clear();
             if (i % 2 == 0) {
-                element.sendKeys(PostContent);
+                element.sendKeys(tempPostContent);
             } else {
-                element.sendKeys(PostContent + " ");
+                element.sendKeys(tempPostContent + " ");
             }
             element.submit();
 
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + PostContent);
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
             try {
                 Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
             } catch (Exception ex) {
@@ -165,5 +184,39 @@ final public class Qiku360ForumPost implements ForumPost {
         }
         driver.quit();
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
+    }
+
+    public String getTempPostContent(List<PostContentEntity> PostContentEntitys, List<String> FileTextLinesList) {
+        if (this.PostContent.equals("[Pool]")) {
+            while (true) {
+                temp = getRandomPostContentFromPool(PostContentEntitys).getPoolContent();
+                if (!tempPostContent.equals(temp)) {
+                    tempPostContent = temp;
+                    break;
+                }
+
+            }
+        } else if (this.PostContent.equals("[TextFile]")) {
+            while (true) {
+                temp = getRandomPostContentFromTextFile(FileTextLinesList);
+                if (!tempPostContent.equals(temp)) {
+                    tempPostContent = temp;
+                    break;
+                }
+            }
+        }
+        return tempPostContent;
+    }
+
+    public PostContentEntity getRandomPostContentFromPool(List<PostContentEntity> PostContentEntitys) {
+        int MyListIndex = (int) (Math.random() * (PostContentEntitys.size()));
+        PostContentEntity value = PostContentEntitys.get(MyListIndex);
+        return value;
+    }
+
+    public String getRandomPostContentFromTextFile(List<String> FileTextLinesList) {
+        int MyListIndex = (int) (Math.random() * (FileTextLinesList.size()));
+        String value = FileTextLinesList.get(MyListIndex);
+        return value;
     }
 }
