@@ -201,17 +201,18 @@ final public class VivoForumPost implements ForumPost {
             if (i % RefreshPostCount == 0) {
                 driver.navigate().refresh();
             }
-            if (RestWaitPostCount>0 && RestWaitTime>0 && i % RestWaitPostCount == 0) {
-                WaitFixedTime(RestWaitTime);
+            if (i>1 && RestWaitPostCount>0 && RestWaitTime>0 && i % RestWaitPostCount == 0) {
+                RestWaitTime(RestWaitTime);
+                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] takes a rest.");
             }
 
         }
         driver.quit();
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
     }
-    private void WaitFixedTime(Integer WaitTime) {
+    private void RestWaitTime(Integer WaitTime) {
         try {
-            Thread.sleep(WaitTime*1000);
+            Thread.sleep((int) (WaitTime*(1-0.2) + Math.random() * (WaitTime*(1+0.2) - WaitTime*(1-0.2) + 1))*1000);
         } catch (Exception ex) {
         }
     }
