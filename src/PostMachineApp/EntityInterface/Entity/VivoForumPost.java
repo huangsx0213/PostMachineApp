@@ -202,8 +202,7 @@ final public class VivoForumPost implements ForumPost {
                 driver.navigate().refresh();
             }
             if (i > 1 && RestWaitPostCount > 0 && RestWaitTime > 0 && i % RestWaitPostCount == 0) {
-                int AdjustedWaitTime=RestWaitTime(RestWaitTime);
-                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] takes a rest "+AdjustedWaitTime+"s.");
+                RestWaitTime(DateFormat,RestWaitTime);
             }
 
         }
@@ -211,14 +210,14 @@ final public class VivoForumPost implements ForumPost {
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
     }
 
-    private int RestWaitTime(Integer WaitTime) {
+    private void RestWaitTime(SimpleDateFormat DateFormat,Integer WaitTime) {
         Integer AdjustedWaitTime;
         AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
+        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest "+AdjustedWaitTime+"s.");
         try {
             Thread.sleep(AdjustedWaitTime);
         } catch (Exception ex) {
         }
-        return AdjustedWaitTime / 1000;
     }
 
     public String getTempPostContent(List<PostContentEntity> PostContentEntitys, List<String> FileTextLinesList) {
