@@ -213,7 +213,7 @@ final public class VivoForumPost implements ForumPost {
     private void RestWaitTime(SimpleDateFormat DateFormat,Integer WaitTime) {
         Integer AdjustedWaitTime;
         AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest "+AdjustedWaitTime+"s.");
+        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest "+AdjustedWaitTime/1000+"s.");
         try {
             Thread.sleep(AdjustedWaitTime);
         } catch (Exception ex) {
