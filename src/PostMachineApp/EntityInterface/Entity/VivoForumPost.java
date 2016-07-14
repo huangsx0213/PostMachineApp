@@ -201,12 +201,20 @@ final public class VivoForumPost implements ForumPost {
             if (i % RefreshPostCount == 0) {
                 driver.navigate().refresh();
             }
+            if (RestWaitPostCount>0 && RestWaitTime>0 && i % RestWaitPostCount == 0) {
+                WaitFixedTime(RestWaitTime);
+            }
 
         }
         driver.quit();
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
     }
-
+    private void WaitFixedTime(Integer WaitTime) {
+        try {
+            Thread.sleep(WaitTime*1000);
+        } catch (Exception ex) {
+        }
+    }
     public String getTempPostContent(List<PostContentEntity> PostContentEntitys, List<String> FileTextLinesList) {
         if (this.PostContent.equals("[Pool]")) {
             while (true) {
