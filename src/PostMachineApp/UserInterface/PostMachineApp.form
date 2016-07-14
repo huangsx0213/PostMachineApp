@@ -184,14 +184,12 @@
                                   <Component id="Run" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jLabel_PostNumber" max="32767" attributes="0"/>
-                                          <Component id="jLabel_PostContent" max="32767" attributes="0"/>
-                                          <Component id="jLabel_StartTime" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox_EnableThread" alignment="1" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="jLabel_PostUrl" min="-2" pref="79" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jLabel_PostNumber" max="32767" attributes="0"/>
+                                      <Component id="jLabel_PostContent" max="32767" attributes="0"/>
+                                      <Component id="jLabel_StartTime" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jCheckBox_EnableThread" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel_PostUrl" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -206,9 +204,9 @@
                                                   </Group>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="jLabel_FixedWaitTime" max="32767" attributes="0"/>
                                                       <Component id="jCheckBox_EnableStopTime" alignment="0" max="32767" attributes="0"/>
                                                       <Component id="jLabel_Profile" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jLabel_FixedWaitTime" alignment="0" max="32767" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -231,7 +229,7 @@
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jTextField_RandomWaitTime" max="32767" attributes="0"/>
                                               <Component id="jTextField_RefreshPostCount" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jComboBox_PostEntity" alignment="0" pref="134" max="32767" attributes="0"/>
+                                              <Component id="jComboBox_PostEntity" alignment="0" pref="141" max="32767" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jTextField_RestWaitTime" max="32767" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
@@ -332,7 +330,8 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox_EnableThread">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Thread ID:"/>
+                    <Property name="text" type="java.lang.String" value="Task ID:"/>
+                    <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox_EnableThreadActionPerformed"/>
@@ -349,6 +348,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel_Profile">
                   <Properties>
+                    <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="text" type="java.lang.String" value="Firefox Profile:"/>
                   </Properties>
                 </Component>
@@ -377,6 +377,7 @@
                 <Component class="javax.swing.JCheckBox" name="jCheckBox_EnableStopTime">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="StopTime:"/>
+                    <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_StopTime">
@@ -516,6 +517,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel_PostEntity">
                   <Properties>
+                    <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="text" type="java.lang.String" value="PostEntity:"/>
                   </Properties>
                 </Component>
@@ -537,6 +539,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel_RestWaitTime">
                   <Properties>
+                    <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="text" type="java.lang.String" value="Rest Wait Time:"/>
                   </Properties>
                 </Component>
@@ -610,7 +613,7 @@
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="8" rowCount="10">
                             <Column editable="true" title="Enable" type="java.lang.Object"/>
-                            <Column editable="true" title="ID" type="java.lang.Object"/>
+                            <Column editable="true" title="TaskID" type="java.lang.Object"/>
                             <Column editable="true" title="ProfileName" type="java.lang.Object"/>
                             <Column editable="true" title="PostEntity" type="java.lang.Object"/>
                             <Column editable="true" title="PostCount" type="java.lang.Object"/>

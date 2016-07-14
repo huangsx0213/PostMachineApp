@@ -205,7 +205,8 @@ public class PostMachineApp extends javax.swing.JFrame {
         Title_TaskManagement.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title_TaskManagement.setText("Task Management");
 
-        jCheckBox_EnableThread.setText("Thread ID:");
+        jCheckBox_EnableThread.setText("Task ID:");
+        jCheckBox_EnableThread.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jCheckBox_EnableThread.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox_EnableThreadActionPerformed(evt);
@@ -220,6 +221,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             }
         });
 
+        jLabel_Profile.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_Profile.setText("Firefox Profile:");
 
         jTextField_Profile.setText("default");
@@ -238,6 +240,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextField_StartTime.setToolTipText("Task Start Time");
 
         jCheckBox_EnableStopTime.setText("StopTime:");
+        jCheckBox_EnableStopTime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         jTextField_StopTime.setColumns(19);
         jTextField_StopTime.setText("2018-12-31 23:59:59");
@@ -345,6 +348,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             }
         });
 
+        jLabel_PostEntity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_PostEntity.setText("PostEntity:");
 
         List<Entity> Entitys = new ArrayList<Entity>();
@@ -360,6 +364,7 @@ public class PostMachineApp extends javax.swing.JFrame {
 
         jTextField_RestWaitTime.setToolTipText("Rest Wait Time,unit is Second");
 
+        jLabel_RestWaitTime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_RestWaitTime.setText("Rest Wait Time:");
 
         jTextField_RestWaitPostCount.setToolTipText("Rest Wait Post Count");
@@ -389,13 +394,12 @@ public class PostMachineApp extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Run))
                     .addGroup(jPanel_TopLayout.createSequentialGroup()
-                        .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel_PostNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel_PostContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel_StartTime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCheckBox_EnableThread, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel_PostUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel_PostNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel_PostContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel_StartTime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBox_EnableThread, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel_PostUrl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel_TopLayout.createSequentialGroup()
@@ -408,9 +412,9 @@ public class PostMachineApp extends javax.swing.JFrame {
                                             .addComponent(jTextField_StartTime, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel_FixedWaitTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jCheckBox_EnableStopTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel_Profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(jLabel_Profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel_FixedWaitTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jTextField_Profile)
@@ -427,7 +431,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jTextField_RandomWaitTime)
                                     .addComponent(jTextField_RefreshPostCount, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox_PostEntity, javax.swing.GroupLayout.Alignment.LEADING, 0, 134, Short.MAX_VALUE)
+                                    .addComponent(jComboBox_PostEntity, javax.swing.GroupLayout.Alignment.LEADING, 0, 141, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_TopLayout.createSequentialGroup()
                                         .addComponent(jTextField_RestWaitTime)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -513,7 +517,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Enable", "ID", "ProfileName", "PostEntity", "PostCount", "FixedWait", "RandomWait", "PostContent"
+                "Enable", "TaskID", "ProfileName", "PostEntity", "PostCount", "FixedWait", "RandomWait", "PostContent"
             }
         ));
         jTable.addMouseListener(new java.awt.event.MouseAdapter() {
