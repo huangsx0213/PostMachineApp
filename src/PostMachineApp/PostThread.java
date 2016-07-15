@@ -15,12 +15,12 @@ public class PostThread implements Runnable {
         while (true) {
             if (System.currentTimeMillis() > Post.getStartTime()) {
                 Post.sentpost();
+                break;
             }
             try {
                 Thread.sleep(60000);
             } catch (Exception ex) {
-            }
-            break;
+            }          
         }
     }
 }
