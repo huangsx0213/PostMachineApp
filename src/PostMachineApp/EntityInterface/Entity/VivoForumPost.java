@@ -157,9 +157,9 @@ final public class VivoForumPost implements ForumPost {
         List<PostContentEntity> PostContentEntitys = new ArrayList<PostContentEntity>();
         PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
 
-        String fileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\" + Profile + ".txt";
+        String txtFileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\" + ThreadID + ".txt";
         List<String> FileTextLinesList = new ArrayList<>();
-        FileTextLinesList = TextFile2ArrayList(fileName);
+        FileTextLinesList = TextFile2ArrayList(txtFileName);
 
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
