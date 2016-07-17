@@ -1,21 +1,9 @@
 package PostMachineApp.EntityInterface.Entity;
 
-import PostMachineApp.EntityInterface.ForumPost;
-import PostMachineApp.PostContentEntity;
-import PostMachineApp.XMLUtil.PostContentPoolDAO;
-import static PostMachineApp.XMLUtil.TextUtil.TextFile2ArrayList;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Random;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
 
 final public class WangYiForumPost extends BasicForumPost {
 
