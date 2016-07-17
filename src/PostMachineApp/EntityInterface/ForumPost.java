@@ -36,6 +36,6 @@ public interface ForumPost {
 
     public void sendPost();
     
-    public void sendPostQuit();
+    public void afterSendPost();
     
 }

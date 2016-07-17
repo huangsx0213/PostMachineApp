@@ -38,6 +38,7 @@ public class BasicForumPost implements ForumPost {
     public SimpleDateFormat DateFormat;
     public WebDriver driver;
 
+    //构造函数
     public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
@@ -57,11 +58,6 @@ public class BasicForumPost implements ForumPost {
         this.PostContent = PostContent;
     }
 
-    /**
-     *
-     * @param PofileName
-     * @return
-     */
     @Override
     public Boolean getEnableThread() {
         return EnableThread;
@@ -72,10 +68,6 @@ public class BasicForumPost implements ForumPost {
         return ThreadID;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String getFirefoxPath() {
         return FirefoxPath;
@@ -86,10 +78,6 @@ public class BasicForumPost implements ForumPost {
         return Profile;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String getPostEntity() {
         return PostEntity;
@@ -150,6 +138,35 @@ public class BasicForumPost implements ForumPost {
         return PostContent;
     }
 
+    //按指定的firefox profile 获取Webdriver 
+    public WebDriver getWebDriverWithSpecifiedProfile() {
+        // specified firefox's installing path.
+        if (!this.FirefoxPath.equals("default")) {
+            System.setProperty("webdriver.firefox.bin", FirefoxPath);
+        }
+        ProfilesIni allProfiles = new ProfilesIni();
+        FirefoxProfile FirefoxProfile = allProfiles.getProfile(Profile);
+        driver = new FirefoxDriver(FirefoxProfile);
+        return driver;
+    }
+
+    //从文本获取发贴内容
+    public List<String> getFileTextLinesList() {
+        String txtFileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\" + ThreadID + ".txt";
+        List<String> FileTextLinesList;
+        FileTextLinesList = TextFile2ArrayList(txtFileName);
+        return FileTextLinesList;
+    }
+
+    //从Pool获取发贴内容
+    public List<PostContentEntity> getPostContentEntitys() {
+        List<PostContentEntity> PostContentEntitys;
+        //PostContentEntitys = new ArrayList<>();
+        PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
+        return PostContentEntitys;
+    }
+
+    //发贴入口
     @Override
     public void sendPost() {
 
@@ -165,15 +182,21 @@ public class BasicForumPost implements ForumPost {
 
         driver = getWebDriverWithSpecifiedProfile();
 
-        openUrl(driver);
+        beforeSendPost(driver);
 
         sendPostIteration(PostContentEntitys, FileTextLinesList, driver);
 
-        sendPostQuit();
+        afterSendPost();
 
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
     }
 
+    //发贴前置操作
+    public void beforeSendPost(WebDriver driver) {
+        driver.get(PostUrl);
+    }
+
+    //发贴循环操作
     public void sendPostIteration(List<PostContentEntity> PostContentEntitys, List<String> FileTextLinesList, WebDriver driver) {
 
         for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
@@ -185,78 +208,14 @@ public class BasicForumPost implements ForumPost {
             sendPostWait(i, driver);
         }
     }
+
+    //发贴后置操作
     @Override
-    public void sendPostQuit() {
+    public void afterSendPost() {
         driver.quit();
     }
 
-    public void sendPostSteps(WebDriver driver, int i) {
-        WebElement element = driver.findElement(By.id("fastpostmessage"));
-
-        element.clear();
-        if (i % 2 == 0) {
-            element.sendKeys(tempPostContent);
-        } else {
-            element.sendKeys(tempPostContent + " ");
-        }
-        element.submit();
-        //WebElement fastpostsubmit = driver.findElement(By.id("fastpostsubmit"));
-        //fastpostsubmit.click();
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
-    }
-
-    public void sendPostWait(int i, WebDriver driver) {
-        try {
-            Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
-        } catch (Exception ex) {
-        }
-        if (i % RefreshPostCount == 0) {
-            driver.navigate().refresh();
-        }
-        if (i > 1 && RestWaitPostCount > 0 && RestWaitTime > 0 && i % RestWaitPostCount == 0) {
-            RestWaitTime(RestWaitTime);
-        }
-    }
-
-    public void openUrl(WebDriver driver) {
-        driver.get(PostUrl);
-    }
-
-    public List<String> getFileTextLinesList() {
-        String txtFileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\" + ThreadID + ".txt";
-        List<String> FileTextLinesList;
-        FileTextLinesList = TextFile2ArrayList(txtFileName);
-        return FileTextLinesList;
-    }
-
-    public List<PostContentEntity> getPostContentEntitys() {
-        List<PostContentEntity> PostContentEntitys;
-        //PostContentEntitys = new ArrayList<>();
-        PostContentEntitys = PostContentPoolDAO.getPostContentByPofileName(this.Profile);
-        return PostContentEntitys;
-    }
-
-    public WebDriver getWebDriverWithSpecifiedProfile() {
-        // specified firefox's installing path.
-        if (!this.FirefoxPath.equals("default")) {
-            System.setProperty("webdriver.firefox.bin", FirefoxPath);
-        }
-        ProfilesIni allProfiles = new ProfilesIni();
-        FirefoxProfile FirefoxProfile = allProfiles.getProfile(Profile);
-        driver = new FirefoxDriver(FirefoxProfile);
-        return driver;
-    }
-
-    public void RestWaitTime(Integer WaitTime) {
-        Integer AdjustedWaitTime;
-        AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
-        try {
-            Thread.sleep(AdjustedWaitTime);
-        } catch (Exception ex) {
-        }
-    }
-
+    //获取发贴的随机内容
     public String getTempPostContent(List<PostContentEntity> PostContentEntitys, List<String> FileTextLinesList) {
         if (this.PostContent.equals("[Pool]")) {
             while (true) {
@@ -279,18 +238,63 @@ public class BasicForumPost implements ForumPost {
         return tempPostContent;
     }
 
+    //从Pool获取随机的发贴内容
     public PostContentEntity getRandomPostContentFromPool(List<PostContentEntity> PostContentEntitys) {
         int MyListIndex = (int) (Math.random() * (PostContentEntitys.size()));
         PostContentEntity value = PostContentEntitys.get(MyListIndex);
         return value;
     }
 
+    //从TextFile获取随机的发贴内容
     public String getRandomPostContentFromTextFile(List<String> FileTextLinesList) {
         int MyListIndex = (int) (Math.random() * (FileTextLinesList.size()));
         String value = FileTextLinesList.get(MyListIndex);
         return value;
     }
-        public void WaitFixedTime(long time) {
+
+    //发贴步骤
+    public void sendPostSteps(WebDriver driver, int i) {
+        WebElement element = driver.findElement(By.id("fastpostmessage"));
+
+        element.clear();
+        if (i % 2 == 0) {
+            element.sendKeys(tempPostContent);
+        } else {
+            element.sendKeys(tempPostContent + " ");
+        }
+        element.submit();
+        //WebElement fastpostsubmit = driver.findElement(By.id("fastpostsubmit"));
+        //fastpostsubmit.click();
+        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
+    }
+
+    //发贴等待时间
+    public void sendPostWait(int i, WebDriver driver) {
+        try {
+            Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
+        } catch (Exception ex) {
+        }
+        if (i % RefreshPostCount == 0) {
+            driver.navigate().refresh();
+        }
+        if (i > 1 && RestWaitPostCount > 0 && RestWaitTime > 0 && i % RestWaitPostCount == 0) {
+            RestWaitTime(RestWaitTime);
+        }
+    }
+
+    //休息等待时间
+    public void RestWaitTime(Integer WaitTime) {
+        Integer AdjustedWaitTime;
+        AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
+        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
+        try {
+            Thread.sleep(AdjustedWaitTime);
+        } catch (Exception ex) {
+        }
+    }
+
+    //固定等待时间
+    public void WaitFixedTime(long time) {
         try {
             Thread.sleep(time);
         } catch (Exception ex) {

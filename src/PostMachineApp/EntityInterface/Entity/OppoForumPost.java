@@ -13,7 +13,7 @@ final public class OppoForumPost extends BasicForumPost {
     }
 
         @Override
-    public void openUrl(WebDriver driver) {
+    public void beforeSendPost(WebDriver driver) {
         driver.get(PostUrl);
 
         driver.findElement(By.id("fastposteditor")).click();
