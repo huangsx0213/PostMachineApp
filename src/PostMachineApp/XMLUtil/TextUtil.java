@@ -32,10 +32,10 @@ public class TextUtil {
                 }
                 read.close();
             } else {
-                System.out.println("找不到指定的文件");
+                System.out.println("TextFile is not found.");
             }
         } catch (Exception e) {
-            System.out.println("读取文件内容出错");
+            System.out.println("Error when reading TextFile.");
             e.printStackTrace();
         }
 

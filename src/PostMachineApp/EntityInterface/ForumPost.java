@@ -34,5 +34,8 @@ public interface ForumPost {
 
     public String getPostContent();
 
-    public void sentpost();
+    public void sendPost();
+    
+    public void sendPostQuit();
+    
 }

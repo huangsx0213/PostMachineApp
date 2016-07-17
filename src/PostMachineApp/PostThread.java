@@ -14,7 +14,7 @@ public class PostThread implements Runnable {
     public void run() {
         while (true) {
             if (System.currentTimeMillis() > Post.getStartTime()) {
-                Post.sentpost();
+                Post.sendPost();
                 break;
             }
             try {
