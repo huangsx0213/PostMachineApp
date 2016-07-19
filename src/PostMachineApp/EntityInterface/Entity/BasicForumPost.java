@@ -7,6 +7,7 @@ import static PostMachineApp.XMLUtil.TextUtil.TextFile2ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -37,6 +38,8 @@ public class BasicForumPost implements ForumPost {
     public String temp;
     public SimpleDateFormat DateFormat;
     public WebDriver driver;
+    public Integer RestWaitPostCountTemp;
+    public Integer NextWait;
 
     //构造函数
     public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, String PostUrl, String PostContent) {
@@ -170,7 +173,11 @@ public class BasicForumPost implements ForumPost {
     @Override
     public void sendPost() {
 
+        NextWait = 0;
+
         tempPostContent = this.PostContent;
+
+        RestWaitPostCountTemp = this.RestWaitPostCount;
 
         DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -204,7 +211,7 @@ public class BasicForumPost implements ForumPost {
             getTempPostContent(PostContentEntitys, FileTextLinesList);
 
             sendPostSteps(driver, i);
-
+            
             sendPostWait(i, driver);
         }
     }
@@ -266,19 +273,25 @@ public class BasicForumPost implements ForumPost {
         //WebElement fastpostsubmit = driver.findElement(By.id("fastpostsubmit"));
         //fastpostsubmit.click();
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
+
     }
 
     //发贴等待时间
     public void sendPostWait(int i, WebDriver driver) {
         try {
             Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
+            NextWait++;
         } catch (Exception ex) {
         }
         if (i % RefreshPostCount == 0) {
             driver.navigate().refresh();
         }
-        if (i > 1 && RestWaitPostCount > 0 && RestWaitTime > 0 && i % RestWaitPostCount == 0) {
+
+        if (Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0) {
             RestWaitTime(RestWaitTime);
+            RestWaitPostCountTemp = (int) (RestWaitPostCount * (1 - 0.2) + Math.random() * (RestWaitPostCount * (1 + 0.2) - RestWaitPostCount * (1 - 0.2) + 1));
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] will take a next rest after " + RestWaitPostCountTemp + " posts.");
+            NextWait = 0;
         }
     }
 
