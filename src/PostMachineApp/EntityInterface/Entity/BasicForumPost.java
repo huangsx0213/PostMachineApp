@@ -206,7 +206,7 @@ public class BasicForumPost implements ForumPost {
     //发贴循环操作
     public void sendPostIteration(List<PostContentEntity> PostContentEntitys, List<String> FileTextLinesList, WebDriver driver) {
 
-        for (int i = 1; i < PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
+        for (int i = 1; i <= PostCount && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
 
             getTempPostContent(PostContentEntitys, FileTextLinesList);
 
