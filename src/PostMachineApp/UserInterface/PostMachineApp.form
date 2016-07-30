@@ -170,7 +170,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -192,7 +192,7 @@
                                       <Component id="jCheckBox_EnableThread" alignment="1" max="32767" attributes="0"/>
                                       <Component id="jLabel_PostUrl" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -217,7 +217,7 @@
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel_RefreshPostCount" min="-2" pref="138" max="-2" attributes="0"/>
@@ -230,13 +230,17 @@
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jTextField_RandomWaitTime" max="32767" attributes="0"/>
                                               <Component id="jTextField_RefreshPostCount" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jComboBox_PostEntity" alignment="0" pref="141" max="32767" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jComboBox_PostEntity" alignment="0" max="32767" attributes="0"/>
+                                              <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jTextField_RestWaitTime" max="32767" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jLabel_RestWaitPostCount" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextField_RestWaitPostCount" min="-2" pref="46" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_RestWaitPostCount" min="-2" pref="7" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jTextField_RestWaitPostCount" min="-2" pref="30" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_RestWaitPostCountOffset" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jTextField_RestWaitPostCountOffset" min="-2" pref="30" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -246,7 +250,7 @@
                               <Component id="TitleSeparator_TaskManagement" alignment="1" max="32767" attributes="0"/>
                               <Component id="Title_TaskManagement" alignment="1" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -295,6 +299,8 @@
                               <Component id="jLabel_RestWaitTime" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField_RestWaitPostCount" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel_RestWaitPostCount" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_RestWaitPostCountOffset" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_RestWaitPostCountOffset" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -568,6 +574,16 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel_RestWaitPostCountOffset">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#xb1;"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextField_RestWaitPostCountOffset">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value="Rest Wait Post Count offset"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

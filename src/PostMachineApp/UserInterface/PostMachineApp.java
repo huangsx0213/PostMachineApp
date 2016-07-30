@@ -106,6 +106,8 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextField_RestWaitPostCount = new javax.swing.JTextField();
         jLabel_RestWaitPostCount = new javax.swing.JLabel();
         jComboBox_PostContent = new javax.swing.JComboBox<>();
+        jLabel_RestWaitPostCountOffset = new javax.swing.JLabel();
+        jTextField_RestWaitPostCountOffset = new javax.swing.JTextField();
         jPanel_Bottom = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
@@ -407,6 +409,10 @@ public class PostMachineApp extends javax.swing.JFrame {
         jComboBox_PostContent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Pool]", "[TextFile]" }));
         jComboBox_PostContent.setToolTipText("Post Content");
 
+        jLabel_RestWaitPostCountOffset.setText("±");
+
+        jTextField_RestWaitPostCountOffset.setToolTipText("Rest Wait Post Count offset");
+
         javax.swing.GroupLayout jPanel_TopLayout = new javax.swing.GroupLayout(jPanel_Top);
         jPanel_Top.setLayout(jPanel_TopLayout);
         jPanel_TopLayout.setHorizontalGroup(
@@ -463,13 +469,17 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jTextField_RandomWaitTime)
                                     .addComponent(jTextField_RefreshPostCount, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox_PostEntity, javax.swing.GroupLayout.Alignment.LEADING, 0, 141, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_TopLayout.createSequentialGroup()
+                                    .addComponent(jComboBox_PostEntity, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel_TopLayout.createSequentialGroup()
                                         .addComponent(jTextField_RestWaitTime)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel_RestWaitPostCount)
+                                        .addComponent(jLabel_RestWaitPostCount, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField_RestWaitPostCount, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jTextField_RestWaitPostCount, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_RestWaitPostCountOffset)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField_RestWaitPostCountOffset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jComboBox_PostContent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(TitleSeparator_TaskManagement, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Title_TaskManagement, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -514,7 +524,9 @@ public class PostMachineApp extends javax.swing.JFrame {
                     .addComponent(jTextField_RestWaitTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_RestWaitTime)
                     .addComponent(jTextField_RestWaitPostCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_RestWaitPostCount))
+                    .addComponent(jLabel_RestWaitPostCount)
+                    .addComponent(jLabel_RestWaitPostCountOffset)
+                    .addComponent(jTextField_RestWaitPostCountOffset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_PostContent)
@@ -1525,6 +1537,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextField_RandomWaitTime.setText("30");
         this.jTextField_RestWaitTime.setText("0");
         this.jTextField_RestWaitPostCount.setText("0");
+        this.jTextField_RestWaitPostCountOffset.setText("0");
         this.jTextField_PostUrl.setText("");
         this.jComboBox_PostContent.getEditor().setItem("");
     }//GEN-LAST:event_NewActionPerformed
@@ -1566,9 +1579,10 @@ public class PostMachineApp extends javax.swing.JFrame {
             RandomWaitTime = Integer.parseInt(this.jTextField_RandomWaitTime.getText());
             RestWaitTime = Integer.parseInt(this.jTextField_RestWaitTime.getText());
             RestWaitPostCount = Integer.parseInt(this.jTextField_RestWaitPostCount.getText());
+            RestWaitPostCountOffset = Integer.parseInt(this.jTextField_RestWaitPostCountOffset.getText());
             PostUrl = this.jTextField_PostUrl.getText();
             PostContent = (String)this.jComboBox_PostContent.getEditor().getItem();
-            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount, PostUrl, PostContent);
+            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount,RestWaitPostCountOffset, PostUrl, PostContent);
             if (TaskManagementDAO.ThreadIDisExisting(ForumPost)) {
                 TaskManagementDAO.update(ForumPost);
             } else {
@@ -1699,6 +1713,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextField_RandomWaitTime.setText(String.valueOf(ForumPost.getRandomWaitTime()));
         this.jTextField_RestWaitTime.setText(String.valueOf(ForumPost.getRestWaitTime()));
         this.jTextField_RestWaitPostCount.setText(String.valueOf(ForumPost.getRestWaitPostCount()));
+        this.jTextField_RestWaitPostCountOffset.setText(String.valueOf(ForumPost.getRestWaitPostCountOffset()));
         this.jTextField_PostUrl.setText(ForumPost.getPostUrl());
         this.jComboBox_PostContent.getEditor().setItem(ForumPost.getPostContent());
     }
@@ -1816,6 +1831,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_RandomWaitTime;
     private javax.swing.JLabel jLabel_RefreshPostCount;
     private javax.swing.JLabel jLabel_RestWaitPostCount;
+    private javax.swing.JLabel jLabel_RestWaitPostCountOffset;
     private javax.swing.JLabel jLabel_RestWaitTime;
     private javax.swing.JLabel jLabel_StartTime;
     private javax.swing.JLabel jLabel_StepAction;
@@ -1867,6 +1883,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_RandomWaitTime;
     private javax.swing.JTextField jTextField_RefreshPostCount;
     private javax.swing.JTextField jTextField_RestWaitPostCount;
+    private javax.swing.JTextField jTextField_RestWaitPostCountOffset;
     private javax.swing.JTextField jTextField_RestWaitTime;
     private javax.swing.JTextField jTextField_StartTime;
     private javax.swing.JTextField jTextField_StepDataValue;
@@ -1893,6 +1910,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private Integer RandomWaitTime;
     private Integer RestWaitTime;
     private Integer RestWaitPostCount;
+    private Integer RestWaitPostCountOffset;
     private String PostUrl;
     private String PostContent;
     private String GlobalSettingID;

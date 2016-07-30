@@ -32,6 +32,7 @@ public class BasicForumPost implements ForumPost {
     public final Integer RandomWaitTime;
     public final Integer RestWaitTime;
     public final Integer RestWaitPostCount;
+     public final Integer RestWaitPostCountOffset;
     public final String PostUrl;
     public final String PostContent;
     public String tempPostContent;
@@ -42,7 +43,7 @@ public class BasicForumPost implements ForumPost {
     public Integer NextWait;
 
     //构造函数
-    public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, String PostUrl, String PostContent) {
+    public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount,Integer RestWaitPostCountOffset,  String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -57,6 +58,7 @@ public class BasicForumPost implements ForumPost {
         this.RandomWaitTime = RandomWaitTime;
         this.RestWaitTime = RestWaitTime;
         this.RestWaitPostCount = RestWaitPostCount;
+        this.RestWaitPostCountOffset = RestWaitPostCountOffset;
         this.PostUrl = PostUrl;
         this.PostContent = PostContent;
     }
@@ -124,6 +126,11 @@ public class BasicForumPost implements ForumPost {
     @Override
     public Integer getRestWaitTime() {
         return RestWaitTime;
+    }
+
+    @Override
+    public Integer getRestWaitPostCountOffset() {
+        return RestWaitPostCountOffset;
     }
 
     @Override
@@ -289,7 +296,7 @@ public class BasicForumPost implements ForumPost {
 
         if (Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0) {
             RestWaitTime(RestWaitTime);
-            RestWaitPostCountTemp = (int) (RestWaitPostCount * (1 - 0.2) + Math.random() * (RestWaitPostCount * (1 + 0.2) - RestWaitPostCount * (1 - 0.2) + 1));
+            RestWaitPostCountTemp = (int) (RestWaitPostCount -RestWaitPostCountOffset + Math.random() * (RestWaitPostCount+RestWaitPostCountOffset - (RestWaitPostCount -RestWaitPostCountOffset) + 1));
             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] will take a next rest after " + RestWaitPostCountTemp + " posts.");
             NextWait = 0;
         }
