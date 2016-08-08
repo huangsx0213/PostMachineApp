@@ -8,7 +8,4 @@ final public class CommonForumPost extends BasicForumPost {
         super(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount,RestWaitPostCountOffset, PostUrl, PostContent);
     }
 
-     public void sendPostSteps(WebDriver driver, int i) {
-        super.sendPost();
-    }
 }
