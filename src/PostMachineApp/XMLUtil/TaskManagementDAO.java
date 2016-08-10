@@ -135,7 +135,37 @@ public class TaskManagementDAO {
         }
         return ForumPost;
     }
+        public static List<ForumPost> getForumPostByEntity(String Entity){
+        Document document = getDocument();
+        Element rootElement = document.getRootElement();
 
+        List<Element> postElements = rootElement.elements();
+        List<ForumPost> ForumPosts = new ArrayList<ForumPost>();
+        for (Element postElement : postElements) {
+             if (postElement.element("PostEntity").getTextTrim().equals(Entity)) {
+            ThreadID = Integer.parseInt(postElement.attribute("ThreadID").getText());
+            FirefoxPath = postElement.element("FirefoxPath").getTextTrim();
+            Profile = postElement.element("Profile").getTextTrim();
+            PostEntity = postElement.element("PostEntity").getTextTrim();
+            StartTime = Long.parseLong(postElement.element("StartTime").getTextTrim());
+            EnableStopTime = Boolean.valueOf(postElement.element("EnableStopTime").getTextTrim());
+            StopTime = Long.parseLong(postElement.element("StopTime").getTextTrim());
+            RefreshPostCount = Integer.parseInt(postElement.element("RefreshPostCount").getText());
+            PostCount = Long.parseLong(postElement.element("PostCount").getTextTrim());
+            FixedWaitTime = Integer.parseInt(postElement.element("FixedWaitTime").getText());
+            RandomWaitTime = Integer.parseInt(postElement.element("RandomWaitTime").getText());
+            RestWaitTime = Integer.parseInt(postElement.element("RestWaitTime").getText());
+            RestWaitPostCount=Integer.parseInt(postElement.element("RestWaitPostCount").getText());
+            RestWaitPostCountOffset=Integer.parseInt(postElement.element("RestWaitPostCountOffset").getText());
+            PostUrl = postElement.element("PostUrl").getTextTrim();
+            PostContent = postElement.element("PostContent").getTextTrim();
+            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime,RestWaitPostCount, RestWaitPostCountOffset,PostUrl, PostContent);
+
+            ForumPosts.add(ForumPost);}
+        }
+        return ForumPosts;
+    }
+   
     /**
      * 向XML文件中添加一个user
      *

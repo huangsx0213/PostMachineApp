@@ -108,6 +108,9 @@ public class PostMachineApp extends javax.swing.JFrame {
         jComboBox_PostContent = new javax.swing.JComboBox<>();
         jLabel_RestWaitPostCountOffset = new javax.swing.JLabel();
         jTextField_RestWaitPostCountOffset = new javax.swing.JTextField();
+        jLabel_EntitySeach = new javax.swing.JLabel();
+        jComboBox_EntitySeach = new javax.swing.JComboBox<>();
+        jButton_EntitySearch = new javax.swing.JButton();
         jPanel_Bottom = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
@@ -213,7 +216,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_Console.setLayout(jPanel_ConsoleLayout);
         jPanel_ConsoleLayout.setHorizontalGroup(
             jPanel_ConsoleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_Console, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
+            .addComponent(jScrollPane_Console, javax.swing.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_ConsoleLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButtonClearConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -413,6 +416,28 @@ public class PostMachineApp extends javax.swing.JFrame {
 
         jTextField_RestWaitPostCountOffset.setToolTipText("Rest Wait Post Count offset");
 
+        jLabel_EntitySeach.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel_EntitySeach.setText("[Criteria] Entity:");
+
+        List<Entity> SeachEntitys = new ArrayList<Entity>();
+        SeachEntitys=EntityDAO.getAllEntity();
+        final int size2=SeachEntitys.size();
+        Entity[] EntityArray2=(Entity[])SeachEntitys.toArray(new Entity[size2]);
+        String[] EntityName2=new String[size2+1];
+        for(int i=0;i<size2;i++)
+        {
+            EntityName2[i+1]=EntityArray2[i].getEntityName();
+        }
+        EntityName2[0]="All";
+        jComboBox_EntitySeach.setModel(new javax.swing.DefaultComboBoxModel<>(EntityName2));
+
+        jButton_EntitySearch.setText("Search");
+        jButton_EntitySearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_EntitySearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel_TopLayout = new javax.swing.GroupLayout(jPanel_Top);
         jPanel_Top.setLayout(jPanel_TopLayout);
         jPanel_TopLayout.setHorizontalGroup(
@@ -420,26 +445,32 @@ public class PostMachineApp extends javax.swing.JFrame {
             .addGroup(jPanel_TopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_TopLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(New)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Save)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Delete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RunS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Run))
+                    .addComponent(TitleSeparator_TaskManagement, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Title_TaskManagement, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel_TopLayout.createSequentialGroup()
                         .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel_PostNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel_PostContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel_StartTime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCheckBox_EnableThread, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel_PostUrl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel_PostUrl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel_EntitySeach, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_TopLayout.createSequentialGroup()
+                                .addComponent(jComboBox_EntitySeach, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton_EntitySearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                                .addComponent(New)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Save)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Delete)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(RunS)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Run))
                             .addGroup(jPanel_TopLayout.createSequentialGroup()
                                 .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jTextField_PostUrl, javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,9 +511,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                                         .addComponent(jLabel_RestWaitPostCountOffset)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextField_RestWaitPostCountOffset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jComboBox_PostContent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(TitleSeparator_TaskManagement, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Title_TaskManagement, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jComboBox_PostContent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel_TopLayout.setVerticalGroup(
@@ -537,7 +566,10 @@ public class PostMachineApp extends javax.swing.JFrame {
                     .addComponent(Save)
                     .addComponent(New)
                     .addComponent(Run)
-                    .addComponent(RunS))
+                    .addComponent(RunS)
+                    .addComponent(jLabel_EntitySeach)
+                    .addComponent(jComboBox_EntitySeach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_EntitySearch))
                 .addContainerGap())
         );
 
@@ -583,7 +615,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_Bottom.setLayout(jPanel_BottomLayout);
         jPanel_BottomLayout.setHorizontalGroup(
             jPanel_BottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
+            .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel_BottomLayout.setVerticalGroup(
             jPanel_BottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -598,7 +630,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel_TaskManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel_Top, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_Bottom, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE))
+                    .addComponent(jPanel_Bottom, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel_TaskManagementLayout.setVerticalGroup(
@@ -714,7 +746,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addComponent(jComboBox_SeachTaskID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton_StepSearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
                                 .addComponent(NewPoolContent_StepNew)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(SavePoolContent_StepSave)
@@ -902,9 +934,9 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton_GlobalSettingSave))
                             .addComponent(jTextField_FirefoxInstallationPath)
-                            .addComponent(jTextField_UserAgentString, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                            .addComponent(jTextField_UserAgentString, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                             .addComponent(jTextField_WorkstationName)))
-                    .addComponent(Title_GlobalParametersSetting, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+                    .addComponent(Title_GlobalParametersSetting, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
                     .addComponent(TitleSeparator_GlobalParametersSetting))
                 .addContainerGap())
         );
@@ -1085,7 +1117,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_EntiySettingBottom.setLayout(jPanel_EntiySettingBottomLayout);
         jPanel_EntiySettingBottomLayout.setHorizontalGroup(
             jPanel_EntiySettingBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_EntiySetting, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+            .addComponent(jScrollPane_EntiySetting, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         jPanel_EntiySettingBottomLayout.setVerticalGroup(
             jPanel_EntiySettingBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1097,7 +1129,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_EntitySettingLayout.setHorizontalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_EntiySettingTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
         );
         jPanel_EntitySettingLayout.setVerticalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1281,7 +1313,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_PostContentPoolBottom.setLayout(jPanel_PostContentPoolBottomLayout);
         jPanel_PostContentPoolBottomLayout.setHorizontalGroup(
             jPanel_PostContentPoolBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+            .addComponent(jScrollPane_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         jPanel_PostContentPoolBottomLayout.setVerticalGroup(
             jPanel_PostContentPoolBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1293,7 +1325,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_PostContentPoolLayout.setHorizontalGroup(
             jPanel_PostContentPoolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_PostContentPoolTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
         );
         jPanel_PostContentPoolLayout.setVerticalGroup(
             jPanel_PostContentPoolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1581,8 +1613,8 @@ public class PostMachineApp extends javax.swing.JFrame {
             RestWaitPostCount = Integer.parseInt(this.jTextField_RestWaitPostCount.getText());
             RestWaitPostCountOffset = Integer.parseInt(this.jTextField_RestWaitPostCountOffset.getText());
             PostUrl = this.jTextField_PostUrl.getText();
-            PostContent = (String)this.jComboBox_PostContent.getEditor().getItem();
-            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount,RestWaitPostCountOffset, PostUrl, PostContent);
+            PostContent = (String) this.jComboBox_PostContent.getEditor().getItem();
+            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount, RestWaitPostCountOffset, PostUrl, PostContent);
             if (TaskManagementDAO.ThreadIDisExisting(ForumPost)) {
                 TaskManagementDAO.update(ForumPost);
             } else {
@@ -1636,6 +1668,36 @@ public class PostMachineApp extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.jTextArea_Console.setText("");
     }//GEN-LAST:event_jButtonClearConsoleActionPerformed
+
+    private void jButton_EntitySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EntitySearchActionPerformed
+        // TODO add your handling code here:
+        String EntityName = (String) this.jComboBox_EntitySeach.getSelectedItem();
+        if (EntityName.equals("All"))
+        {
+        fillTable();
+        }
+        else{
+        DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
+        tableModel.setRowCount(0);
+        // 填充数据
+        for (ForumPost ForumPost : TaskManagementDAO.getForumPostByEntity(EntityName)) {
+            String[] arr = new String[8];
+            arr[0] = ForumPost.getEnableThread().toString();
+            arr[1] = ForumPost.getThreadID().toString();
+            arr[2] = ForumPost.getProfile();
+            arr[3] = ForumPost.getPostEntity();
+            arr[4] = Long.toString(ForumPost.getPostCount());
+            arr[5] = Integer.toString(ForumPost.getFixedWaitTime());
+            arr[6] = Integer.toString(ForumPost.getRandomWaitTime());
+            arr[7] = ForumPost.getPostContent();;
+
+            // 添加数据到表格
+            tableModel.addRow(arr);
+        }
+
+        // 更新表格
+        jTable.invalidate();}
+    }//GEN-LAST:event_jButton_EntitySearchActionPerformed
 
     private void fillTable() {
         TaskManagementDAO.getAllForumPost();
@@ -1799,6 +1861,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JLabel Title_PostContentPool1;
     private javax.swing.JLabel Title_TaskManagement;
     private javax.swing.JButton jButtonClearConsole;
+    private javax.swing.JButton jButton_EntitySearch;
     private javax.swing.JButton jButton_GlobalSettingSave;
     private javax.swing.JButton jButton_StepSearch;
     private javax.swing.JCheckBox jCheckBox_EnableEntity;
@@ -1807,6 +1870,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox_EnableThread;
     private javax.swing.JCheckBox jCheckBox_StepIDEnable;
     private javax.swing.JComboBox<String> jComboBox_ControlProperty;
+    private javax.swing.JComboBox<String> jComboBox_EntitySeach;
     private javax.swing.JComboBox<String> jComboBox_ParentProperty;
     private javax.swing.JComboBox<String> jComboBox_PoolFirefoxProfile;
     private javax.swing.JComboBox<String> jComboBox_PostContent;
@@ -1817,6 +1881,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_ControlProperty;
     private javax.swing.JLabel jLabel_ControlPropertyValue;
     private javax.swing.JLabel jLabel_EntityName;
+    private javax.swing.JLabel jLabel_EntitySeach;
     private javax.swing.JLabel jLabel_FirefoxInstallationPath;
     private javax.swing.JLabel jLabel_FixedWaitTime;
     private javax.swing.JLabel jLabel_ParentProperty;
