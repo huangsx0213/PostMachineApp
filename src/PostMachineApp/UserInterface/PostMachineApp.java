@@ -1625,7 +1625,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         }
         System.out.println("Save successfully！");
         JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE);
-        fillTable();
+        SearchByEntity();
     }//GEN-LAST:event_SaveActionPerformed
 
     private void jTextField_PostUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PostUrlActionPerformed
@@ -1670,34 +1670,38 @@ public class PostMachineApp extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonClearConsoleActionPerformed
 
     private void jButton_EntitySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EntitySearchActionPerformed
+        SearchByEntity();
+    }//GEN-LAST:event_jButton_EntitySearchActionPerformed
+
+    public void SearchByEntity() {
         // TODO add your handling code here:
         String EntityName = (String) this.jComboBox_EntitySeach.getSelectedItem();
         if (EntityName.equals("All"))
         {
-        fillTable();
+            fillTable();
         }
         else{
-        DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
-        tableModel.setRowCount(0);
-        // 填充数据
-        for (ForumPost ForumPost : TaskManagementDAO.getForumPostByEntity(EntityName)) {
-            String[] arr = new String[8];
-            arr[0] = ForumPost.getEnableThread().toString();
-            arr[1] = ForumPost.getThreadID().toString();
-            arr[2] = ForumPost.getProfile();
-            arr[3] = ForumPost.getPostEntity();
-            arr[4] = Long.toString(ForumPost.getPostCount());
-            arr[5] = Integer.toString(ForumPost.getFixedWaitTime());
-            arr[6] = Integer.toString(ForumPost.getRandomWaitTime());
-            arr[7] = ForumPost.getPostContent();;
-
-            // 添加数据到表格
-            tableModel.addRow(arr);
-        }
-
-        // 更新表格
-        jTable.invalidate();}
-    }//GEN-LAST:event_jButton_EntitySearchActionPerformed
+            DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
+            tableModel.setRowCount(0);
+            // 填充数据
+            for (ForumPost ForumPost : TaskManagementDAO.getForumPostByEntity(EntityName)) {
+                String[] arr = new String[8];
+                arr[0] = ForumPost.getEnableThread().toString();
+                arr[1] = ForumPost.getThreadID().toString();
+                arr[2] = ForumPost.getProfile();
+                arr[3] = ForumPost.getPostEntity();
+                arr[4] = Long.toString(ForumPost.getPostCount());
+                arr[5] = Integer.toString(ForumPost.getFixedWaitTime());
+                arr[6] = Integer.toString(ForumPost.getRandomWaitTime());
+                arr[7] = ForumPost.getPostContent();;
+                
+                // 添加数据到表格
+                tableModel.addRow(arr);
+            }
+            
+            // 更新表格
+            jTable.invalidate();}
+    }
 
     private void fillTable() {
         TaskManagementDAO.getAllForumPost();
