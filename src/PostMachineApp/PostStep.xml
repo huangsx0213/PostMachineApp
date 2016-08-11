@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PostSteps>
+  <PostStep StepID="1">
+    <EnablePostStep>false</EnablePostStep>
+    <EntityName>Vivo</EntityName>
+    <StepDescription></StepDescription>
+    <ParentProperty>Item 1</ParentProperty>
+    <ParentPropertyValue></ParentPropertyValue>
+    <ControlProperty>Item 1</ControlProperty>
+    <ControlPropertyValue></ControlPropertyValue>
+    <StepAction></StepAction>
+    <StepDataValue>Item 1</StepDataValue>
+  </PostStep>
+</PostSteps>
