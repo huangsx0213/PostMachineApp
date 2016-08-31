@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ControlPropertys>
+  <ControlProperty ControlPropertyID="1">
+    <EnableControlProperty>true</EnableControlProperty>
+    <ControlPropertyName>Button</ControlPropertyName>
+  </ControlProperty>
+  <ControlProperty ControlPropertyID="2">
+    <EnableControlProperty>true</EnableControlProperty>
+    <ControlPropertyName>Edit</ControlPropertyName>
+  </ControlProperty>
+</ControlPropertys>

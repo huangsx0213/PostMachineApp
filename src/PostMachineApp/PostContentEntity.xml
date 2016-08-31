@@ -76,4 +76,9 @@
     <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
     <PoolContent>test15</PoolContent>
   </PoolContent>
+  <PoolContent PoolContentID="16">
+    <EnablePoolContent>true</EnablePoolContent>
+    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
+    <PoolContent>aaa</PoolContent>
+  </PoolContent>
 </PostContentEntitys>

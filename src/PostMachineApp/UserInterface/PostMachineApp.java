@@ -39,6 +39,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         fillTable();
         fillEntityTable();
         fillPostContentPoolTable();
+        fillControlPropertyTable();
         ForumPost ForumPost = TaskManagementDAO.getForumPostByID(String.valueOf(1));
         if (ForumPost != null) {
             fillForm(ForumPost);
@@ -54,6 +55,10 @@ public class PostMachineApp extends javax.swing.JFrame {
         PostContentEntity PostContentEntity = PostContentPoolDAO.getPostContentByID(String.valueOf(1));
         if (PostContentEntity != null) {
             fillPostContentForm(PostContentEntity);
+        }
+         ControlProperty ControlProperty = ControlPropertysDAO.getControlPropertyByID(String.valueOf(1));
+        if (ControlProperty != null) {
+            fillControlPropertyForm(ControlProperty);
         }
     }
 
@@ -188,6 +193,20 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_PostContentPoolBottom = new javax.swing.JPanel();
         jScrollPane_PostContentPool = new javax.swing.JScrollPane();
         jTable_PostContentPool = new javax.swing.JTable();
+        jPanel_EntitySetting1 = new javax.swing.JPanel();
+        jPanel_EntiySettingTop1 = new javax.swing.JPanel();
+        Title_EntiySetting1 = new javax.swing.JLabel();
+        TitleSeparator_EntiySetting1 = new javax.swing.JSeparator();
+        jCheckBox_EnableControlProperty = new javax.swing.JCheckBox();
+        jTextField_ControlPropertyID = new javax.swing.JTextField();
+        jLabel_EntityName1 = new javax.swing.JLabel();
+        jTextField_ControlPropertyName = new javax.swing.JTextField();
+        NewEntity1 = new javax.swing.JButton();
+        SaveEntity1 = new javax.swing.JButton();
+        DeleteEntity1 = new javax.swing.JButton();
+        jPanel_EntiySettingBottom1 = new javax.swing.JPanel();
+        jScrollPane_EntiySetting1 = new javax.swing.JScrollPane();
+        jTable_ControlPropertySetting = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PostApp");
@@ -688,7 +707,7 @@ public class PostMachineApp extends javax.swing.JFrame {
 
         jLabel_Entity.setText("Entity:");
 
-        jComboBox_Entity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_Entity.setModel(new javax.swing.DefaultComboBoxModel<>(EntityName));
 
         jLabel_ParentProperty.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_ParentProperty.setText("Parent Property:");
@@ -719,10 +738,19 @@ public class PostMachineApp extends javax.swing.JFrame {
         jButton_StepSearch.setText("Search");
 
         jComboBox_ParentProperty.setEditable(true);
-        jComboBox_ParentProperty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<ControlProperty> ControlPropertys = new ArrayList<ControlProperty>();
+        ControlPropertys=ControlPropertysDAO.getAllControlProperty();
+        final int ControlPropertySize=ControlPropertys.size();
+        ControlProperty[] ControlPropertyArray=(ControlProperty[])ControlPropertys.toArray(new ControlProperty[ControlPropertySize]);
+        String[] ControlPropertyName=new String[ControlPropertySize];
+        for(int i=0;i<ControlPropertySize;i++)
+        {
+            ControlPropertyName[i]=ControlPropertyArray[i].getControlPropertyName();
+        }
+        jComboBox_ParentProperty.setModel(new javax.swing.DefaultComboBoxModel<>(ControlPropertyName));
 
         jComboBox_ControlProperty.setEditable(true);
-        jComboBox_ControlProperty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_ControlProperty.setModel(new javax.swing.DefaultComboBoxModel<>(ControlPropertyName));
 
         javax.swing.GroupLayout jPanel_PostContentPoolTop1Layout = new javax.swing.GroupLayout(jPanel_PostContentPoolTop1);
         jPanel_PostContentPoolTop1.setLayout(jPanel_PostContentPoolTop1Layout);
@@ -1129,7 +1157,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_EntitySettingLayout.setHorizontalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_EntiySettingTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         jPanel_EntitySettingLayout.setVerticalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1325,7 +1353,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_PostContentPoolLayout.setHorizontalGroup(
             jPanel_PostContentPoolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_PostContentPoolTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         jPanel_PostContentPoolLayout.setVerticalGroup(
             jPanel_PostContentPoolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1337,6 +1365,182 @@ public class PostMachineApp extends javax.swing.JFrame {
         );
 
         jTabbedPane_SystemSettings.addTab("Post Content Pool", jPanel_PostContentPool);
+
+        jPanel_EntitySetting1.setPreferredSize(new java.awt.Dimension(660, 400));
+
+        jPanel_EntiySettingTop1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        Title_EntiySetting1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Title_EntiySetting1.setForeground(new java.awt.Color(0, 0, 255));
+        Title_EntiySetting1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title_EntiySetting1.setText("Control Property");
+
+        jCheckBox_EnableControlProperty.setText("Control Property ID:");
+        jCheckBox_EnableControlProperty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox_EnableControlPropertyActionPerformed(evt);
+            }
+        });
+
+        jTextField_ControlPropertyID.setText("1");
+        jTextField_ControlPropertyID.setToolTipText("Thread ID must be unique");
+        jTextField_ControlPropertyID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_ControlPropertyIDActionPerformed(evt);
+            }
+        });
+
+        jLabel_EntityName1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel_EntityName1.setText("Control Property Name:");
+
+        jTextField_ControlPropertyName.setToolTipText("Post URL");
+        jTextField_ControlPropertyName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_ControlPropertyNameActionPerformed(evt);
+            }
+        });
+
+        NewEntity1.setText("New");
+        NewEntity1.setToolTipText("Create a new thread form");
+        NewEntity1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewEntity1ActionPerformed(evt);
+            }
+        });
+
+        SaveEntity1.setText("Save");
+        SaveEntity1.setToolTipText("Save a new thread or a edited thread");
+        SaveEntity1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveEntity1ActionPerformed(evt);
+            }
+        });
+
+        DeleteEntity1.setText("Delete");
+        DeleteEntity1.setToolTipText("Delete a seleted thread");
+        DeleteEntity1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteEntity1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel_EntiySettingTop1Layout = new javax.swing.GroupLayout(jPanel_EntiySettingTop1);
+        jPanel_EntiySettingTop1.setLayout(jPanel_EntiySettingTop1Layout);
+        jPanel_EntiySettingTop1Layout.setHorizontalGroup(
+            jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
+                        .addComponent(jCheckBox_EnableControlProperty)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_ControlPropertyID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_EntityName1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_ControlPropertyName))
+                    .addComponent(TitleSeparator_EntiySetting1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Title_EntiySetting1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_EntiySettingTop1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(NewEntity1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SaveEntity1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DeleteEntity1)))
+                .addContainerGap())
+        );
+        jPanel_EntiySettingTop1Layout.setVerticalGroup(
+            jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_EntiySettingTop1Layout.createSequentialGroup()
+                .addComponent(Title_EntiySetting1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TitleSeparator_EntiySetting1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField_ControlPropertyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCheckBox_EnableControlProperty)
+                        .addComponent(jLabel_EntityName1))
+                    .addComponent(jTextField_ControlPropertyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_EntiySettingTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DeleteEntity1)
+                    .addComponent(SaveEntity1)
+                    .addComponent(NewEntity1))
+                .addContainerGap())
+        );
+
+        jPanel_EntiySettingBottom1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel_EntiySettingBottom1.setPreferredSize(new java.awt.Dimension(454, 250));
+
+        jScrollPane_EntiySetting1.setPreferredSize(new java.awt.Dimension(452, 250));
+
+        jTable_ControlPropertySetting.setAutoCreateRowSorter(true);
+        jTable_ControlPropertySetting.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Enable", "Control Property ID", "Control Property Name"
+            }
+        ));
+        jTable_ControlPropertySetting.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_ControlPropertySettingMouseClicked(evt);
+            }
+        });
+        jTable_EntiySetting.getColumnModel().getColumn(0).setPreferredWidth(20);
+        jTable_EntiySetting.getColumnModel().getColumn(1).setPreferredWidth(20);
+        jTable_EntiySetting.getColumnModel().getColumn(2).setPreferredWidth(400);
+        jScrollPane_EntiySetting1.setViewportView(jTable_ControlPropertySetting);
+
+        javax.swing.GroupLayout jPanel_EntiySettingBottom1Layout = new javax.swing.GroupLayout(jPanel_EntiySettingBottom1);
+        jPanel_EntiySettingBottom1.setLayout(jPanel_EntiySettingBottom1Layout);
+        jPanel_EntiySettingBottom1Layout.setHorizontalGroup(
+            jPanel_EntiySettingBottom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane_EntiySetting1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+        );
+        jPanel_EntiySettingBottom1Layout.setVerticalGroup(
+            jPanel_EntiySettingBottom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane_EntiySetting1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel_EntitySetting1Layout = new javax.swing.GroupLayout(jPanel_EntitySetting1);
+        jPanel_EntitySetting1.setLayout(jPanel_EntitySetting1Layout);
+        jPanel_EntitySetting1Layout.setHorizontalGroup(
+            jPanel_EntitySetting1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel_EntiySettingTop1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel_EntiySettingBottom1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+        );
+        jPanel_EntitySetting1Layout.setVerticalGroup(
+            jPanel_EntitySetting1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_EntitySetting1Layout.createSequentialGroup()
+                .addComponent(jPanel_EntiySettingTop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel_EntiySettingBottom1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane_SystemSettings.addTab("Control Property", jPanel_EntitySetting1);
 
         jTabbedPane_PostMachineApp.addTab("System Settings", jTabbedPane_SystemSettings);
 
@@ -1692,6 +1896,71 @@ public class PostMachineApp extends javax.swing.JFrame {
         SearchByEntity();
     }//GEN-LAST:event_jButton_EntitySearchActionPerformed
 
+    private void jCheckBox_EnableControlPropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnableControlPropertyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox_EnableControlPropertyActionPerformed
+
+    private void jTextField_ControlPropertyIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ControlPropertyIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_ControlPropertyIDActionPerformed
+
+    private void jTextField_ControlPropertyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ControlPropertyNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_ControlPropertyNameActionPerformed
+
+    private void NewEntity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewEntity1ActionPerformed
+        // TODO add your handling code here:
+                this.jCheckBox_EnableControlProperty.setSelected(true);
+        this.jTextField_ControlPropertyID.setText(Integer.toString(ControlPropertysDAO.getMaxId() + 1));
+        this.jTextField_ControlPropertyName.setText("");
+    }//GEN-LAST:event_NewEntity1ActionPerformed
+
+    private void SaveEntity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveEntity1ActionPerformed
+        // TODO add your handling code here:
+        EnableControlProperty = this.jCheckBox_EnableControlProperty.isSelected();
+        ControlPropertyID = Integer.parseInt(this.jTextField_ControlPropertyID.getText());
+        ControlPropertyName = this.jTextField_ControlPropertyName.getText();
+        ControlProperty ControlProperty = new ControlProperty(EnableControlProperty, ControlPropertyID, ControlPropertyName);
+        if (ControlPropertysDAO.ControlPropertyIDisExisting(ControlProperty)) {
+            ControlPropertysDAO.update(ControlProperty);
+        } else {
+            ControlPropertysDAO.add(ControlProperty);
+        }
+        System.out.println("Save successfully！");
+        JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE);
+        fillControlPropertyTable();
+    }//GEN-LAST:event_SaveEntity1ActionPerformed
+
+    private void DeleteEntity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteEntity1ActionPerformed
+        // TODO add your handling code here:
+                int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to delete?", "Delete", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1
+        if (YesOrNo == 0) {
+            String id = this.jTextField_ControlPropertyID.getText();
+            ControlPropertysDAO.deleteById(id);
+            System.out.println("Delete successfully！");
+            fillControlPropertyTable();
+            ControlProperty ControlProperty = ControlPropertysDAO.getControlPropertyByID(String.valueOf(1));
+            if (ControlProperty != null) {
+                fillControlPropertyForm(ControlProperty);
+            }
+        }
+    }//GEN-LAST:event_DeleteEntity1ActionPerformed
+
+    private void jTable_ControlPropertySettingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ControlPropertySettingMouseClicked
+        // TODO add your handling code here:
+                int selectRows = jTable_ControlPropertySetting.getSelectedRows().length;// 取得用户所选行的行数
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_ControlPropertySetting.getModel();
+
+        if (selectRows == 1) {
+            int selectedRowIndex = jTable_ControlPropertySetting.getSelectedRow(); // 取得用户所选单行
+            ControlPropertyID = Integer.parseInt(tableModel.getValueAt(selectedRowIndex, 1).toString());
+        }
+        ControlProperty ControlProperty = ControlPropertysDAO.getControlPropertyByID(ControlPropertyID.toString());
+        if (ControlProperty != null) {
+            fillControlPropertyForm(ControlProperty);
+        }
+    }//GEN-LAST:event_jTable_ControlPropertySettingMouseClicked
+
     public void SearchByEntity() {
         // TODO add your handling code here:
         String EntityName = (String) this.jComboBox_EntitySeach.getSelectedItem();
@@ -1780,7 +2049,25 @@ public class PostMachineApp extends javax.swing.JFrame {
         }
 
         // 更新表格
-        jTable_EntiySetting.invalidate();
+        jTable_PostContentPool.invalidate();
+    }
+    
+        private void fillControlPropertyTable() {
+        ControlPropertysDAO.getAllControlProperty();
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_ControlPropertySetting.getModel();
+        tableModel.setRowCount(0);
+        // 填充数据
+        for (ControlProperty ControlProperty : ControlPropertysDAO.getAllControlProperty()) {
+            String[] arr = new String[3];
+            arr[0] = ControlProperty.getEnableControlProperty().toString();
+            arr[1] = ControlProperty.getControlPropertyID().toString();
+            arr[2] = ControlProperty.getControlPropertyName();
+            // 添加数据到表格
+            tableModel.addRow(arr);
+        }
+
+        // 更新表格
+        jTable_ControlPropertySetting.invalidate();
     }
 
     private void fillForm(ForumPost ForumPost) {
@@ -1821,7 +2108,11 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jComboBox_PoolFirefoxProfile.setSelectedItem(PostContentEntity.getPoolFirefoxProfile());
         this.jTextField_PoolContent.setText(PostContentEntity.getPoolContent());
     }
-
+    private void fillControlPropertyForm(ControlProperty ControlProperty) {
+        this.jCheckBox_EnableControlProperty.setSelected(ControlProperty.getEnableControlProperty());
+        this.jTextField_ControlPropertyID.setText(ControlProperty.getControlPropertyID().toString());
+        this.jTextField_ControlPropertyName.setText(ControlProperty.getControlPropertyName());
+    }
     /**
      * @param args the command line arguments
      */
@@ -1861,24 +2152,29 @@ public class PostMachineApp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Delete;
     private javax.swing.JButton DeleteEntity;
+    private javax.swing.JButton DeleteEntity1;
     private javax.swing.JButton DeletePoolContent;
     private javax.swing.JButton New;
     private javax.swing.JButton NewEntity;
+    private javax.swing.JButton NewEntity1;
     private javax.swing.JButton NewPoolContent;
     private javax.swing.JButton Run;
     private javax.swing.JButton RunS;
     private javax.swing.JButton Save;
     private javax.swing.JButton SaveEntity;
+    private javax.swing.JButton SaveEntity1;
     private javax.swing.JButton SavePoolContent;
     private javax.swing.JButton StepDelete;
     private javax.swing.JButton StepNew;
     private javax.swing.JButton StepSave;
     private javax.swing.JSeparator TitleSeparator_EntiySetting;
+    private javax.swing.JSeparator TitleSeparator_EntiySetting1;
     private javax.swing.JSeparator TitleSeparator_GlobalParametersSetting;
     private javax.swing.JSeparator TitleSeparator_PostContentPool;
     private javax.swing.JSeparator TitleSeparator_PostContentPool1;
     private javax.swing.JSeparator TitleSeparator_TaskManagement;
     private javax.swing.JLabel Title_EntiySetting;
+    private javax.swing.JLabel Title_EntiySetting1;
     private javax.swing.JLabel Title_GlobalParametersSetting;
     private javax.swing.JLabel Title_PostContentPool;
     private javax.swing.JLabel Title_PostContentPool1;
@@ -1887,6 +2183,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JButton jButton_EntitySearch;
     private javax.swing.JButton jButton_GlobalSettingSave;
     private javax.swing.JButton jButton_StepSearch;
+    private javax.swing.JCheckBox jCheckBox_EnableControlProperty;
     private javax.swing.JCheckBox jCheckBox_EnableEntity;
     private javax.swing.JCheckBox jCheckBox_EnablePoolContent;
     private javax.swing.JCheckBox jCheckBox_EnablePostStep;
@@ -1905,6 +2202,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_ControlPropertyValue;
     private javax.swing.JLabel jLabel_Entity;
     private javax.swing.JLabel jLabel_EntityName;
+    private javax.swing.JLabel jLabel_EntityName1;
     private javax.swing.JLabel jLabel_EntitySeach;
     private javax.swing.JLabel jLabel_FirefoxInstallationPath;
     private javax.swing.JLabel jLabel_FixedWaitTime;
@@ -1933,8 +2231,11 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_Bottom;
     private javax.swing.JPanel jPanel_Console;
     private javax.swing.JPanel jPanel_EntitySetting;
+    private javax.swing.JPanel jPanel_EntitySetting1;
     private javax.swing.JPanel jPanel_EntiySettingBottom;
+    private javax.swing.JPanel jPanel_EntiySettingBottom1;
     private javax.swing.JPanel jPanel_EntiySettingTop;
+    private javax.swing.JPanel jPanel_EntiySettingTop1;
     private javax.swing.JPanel jPanel_GlobalSetting;
     private javax.swing.JPanel jPanel_PostContentPool;
     private javax.swing.JPanel jPanel_PostContentPool1;
@@ -1947,15 +2248,19 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane_Console;
     private javax.swing.JScrollPane jScrollPane_EntiySetting;
+    private javax.swing.JScrollPane jScrollPane_EntiySetting1;
     private javax.swing.JScrollPane jScrollPane_PostContentPool;
     private javax.swing.JTabbedPane jTabbedPane_EntityManagement;
     private javax.swing.JTabbedPane jTabbedPane_PostMachineApp;
     private javax.swing.JTabbedPane jTabbedPane_SystemSettings;
     private javax.swing.JTable jTable;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable_ControlPropertySetting;
     private javax.swing.JTable jTable_EntiySetting;
     private javax.swing.JTable jTable_PostContentPool;
     private javax.swing.JTextArea jTextArea_Console;
+    private javax.swing.JTextField jTextField_ControlPropertyID;
+    private javax.swing.JTextField jTextField_ControlPropertyName;
     private javax.swing.JTextField jTextField_ControlPropertyValue;
     private javax.swing.JTextField jTextField_EntityID;
     private javax.swing.JTextField jTextField_EntityName;
@@ -2014,5 +2319,9 @@ public class PostMachineApp extends javax.swing.JFrame {
     private static Integer PoolContentID;
     private static String PoolFirefoxProfile;
     private static String PoolContent;
+    
+        private static Boolean EnableControlProperty;
+    private static Integer ControlPropertyID;
+    private static String ControlPropertyName;
 
 }
