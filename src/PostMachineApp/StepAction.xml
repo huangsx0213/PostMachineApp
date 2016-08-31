@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<StepActions>
+  <StepAction StepActionID="1">
+    <EnableStepAction>true</EnableStepAction>
+    <StepActionName>Type</StepActionName>
+  </StepAction>
+  <StepAction StepActionID="2">
+    <EnableStepAction>true</EnableStepAction>
+    <StepActionName>Click</StepActionName>
+  </StepAction>
+</StepActions>
