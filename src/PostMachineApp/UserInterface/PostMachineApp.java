@@ -733,7 +733,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jLabel_SearchEntity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_SearchEntity.setText("[Criteria] Entity:");
 
-        jComboBox_SeachEntity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_SeachEntity.setModel(new javax.swing.DefaultComboBoxModel<>(EntityName2));
 
         jButton_StepSearch.setText("Search");
 
