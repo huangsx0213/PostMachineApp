@@ -21,40 +21,41 @@ import org.openqa.selenium.firefox.internal.ProfilesIni;
  */
 public class FlymeForumPost extends BasicForumPost {
 
-    public FlymeForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount,Integer RestWaitPostCountOffset, String PostUrl, String PostContent) {
-        super(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount,RestWaitPostCountOffset, PostUrl, PostContent);
+    public FlymeForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent) {
+        super(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount, RestWaitPostCountOffset, PostUrl, PostContent);
     }
 
     @Override
     public void beforeSendPost(WebDriver driver) {
-        
-        driver.get(PostUrl);
-        
+
+        driver.get("http://bbs.flyme.cn/forum-101-1.html");
         WebElement LoginDiv1 = driver.findElement(By.xpath("//div[@id='loginPanel']/span/a"));
         LoginDiv1.click();
-        
+        watiuntilpageloaded(driver);
+        driver.findElement(By.xpath("//div[@class='btn_sign_left']/p[contains(text(),'签到')]")).click();
+        driver.get(PostUrl);
         watiuntilpageloaded(driver);
     }
 
-    	public void watiuntilpageloaded(WebDriver driver) {
-		// TODO Auto-generated method stub
-		try {
-			Thread.sleep(500);
-		} catch (Exception ex) {
-		}
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		String state;
-		for (int waitno = 0; waitno < 100; waitno++) {
-			state = (String) js.executeScript("return document.readyState; ");
-			// System.out.print(state+"\n");
-			if (state.equals("complete")) {
-				// System.out.print("Page loaded.");
-				break;
-			}
-			try {
-				Thread.sleep(200);
-			} catch (Exception ex) {
-			}
-		}
-	}
+    public void watiuntilpageloaded(WebDriver driver) {
+        // TODO Auto-generated method stub
+        try {
+            Thread.sleep(500);
+        } catch (Exception ex) {
+        }
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String state;
+        for (int waitno = 0; waitno < 100; waitno++) {
+            state = (String) js.executeScript("return document.readyState; ");
+            // System.out.print(state+"\n");
+            if (state.equals("complete")) {
+                // System.out.print("Page loaded.");
+                break;
+            }
+            try {
+                Thread.sleep(200);
+            } catch (Exception ex) {
+            }
+        }
+    }
 }
