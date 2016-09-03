@@ -33,4 +33,8 @@
     <EnableEntity>true</EnableEntity>
     <EntityName>WangYi</EntityName>
   </Entity>
+  <Entity EntityID="9">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>Flyme</EntityName>
+  </Entity>
 </Entitys>
