@@ -37,6 +37,7 @@ public class PostMachineApp extends javax.swing.JFrame {
     public PostMachineApp() {
         initComponents();
         fillTable();
+        fillPostStepTable();
         fillEntityTable();
         fillPostContentPoolTable();
         fillControlPropertyTable();
@@ -44,6 +45,10 @@ public class PostMachineApp extends javax.swing.JFrame {
         ForumPost ForumPost = TaskManagementDAO.getForumPostByID(String.valueOf(1));
         if (ForumPost != null) {
             fillForm(ForumPost);
+        }
+        PostStep PostStep = PostStepManagementDAO.getPostStepByID(String.valueOf(1));
+        if (PostStep != null) {
+            fillPostStepForm(PostStep);
         }
         GlobalSetting GlobalSetting = GlobalSettingDAO.getGlobalSettingByID(String.valueOf(1));
         if (GlobalSetting != null) {
@@ -120,15 +125,15 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextField_RestWaitPostCountOffset = new javax.swing.JTextField();
         jLabel_EntitySeach = new javax.swing.JLabel();
         jComboBox_EntitySeach = new javax.swing.JComboBox<>();
-        jButton_EntitySearch = new javax.swing.JButton();
+        jButton_TaskSearchEntity = new javax.swing.JButton();
         jPanel_Bottom = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jTabbedPane_EntityManagement = new javax.swing.JTabbedPane();
-        jPanel_PostContentPool1 = new javax.swing.JPanel();
-        jPanel_PostContentPoolTop1 = new javax.swing.JPanel();
-        Title_PostContentPool1 = new javax.swing.JLabel();
-        TitleSeparator_PostContentPool1 = new javax.swing.JSeparator();
+        jPanel_SendPostStep = new javax.swing.JPanel();
+        jPanel_SendPostStepTop = new javax.swing.JPanel();
+        Title_SendPostStep = new javax.swing.JLabel();
+        TitleSeparator_SendPostStep = new javax.swing.JSeparator();
         StepNew = new javax.swing.JButton();
         StepSave = new javax.swing.JButton();
         StepDelete = new javax.swing.JButton();
@@ -149,13 +154,13 @@ public class PostMachineApp extends javax.swing.JFrame {
         jLabel_StepDataValue = new javax.swing.JLabel();
         jTextField_StepDataValue = new javax.swing.JTextField();
         jLabel_SearchEntity = new javax.swing.JLabel();
-        jComboBox_SeachEntity = new javax.swing.JComboBox<>();
+        jComboBox_StepSearchEntity = new javax.swing.JComboBox<>();
         jButton_StepSearch = new javax.swing.JButton();
         jComboBox_ParentProperty = new javax.swing.JComboBox<>();
         jComboBox_ControlProperty = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanel_SendPostStepBottom = new javax.swing.JPanel();
+        jScrollPane_SendPostStep = new javax.swing.JScrollPane();
+        jTable_SendPostStep = new javax.swing.JTable();
         jTabbedPane_SystemSettings = new javax.swing.JTabbedPane();
         jPanel_GlobalSetting = new javax.swing.JPanel();
         Title_GlobalParametersSetting = new javax.swing.JLabel();
@@ -469,10 +474,10 @@ public class PostMachineApp extends javax.swing.JFrame {
         EntityName2[0]="All";
         jComboBox_EntitySeach.setModel(new javax.swing.DefaultComboBoxModel<>(EntityName2));
 
-        jButton_EntitySearch.setText("Search");
-        jButton_EntitySearch.addActionListener(new java.awt.event.ActionListener() {
+        jButton_TaskSearchEntity.setText("Search");
+        jButton_TaskSearchEntity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_EntitySearchActionPerformed(evt);
+                jButton_TaskSearchEntityActionPerformed(evt);
             }
         });
 
@@ -498,7 +503,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_TopLayout.createSequentialGroup()
                                 .addComponent(jComboBox_EntitySeach, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton_EntitySearch)
+                                .addComponent(jButton_TaskSearchEntity)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                                 .addComponent(New)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -607,7 +612,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                     .addComponent(RunS)
                     .addComponent(jLabel_EntitySeach)
                     .addComponent(jComboBox_EntitySeach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_EntitySearch))
+                    .addComponent(jButton_TaskSearchEntity))
                 .addContainerGap())
         );
 
@@ -685,14 +690,14 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTabbedPane_EntityManagement.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane_EntityManagement.setPreferredSize(new java.awt.Dimension(795, 450));
 
-        jPanel_PostContentPool1.setPreferredSize(new java.awt.Dimension(660, 400));
+        jPanel_SendPostStep.setPreferredSize(new java.awt.Dimension(660, 400));
 
-        jPanel_PostContentPoolTop1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel_SendPostStepTop.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        Title_PostContentPool1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        Title_PostContentPool1.setForeground(new java.awt.Color(0, 0, 255));
-        Title_PostContentPool1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title_PostContentPool1.setText("Send Post Step");
+        Title_SendPostStep.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Title_SendPostStep.setForeground(new java.awt.Color(0, 0, 255));
+        Title_SendPostStep.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title_SendPostStep.setText("Send Post Step");
 
         StepNew.setText("New");
         StepNew.setToolTipText("Create a new thread form");
@@ -760,9 +765,14 @@ public class PostMachineApp extends javax.swing.JFrame {
         jLabel_SearchEntity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_SearchEntity.setText("[Criteria] Entity:");
 
-        jComboBox_SeachEntity.setModel(new javax.swing.DefaultComboBoxModel<>(EntityName2));
+        jComboBox_StepSearchEntity.setModel(new javax.swing.DefaultComboBoxModel<>(EntityName2));
 
         jButton_StepSearch.setText("Search");
+        jButton_StepSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_StepSearchActionPerformed(evt);
+            }
+        });
 
         List<ControlProperty> ControlPropertys = new ArrayList<ControlProperty>();
         ControlPropertys=ControlPropertyDAO.getAllControlProperty();
@@ -777,26 +787,26 @@ public class PostMachineApp extends javax.swing.JFrame {
 
         jComboBox_ControlProperty.setModel(new javax.swing.DefaultComboBoxModel<>(ControlPropertyName));
 
-        javax.swing.GroupLayout jPanel_PostContentPoolTop1Layout = new javax.swing.GroupLayout(jPanel_PostContentPoolTop1);
-        jPanel_PostContentPoolTop1.setLayout(jPanel_PostContentPoolTop1Layout);
-        jPanel_PostContentPoolTop1Layout.setHorizontalGroup(
-            jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_PostContentPoolTop1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_SendPostStepTopLayout = new javax.swing.GroupLayout(jPanel_SendPostStepTop);
+        jPanel_SendPostStepTop.setLayout(jPanel_SendPostStepTopLayout);
+        jPanel_SendPostStepTopLayout.setHorizontalGroup(
+            jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_SendPostStepTopLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TitleSeparator_PostContentPool1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Title_PostContentPool1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel_PostContentPoolTop1Layout.createSequentialGroup()
-                        .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TitleSeparator_SendPostStep, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Title_SendPostStep, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel_SendPostStepTopLayout.createSequentialGroup()
+                        .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel_SearchEntity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel_ControlProperty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel_ParentProperty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCheckBox_EnablePostStep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel_StepAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_PostContentPoolTop1Layout.createSequentialGroup()
-                                .addComponent(jComboBox_SeachEntity, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_SendPostStepTopLayout.createSequentialGroup()
+                                .addComponent(jComboBox_StepSearchEntity, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton_StepSearch)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
@@ -805,30 +815,30 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addComponent(StepSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(StepDelete))
-                            .addGroup(jPanel_PostContentPoolTop1Layout.createSequentialGroup()
-                                .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel_PostContentPoolTop1Layout.createSequentialGroup()
+                            .addGroup(jPanel_SendPostStepTopLayout.createSequentialGroup()
+                                .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jPanel_SendPostStepTopLayout.createSequentialGroup()
                                             .addComponent(jComboBox_StepAction, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel_StepDataValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_PostContentPoolTop1Layout.createSequentialGroup()
-                                            .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_SendPostStepTopLayout.createSequentialGroup()
+                                            .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jComboBox_ParentProperty, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jComboBox_ControlProperty, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(jLabel_ControlPropertyValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel_ParentPropertyValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                    .addGroup(jPanel_PostContentPoolTop1Layout.createSequentialGroup()
+                                    .addGroup(jPanel_SendPostStepTopLayout.createSequentialGroup()
                                         .addComponent(jTextField_StepID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel_Entity)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jComboBox_Entity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel_PostContentPoolTop1Layout.createSequentialGroup()
+                                .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel_SendPostStepTopLayout.createSequentialGroup()
                                         .addComponent(jLabel_StepDescription)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextField_StepDescription))
@@ -837,14 +847,14 @@ public class PostMachineApp extends javax.swing.JFrame {
                                     .addComponent(jTextField_StepDataValue))))))
                 .addContainerGap())
         );
-        jPanel_PostContentPoolTop1Layout.setVerticalGroup(
-            jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_PostContentPoolTop1Layout.createSequentialGroup()
-                .addComponent(Title_PostContentPool1)
+        jPanel_SendPostStepTopLayout.setVerticalGroup(
+            jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_SendPostStepTopLayout.createSequentialGroup()
+                .addComponent(Title_SendPostStep)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TitleSeparator_PostContentPool1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TitleSeparator_SendPostStep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox_EnablePostStep)
                     .addComponent(jTextField_StepID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_Entity)
@@ -852,27 +862,27 @@ public class PostMachineApp extends javax.swing.JFrame {
                     .addComponent(jLabel_StepDescription)
                     .addComponent(jTextField_StepDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_ParentProperty)
                     .addComponent(jLabel_ParentPropertyValue)
                     .addComponent(jTextField_ParentPropertyValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox_ParentProperty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_ControlProperty)
                     .addComponent(jLabel_ControlPropertyValue)
                     .addComponent(jTextField_ControlPropertyValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox_ControlProperty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_StepAction)
                     .addComponent(jComboBox_StepAction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_StepDataValue)
                     .addComponent(jTextField_StepDataValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel_PostContentPoolTop1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_SendPostStepTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_SearchEntity)
-                    .addComponent(jComboBox_SeachEntity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_StepSearchEntity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_StepSearch)
                     .addComponent(StepDelete)
                     .addComponent(StepSave)
@@ -880,49 +890,54 @@ public class PostMachineApp extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_SendPostStepBottom.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_SendPostStep.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "StepID", "Entity", "PProerty", "PPropertyValue", "CProperty", "CPropertyValue", "Action", "Data"
+                "Enable", "StepID", "Entity", "PProerty", "PPropertyValue", "CProperty", "CPropertyValue", "Action", "Data"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTable_SendPostStep.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_SendPostStepMouseClicked(evt);
+            }
+        });
+        jScrollPane_SendPostStep.setViewportView(jTable_SendPostStep);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+        javax.swing.GroupLayout jPanel_SendPostStepBottomLayout = new javax.swing.GroupLayout(jPanel_SendPostStepBottom);
+        jPanel_SendPostStepBottom.setLayout(jPanel_SendPostStepBottomLayout);
+        jPanel_SendPostStepBottomLayout.setHorizontalGroup(
+            jPanel_SendPostStepBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane_SendPostStep)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+        jPanel_SendPostStepBottomLayout.setVerticalGroup(
+            jPanel_SendPostStepBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane_SendPostStep, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel_PostContentPool1Layout = new javax.swing.GroupLayout(jPanel_PostContentPool1);
-        jPanel_PostContentPool1.setLayout(jPanel_PostContentPool1Layout);
-        jPanel_PostContentPool1Layout.setHorizontalGroup(
-            jPanel_PostContentPool1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_PostContentPoolTop1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel_SendPostStepLayout = new javax.swing.GroupLayout(jPanel_SendPostStep);
+        jPanel_SendPostStep.setLayout(jPanel_SendPostStepLayout);
+        jPanel_SendPostStepLayout.setHorizontalGroup(
+            jPanel_SendPostStepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel_SendPostStepTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel_SendPostStepBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel_PostContentPool1Layout.setVerticalGroup(
-            jPanel_PostContentPool1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_PostContentPool1Layout.createSequentialGroup()
-                .addComponent(jPanel_PostContentPoolTop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel_SendPostStepLayout.setVerticalGroup(
+            jPanel_SendPostStepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_SendPostStepLayout.createSequentialGroup()
+                .addComponent(jPanel_SendPostStepTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel_SendPostStepBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane_EntityManagement.addTab("Send Post Step", jPanel_PostContentPool1);
+        jTabbedPane_EntityManagement.addTab("Send Post Step", jPanel_SendPostStep);
 
         jTabbedPane_PostMachineApp.addTab("Entity Management", jTabbedPane_EntityManagement);
 
@@ -1182,7 +1197,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_EntitySettingLayout.setHorizontalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_EntiySettingTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         jPanel_EntitySettingLayout.setVerticalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1378,7 +1393,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_PostContentPoolLayout.setHorizontalGroup(
             jPanel_PostContentPoolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_PostContentPoolTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         jPanel_PostContentPoolLayout.setVerticalGroup(
             jPanel_PostContentPoolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1554,7 +1569,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_ControlPropertySettingLayout.setHorizontalGroup(
             jPanel_ControlPropertySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_ControlPropertySettingTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_ControlPropertySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(jPanel_ControlPropertySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         jPanel_ControlPropertySettingLayout.setVerticalGroup(
             jPanel_ControlPropertySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1730,7 +1745,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_StepActionSettingLayout.setHorizontalGroup(
             jPanel_StepActionSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_StepActionSettingTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_StepActionSettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addComponent(jPanel_StepActionSettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         jPanel_StepActionSettingLayout.setVerticalGroup(
             jPanel_StepActionSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1764,21 +1779,32 @@ public class PostMachineApp extends javax.swing.JFrame {
 
     private void StepDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StepDeleteActionPerformed
         // TODO add your handling code here:
+                int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to delete?", "Delete", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1
+        if (YesOrNo == 0) {
+            String id = this.jTextField_StepID.getText();
+            PostStepManagementDAO.deleteById(id);
+            System.out.println("Delete successfully！");
+            fillPostStepTable();
+            PostStep PostStep = PostStepManagementDAO.getPostStepByID(String.valueOf(1));
+            if (PostStep != null) {
+                fillPostStepForm(PostStep);
+            }
+        }
     }//GEN-LAST:event_StepDeleteActionPerformed
 
     private void StepSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StepSaveActionPerformed
         boolean EnablePostStep = this.jCheckBox_EnablePostStep.isSelected();
         Integer StepID = Integer.parseInt(this.jTextField_StepID.getText());
-        String StepEntityName = this.jTextField_EntityName.getText();
+        String StepEntityName = (String) this.jComboBox_Entity.getSelectedItem();;     
         String StepDescription = this.jTextField_StepDescription.getText();
-        String ParentProperty = (String) this.jComboBox_ParentProperty.getEditor().getItem();
+        String ParentProperty = (String) this.jComboBox_ParentProperty.getSelectedItem();
         String ParentPropertyValue = this.jTextField_ParentPropertyValue.getText();
-        String ControlProperty = (String) this.jComboBox_ControlProperty.getEditor().getItem();
+        String ControlProperty = (String) this.jComboBox_ControlProperty.getSelectedItem();
         String ControlPropertyValue = this.jTextField_ControlPropertyValue.getText();
-        String StepAction = (String) this.jComboBox_StepAction.getEditor().getItem();
+        String StepAction = (String) this.jComboBox_StepAction.getSelectedItem();
         String StepDataValue = this.jTextField_StepDataValue.getText();
         PostStep PostStep;
-        PostStep = new PostStep(EnablePostStep, StepID, StepEntityName, StepDescription, ParentProperty, ControlPropertyValue, StepAction, StepDataValue, ParentPropertyValue, ControlProperty);
+        PostStep = new PostStep(EnablePostStep, StepID, StepEntityName, StepDescription, ParentProperty, ParentPropertyValue, ControlProperty, ControlPropertyValue,StepAction, StepDataValue);
         if (PostStepManagementDAO.StepIDisExisting(PostStep)) {
             PostStepManagementDAO.update(PostStep);
         } else {
@@ -1786,11 +1812,21 @@ public class PostMachineApp extends javax.swing.JFrame {
         }
         System.out.println("Save successfully！");
         JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE);
-        //SearchByEntity();
+        SearchSendPostStepByEntity();
     }//GEN-LAST:event_StepSaveActionPerformed
 
     private void StepNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StepNewActionPerformed
         // TODO add your handling code here:
+        this.jCheckBox_EnablePostStep.setSelected(true);
+        this.jTextField_StepID.setText(Integer.toString(PostStepManagementDAO.getMaxId() + 1));
+        this.jComboBox_Entity.setSelectedItem("");
+        this.jTextField_StepDescription.setText("");
+        this.jComboBox_ParentProperty.setSelectedItem("");
+        this.jTextField_ParentPropertyValue.setText("");
+        this.jComboBox_ControlProperty.setSelectedItem("");
+        this.jTextField_ControlPropertyValue.setText("");
+        this.jComboBox_StepAction.setSelectedItem("");
+        this.jTextField_StepDataValue.setText("");
     }//GEN-LAST:event_StepNewActionPerformed
 
     private void jTable_PostContentPoolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_PostContentPoolMouseClicked
@@ -2049,7 +2085,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         }
         System.out.println("Save successfully！");
         JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE);
-        SearchByEntity();
+        SearchTaskByEntity();
     }//GEN-LAST:event_SaveActionPerformed
 
     private void jTextField_PostUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PostUrlActionPerformed
@@ -2093,9 +2129,9 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextArea_Console.setText("");
     }//GEN-LAST:event_jButtonClearConsoleActionPerformed
 
-    private void jButton_EntitySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EntitySearchActionPerformed
-        SearchByEntity();
-    }//GEN-LAST:event_jButton_EntitySearchActionPerformed
+    private void jButton_TaskSearchEntityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TaskSearchEntityActionPerformed
+        SearchTaskByEntity();
+    }//GEN-LAST:event_jButton_TaskSearchEntityActionPerformed
 
     private void jCheckBox_EnableControlPropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_EnableControlPropertyActionPerformed
         // TODO add your handling code here:
@@ -2227,7 +2263,27 @@ public class PostMachineApp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTable_StepActionSettingMouseClicked
 
-    public void SearchByEntity() {
+    private void jButton_StepSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_StepSearchActionPerformed
+        // TODO add your handling code here:
+        SearchSendPostStepByEntity();
+    }//GEN-LAST:event_jButton_StepSearchActionPerformed
+
+    private void jTable_SendPostStepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_SendPostStepMouseClicked
+        // TODO add your handling code here:
+        int selectRows = jTable_SendPostStep.getSelectedRows().length;// 取得用户所选行的行数
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_SendPostStep.getModel();
+
+        if (selectRows == 1) {
+            int selectedRowIndex = jTable_SendPostStep.getSelectedRow(); // 取得用户所选单行
+            StepID = Integer.parseInt(tableModel.getValueAt(selectedRowIndex, 1).toString());
+        }
+        PostStep PostStep = PostStepManagementDAO.getPostStepByID(StepID.toString());
+        if (PostStep != null) {
+            fillPostStepForm(PostStep);
+        }
+    }//GEN-LAST:event_jTable_SendPostStepMouseClicked
+
+    public void SearchTaskByEntity() {
         // TODO add your handling code here:
         String EntityName = (String) this.jComboBox_EntitySeach.getSelectedItem();
         if (EntityName.equals("All")) {
@@ -2255,7 +2311,34 @@ public class PostMachineApp extends javax.swing.JFrame {
             jTable.invalidate();
         }
     }
+    public void SearchSendPostStepByEntity() {
+        // TODO add your handling code here:
+        String EntityName = (String) this.jComboBox_StepSearchEntity.getSelectedItem();
+        if (EntityName.equals("All")) {
+            fillPostStepTable();
+        } else {
+            DefaultTableModel tableModel = (DefaultTableModel) jTable_SendPostStep.getModel();
+            tableModel.setRowCount(0);
+            // 填充数据
+                  for (PostStep PostStep : PostStepManagementDAO.getPostStepByEntity(EntityName)){
+            String[] arr = new String[9];
+            arr[0] = PostStep.getEnablePostStep().toString();
+            arr[1] = PostStep.getStepID().toString();
+            arr[2] = PostStep.getEntityName();
+            arr[3] = PostStep.getParentProperty();
+            arr[4] = PostStep.getParentPropertyValue();
+            arr[5] = PostStep.getControlProperty();
+            arr[6] = PostStep.getControlPropertyValue();
+            arr[7] = PostStep.getStepAction();
+            arr[8] = PostStep.getStepDataValue();
+            // 添加数据到表格
+            tableModel.addRow(arr);
+        }
 
+        // 更新表格
+        jTable_SendPostStep.invalidate();
+        }
+    }
     private void fillTable() {
         TaskManagementDAO.getAllForumPost();
         DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
@@ -2279,7 +2362,32 @@ public class PostMachineApp extends javax.swing.JFrame {
         // 更新表格
         jTable.invalidate();
     }
+    
+        private void fillPostStepTable() {
+        PostStepManagementDAO.getAllPostStep();
+        DefaultTableModel tableModel = (DefaultTableModel) jTable_SendPostStep.getModel();
+        tableModel.setRowCount(0);
+        // 填充数据
+        for (PostStep PostStep : PostStepManagementDAO.getAllPostStep()) {
+            String[] arr = new String[9];
+            //arr[0] = PostStep.getEnablePostStep().toString();
+            arr[0] = PostStep.getEnablePostStep().toString();
+            arr[1] = PostStep.getStepID().toString();
+            arr[2] = PostStep.getEntityName();
+            arr[3] = PostStep.getParentProperty();
+            arr[4] = PostStep.getParentPropertyValue();
+            arr[5] = PostStep.getControlProperty();
+            arr[6] = PostStep.getControlPropertyValue();
+            arr[7] = PostStep.getStepAction();
+            arr[8] = PostStep.getStepDataValue();
+            // 添加数据到表格
+            tableModel.addRow(arr);
+        }
 
+        // 更新表格
+        jTable_SendPostStep.invalidate();
+    }
+        
     private void fillEntityTable() {
         EntityDAO.getAllEntity();
         DefaultTableModel tableModel = (DefaultTableModel) jTable_EntiySetting.getModel();
@@ -2372,7 +2480,18 @@ public class PostMachineApp extends javax.swing.JFrame {
         this.jTextField_PostUrl.setText(ForumPost.getPostUrl());
         this.jComboBox_PostContent.getEditor().setItem(ForumPost.getPostContent());
     }
-
+    private void fillPostStepForm(PostStep PostStep) {
+        this.jCheckBox_EnablePostStep.setSelected(PostStep.getEnablePostStep());
+        this.jTextField_StepID.setText(PostStep.getStepID().toString());
+        //this.jTextField_EntityName.setText(PostStep.getEntityName());
+        this.jTextField_StepDescription.setText(PostStep.getStepDescription());
+        this.jComboBox_ParentProperty.setSelectedItem(PostStep.getParentProperty());
+        this.jTextField_ParentPropertyValue.setText(PostStep.getParentPropertyValue());
+         this.jComboBox_ControlProperty.setSelectedItem(PostStep.getControlProperty());
+        this.jTextField_ControlPropertyValue.setText(PostStep.getControlPropertyValue());
+         this.jComboBox_StepAction.setSelectedItem(PostStep.getStepAction());
+        this.jTextField_StepDataValue.setText(PostStep.getStepDataValue());     
+    }
     private void fillEntityForm(Entity Entity) {
         this.jCheckBox_EnableEntity.setSelected(Entity.getEnableEntity());
         this.jTextField_EntityID.setText(Entity.getEntityID().toString());
@@ -2465,20 +2584,20 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JSeparator TitleSeparator_EntiySetting;
     private javax.swing.JSeparator TitleSeparator_GlobalParametersSetting;
     private javax.swing.JSeparator TitleSeparator_PostContentPool;
-    private javax.swing.JSeparator TitleSeparator_PostContentPool1;
+    private javax.swing.JSeparator TitleSeparator_SendPostStep;
     private javax.swing.JSeparator TitleSeparator_StepActionSetting;
     private javax.swing.JSeparator TitleSeparator_TaskManagement;
     private javax.swing.JLabel Title_ControlPropertySetting;
     private javax.swing.JLabel Title_EntiySetting;
     private javax.swing.JLabel Title_GlobalParametersSetting;
     private javax.swing.JLabel Title_PostContentPool;
-    private javax.swing.JLabel Title_PostContentPool1;
+    private javax.swing.JLabel Title_SendPostStep;
     private javax.swing.JLabel Title_StepActionSetting;
     private javax.swing.JLabel Title_TaskManagement;
     private javax.swing.JButton jButtonClearConsole;
-    private javax.swing.JButton jButton_EntitySearch;
     private javax.swing.JButton jButton_GlobalSettingSave;
     private javax.swing.JButton jButton_StepSearch;
+    private javax.swing.JButton jButton_TaskSearchEntity;
     private javax.swing.JCheckBox jCheckBox_EnableControlProperty;
     private javax.swing.JCheckBox jCheckBox_EnableEntity;
     private javax.swing.JCheckBox jCheckBox_EnablePoolContent;
@@ -2493,8 +2612,8 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox_PoolFirefoxProfile;
     private javax.swing.JComboBox<String> jComboBox_PostContent;
     private javax.swing.JComboBox<String> jComboBox_PostEntity;
-    private javax.swing.JComboBox<String> jComboBox_SeachEntity;
     private javax.swing.JComboBox<String> jComboBox_StepAction;
+    private javax.swing.JComboBox<String> jComboBox_StepSearchEntity;
     private javax.swing.JLabel jLabel_ControlProperty;
     private javax.swing.JLabel jLabel_ControlPropertyName;
     private javax.swing.JLabel jLabel_ControlPropertyValue;
@@ -2525,7 +2644,6 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_StepDescription;
     private javax.swing.JLabel jLabel_UserAgentString;
     private javax.swing.JLabel jLabel_Workstation;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel_Bottom;
     private javax.swing.JPanel jPanel_Console;
     private javax.swing.JPanel jPanel_ControlPropertySetting;
@@ -2536,30 +2654,31 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_EntiySettingTop;
     private javax.swing.JPanel jPanel_GlobalSetting;
     private javax.swing.JPanel jPanel_PostContentPool;
-    private javax.swing.JPanel jPanel_PostContentPool1;
     private javax.swing.JPanel jPanel_PostContentPoolBottom;
     private javax.swing.JPanel jPanel_PostContentPoolTop;
-    private javax.swing.JPanel jPanel_PostContentPoolTop1;
+    private javax.swing.JPanel jPanel_SendPostStep;
+    private javax.swing.JPanel jPanel_SendPostStepBottom;
+    private javax.swing.JPanel jPanel_SendPostStepTop;
     private javax.swing.JPanel jPanel_StepActionSetting;
     private javax.swing.JPanel jPanel_StepActionSettingBottom;
     private javax.swing.JPanel jPanel_StepActionSettingTop;
     private javax.swing.JPanel jPanel_TaskManagement;
     private javax.swing.JPanel jPanel_Top;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane_Console;
     private javax.swing.JScrollPane jScrollPane_ControlPropertySetting;
     private javax.swing.JScrollPane jScrollPane_EntiySetting;
     private javax.swing.JScrollPane jScrollPane_PostContentPool;
+    private javax.swing.JScrollPane jScrollPane_SendPostStep;
     private javax.swing.JScrollPane jScrollPane_StepActionSetting;
     private javax.swing.JTabbedPane jTabbedPane_EntityManagement;
     private javax.swing.JTabbedPane jTabbedPane_PostMachineApp;
     private javax.swing.JTabbedPane jTabbedPane_SystemSettings;
     private javax.swing.JTable jTable;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable_ControlPropertySetting;
     private javax.swing.JTable jTable_EntiySetting;
     private javax.swing.JTable jTable_PostContentPool;
+    private javax.swing.JTable jTable_SendPostStep;
     private javax.swing.JTable jTable_StepActionSetting;
     private javax.swing.JTextArea jTextArea_Console;
     private javax.swing.JTextField jTextField_ControlPropertyID;
@@ -2632,4 +2751,15 @@ public class PostMachineApp extends javax.swing.JFrame {
     private static Boolean EnableStepAction;
     private static Integer StepActionID;
     private static String StepActionName;
+    
+      private static  Boolean EnablePostStep;
+   private static Integer StepID;
+   private static String StepEntityName;
+   private static String StepDescription;
+   private static String ParentProperty;
+   private static String ParentPropertyValue;
+   private static String ControlProperty;
+   private static String ControlPropertyValue;
+  private static  String StepAction;
+   private static String StepDataValue;
 }

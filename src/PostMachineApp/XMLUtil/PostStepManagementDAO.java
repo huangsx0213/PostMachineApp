@@ -50,7 +50,7 @@ public class PostStepManagementDAO {
             StepAction = PostStepElement.element("StepAction").getTextTrim();
             StepDataValue = PostStepElement.element("StepDataValue").getTextTrim();
             PostStep PostStep;
-            PostStep = new PostStep(EnablePostStep, StepID, EntityName, StepDescription, ParentProperty, ControlPropertyValue, StepAction, StepDataValue, ParentPropertyValue, ControlProperty);
+            PostStep = new PostStep(EnablePostStep, StepID, EntityName, StepDescription, ParentProperty, ParentPropertyValue, ControlProperty, ControlPropertyValue, StepAction, StepDataValue);
 
             PostSteps.add(PostStep);
         }
@@ -76,7 +76,7 @@ public class PostStepManagementDAO {
                 StepAction = PostStepElement.element("StepAction").getTextTrim();
                 StepDataValue = PostStepElement.element("StepDataValue").getTextTrim();
                 PostStep PostStep;
-                PostStep = new PostStep(EnablePostStep, StepID, EntityName, StepDescription, ParentProperty, ControlPropertyValue, StepAction, StepDataValue, ParentPropertyValue, ControlProperty);
+                PostStep = new PostStep(EnablePostStep, StepID, EntityName, StepDescription, ParentProperty, ParentPropertyValue, ControlProperty, ControlPropertyValue, StepAction, StepDataValue);
 
                 PostSteps.add(PostStep);
             }
@@ -101,7 +101,7 @@ public class PostStepManagementDAO {
                 ControlPropertyValue = PostStepElement.element("ControlPropertyValue").getTextTrim();
                 StepAction = PostStepElement.element("StepAction").getTextTrim();
                 StepDataValue = PostStepElement.element("StepDataValue").getTextTrim();
-                PostStep = new PostStep(EnablePostStep, StepID, EntityName, StepDescription, ParentProperty, ControlPropertyValue, StepAction, StepDataValue, ParentPropertyValue, ControlProperty);
+               PostStep = new PostStep(EnablePostStep, StepID, EntityName, StepDescription, ParentProperty, ParentPropertyValue, ControlProperty, ControlPropertyValue, StepAction, StepDataValue);
 
             }
         }
@@ -115,7 +115,7 @@ public class PostStepManagementDAO {
         List<Element> PostStepElements = rootElement.elements();
         List<PostStep> PostSteps = new ArrayList<PostStep>();
         for (Element PostStepElement : PostStepElements) {
-            if (PostStepElement.element("ParentProperty").getTextTrim().equals(Entity)) {
+            if (PostStepElement.element("EntityName").getTextTrim().equals(Entity)) {
                 StepID = Integer.parseInt(PostStepElement.attribute("StepID").getText());
                 EntityName = PostStepElement.element("EntityName").getTextTrim();
                 StepDescription = PostStepElement.element("StepDescription").getTextTrim();
@@ -126,7 +126,7 @@ public class PostStepManagementDAO {
                 StepAction = PostStepElement.element("StepAction").getTextTrim();
                 StepDataValue = PostStepElement.element("StepDataValue").getTextTrim();
                 PostStep PostStep;
-                PostStep = new PostStep(EnablePostStep, StepID, EntityName, StepDescription, ParentProperty, ControlPropertyValue, StepAction, StepDataValue, ParentPropertyValue, ControlProperty);
+                PostStep = new PostStep(EnablePostStep, StepID, EntityName, StepDescription, ParentProperty, ParentPropertyValue, ControlProperty, ControlPropertyValue, StepAction, StepDataValue);
 
                 PostSteps.add(PostStep);
             }
