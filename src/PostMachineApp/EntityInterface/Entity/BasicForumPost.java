@@ -4,8 +4,6 @@ import PostMachineApp.EntityInterface.ForumPost;
 import PostMachineApp.PostContentEntity;
 import PostMachineApp.XMLUtil.PostContentPoolDAO;
 import static PostMachineApp.XMLUtil.TextUtil.TextFile2ArrayList;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,6 +13,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
 public class BasicForumPost implements ForumPost {
 
@@ -32,7 +42,7 @@ public class BasicForumPost implements ForumPost {
     public final Integer RandomWaitTime;
     public final Integer RestWaitTime;
     public final Integer RestWaitPostCount;
-     public final Integer RestWaitPostCountOffset;
+    public final Integer RestWaitPostCountOffset;
     public final String PostUrl;
     public final String PostContent;
     public String tempPostContent;
@@ -41,9 +51,10 @@ public class BasicForumPost implements ForumPost {
     public WebDriver driver;
     public Integer RestWaitPostCountTemp;
     public Integer NextWait;
+    public Integer TargetPostCount;
 
     //构造函数
-    public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount,Integer RestWaitPostCountOffset,  String PostUrl, String PostContent) {
+    public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -176,6 +187,14 @@ public class BasicForumPost implements ForumPost {
         return PostContentEntitys;
     }
 
+    //从文本获取发贴内容
+    public List<String> getFixedPostsList() {
+        String txtFileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\FixedPosts.txt";
+        List<String> FixedPostsList;
+        FixedPostsList = TextFile2ArrayList(txtFileName);
+        return FixedPostsList;
+    }
+
     //发贴入口
     @Override
     public void sendPost() {
@@ -194,8 +213,6 @@ public class BasicForumPost implements ForumPost {
 
         List<String> FileTextLinesList = getFileTextLinesList();
 
-        driver = getWebDriverWithSpecifiedProfile();
-
         beforeSendPost(driver);
 
         sendPostIteration(PostContentEntitys, FileTextLinesList, driver);
@@ -207,6 +224,7 @@ public class BasicForumPost implements ForumPost {
 
     //发贴前置操作
     public void beforeSendPost(WebDriver driver) {
+        driver = getWebDriverWithSpecifiedProfile();
         driver.get(PostUrl);
     }
 
@@ -218,7 +236,7 @@ public class BasicForumPost implements ForumPost {
             getTempPostContent(PostContentEntitys, FileTextLinesList);
 
             sendPostSteps(driver, i);
-            
+
             sendPostWait(i, driver);
         }
     }
@@ -289,6 +307,7 @@ public class BasicForumPost implements ForumPost {
             Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
             NextWait++;
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
         if (i % RefreshPostCount == 0) {
             driver.navigate().refresh();
@@ -296,7 +315,7 @@ public class BasicForumPost implements ForumPost {
 
         if (Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0) {
             RestWaitTime(RestWaitTime);
-            RestWaitPostCountTemp = (int) (RestWaitPostCount -RestWaitPostCountOffset + Math.random() * (RestWaitPostCount+RestWaitPostCountOffset - (RestWaitPostCount -RestWaitPostCountOffset) + 1));
+            RestWaitPostCountTemp = (int) (RestWaitPostCount - RestWaitPostCountOffset + Math.random() * (RestWaitPostCount + RestWaitPostCountOffset - (RestWaitPostCount - RestWaitPostCountOffset) + 1));
             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] will take a next rest after " + RestWaitPostCountTemp + " posts.");
             NextWait = 0;
         }
@@ -310,6 +329,7 @@ public class BasicForumPost implements ForumPost {
         try {
             Thread.sleep(AdjustedWaitTime);
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -318,6 +338,42 @@ public class BasicForumPost implements ForumPost {
         try {
             Thread.sleep(time);
         } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public Integer getCurrentPostCount() {
+        int result = 0;
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        try {
+            HttpGet httpget = new HttpGet(PostUrl);
+            ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
+                @Override
+                public String handleResponse(
+                        final HttpResponse response) throws ClientProtocolException, IOException {
+                    int status = response.getStatusLine().getStatusCode();
+                    if (status >= 200 && status < 300) {
+                        HttpEntity entity = response.getEntity();
+                        return entity != null ? EntityUtils.toString(entity) : null;
+                    } else {
+                        throw new ClientProtocolException("Unexpected response status: " + status);
+                    }
+                }
+            };
+            String responseBody = httpclient.execute(httpget, responseHandler);
+            String[] sourceStrArray = responseBody.split("共有");
+            String[] sourceStrArray2 = sourceStrArray[1].split("条回复");
+            result = Integer.parseInt(sourceStrArray2[0]) + 1;
+            //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] 现在的楼层数为： " + result);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                httpclient.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return result;
         }
     }
 }

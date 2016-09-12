@@ -6,14 +6,11 @@
 package PostMachineApp.EntityInterface.Entity;
 
 import java.util.Date;
-import javax.swing.JOptionPane;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
+
 
 /**
  *
@@ -27,7 +24,7 @@ public class MeizuForumPost extends BasicForumPost {
 
     @Override
     public void beforeSendPost(WebDriver driver) {
-        
+        driver = getWebDriverWithSpecifiedProfile();
         driver.get(PostUrl);
         
         WebElement LoginDiv1 = driver.findElement(By.id("mzCust"));
@@ -63,6 +60,7 @@ public class MeizuForumPost extends BasicForumPost {
 		try {
 			Thread.sleep(500);
 		} catch (Exception ex) {
+                    ex.printStackTrace();
 		}
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		String state;
@@ -76,6 +74,7 @@ public class MeizuForumPost extends BasicForumPost {
 			try {
 				Thread.sleep(200);
 			} catch (Exception ex) {
+                            ex.printStackTrace();
 			}
 		}
 	}

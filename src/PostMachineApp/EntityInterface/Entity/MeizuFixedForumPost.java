@@ -1,0 +1,101 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package PostMachineApp.EntityInterface.Entity;
+
+import PostMachineApp.PostContentEntity;
+import java.util.Date;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+/**
+ *
+ * @author vhuang1
+ */
+public class MeizuFixedForumPost extends MeizuForumPost {
+
+    public MeizuFixedForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent) {
+        super(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount, RestWaitPostCountOffset, PostUrl, PostContent);
+    }
+
+    @Override
+    public void beforeSendPost(WebDriver driver) {
+
+        List<String> FixedPostsList = getFixedPostsList();
+        for (int i = 0; i < FixedPostsList.size(); i++) {
+            TargetPostCount = 0;
+            long printTime=0;
+            int ThisTimeTargetPostCount = Integer.parseInt(FixedPostsList.get(i));
+            while (true) {
+                int CurrentRealTimePostCount = 0;
+                CurrentRealTimePostCount = getCurrentPostCount();
+                if (ThisTimeTargetPostCount - CurrentRealTimePostCount < 35 && ThisTimeTargetPostCount - CurrentRealTimePostCount > 0) {
+                    TargetPostCount = ThisTimeTargetPostCount;
+                    break;
+                } else if (CurrentRealTimePostCount >= ThisTimeTargetPostCount) {
+                    TargetPostCount = -1;
+                    break;
+                } else {
+                    printTime+=10000;
+                    WaitFixedTime(10000);
+                }
+                if (printTime>=300000){
+                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] 正在等待启动，现在的楼层数为： " + CurrentRealTimePostCount);
+                printTime=0;
+                }
+            }
+            if (TargetPostCount > 0) {
+                break;
+            }
+        }
+        driver = getWebDriverWithSpecifiedProfile();
+        driver.get(PostUrl);
+
+        WebElement LoginDiv1 = driver.findElement(By.id("mzCust"));
+        LoginDiv1.click();
+
+        WebElement LoginButton1 = driver.findElement(By.id("mzLogin"));
+        LoginButton1.click();
+
+        watiuntilpageloaded(driver);
+    }
+
+    //发贴循环操作
+    @Override
+    public void sendPostIteration(List<PostContentEntity> PostContentEntitys, List<String> FileTextLinesList, WebDriver driver) {
+        while (true) {
+            int CurrentPostCount = 0;
+
+            CurrentPostCount = getCurrentPostCount();
+
+            if (TargetPostCount - CurrentPostCount < 10) {
+                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] 正在执行点抢，执行时的楼层数为： " + CurrentPostCount);
+                break;
+            } else {
+                WaitFixedTime(200);
+            }
+        }
+        for (int i = 1; i <= PostCount && TargetPostCount != -1 && (System.currentTimeMillis() < StopTime || !EnableStopTime); i++) {
+
+            getTempPostContent(PostContentEntitys, FileTextLinesList);
+
+            sendPostSteps(driver, i);
+
+            sendPostWait(i, driver);
+        }
+    }
+
+    @Override
+    public void afterSendPost() {
+        if (TargetPostCount != -1) {
+            driver.quit();
+            sendPost();
+        } else {
+            driver.quit();
+        }
+    }
+}
