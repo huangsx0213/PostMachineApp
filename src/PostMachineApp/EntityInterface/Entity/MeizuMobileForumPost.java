@@ -42,6 +42,7 @@ public class MeizuMobileForumPost extends BasicForumPost {
 
     @Override
     public void beforeSendPost(WebDriver driver) {
+        driver = getWebDriverWithSpecifiedProfile();
         driver.get(PostUrl);
         WebElement LoginImg = driver.findElement(By.xpath("//img[@src='http://bbs.res.meizu.com/resources/php/bbs/static/mplus/img/icon-profile.png']"));
         LoginImg.click();

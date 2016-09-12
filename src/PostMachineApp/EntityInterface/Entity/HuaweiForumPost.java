@@ -12,6 +12,7 @@ final public class HuaweiForumPost extends BasicForumPost {
 
     @Override
     public void beforeSendPost(WebDriver driver) {
+        driver = getWebDriverWithSpecifiedProfile();
         driver.get(PostUrl);
 
         JOptionPane.showMessageDialog(null, "Please input your login credential.", "Credential", JOptionPane.INFORMATION_MESSAGE);

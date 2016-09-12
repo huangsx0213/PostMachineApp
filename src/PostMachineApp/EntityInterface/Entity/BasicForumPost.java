@@ -365,7 +365,7 @@ public class BasicForumPost implements ForumPost {
             String[] sourceStrArray2 = sourceStrArray[1].split("条回复");
             result = Integer.parseInt(sourceStrArray2[0]) + 1;
             //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] 现在的楼层数为： " + result);
-        } catch (IOException ex) {
+        } catch (IOException | NumberFormatException ex) {
             ex.printStackTrace();
         } finally {
             try {
@@ -373,7 +373,8 @@ public class BasicForumPost implements ForumPost {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            return result;
+           
         }
+         return result;
     }
 }

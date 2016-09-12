@@ -27,7 +27,7 @@ public class FlymeForumPost extends BasicForumPost {
 
     @Override
     public void beforeSendPost(WebDriver driver) {
-
+        driver = getWebDriverWithSpecifiedProfile();
         driver.get("http://bbs.flyme.cn/forum-101-1.html");
         WebElement LoginDiv1 = driver.findElement(By.xpath("//div[@id='loginPanel']/span/a"));
         LoginDiv1.click();

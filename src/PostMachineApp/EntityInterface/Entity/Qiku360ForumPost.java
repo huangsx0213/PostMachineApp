@@ -10,6 +10,7 @@ final public class Qiku360ForumPost extends BasicForumPost {
 
     @Override
     public void beforeSendPost(WebDriver driver) {
+        driver = getWebDriverWithSpecifiedProfile();
         driver.get(PostUrl);
         driver.navigate().refresh();
     }

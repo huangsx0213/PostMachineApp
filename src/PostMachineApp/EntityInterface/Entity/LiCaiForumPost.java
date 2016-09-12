@@ -11,6 +11,7 @@ final public class LiCaiForumPost extends BasicForumPost {
 
     @Override
     public void beforeSendPost(WebDriver driver) {
+        driver = getWebDriverWithSpecifiedProfile();
         driver.get(PostUrl);
 
         driver.findElement(By.xpath("//p[@style='float:right;']/a[text()='登录']")).click();
