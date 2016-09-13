@@ -28,24 +28,30 @@ public class MeizuFixedForumPost extends MeizuForumPost {
         List<String> FixedPostsList = getFixedPostsList();
         for (int i = 0; i < FixedPostsList.size(); i++) {
             TargetPostCount = 0;
-            long printTime=0;
+            long printTime = 0;
             int ThisTimeTargetPostCount = Integer.parseInt(FixedPostsList.get(i));
             while (true) {
                 int CurrentRealTimePostCount = 0;
                 CurrentRealTimePostCount = getCurrentPostCount();
-                if (ThisTimeTargetPostCount - CurrentRealTimePostCount < 35 && ThisTimeTargetPostCount - CurrentRealTimePostCount > 0) {
+                if (ThisTimeTargetPostCount - CurrentRealTimePostCount > 100) {
+                    printTime += 100000;
+                    WaitFixedTime(100000);
+                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= 100 && ThisTimeTargetPostCount - CurrentRealTimePostCount > 50) {
+                    printTime += 25000;
+                    WaitFixedTime(25000);
+                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= 50 && ThisTimeTargetPostCount - CurrentRealTimePostCount >= 35) {
+                    printTime += 5000;
+                    WaitFixedTime(5000);
+                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount < 35 && ThisTimeTargetPostCount - CurrentRealTimePostCount > 0) {
                     TargetPostCount = ThisTimeTargetPostCount;
                     break;
-                } else if (CurrentRealTimePostCount >= ThisTimeTargetPostCount) {
+                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= 0) {
                     TargetPostCount = -1;
                     break;
-                } else {
-                    printTime+=10000;
-                    WaitFixedTime(10000);
                 }
-                if (printTime>=300000){
-                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] 正在等待启动，现在的楼层数为： " + CurrentRealTimePostCount);
-                printTime=0;
+                if (printTime >= 300000) {
+                    System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for start up,current real time post count is： " + CurrentRealTimePostCount);
+                    printTime = 0;
                 }
             }
             if (TargetPostCount > 0) {
@@ -68,12 +74,12 @@ public class MeizuFixedForumPost extends MeizuForumPost {
     @Override
     public void sendPostIteration(List<PostContentEntity> PostContentEntitys, List<String> FileTextLinesList, WebDriver driver) {
         while (true) {
-            int CurrentPostCount = 0;
+            int CurrentRealTimePostCount = 0;
 
-            CurrentPostCount = getCurrentPostCount();
+            CurrentRealTimePostCount = getCurrentPostCount();
 
-            if (TargetPostCount - CurrentPostCount < 10) {
-                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] 正在执行点抢，执行时的楼层数为： " + CurrentPostCount);
+            if (TargetPostCount - CurrentRealTimePostCount < 10) {
+                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
                 break;
             } else {
                 WaitFixedTime(200);
