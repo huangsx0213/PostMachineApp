@@ -259,7 +259,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_Console.setLayout(jPanel_ConsoleLayout);
         jPanel_ConsoleLayout.setHorizontalGroup(
             jPanel_ConsoleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_Console, javax.swing.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE)
+            .addComponent(jScrollPane_Console, javax.swing.GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_ConsoleLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButtonClearConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -267,10 +267,10 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_ConsoleLayout.setVerticalGroup(
             jPanel_ConsoleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ConsoleLayout.createSequentialGroup()
-                .addComponent(jScrollPane_Console, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane_Console, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonClearConsole)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane_PostMachineApp.addTab("Console", jPanel_Console);
@@ -504,7 +504,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addComponent(jComboBox_EntitySeach, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton_TaskSearchEntity)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
                                 .addComponent(New)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Save)
@@ -519,9 +519,9 @@ public class PostMachineApp extends javax.swing.JFrame {
                                     .addComponent(jTextField_PostUrl, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_TopLayout.createSequentialGroup()
                                         .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField_PostCount)
+                                            .addComponent(jTextField_PostCount, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                                             .addComponent(jTextField_ThreadID)
-                                            .addComponent(jTextField_StartTime, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                                            .addComponent(jTextField_StartTime, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jCheckBox_EnableStopTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -529,9 +529,9 @@ public class PostMachineApp extends javax.swing.JFrame {
                                             .addComponent(jLabel_FixedWaitTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField_Profile)
+                                            .addComponent(jTextField_Profile, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                             .addComponent(jTextField_FixedWaitTime, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextField_StopTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))))
+                                            .addComponent(jTextField_StopTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -662,27 +662,22 @@ public class PostMachineApp extends javax.swing.JFrame {
         );
         jPanel_BottomLayout.setVerticalGroup(
             jPanel_BottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel_TaskManagementLayout = new javax.swing.GroupLayout(jPanel_TaskManagement);
         jPanel_TaskManagement.setLayout(jPanel_TaskManagementLayout);
         jPanel_TaskManagementLayout.setHorizontalGroup(
             jPanel_TaskManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_TaskManagementLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel_TaskManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel_Top, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_Bottom, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jPanel_Top, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel_Bottom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
         );
         jPanel_TaskManagementLayout.setVerticalGroup(
             jPanel_TaskManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_TaskManagementLayout.createSequentialGroup()
                 .addComponent(jPanel_Top, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_Bottom, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addComponent(jPanel_Bottom, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane_PostMachineApp.addTab("Task Management", jPanel_TaskManagement);
@@ -809,7 +804,7 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addComponent(jComboBox_StepSearchEntity, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton_StepSearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 455, Short.MAX_VALUE)
                                 .addComponent(StepNew)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(StepSave)
@@ -918,7 +913,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         );
         jPanel_SendPostStepBottomLayout.setVerticalGroup(
             jPanel_SendPostStepBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_SendPostStep, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+            .addComponent(jScrollPane_SendPostStep, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel_SendPostStepLayout = new javax.swing.GroupLayout(jPanel_SendPostStep);
@@ -933,8 +928,7 @@ public class PostMachineApp extends javax.swing.JFrame {
             .addGroup(jPanel_SendPostStepLayout.createSequentialGroup()
                 .addComponent(jPanel_SendPostStepTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_SendPostStepBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel_SendPostStepBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane_EntityManagement.addTab("Send Post Step", jPanel_SendPostStep);
@@ -1002,9 +996,9 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton_GlobalSettingSave))
                             .addComponent(jTextField_FirefoxInstallationPath)
-                            .addComponent(jTextField_UserAgentString, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                            .addComponent(jTextField_UserAgentString, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
                             .addComponent(jTextField_WorkstationName)))
-                    .addComponent(Title_GlobalParametersSetting, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+                    .addComponent(Title_GlobalParametersSetting, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
                     .addComponent(TitleSeparator_GlobalParametersSetting))
                 .addContainerGap())
         );
@@ -1185,11 +1179,11 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_EntiySettingBottom.setLayout(jPanel_EntiySettingBottomLayout);
         jPanel_EntiySettingBottomLayout.setHorizontalGroup(
             jPanel_EntiySettingBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_EntiySetting, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+            .addComponent(jScrollPane_EntiySetting, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
         );
         jPanel_EntiySettingBottomLayout.setVerticalGroup(
             jPanel_EntiySettingBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_EntiySetting, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+            .addComponent(jScrollPane_EntiySetting, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel_EntitySettingLayout = new javax.swing.GroupLayout(jPanel_EntitySetting);
@@ -1197,15 +1191,14 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_EntitySettingLayout.setHorizontalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_EntiySettingTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+            .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 908, Short.MAX_VALUE)
         );
         jPanel_EntitySettingLayout.setVerticalGroup(
             jPanel_EntitySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_EntitySettingLayout.createSequentialGroup()
                 .addComponent(jPanel_EntiySettingTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel_EntiySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE))
         );
 
         jTabbedPane_SystemSettings.addTab("Entity Setting", jPanel_EntitySetting);
@@ -1381,11 +1374,11 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_PostContentPoolBottom.setLayout(jPanel_PostContentPoolBottomLayout);
         jPanel_PostContentPoolBottomLayout.setHorizontalGroup(
             jPanel_PostContentPoolBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+            .addComponent(jScrollPane_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
         );
         jPanel_PostContentPoolBottomLayout.setVerticalGroup(
             jPanel_PostContentPoolBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+            .addComponent(jScrollPane_PostContentPool, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel_PostContentPoolLayout = new javax.swing.GroupLayout(jPanel_PostContentPool);
@@ -1393,15 +1386,14 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_PostContentPoolLayout.setHorizontalGroup(
             jPanel_PostContentPoolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_PostContentPoolTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+            .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 908, Short.MAX_VALUE)
         );
         jPanel_PostContentPoolLayout.setVerticalGroup(
             jPanel_PostContentPoolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_PostContentPoolLayout.createSequentialGroup()
                 .addComponent(jPanel_PostContentPoolTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel_PostContentPoolBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
         );
 
         jTabbedPane_SystemSettings.addTab("Post Content Pool", jPanel_PostContentPool);
@@ -1557,11 +1549,11 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_ControlPropertySettingBottom.setLayout(jPanel_ControlPropertySettingBottomLayout);
         jPanel_ControlPropertySettingBottomLayout.setHorizontalGroup(
             jPanel_ControlPropertySettingBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_ControlPropertySetting, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+            .addComponent(jScrollPane_ControlPropertySetting, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
         );
         jPanel_ControlPropertySettingBottomLayout.setVerticalGroup(
             jPanel_ControlPropertySettingBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_ControlPropertySetting, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+            .addComponent(jScrollPane_ControlPropertySetting, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel_ControlPropertySettingLayout = new javax.swing.GroupLayout(jPanel_ControlPropertySetting);
@@ -1569,15 +1561,14 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_ControlPropertySettingLayout.setHorizontalGroup(
             jPanel_ControlPropertySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_ControlPropertySettingTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_ControlPropertySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+            .addComponent(jPanel_ControlPropertySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 908, Short.MAX_VALUE)
         );
         jPanel_ControlPropertySettingLayout.setVerticalGroup(
             jPanel_ControlPropertySettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ControlPropertySettingLayout.createSequentialGroup()
                 .addComponent(jPanel_ControlPropertySettingTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_ControlPropertySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel_ControlPropertySettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE))
         );
 
         jTabbedPane_SystemSettings.addTab("Control Property", jPanel_ControlPropertySetting);
@@ -1733,11 +1724,11 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_StepActionSettingBottom.setLayout(jPanel_StepActionSettingBottomLayout);
         jPanel_StepActionSettingBottomLayout.setHorizontalGroup(
             jPanel_StepActionSettingBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_StepActionSetting, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+            .addComponent(jScrollPane_StepActionSetting, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
         );
         jPanel_StepActionSettingBottomLayout.setVerticalGroup(
             jPanel_StepActionSettingBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane_StepActionSetting, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+            .addComponent(jScrollPane_StepActionSetting, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel_StepActionSettingLayout = new javax.swing.GroupLayout(jPanel_StepActionSetting);
@@ -1745,15 +1736,14 @@ public class PostMachineApp extends javax.swing.JFrame {
         jPanel_StepActionSettingLayout.setHorizontalGroup(
             jPanel_StepActionSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_StepActionSettingTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_StepActionSettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+            .addComponent(jPanel_StepActionSettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 908, Short.MAX_VALUE)
         );
         jPanel_StepActionSettingLayout.setVerticalGroup(
             jPanel_StepActionSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_StepActionSettingLayout.createSequentialGroup()
                 .addComponent(jPanel_StepActionSettingTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_StepActionSettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel_StepActionSettingBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE))
         );
 
         jTabbedPane_SystemSettings.addTab("Step Action", jPanel_StepActionSetting);
@@ -1766,11 +1756,11 @@ public class PostMachineApp extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane_PostMachineApp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane_PostMachineApp, javax.swing.GroupLayout.DEFAULT_SIZE, 1020, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane_PostMachineApp, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+            .addComponent(jTabbedPane_PostMachineApp, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
