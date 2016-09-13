@@ -37,4 +37,8 @@
     <EnableEntity>true</EnableEntity>
     <EntityName>Flyme</EntityName>
   </Entity>
+  <Entity EntityID="10">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>MeizuFixed</EntityName>
+  </Entity>
 </Entitys>

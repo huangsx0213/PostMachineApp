@@ -16,6 +16,8 @@ import org.openqa.selenium.firefox.internal.ProfilesIni;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -173,7 +175,7 @@ public class BasicForumPost implements ForumPost {
 
     //从文本获取发贴内容
     public List<String> getFileTextLinesList() {
-        String txtFileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\" + ThreadID + ".txt";
+        String txtFileName = System.getProperty("user.dir") + "\\src\\Configuration\\" + Profile + ".txt";
         List<String> FileTextLinesList;
         FileTextLinesList = TextFile2ArrayList(txtFileName);
         return FileTextLinesList;
@@ -189,7 +191,21 @@ public class BasicForumPost implements ForumPost {
 
     //从文本获取发贴内容
     public List<String> getFixedPostsList() {
-        String txtFileName = System.getProperty("user.dir") + "\\src\\PostMachineApp\\FixedPosts.txt";
+        String FixedPostsFileName = null;
+        // 要验证的字符串
+        String str = PostUrl;
+        // 正则表达式规则
+        String regEx = "[0-9]{7}";
+        // 编译正则表达式
+        Pattern pattern = Pattern.compile(regEx);
+        // 忽略大小写的写法
+        // Pattern pat = Pattern.compile(regEx, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(str);
+        // 查找字符串中是否有匹配正则表达式的字符/字符串
+        while (matcher.find()) {
+            FixedPostsFileName = matcher.group();
+        }
+        String txtFileName = System.getProperty("user.dir") + "\\src\\Configuration\\Post-" + FixedPostsFileName + ".txt";
         List<String> FixedPostsList;
         FixedPostsList = TextFile2ArrayList(txtFileName);
         return FixedPostsList;
@@ -373,8 +389,8 @@ public class BasicForumPost implements ForumPost {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-           
+
         }
-         return result;
+        return result;
     }
 }
