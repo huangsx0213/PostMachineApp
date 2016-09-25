@@ -181,4 +181,22 @@
     <PostUrl>http://club.tech.163.com/bbs/mobile_activ/612508157.html#</PostUrl>
     <PostContent>我最喜欢1600万柔光自拍，照亮你的美 vivo X7的0.2秒急速指纹</PostContent>
   </ForumPost>
+  <ForumPost ThreadID="11">
+    <EnableThread>true</EnableThread>
+    <FirefoxPath>D:\Program Files (x86)\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>default</Profile>
+    <PostEntity>VivoFixed</PostEntity>
+    <StartTime>1451577600000</StartTime>
+    <EnableStopTime>false</EnableStopTime>
+    <StopTime>1546271999000</StopTime>
+    <RefreshPostCount>200</RefreshPostCount>
+    <PostCount>1</PostCount>
+    <FixedWaitTime>11</FixedWaitTime>
+    <RandomWaitTime>30</RandomWaitTime>
+    <RestWaitTime>1</RestWaitTime>
+    <RestWaitPostCount>2</RestWaitPostCount>
+    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
+    <PostUrl>http://bbs.vivo.com.cn/thread-2455597-99999-1.html</PostUrl>
+    <PostContent>支持一下</PostContent>
+  </ForumPost>
 </ForumPosts>

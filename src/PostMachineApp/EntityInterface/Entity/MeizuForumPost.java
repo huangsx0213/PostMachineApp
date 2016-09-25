@@ -25,14 +25,16 @@ public class MeizuForumPost extends BasicForumPost {
     @Override
     public void beforeSendPost(WebDriver driver) {
         driver = getWebDriverWithSpecifiedProfile();
-        driver.get(PostUrl);
         
+        driver.get("http://bbs.meizu.cn/forum-22-1.html");
         WebElement LoginDiv1 = driver.findElement(By.id("mzCust"));
         LoginDiv1.click();
-
         WebElement LoginButton1 = driver.findElement(By.id("mzLogin"));
-        LoginButton1.click();
+        LoginButton1.click();   
+        watiuntilpageloaded(driver);
         
+        driver.findElement(By.xpath("//div[@class='btncont_signin btncont_signin_2']")).click();
+        driver.get(PostUrl);
         watiuntilpageloaded(driver);
     }
 

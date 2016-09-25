@@ -377,9 +377,26 @@ public class BasicForumPost implements ForumPost {
                 }
             };
             String responseBody = httpclient.execute(httpget, responseHandler);
+            if (PostEntity.equals("MeizuFixed")){
             String[] sourceStrArray = responseBody.split("共有");
             String[] sourceStrArray2 = sourceStrArray[1].split("条回复");
             result = Integer.parseInt(sourceStrArray2[0]) + 1;
+            }
+            else if(PostEntity.equals("FlymeFixed")){               
+            String[] sourceStrArray = responseBody.split("</em><em>F</em>");
+            int ResultIndex=sourceStrArray.length-2;
+            String[] sourceStrArray2= sourceStrArray[ResultIndex].split("<em>"); 
+            int ResultIndex2=sourceStrArray2.length-1;
+            result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
+            }
+            else if(PostEntity.equals("VivoFixed")){               
+            String[] sourceStrArray = responseBody.split("楼</em>");
+            //System.out.println(responseBody);
+            int ResultIndex=sourceStrArray.length-2;
+            String[] sourceStrArray2= sourceStrArray[ResultIndex].split("<em>"); 
+            int ResultIndex2=sourceStrArray2.length-1;
+            result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
+            }
             //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] 现在的楼层数为： " + result);
         } catch (IOException | NumberFormatException ex) {
             ex.printStackTrace();

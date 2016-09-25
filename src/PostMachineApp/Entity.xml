@@ -41,4 +41,8 @@
     <EnableEntity>true</EnableEntity>
     <EntityName>MeizuFixed</EntityName>
   </Entity>
+    <Entity EntityID="11">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>VivoFixed</EntityName>
+  </Entity>
 </Entitys>
