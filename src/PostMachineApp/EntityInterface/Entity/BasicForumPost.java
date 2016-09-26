@@ -47,6 +47,8 @@ public class BasicForumPost implements ForumPost {
     public final Integer RestWaitPostCountOffset;
     public final String PostUrl;
     public final String PostContent;
+    public final String FixedPostTrigger;
+    public final String Remark;
     public String tempPostContent;
     public String temp;
     public SimpleDateFormat DateFormat;
@@ -56,7 +58,7 @@ public class BasicForumPost implements ForumPost {
     public Integer TargetPostCount;
 
     //构造函数
-    public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent) {
+    public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String FixedPostTrigger, String Remark) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -74,6 +76,8 @@ public class BasicForumPost implements ForumPost {
         this.RestWaitPostCountOffset = RestWaitPostCountOffset;
         this.PostUrl = PostUrl;
         this.PostContent = PostContent;
+        this.FixedPostTrigger = FixedPostTrigger;
+        this.Remark = Remark;
     }
 
     @Override
@@ -154,6 +158,16 @@ public class BasicForumPost implements ForumPost {
     @Override
     public String getPostUrl() {
         return PostUrl;
+    }
+
+    @Override
+    public String getFixedPostTrigger() {
+        return FixedPostTrigger;
+    }
+
+    @Override
+    public String getRemark() {
+        return Remark;
     }
 
     @Override
@@ -377,25 +391,23 @@ public class BasicForumPost implements ForumPost {
                 }
             };
             String responseBody = httpclient.execute(httpget, responseHandler);
-            if (PostEntity.equals("MeizuFixed")){
-            String[] sourceStrArray = responseBody.split("共有");
-            String[] sourceStrArray2 = sourceStrArray[1].split("条回复");
-            result = Integer.parseInt(sourceStrArray2[0]) + 1;
-            }
-            else if(PostEntity.equals("FlymeFixed")){               
-            String[] sourceStrArray = responseBody.split("</em><em>F</em>");
-            int ResultIndex=sourceStrArray.length-2;
-            String[] sourceStrArray2= sourceStrArray[ResultIndex].split("<em>"); 
-            int ResultIndex2=sourceStrArray2.length-1;
-            result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
-            }
-            else if(PostEntity.equals("VivoFixed")){               
-            String[] sourceStrArray = responseBody.split("楼</em>");
-            //System.out.println(responseBody);
-            int ResultIndex=sourceStrArray.length-2;
-            String[] sourceStrArray2= sourceStrArray[ResultIndex].split("<em>"); 
-            int ResultIndex2=sourceStrArray2.length-1;
-            result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
+            if (PostEntity.equals("MeizuFixed")) {
+                String[] sourceStrArray = responseBody.split("共有");
+                String[] sourceStrArray2 = sourceStrArray[1].split("条回复");
+                result = Integer.parseInt(sourceStrArray2[0]) + 1;
+            } else if (PostEntity.equals("FlymeFixed")) {
+                String[] sourceStrArray = responseBody.split("</em><em>F</em>");
+                int ResultIndex = sourceStrArray.length - 2;
+                String[] sourceStrArray2 = sourceStrArray[ResultIndex].split("<em>");
+                int ResultIndex2 = sourceStrArray2.length - 1;
+                result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
+            } else if (PostEntity.equals("VivoFixed")) {
+                String[] sourceStrArray = responseBody.split("楼</em>");
+                //System.out.println(responseBody);
+                int ResultIndex = sourceStrArray.length - 2;
+                String[] sourceStrArray2 = sourceStrArray[ResultIndex].split("<em>");
+                int ResultIndex2 = sourceStrArray2.length - 1;
+                result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
             }
             //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] 现在的楼层数为： " + result);
         } catch (IOException | NumberFormatException ex) {
