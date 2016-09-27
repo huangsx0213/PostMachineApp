@@ -445,16 +445,23 @@ public class BasicForumPost implements ForumPost {
             while (true) {
                 int CurrentRealTimePostCount = 0;
                 CurrentRealTimePostCount = getCurrentPostCount();
+                //>150
                 if (ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostSlow) {
                     printTime += 100000;
                     WaitFixedTime(100000);
-                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= FixedPostSlow && ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostMedium) {
-                    printTime += 5000;
-                    WaitFixedTime(5000);
-                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= FixedPostMedium && ThisTimeTargetPostCount - CurrentRealTimePostCount >= FixedPostFast) {
-                    printTime += 1000;
-                    WaitFixedTime(1000);
-                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount < FixedPostFast && ThisTimeTargetPostCount - CurrentRealTimePostCount > 0) {
+                } 
+                //100-150
+                else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= FixedPostSlow && ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostMedium) {
+                    printTime += 10000;
+                    WaitFixedTime(10000);
+                }
+                //50-100
+                else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= FixedPostMedium && ThisTimeTargetPostCount - CurrentRealTimePostCount >= FixedPostFast) {
+                    printTime += 2000;
+                    WaitFixedTime(2000);
+                } 
+                //0-50
+                else if (ThisTimeTargetPostCount - CurrentRealTimePostCount < FixedPostFast && ThisTimeTargetPostCount - CurrentRealTimePostCount > 0) {
                     TargetPostCount = ThisTimeTargetPostCount;
                     break;
                 } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= 0) {
@@ -475,15 +482,25 @@ public class BasicForumPost implements ForumPost {
         public void SentFixedPostPolling() {
         while (true) {
             int CurrentRealTimePostCount = 0;
-
+            long printTime = 0;
             CurrentRealTimePostCount = getCurrentPostCount();
 
             if (TargetPostCount - CurrentRealTimePostCount < FixedPostTriggerNumber) {
                 System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
                 break;
-            } else {
+            } 
+            //(10+20)-50
+            else if (TargetPostCount - CurrentRealTimePostCount <= FixedPostFast && TargetPostCount - CurrentRealTimePostCount >= FixedPostTriggerNumber+20) {
+                    printTime += 500;
+                    WaitFixedTime(500);
+                }
+            else {
                 WaitFixedTime(200);
             }
+            if (printTime >= 30000) {
+                    System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for start up,current real time post count is： " + CurrentRealTimePostCount);
+                    printTime = 0;
+                }
         }
     }
 }
