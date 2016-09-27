@@ -56,6 +56,10 @@ public class BasicForumPost implements ForumPost {
     public Integer RestWaitPostCountTemp;
     public Integer NextWait;
     public Integer TargetPostCount;
+    public Integer FixedPostSlow;
+    public Integer FixedPostMedium;
+    public Integer FixedPostFast;
+    public Integer FixedPostTriggerNumber;
 
     //构造函数
     public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String FixedPostTrigger, String Remark) {
@@ -224,10 +228,19 @@ public class BasicForumPost implements ForumPost {
         FixedPostsList = TextFile2ArrayList(txtFileName);
         return FixedPostsList;
     }
-
+    //设置抢固定楼层的属性值
+        public void SetFixedPostProperty(){
+        String[] FixedPostTriggerArray=FixedPostTrigger.split("\\|");
+        FixedPostSlow=Integer.parseInt(FixedPostTriggerArray[0]);
+        FixedPostMedium=Integer.parseInt(FixedPostTriggerArray[1]);
+        FixedPostFast=Integer.parseInt(FixedPostTriggerArray[2]);
+        FixedPostTriggerNumber=Integer.parseInt(FixedPostTriggerArray[3]);
+    }
     //发贴入口
     @Override
     public void sendPost() {
+        
+        SetFixedPostProperty();
 
         NextWait = 0;
 
@@ -421,5 +434,56 @@ public class BasicForumPost implements ForumPost {
 
         }
         return result;
+    }
+    //抢固定楼层发帖子前的较慢轮询
+        public void FixedPostPolling() {
+        List<String> FixedPostsList = getFixedPostsList();
+        for (int i = 0; i < FixedPostsList.size(); i++) {
+            TargetPostCount = 0;
+            long printTime = 0;
+            int ThisTimeTargetPostCount = Integer.parseInt(FixedPostsList.get(i));
+            while (true) {
+                int CurrentRealTimePostCount = 0;
+                CurrentRealTimePostCount = getCurrentPostCount();
+                if (ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostSlow) {
+                    printTime += 100000;
+                    WaitFixedTime(100000);
+                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= FixedPostSlow && ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostMedium) {
+                    printTime += 5000;
+                    WaitFixedTime(5000);
+                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= FixedPostMedium && ThisTimeTargetPostCount - CurrentRealTimePostCount >= FixedPostFast) {
+                    printTime += 1000;
+                    WaitFixedTime(1000);
+                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount < FixedPostFast && ThisTimeTargetPostCount - CurrentRealTimePostCount > 0) {
+                    TargetPostCount = ThisTimeTargetPostCount;
+                    break;
+                } else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= 0) {
+                    TargetPostCount = -1;
+                    break;
+                }
+                if (printTime >= 300000) {
+                    System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for start up,current real time post count is： " + CurrentRealTimePostCount);
+                    printTime = 0;
+                }
+            }
+            if (TargetPostCount > 0) {
+                break;
+            }
+        }
+    }
+        //抢固定楼层发帖子前的快速轮询
+        public void SentFixedPostPolling() {
+        while (true) {
+            int CurrentRealTimePostCount = 0;
+
+            CurrentRealTimePostCount = getCurrentPostCount();
+
+            if (TargetPostCount - CurrentRealTimePostCount < FixedPostTriggerNumber) {
+                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
+                break;
+            } else {
+                WaitFixedTime(200);
+            }
+        }
     }
 }
