@@ -112,7 +112,6 @@ public class PostMachineApp extends javax.swing.JFrame {
         Save = new javax.swing.JButton();
         Delete = new javax.swing.JButton();
         New = new javax.swing.JButton();
-        Run = new javax.swing.JButton();
         RunS = new javax.swing.JButton();
         jLabel_PostEntity = new javax.swing.JLabel();
         jComboBox_PostEntity = new javax.swing.JComboBox<>();
@@ -130,6 +129,8 @@ public class PostMachineApp extends javax.swing.JFrame {
         jTextField_FixedPostTrigger = new javax.swing.JTextField();
         jLabel_Remark = new javax.swing.JLabel();
         jTextField_Remark = new javax.swing.JTextField();
+        jButton_CopyTaskTo = new javax.swing.JButton();
+        jButton_CopyTask = new javax.swing.JButton();
         jPanel_Bottom = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
@@ -416,14 +417,6 @@ public class PostMachineApp extends javax.swing.JFrame {
             }
         });
 
-        Run.setText("RunAll");
-        Run.setToolTipText("Run all of the enable threads");
-        Run.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RunActionPerformed(evt);
-            }
-        });
-
         RunS.setText("RunSelected");
         RunS.setToolTipText("Run the Selected thread");
         RunS.addActionListener(new java.awt.event.ActionListener() {
@@ -495,6 +488,20 @@ public class PostMachineApp extends javax.swing.JFrame {
 
         jTextField_Remark.setToolTipText("Remark");
 
+        jButton_CopyTaskTo.setText("CopyTo");
+        jButton_CopyTaskTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CopyTaskToActionPerformed(evt);
+            }
+        });
+
+        jButton_CopyTask.setText("Copy");
+        jButton_CopyTask.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CopyTaskActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel_TopLayout = new javax.swing.GroupLayout(jPanel_Top);
         jPanel_Top.setLayout(jPanel_TopLayout);
         jPanel_TopLayout.setHorizontalGroup(
@@ -519,15 +526,17 @@ public class PostMachineApp extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton_TaskSearchEntity)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton_CopyTask)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton_CopyTaskTo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(New)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Save)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Delete)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(RunS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Run))
+                                .addComponent(RunS))
                             .addComponent(jComboBox_PostContent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel_TopLayout.createSequentialGroup()
                                 .addGroup(jPanel_TopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -645,11 +654,12 @@ public class PostMachineApp extends javax.swing.JFrame {
                     .addComponent(Delete)
                     .addComponent(Save)
                     .addComponent(New)
-                    .addComponent(Run)
                     .addComponent(RunS)
                     .addComponent(jLabel_EntitySeach)
                     .addComponent(jComboBox_EntitySeach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_TaskSearchEntity))
+                    .addComponent(jButton_TaskSearchEntity)
+                    .addComponent(jButton_CopyTaskTo)
+                    .addComponent(jButton_CopyTask))
                 .addContainerGap())
         );
 
@@ -2031,15 +2041,6 @@ public class PostMachineApp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_RunSActionPerformed
 
-    private void RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunActionPerformed
-        // TODO add your handling code here:
-        int YesOrNo = JOptionPane.showConfirmDialog(null, "Are you sure to run all items?", "Run All", JOptionPane.YES_NO_OPTION);//返回的是按钮的index  i=0或者1
-        if (YesOrNo == 0) {
-            List<ForumPost> ForumPosts = TaskManagementDAO.getRunForumPost();
-            RunPost.RunPost(ForumPosts);
-        }
-    }//GEN-LAST:event_RunActionPerformed
-
     private void NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewActionPerformed
         // TODO add your handling code here:
         this.jCheckBox_EnableThread.setSelected(true);
@@ -2313,6 +2314,77 @@ public class PostMachineApp extends javax.swing.JFrame {
             fillPostStepForm(PostStep);
         }
     }//GEN-LAST:event_jTable_SendPostStepMouseClicked
+
+    private void jButton_CopyTaskToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CopyTaskToActionPerformed
+        EnableThread = CopyForumPost.getEnableThread();
+        ThreadID = Integer.parseInt(this.jTextField_ThreadID.getText());
+        FirefoxPath = CopyForumPost.getFirefoxPath();
+        Profile = this.jTextField_Profile.getText();
+        PostEntity = CopyForumPost.getPostEntity();
+        StartTime = CopyForumPost.getStartTime();
+        EnableStopTime = CopyForumPost.getEnableStopTime();
+        StopTime = CopyForumPost.getStopTime();
+        RefreshPostCount = CopyForumPost.getRefreshPostCount();
+        PostCount = CopyForumPost.getPostCount();
+        FixedWaitTime = CopyForumPost.getFixedWaitTime();
+        RandomWaitTime = CopyForumPost.getRandomWaitTime();
+        RestWaitTime = CopyForumPost.getRestWaitTime();
+        RestWaitPostCount = CopyForumPost.getRestWaitPostCount();
+        RestWaitPostCountOffset = CopyForumPost.getRestWaitPostCountOffset();
+        PostUrl = CopyForumPost.getPostUrl();
+        PostContent = CopyForumPost.getPostContent();
+        FixedPostTrigger = CopyForumPost.getFixedPostTrigger();
+        Remark = CopyForumPost.getRemark();
+        
+        ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount, RestWaitPostCountOffset, PostUrl, PostContent,FixedPostTrigger,Remark);
+        
+        if (TaskManagementDAO.ThreadIDisExisting(ForumPost)) {
+            TaskManagementDAO.update(ForumPost);
+        } else {
+            TaskManagementDAO.add(ForumPost);
+        }
+        System.out.println("Save successfully！");
+        JOptionPane.showMessageDialog(null, "Save successfully！", "Save", JOptionPane.INFORMATION_MESSAGE);
+        if (ForumPost != null) {
+            fillForm(ForumPost);
+        }
+        SearchTaskByEntity();
+    }//GEN-LAST:event_jButton_CopyTaskToActionPerformed
+
+    private void jButton_CopyTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CopyTaskActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            EnableThread = this.jCheckBox_EnableThread.isSelected();
+            ThreadID = 999;
+            FirefoxPath = this.jTextField_FirefoxInstallationPath.getText();
+            Profile = "temp";
+            PostEntity = (String) this.jComboBox_PostEntity.getSelectedItem();
+            StartTimeString = this.jTextField_StartTime.getText();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date startDate = format.parse(StartTimeString);
+            StartTime = startDate.getTime();
+            EnableStopTime = this.jCheckBox_EnableStopTime.isSelected();
+            StopTimeString = this.jTextField_StopTime.getText();
+            Date stopDate = format.parse(StopTimeString);
+            StopTime = stopDate.getTime();
+            RefreshPostCount = Integer.parseInt(this.jTextField_RefreshPostCount.getText());
+            PostCount = Long.parseLong(this.jTextField_PostCount.getText());
+            FixedWaitTime = Integer.parseInt(this.jTextField_FixedWaitTime.getText());
+            RandomWaitTime = Integer.parseInt(this.jTextField_RandomWaitTime.getText());
+            RestWaitTime = Integer.parseInt(this.jTextField_RestWaitTime.getText());
+            RestWaitPostCount = Integer.parseInt(this.jTextField_RestWaitPostCount.getText());
+            RestWaitPostCountOffset = Integer.parseInt(this.jTextField_RestWaitPostCountOffset.getText());
+            PostUrl = this.jTextField_PostUrl.getText();
+            PostContent = (String) this.jComboBox_PostContent.getEditor().getItem();
+            FixedPostTrigger = this.jTextField_FixedPostTrigger.getText();
+            Remark = this.jTextField_Remark.getText();
+            CopyForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount, RestWaitPostCountOffset, PostUrl, PostContent,FixedPostTrigger,Remark);
+            JOptionPane.showMessageDialog(null, "Select the record you need to copy to！", "Copy", JOptionPane.INFORMATION_MESSAGE);
+        } catch (ParseException ex) {
+            Logger.getLogger(PostMachineApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton_CopyTaskActionPerformed
 
     public void SearchTaskByEntity() {
         // TODO add your handling code here:
@@ -2603,7 +2675,6 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JButton NewEntity;
     private javax.swing.JButton NewPoolContent;
     private javax.swing.JButton NewStepAction;
-    private javax.swing.JButton Run;
     private javax.swing.JButton RunS;
     private javax.swing.JButton Save;
     private javax.swing.JButton SaveControlProperty;
@@ -2628,6 +2699,8 @@ public class PostMachineApp extends javax.swing.JFrame {
     private javax.swing.JLabel Title_StepActionSetting;
     private javax.swing.JLabel Title_TaskManagement;
     private javax.swing.JButton jButtonClearConsole;
+    private javax.swing.JButton jButton_CopyTask;
+    private javax.swing.JButton jButton_CopyTaskTo;
     private javax.swing.JButton jButton_GlobalSettingSave;
     private javax.swing.JButton jButton_StepSearch;
     private javax.swing.JButton jButton_TaskSearchEntity;
@@ -2801,4 +2874,6 @@ public class PostMachineApp extends javax.swing.JFrame {
    private static String ControlPropertyValue;
   private static  String StepAction;
    private static String StepDataValue;
+   
+   private ForumPost CopyForumPost;
 }
