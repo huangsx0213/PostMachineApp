@@ -57,7 +57,6 @@ public class BasicForumPost implements ForumPost {
     public Integer NextWait;
     public Integer TargetPostCount;
     public Integer FixedPostSlow;
-    public Integer FixedPostMedium;
     public Integer FixedPostFast;
     public Integer FixedPostTriggerNumber;
 
@@ -232,9 +231,8 @@ public class BasicForumPost implements ForumPost {
         public void SetFixedPostProperty(){
         String[] FixedPostTriggerArray=FixedPostTrigger.split("\\|");
         FixedPostSlow=Integer.parseInt(FixedPostTriggerArray[0]);
-        FixedPostMedium=Integer.parseInt(FixedPostTriggerArray[1]);
-        FixedPostFast=Integer.parseInt(FixedPostTriggerArray[2]);
-        FixedPostTriggerNumber=Integer.parseInt(FixedPostTriggerArray[3]);
+        FixedPostFast=Integer.parseInt(FixedPostTriggerArray[1]);
+        FixedPostTriggerNumber=Integer.parseInt(FixedPostTriggerArray[2]);
     }
     //发贴入口
     @Override
@@ -445,21 +443,16 @@ public class BasicForumPost implements ForumPost {
             while (true) {
                 int CurrentRealTimePostCount = 0;
                 CurrentRealTimePostCount = getCurrentPostCount();
-                //>150
+                //>120
                 if (ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostSlow) {
                     printTime += 100000;
                     WaitFixedTime(100000);
                 } 
-                //100-150
-                else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= FixedPostSlow && ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostMedium) {
-                    printTime += 10000;
-                    WaitFixedTime(10000);
+                //50-120
+                else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= FixedPostSlow && ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostFast) {
+                    printTime += 5000;
+                    WaitFixedTime(5000);
                 }
-                //50-100
-                else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= FixedPostMedium && ThisTimeTargetPostCount - CurrentRealTimePostCount >= FixedPostFast) {
-                    printTime += 2000;
-                    WaitFixedTime(2000);
-                } 
                 //0-50
                 else if (ThisTimeTargetPostCount - CurrentRealTimePostCount < FixedPostFast && ThisTimeTargetPostCount - CurrentRealTimePostCount > 0) {
                     TargetPostCount = ThisTimeTargetPostCount;
