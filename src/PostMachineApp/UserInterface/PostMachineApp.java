@@ -2334,7 +2334,7 @@ public class PostMachineApp extends javax.swing.JFrame {
         PostUrl = CopyForumPost.getPostUrl();
         PostContent = CopyForumPost.getPostContent();
         FixedPostTrigger = CopyForumPost.getFixedPostTrigger();
-        Remark = CopyForumPost.getRemark();
+        Remark = this.jTextField_Remark.getText();
         
         ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount, RestWaitPostCountOffset, PostUrl, PostContent,FixedPostTrigger,Remark);
         
