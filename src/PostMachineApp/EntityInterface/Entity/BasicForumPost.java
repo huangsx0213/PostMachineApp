@@ -373,18 +373,18 @@ public class BasicForumPost implements ForumPost {
             long printTime = 0;
             Integer c1 = getCurrentPostCount();
             Thread.sleep(AdjustedWaitTime);
-            if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme")|PostEntity.equals("Vivo")) {
+            if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo")) {
                 Integer c2 = getCurrentPostCount();
                 while (true) {
                     if (c1.equals(c2)) {
                         Thread.sleep(10000);
                         printTime += 10;
+                        if (printTime == 10 | printTime % 300 == 0) {
+                            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. Current real time post count is： " + c2);
+                        }
+                        c2 = getCurrentPostCount();
                     } else {
                         break;
-                    }
-                    c2 = getCurrentPostCount();
-                    if (printTime == 10 | printTime % 300 == 0) {
-                        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. Current real time post count is： " + c2);
                     }
                 }
             }
