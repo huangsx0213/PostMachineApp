@@ -227,17 +227,19 @@ public class BasicForumPost implements ForumPost {
         FixedPostsList = TextFile2ArrayList(txtFileName);
         return FixedPostsList;
     }
+
     //设置抢固定楼层的属性值
-        public void SetFixedPostProperty(){
-        String[] FixedPostTriggerArray=FixedPostTrigger.split("\\|");
-        FixedPostSlow=Integer.parseInt(FixedPostTriggerArray[0]);
-        FixedPostFast=Integer.parseInt(FixedPostTriggerArray[1]);
-        FixedPostTriggerNumber=Integer.parseInt(FixedPostTriggerArray[2]);
+    public void SetFixedPostProperty() {
+        String[] FixedPostTriggerArray = FixedPostTrigger.split("\\|");
+        FixedPostSlow = Integer.parseInt(FixedPostTriggerArray[0]);
+        FixedPostFast = Integer.parseInt(FixedPostTriggerArray[1]);
+        FixedPostTriggerNumber = Integer.parseInt(FixedPostTriggerArray[2]);
     }
+
     //发贴入口
     @Override
     public void sendPost() {
-        
+
         SetFixedPostProperty();
 
         NextWait = 0;
@@ -368,7 +370,24 @@ public class BasicForumPost implements ForumPost {
         AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
         try {
+            long printTime = 0;
+            Integer c1 = getCurrentPostCount();
             Thread.sleep(AdjustedWaitTime);
+            if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme")|PostEntity.equals("Vivo")) {
+                Integer c2 = getCurrentPostCount();
+                while (true) {
+                    if (c1.equals(c2)) {
+                        Thread.sleep(10000);
+                        printTime += 10;
+                    } else {
+                        break;
+                    }
+                    c2 = getCurrentPostCount();
+                    if (printTime == 10 | printTime % 300 == 0) {
+                        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. Current real time post count is： " + c2);
+                    }
+                }
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -402,17 +421,17 @@ public class BasicForumPost implements ForumPost {
                 }
             };
             String responseBody = httpclient.execute(httpget, responseHandler);
-            if (PostEntity.equals("MeizuFixed")) {
+            if (PostEntity.equals("MeizuFixed") | PostEntity.equals("Meizu")) {
                 String[] sourceStrArray = responseBody.split("共有");
                 String[] sourceStrArray2 = sourceStrArray[1].split("条回复");
                 result = Integer.parseInt(sourceStrArray2[0]) + 1;
-            } else if (PostEntity.equals("FlymeFixed")) {
+            } else if (PostEntity.equals("FlymeFixed") | PostEntity.equals("Flyme")) {
                 String[] sourceStrArray = responseBody.split("</em><em>F</em>");
                 int ResultIndex = sourceStrArray.length - 2;
                 String[] sourceStrArray2 = sourceStrArray[ResultIndex].split("<em>");
                 int ResultIndex2 = sourceStrArray2.length - 1;
                 result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
-            } else if (PostEntity.equals("VivoFixed")) {
+            } else if (PostEntity.equals("VivoFixed") | PostEntity.equals("Vivo")) {
                 String[] sourceStrArray = responseBody.split("楼</em>");
                 //System.out.println(responseBody);
                 int ResultIndex = sourceStrArray.length - 2;
@@ -433,8 +452,9 @@ public class BasicForumPost implements ForumPost {
         }
         return result;
     }
+
     //抢固定楼层发帖子前的较慢轮询
-        public void FixedPostPolling() {
+    public void FixedPostPolling() {
         List<String> FixedPostsList = getFixedPostsList();
         for (int i = 0; i < FixedPostsList.size(); i++) {
             TargetPostCount = 0;
@@ -447,13 +467,11 @@ public class BasicForumPost implements ForumPost {
                 if (ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostSlow) {
                     printTime += 100000;
                     WaitFixedTime(100000);
-                } 
-                //50-120
+                } //50-120
                 else if (ThisTimeTargetPostCount - CurrentRealTimePostCount <= FixedPostSlow && ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostFast) {
                     printTime += 5000;
                     WaitFixedTime(5000);
-                }
-                //0-50
+                } //0-50
                 else if (ThisTimeTargetPostCount - CurrentRealTimePostCount < FixedPostFast && ThisTimeTargetPostCount - CurrentRealTimePostCount > 0) {
                     TargetPostCount = ThisTimeTargetPostCount;
                     break;
@@ -471,8 +489,9 @@ public class BasicForumPost implements ForumPost {
             }
         }
     }
-        //抢固定楼层发帖子前的快速轮询
-        public void SentFixedPostPolling() {
+    //抢固定楼层发帖子前的快速轮询
+
+    public void SentFixedPostPolling() {
         while (true) {
             int CurrentRealTimePostCount = 0;
             long printTime = 0;
@@ -481,19 +500,17 @@ public class BasicForumPost implements ForumPost {
             if (TargetPostCount - CurrentRealTimePostCount < FixedPostTriggerNumber) {
                 System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
                 break;
-            } 
-            //(10+20)-50
-            else if (TargetPostCount - CurrentRealTimePostCount <= FixedPostFast && TargetPostCount - CurrentRealTimePostCount >= FixedPostTriggerNumber+20) {
-                    printTime += 500;
-                    WaitFixedTime(500);
-                }
-            else {
+            } //(10+20)-50
+            else if (TargetPostCount - CurrentRealTimePostCount <= FixedPostFast && TargetPostCount - CurrentRealTimePostCount >= FixedPostTriggerNumber + 20) {
+                printTime += 500;
+                WaitFixedTime(500);
+            } else {
                 WaitFixedTime(200);
             }
             if (printTime >= 30000) {
-                    System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for start up,current real time post count is： " + CurrentRealTimePostCount);
-                    printTime = 0;
-                }
+                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for start up,current real time post count is： " + CurrentRealTimePostCount);
+                printTime = 0;
+            }
         }
     }
 }
