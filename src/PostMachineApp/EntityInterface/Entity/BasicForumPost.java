@@ -377,15 +377,15 @@ public class BasicForumPost implements ForumPost {
                 Integer c2 = getCurrentPostCount();
                 while (true) {
                     if (c1.equals(c2)) {
-                        Thread.sleep(10000);
+                        WaitFixedTime(10000);
                         printTime += 10;
                         if (printTime == 10 | printTime % 300 == 0) {
                             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. Current real time post count is： " + c2);
                         }
-                        c2 = getCurrentPostCount();
                     } else {
                         break;
                     }
+                    c2 = getCurrentPostCount();
                 }
             }
         } catch (Exception ex) {
@@ -502,10 +502,11 @@ public class BasicForumPost implements ForumPost {
                 break;
             } //(10+20)-50
             else if (TargetPostCount - CurrentRealTimePostCount <= FixedPostFast && TargetPostCount - CurrentRealTimePostCount >= FixedPostTriggerNumber + 20) {
-                printTime += 500;
                 WaitFixedTime(500);
+                printTime += 500;
             } else {
                 WaitFixedTime(200);
+                printTime += 200;
             }
             if (printTime >= 30000) {
                 System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for start up,current real time post count is： " + CurrentRealTimePostCount);
