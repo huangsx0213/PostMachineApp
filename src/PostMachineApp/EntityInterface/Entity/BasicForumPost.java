@@ -369,27 +369,31 @@ public class BasicForumPost implements ForumPost {
         Integer AdjustedWaitTime;
         AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
         System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
-        try {
-            long printTime = 0;
-            Integer c1 = getCurrentPostCount();
-            Thread.sleep(AdjustedWaitTime);
-            if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo")) {
-                Integer c2 = getCurrentPostCount();
-                while (true) {
-                    if (c1.equals(c2)) {
-                        WaitFixedTime(10000);
-                        printTime += 10;
-                        if (printTime == 10 | printTime % 300 == 0) {
-                            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. Current real time post count is： " + c2);
-                        }
-                    } else {
-                        break;
-                    }
-                    c2 = getCurrentPostCount();
+        long printTime = 0;
+        
+        int PostCountBefore = getCurrentPostCount();
+        //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] PostCountBefore: " +PostCountBefore);
+        
+        WaitFixedTime(AdjustedWaitTime);
+        
+        int PostCountAfter = getCurrentPostCount();
+        //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] PostCountAfter: " +PostCountAfter);
+        
+        if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo")) {
+            while (true) {
+                if (PostCountBefore >= PostCountAfter) {
+                    WaitFixedTime(20000);
+                    printTime += 20;
+                } else if (PostCountBefore < PostCountAfter){
+                    System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
+                    break;
                 }
+                if (printTime == 20 | printTime % 300 == 0) {
+                    System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. Current real time post count is： " + PostCountAfter);
+                }
+                PostCountAfter = getCurrentPostCount();
+                //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. PostCountAfter: " +PostCountAfter);
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 
@@ -416,6 +420,7 @@ public class BasicForumPost implements ForumPost {
                         HttpEntity entity = response.getEntity();
                         return entity != null ? EntityUtils.toString(entity) : null;
                     } else {
+                        System.out.println("error!!!");
                         throw new ClientProtocolException("Unexpected response status: " + status);
                     }
                 }
@@ -460,8 +465,8 @@ public class BasicForumPost implements ForumPost {
             TargetPostCount = 0;
             long printTime = 0;
             int ThisTimeTargetPostCount = Integer.parseInt(FixedPostsList.get(i));
+            int CurrentRealTimePostCount = 0;
             while (true) {
-                int CurrentRealTimePostCount = 0;
                 CurrentRealTimePostCount = getCurrentPostCount();
                 //>120
                 if (ThisTimeTargetPostCount - CurrentRealTimePostCount > FixedPostSlow) {
@@ -492,9 +497,9 @@ public class BasicForumPost implements ForumPost {
     //抢固定楼层发帖子前的快速轮询
 
     public void SentFixedPostPolling() {
+        long printTime = 0;
+        int CurrentRealTimePostCount = 0;
         while (true) {
-            int CurrentRealTimePostCount = 0;
-            long printTime = 0;
             CurrentRealTimePostCount = getCurrentPostCount();
 
             if (TargetPostCount - CurrentRealTimePostCount < FixedPostTriggerNumber) {
