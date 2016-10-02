@@ -9,8 +9,8 @@ import org.openqa.selenium.WebElement;
 
 final public class OppoForumPost extends BasicForumPost {
 
-    public OppoForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount,Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String FixedPostTrigger, String Remark) {
-        super(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount,RestWaitPostCountOffset, PostUrl, PostContent,  FixedPostTrigger,  Remark);
+    public OppoForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String FixedPostTrigger, String Remark) {
+        super(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount, RestWaitPostCountOffset, PostUrl, PostContent, FixedPostTrigger, Remark);
     }
 
     @Override
@@ -35,12 +35,11 @@ final public class OppoForumPost extends BasicForumPost {
     }
 
     @Override
-        public void sendPostWait(int i, WebDriver driver) {
-        try {
-            Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
-            NextWait++;
-        } catch (Exception ex) {
-        }
+    public void sendPostWait(int i, WebDriver driver) {
+
+        WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
+        NextWait++;
+
         if (i % RefreshPostCount == 0) {
             driver.navigate().refresh();
             driver.findElement(By.id("fastposteditor")).click();
@@ -48,7 +47,7 @@ final public class OppoForumPost extends BasicForumPost {
 
         if (Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0) {
             RestWaitTime(RestWaitTime);
-            RestWaitPostCountTemp = (int) (RestWaitPostCount -RestWaitPostCountOffset + Math.random() * (RestWaitPostCount+RestWaitPostCountOffset - (RestWaitPostCount -RestWaitPostCountOffset) + 1));
+            RestWaitPostCountTemp = (int) (RestWaitPostCount - RestWaitPostCountOffset + Math.random() * (RestWaitPostCount + RestWaitPostCountOffset - (RestWaitPostCount - RestWaitPostCountOffset) + 1));
             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] will take a next rest after " + RestWaitPostCountTemp + " posts.");
             NextWait = 0;
         }

@@ -19,7 +19,8 @@ public class PostThread implements Runnable {
             }
             try {
                 Thread.sleep(60000);
-            } catch (Exception ex) {
+            } catch (InterruptedException  ex) {
+                ex.printStackTrace();
             }          
         }
     }

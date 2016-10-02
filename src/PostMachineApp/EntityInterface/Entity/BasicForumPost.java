@@ -346,12 +346,9 @@ public class BasicForumPost implements ForumPost {
 
     //发贴等待时间
     public void sendPostWait(int i, WebDriver driver) {
-        try {
-            Thread.sleep(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
+
+            WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
             NextWait++;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
         if (i % RefreshPostCount == 0) {
             driver.navigate().refresh();
         }
@@ -367,25 +364,27 @@ public class BasicForumPost implements ForumPost {
     //休息等待时间
     public void RestWaitTime(Integer WaitTime) {
         Integer AdjustedWaitTime;
-        AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
+        AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;       
         long printTime = 0;
+        int PostCountBefore=0;
+        int PostCountAfter=0;
         
-        int PostCountBefore = getCurrentPostCount();
+        PostCountBefore = getCurrentPostCount();
         //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] PostCountBefore: " +PostCountBefore);
         
+        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
         WaitFixedTime(AdjustedWaitTime);
         
-        int PostCountAfter = getCurrentPostCount();
+        PostCountAfter = getCurrentPostCount();
         //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] PostCountAfter: " +PostCountAfter);
         
         if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo")) {
             while (true) {
-                if (PostCountBefore >= PostCountAfter) {
+                if (PostCountBefore - PostCountAfter>=0) {
                     WaitFixedTime(20000);
                     printTime += 20;
-                } else if (PostCountBefore < PostCountAfter){
-                    System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
+                } else if (PostCountBefore - PostCountAfter < 0){
+                    //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
                     break;
                 }
                 if (printTime == 20 | printTime % 300 == 0) {
@@ -400,8 +399,10 @@ public class BasicForumPost implements ForumPost {
     //固定等待时间
     public void WaitFixedTime(long time) {
         try {
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]  开始sleep()");
             Thread.sleep(time);
-        } catch (Exception ex) {
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]  结束sleep()");
+        } catch (InterruptedException  ex) {
             ex.printStackTrace();
         }
     }
