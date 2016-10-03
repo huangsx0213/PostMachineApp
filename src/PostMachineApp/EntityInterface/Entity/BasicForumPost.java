@@ -16,16 +16,21 @@ import org.openqa.selenium.firefox.internal.ProfilesIni;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.util.EntityUtils;
 
 public class BasicForumPost implements ForumPost {
@@ -59,6 +64,7 @@ public class BasicForumPost implements ForumPost {
     public Integer FixedPostSlow;
     public Integer FixedPostFast;
     public Integer FixedPostTriggerNumber;
+    public HttpClient httpclient;
 
     //构造函数
     public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String FixedPostTrigger, String Remark) {
@@ -242,6 +248,8 @@ public class BasicForumPost implements ForumPost {
 
         SetFixedPostProperty();
 
+        httpclient = getHttpClient();
+
         NextWait = 0;
 
         tempPostContent = this.PostContent;
@@ -288,6 +296,7 @@ public class BasicForumPost implements ForumPost {
     @Override
     public void afterSendPost() {
         driver.quit();
+        httpclient.getConnectionManager().shutdown();
     }
 
     //获取发贴的随机内容
@@ -347,8 +356,8 @@ public class BasicForumPost implements ForumPost {
     //发贴等待时间
     public void sendPostWait(int i, WebDriver driver) {
 
-            WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
-            NextWait++;
+        WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
+        NextWait++;
         if (i % RefreshPostCount == 0) {
             driver.navigate().refresh();
         }
@@ -363,53 +372,53 @@ public class BasicForumPost implements ForumPost {
 
     //休息等待时间
     public void RestWaitTime(Integer WaitTime) {
+
         Integer AdjustedWaitTime;
-        AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;       
+        AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
         long printTime = 0;
-        int PostCountBefore=0;
-        int PostCountAfter=0;
-        
-        PostCountBefore = getCurrentPostCount();
-        //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] PostCountBefore: " +PostCountBefore);
-        
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
-        WaitFixedTime(AdjustedWaitTime);
-        
-        PostCountAfter = getCurrentPostCount();
-        //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] PostCountAfter: " +PostCountAfter);
-        
-        if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo")) {
-            while (true) {
-                if (PostCountBefore - PostCountAfter>=0) {
-                    WaitFixedTime(20000);
-                    printTime += 20;
-                } else if (PostCountBefore - PostCountAfter < 0){
-                    //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
-                    break;
+        int PostCountBefore = 0;
+        int PostCountAfter = 0;
+        if (PostEntity.equals("Meizu") |PostEntity.equals("MeizuFixed") | PostEntity.equals("Flyme") |PostEntity.equals("FlymeFixed") | PostEntity.equals("Vivo")| PostEntity.equals("VivoFixed")) {
+            
+            PostCountBefore = getCurrentPostCount();
+
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
+            WaitFixedTime(AdjustedWaitTime);
+
+            PostCountAfter = getCurrentPostCount();
+
+            if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo")) {
+                while (true) {
+                    if (PostCountBefore - PostCountAfter >= 0) {
+                        WaitFixedTime(20000);
+                        printTime += 20;
+                    } else if (PostCountBefore - PostCountAfter < 0) {
+                        //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
+                        break;
+                    }
+                    if (printTime == 20 | printTime % 300 == 0) {
+                        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking an additional rest " + printTime + "s. Current real time post count is： " + PostCountAfter);
+                    }
+                    PostCountAfter = getCurrentPostCount();
                 }
-                if (printTime == 20 | printTime % 300 == 0) {
-                    System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. Current real time post count is： " + PostCountAfter);
-                }
-                PostCountAfter = getCurrentPostCount();
-                //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. PostCountAfter: " +PostCountAfter);
             }
+        } else {
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
+            WaitFixedTime(AdjustedWaitTime);
         }
     }
 
     //固定等待时间
     public void WaitFixedTime(long time) {
         try {
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]  开始sleep()");
-            Thread.sleep(time);
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]  结束sleep()");
-        } catch (InterruptedException  ex) {
+            Thread.currentThread().sleep(time);
+        } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
     }
 
-    public Integer getCurrentPostCount() {
+    public int getCurrentPostCount() {
         int result = 0;
-        CloseableHttpClient httpclient = HttpClients.createDefault();
         try {
             HttpGet httpget = new HttpGet(PostUrl);
             ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
@@ -421,7 +430,6 @@ public class BasicForumPost implements ForumPost {
                         HttpEntity entity = response.getEntity();
                         return entity != null ? EntityUtils.toString(entity) : null;
                     } else {
-                        System.out.println("error!!!");
                         throw new ClientProtocolException("Unexpected response status: " + status);
                     }
                 }
@@ -444,19 +452,23 @@ public class BasicForumPost implements ForumPost {
                 String[] sourceStrArray2 = sourceStrArray[ResultIndex].split("<em>");
                 int ResultIndex2 = sourceStrArray2.length - 1;
                 result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
+            } else {
+                System.out.println("error!!!");
             }
-            //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] 现在的楼层数为： " + result);
-        } catch (IOException | NumberFormatException ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                httpclient.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
+        } catch (Exception ex) {
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] getCurrentPostCount has an error!");
+            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for next getCurrentPostCount running!");
+            WaitFixedTime(1000);
+            result = getCurrentPostCount();
         }
         return result;
+    }
+
+    public HttpClient getHttpClient() {
+        ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager();
+        cm.setMaxTotal(100);
+        HttpClient httpclient = new DefaultHttpClient(cm);
+        return httpclient;
     }
 
     //抢固定楼层发帖子前的较慢轮询
@@ -502,7 +514,6 @@ public class BasicForumPost implements ForumPost {
         int CurrentRealTimePostCount = 0;
         while (true) {
             CurrentRealTimePostCount = getCurrentPostCount();
-
             if (TargetPostCount - CurrentRealTimePostCount < FixedPostTriggerNumber) {
                 System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
                 break;
@@ -515,7 +526,7 @@ public class BasicForumPost implements ForumPost {
                 printTime += 200;
             }
             if (printTime >= 30000) {
-                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for start up,current real time post count is： " + CurrentRealTimePostCount);
+                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
                 printTime = 0;
             }
         }
