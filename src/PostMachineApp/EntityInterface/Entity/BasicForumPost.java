@@ -31,6 +31,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
 
 public class BasicForumPost implements ForumPost {
@@ -456,6 +457,7 @@ public class BasicForumPost implements ForumPost {
                 System.out.println("error!!!");
             }
         } catch (Exception ex) {
+            //ex.printStackTrace();
             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] getCurrentPostCount has an error!");
             System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for next getCurrentPostCount running!");
             WaitFixedTime(1000);
@@ -468,6 +470,8 @@ public class BasicForumPost implements ForumPost {
         ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager();
         cm.setMaxTotal(100);
         HttpClient httpclient = new DefaultHttpClient(cm);
+        httpclient.getParams().setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 2000);
+        httpclient.getParams().setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 2000);
         return httpclient;
     }
 
