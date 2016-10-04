@@ -56,6 +56,6 @@ public class VivoMobileForumPost extends BasicForumPost {
         element.submit();
         //WebElement fastpostsubmit = driver.findElement(By.id("fastpostsubmit"));
         //fastpostsubmit.click();
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
+        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] message: " + i + " " + tempPostContent);
     }
 }

@@ -63,7 +63,7 @@ public class MeizuForumPost extends BasicForumPost {
         WebElement SubmitButton = driver.findElement(By.id("fastpostsubmit"));
         SubmitButton.click();
 
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
+        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] message: " + i + " " + tempPostContent);
     }
 
     public void watiuntilpageloaded(WebDriver driver) {

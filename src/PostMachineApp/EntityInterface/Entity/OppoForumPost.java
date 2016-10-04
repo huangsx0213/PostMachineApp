@@ -31,7 +31,7 @@ final public class OppoForumPost extends BasicForumPost {
 
         element.submit();
 
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "]message: " + i + " " + tempPostContent);
+        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "]message: " + i + " " + tempPostContent);
     }
 
     @Override
@@ -48,7 +48,7 @@ final public class OppoForumPost extends BasicForumPost {
         if (Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0) {
             RestWaitTime(RestWaitTime);
             RestWaitPostCountTemp = (int) (RestWaitPostCount - RestWaitPostCountOffset + Math.random() * (RestWaitPostCount + RestWaitPostCountOffset - (RestWaitPostCount - RestWaitPostCountOffset) + 1));
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] will take a next rest after " + RestWaitPostCountTemp + " posts.");
+            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] will take a next rest after " + RestWaitPostCountTemp + " posts.");
             NextWait = 0;
         }
     }

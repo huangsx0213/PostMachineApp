@@ -259,7 +259,7 @@ public class BasicForumPost implements ForumPost {
 
         DateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is starting.");
+        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Post thread is starting.");
 
         List<PostContentEntity> PostContentEntitys = getPostContentEntitys();
 
@@ -271,7 +271,7 @@ public class BasicForumPost implements ForumPost {
 
         afterSendPost();
 
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Post thread is Stoped.");
+        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Post thread is Stoped.");
     }
 
     //发贴前置操作
@@ -350,7 +350,7 @@ public class BasicForumPost implements ForumPost {
         element.submit();
         //WebElement fastpostsubmit = driver.findElement(By.id("fastpostsubmit"));
         //fastpostsubmit.click();
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
+        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] message: " + i + " " + tempPostContent);
 
     }
 
@@ -366,7 +366,7 @@ public class BasicForumPost implements ForumPost {
         if (Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0) {
             RestWaitTime(RestWaitTime);
             RestWaitPostCountTemp = (int) (RestWaitPostCount - RestWaitPostCountOffset + Math.random() * (RestWaitPostCount + RestWaitPostCountOffset - (RestWaitPostCount - RestWaitPostCountOffset) + 1));
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] will take a next rest after " + RestWaitPostCountTemp + " posts.");
+            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] will take a next rest after " + RestWaitPostCountTemp + " posts.");
             NextWait = 0;
         }
     }
@@ -383,7 +383,7 @@ public class BasicForumPost implements ForumPost {
             
             PostCountBefore = getCurrentPostCount();
 
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
+            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
             WaitFixedTime(AdjustedWaitTime);
 
             PostCountAfter = getCurrentPostCount();
@@ -394,17 +394,17 @@ public class BasicForumPost implements ForumPost {
                         WaitFixedTime(20000);
                         printTime += 20;
                     } else if (PostCountBefore - PostCountAfter < 0) {
-                        //System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
+                        //System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
                         break;
                     }
                     if (printTime == 20 | printTime % 300 == 0) {
-                        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] has been taking an additional rest " + printTime + "s. Current real time post count is： " + PostCountAfter);
+                        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] has been taking an additional rest " + printTime + "s. Current real time post count is： " + PostCountAfter);
                     }
                     PostCountAfter = getCurrentPostCount();
                 }
             }
         } else {
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
+            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
             WaitFixedTime(AdjustedWaitTime);
         }
     }
@@ -458,9 +458,8 @@ public class BasicForumPost implements ForumPost {
             }
         } catch (Exception ex) {
             //ex.printStackTrace();
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] getCurrentPostCount has an error!");
-            System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for next getCurrentPostCount running!");
-            WaitFixedTime(1000);
+            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] getCurrentPostCount has an error! Waiting for next getCurrentPostCount running!");
+            WaitFixedTime(500);
             result = getCurrentPostCount();
         }
         return result;
@@ -470,8 +469,8 @@ public class BasicForumPost implements ForumPost {
         ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager();
         cm.setMaxTotal(100);
         HttpClient httpclient = new DefaultHttpClient(cm);
-        httpclient.getParams().setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 2000);
-        httpclient.getParams().setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 2000);
+        httpclient.getParams().setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 1000);
+        httpclient.getParams().setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 1000);
         return httpclient;
     }
 
@@ -502,7 +501,7 @@ public class BasicForumPost implements ForumPost {
                     break;
                 }
                 if (printTime >= 300000) {
-                    System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Waiting for start up,current real time post count is： " + CurrentRealTimePostCount);
+                    System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Waiting for start up,current real time post count is： " + CurrentRealTimePostCount);
                     printTime = 0;
                 }
             }
@@ -519,7 +518,7 @@ public class BasicForumPost implements ForumPost {
         while (true) {
             CurrentRealTimePostCount = getCurrentPostCount();
             if (TargetPostCount - CurrentRealTimePostCount < FixedPostTriggerNumber) {
-                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
+                System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
                 break;
             } //(10+20)-50
             else if (TargetPostCount - CurrentRealTimePostCount <= FixedPostFast && TargetPostCount - CurrentRealTimePostCount >= FixedPostTriggerNumber + 20) {
@@ -530,7 +529,7 @@ public class BasicForumPost implements ForumPost {
                 printTime += 200;
             }
             if (printTime >= 30000) {
-                System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
+                System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
                 printTime = 0;
             }
         }

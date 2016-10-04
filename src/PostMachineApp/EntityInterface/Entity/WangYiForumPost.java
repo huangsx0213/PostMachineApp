@@ -32,6 +32,6 @@ final public class WangYiForumPost extends BasicForumPost {
         WebElement replyTie = driver.findElement(By.id("replyTie"));
         replyTie.click();
 
-        System.out.println(DateFormat.format(new Date()) + " [" + Profile + "] message: " + i + " " + tempPostContent);
+        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] message: " + i + " " + tempPostContent);
     }
 }
