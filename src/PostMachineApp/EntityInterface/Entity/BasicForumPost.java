@@ -379,7 +379,7 @@ public class BasicForumPost implements ForumPost {
         long printTime = 0;
         int PostCountBefore = 0;
         int PostCountAfter = 0;
-        if (PostEntity.equals("Meizu") |PostEntity.equals("MeizuFixed") | PostEntity.equals("Flyme") |PostEntity.equals("FlymeFixed") | PostEntity.equals("Vivo")| PostEntity.equals("VivoFixed")|PostEntity.equals("YunOS") |PostEntity.equals("YunOSFixed")) {
+        if (PostEntity.equals("Meizu") |PostEntity.equals("MeizuFixed") | PostEntity.equals("Flyme") |PostEntity.equals("FlymeFixed") | PostEntity.equals("Vivo")| PostEntity.equals("VivoFixed")|PostEntity.equals("YunOS") |PostEntity.equals("YunOSFixed")|PostEntity.equals("Oppo") |PostEntity.equals("OppoFixed")|PostEntity.equals("Huawei") |PostEntity.equals("HuaweiFixed")) {
             
             PostCountBefore = getCurrentPostCount();
 
@@ -437,21 +437,31 @@ public class BasicForumPost implements ForumPost {
             };
             String responseBody = httpclient.execute(httpget, responseHandler);
             if (PostEntity.equals("MeizuFixed") | PostEntity.equals("Meizu")) {
-                String[] sourceStrArray = responseBody.split("共有");
-                String[] sourceStrArray2 = sourceStrArray[1].split("条回复");
-                result = Integer.parseInt(sourceStrArray2[0]) + 1;
-            } else if (PostEntity.equals("FlymeFixed") | PostEntity.equals("Flyme")) {
+                String Spliter1="共有";
+                String Spliter2="条回复";
+                result = getLastPostCountMode1(responseBody,Spliter1,Spliter2)+1;
+            } 
+            else if (PostEntity.equals("OppoFixed") | PostEntity.equals("Oppo")) {
+                String Spliter1="评论";
+                String Spliter2="</span>";
+                result = getLastPostCountMode1(responseBody,Spliter1,Spliter2);
+            } 
+            else if (PostEntity.equals("FlymeFixed") | PostEntity.equals("Flyme")) {
                 String Spliter1="</em><em>F</em>";
                 String Spliter2="<em>";
-                result = getLastPostCount(responseBody,Spliter1,Spliter2);
+                result = getLastPostCountMode2(responseBody,Spliter1,Spliter2);
             } else if (PostEntity.equals("VivoFixed") | PostEntity.equals("Vivo")) {
                 String Spliter1="楼</em>";
                 String Spliter2="<em>";
-                result = getLastPostCount(responseBody,Spliter1,Spliter2);
+                result = getLastPostCountMode2(responseBody,Spliter1,Spliter2);
             } else if (PostEntity.equals("YunOSFixed") | PostEntity.equals("YunOS")) {
                 String Spliter1="\\\" onmouseover=";
                 String Spliter2="id=\\\"readFace_";
-                result = getLastPostCount(responseBody,Spliter1,Spliter2);
+                result = getLastPostCountMode2(responseBody,Spliter1,Spliter2);
+            }else if (PostEntity.equals("HuaweiFixed") | PostEntity.equals("Huawei")) {
+                String Spliter1="楼</span>";
+                String Spliter2="<span class=\\\"hbt-fav r\\\">";
+                result = getLastPostCountMode2(responseBody,Spliter1,Spliter2);
             } else {
                 System.out.println("error!!!");
             }
@@ -463,8 +473,16 @@ public class BasicForumPost implements ForumPost {
         }
         return result;
     }
+
+    public int getLastPostCountMode1(String responseBody,String Spliter1,String Spliter2) throws NumberFormatException {
+        int result;
+        String[] sourceStrArray = responseBody.split(Spliter1);
+        String[] sourceStrArray2 = sourceStrArray[1].split(Spliter2);
+        result = Integer.parseInt(sourceStrArray2[0].trim());
+        return result;
+    }
 //切割两次，取最后一楼的层数
-    public int getLastPostCount(String responseBody,String Spliter1,String Spliter2) throws NumberFormatException {
+    public int getLastPostCountMode2(String responseBody,String Spliter1,String Spliter2) throws NumberFormatException {
         int result;
         String[] sourceStrArray = responseBody.split(Spliter1);
         //System.out.println(responseBody);
