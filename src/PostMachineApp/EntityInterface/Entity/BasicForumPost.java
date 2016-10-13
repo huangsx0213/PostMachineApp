@@ -379,7 +379,7 @@ public class BasicForumPost implements ForumPost {
         long printTime = 0;
         int PostCountBefore = 0;
         int PostCountAfter = 0;
-        if (PostEntity.equals("Meizu") |PostEntity.equals("MeizuFixed") | PostEntity.equals("Flyme") |PostEntity.equals("FlymeFixed") | PostEntity.equals("Vivo")| PostEntity.equals("VivoFixed")) {
+        if (PostEntity.equals("Meizu") |PostEntity.equals("MeizuFixed") | PostEntity.equals("Flyme") |PostEntity.equals("FlymeFixed") | PostEntity.equals("Vivo")| PostEntity.equals("VivoFixed")|PostEntity.equals("YunOS") |PostEntity.equals("YunOSFixed")) {
             
             PostCountBefore = getCurrentPostCount();
 
@@ -388,7 +388,7 @@ public class BasicForumPost implements ForumPost {
 
             PostCountAfter = getCurrentPostCount();
 
-            if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo")) {
+            if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo")|PostEntity.equals("YunOS")) {
                 while (true) {
                     if (PostCountBefore - PostCountAfter >= 0) {
                         WaitFixedTime(20000);
@@ -441,18 +441,17 @@ public class BasicForumPost implements ForumPost {
                 String[] sourceStrArray2 = sourceStrArray[1].split("条回复");
                 result = Integer.parseInt(sourceStrArray2[0]) + 1;
             } else if (PostEntity.equals("FlymeFixed") | PostEntity.equals("Flyme")) {
-                String[] sourceStrArray = responseBody.split("</em><em>F</em>");
-                int ResultIndex = sourceStrArray.length - 2;
-                String[] sourceStrArray2 = sourceStrArray[ResultIndex].split("<em>");
-                int ResultIndex2 = sourceStrArray2.length - 1;
-                result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
+                String Spliter1="</em><em>F</em>";
+                String Spliter2="<em>";
+                result = getLastPostCount(responseBody,Spliter1,Spliter2);
             } else if (PostEntity.equals("VivoFixed") | PostEntity.equals("Vivo")) {
-                String[] sourceStrArray = responseBody.split("楼</em>");
-                //System.out.println(responseBody);
-                int ResultIndex = sourceStrArray.length - 2;
-                String[] sourceStrArray2 = sourceStrArray[ResultIndex].split("<em>");
-                int ResultIndex2 = sourceStrArray2.length - 1;
-                result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
+                String Spliter1="楼</em>";
+                String Spliter2="<em>";
+                result = getLastPostCount(responseBody,Spliter1,Spliter2);
+            } else if (PostEntity.equals("YunOSFixed") | PostEntity.equals("YunOS")) {
+                String Spliter1="\\\" onmouseover=";
+                String Spliter2="id=\\\"readFace_";
+                result = getLastPostCount(responseBody,Spliter1,Spliter2);
             } else {
                 System.out.println("error!!!");
             }
@@ -462,6 +461,17 @@ public class BasicForumPost implements ForumPost {
             WaitFixedTime(500);
             result = getCurrentPostCount();
         }
+        return result;
+    }
+//切割两次，取最后一楼的层数
+    public int getLastPostCount(String responseBody,String Spliter1,String Spliter2) throws NumberFormatException {
+        int result;
+        String[] sourceStrArray = responseBody.split(Spliter1);
+        //System.out.println(responseBody);
+        int ResultIndex = sourceStrArray.length - 2;
+        String[] sourceStrArray2 = sourceStrArray[ResultIndex].split(Spliter2);
+        int ResultIndex2 = sourceStrArray2.length - 1;
+        result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
         return result;
     }
 
