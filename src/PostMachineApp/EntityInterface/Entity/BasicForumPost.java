@@ -379,7 +379,7 @@ public class BasicForumPost implements ForumPost {
         long printTime = 0;
         int PostCountBefore = 0;
         int PostCountAfter = 0;
-        if (PostEntity.equals("Meizu") |PostEntity.equals("MeizuFixed") | PostEntity.equals("Flyme") |PostEntity.equals("FlymeFixed") | PostEntity.equals("Vivo")| PostEntity.equals("VivoFixed")|PostEntity.equals("YunOS") |PostEntity.equals("YunOSFixed")|PostEntity.equals("Oppo") |PostEntity.equals("OppoFixed")|PostEntity.equals("Huawei") |PostEntity.equals("HuaweiFixed")) {
+        if (PostEntity.equals("Meizu") |PostEntity.equals("MeizuFixed") | PostEntity.equals("Flyme") |PostEntity.equals("FlymeFixed") | PostEntity.equals("Vivo")| PostEntity.equals("VivoFixed")|PostEntity.equals("YunOS") |PostEntity.equals("YunOSFixed")|PostEntity.equals("Oppo") |PostEntity.equals("OppoFixed")|PostEntity.equals("Huawei") |PostEntity.equals("HuaweiFixed")|PostEntity.equals("OneplusFixed") | PostEntity.equals("Oneplus")) {
             
             PostCountBefore = getCurrentPostCount();
 
@@ -461,6 +461,10 @@ public class BasicForumPost implements ForumPost {
             }else if (PostEntity.equals("HuaweiFixed") | PostEntity.equals("Huawei")) {
                 String Spliter1="楼</span>";
                 String Spliter2="<span class=\\\"hbt-fav r\\\">";
+                result = getLastPostCountMode2(responseBody,Spliter1,Spliter2);
+            }else if (PostEntity.equals("OneplusFixed") | PostEntity.equals("Oneplus")) {
+                String Spliter1="<sup>F</sup>";
+                String Spliter2="<em class=\\\"am-fr\\\">";
                 result = getLastPostCountMode2(responseBody,Spliter1,Spliter2);
             } else {
                 System.out.println("error!!!");
