@@ -35,7 +35,7 @@ public class MeizuMobileForumPost extends BasicForumPost {
 
         FirefoxProfile FirefoxProfile = allProfiles.getProfile(Profile);
         FirefoxProfile.setPreference("general.useragent.override",
-                "Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; iphone 6s/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+                "Mozilla/5.0 (Linux; U; Android 4.4.4; Nexus 5 Build/KTU84P) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
         driver = new FirefoxDriver(FirefoxProfile);
         return driver;
     }

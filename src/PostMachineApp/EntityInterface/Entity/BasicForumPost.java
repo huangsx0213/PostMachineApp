@@ -442,7 +442,7 @@ public class BasicForumPost implements ForumPost {
                 result = getLastPostCountMode1(responseBody,Spliter1,Spliter2)+1;
             } 
             else if (PostEntity.equals("OppoFixed") | PostEntity.equals("Oppo")) {
-                String Spliter1="评论";
+                String Spliter1="<span class=\"Fr MR20\">评论";
                 String Spliter2="</span>";
                 result = getLastPostCountMode1(responseBody,Spliter1,Spliter2);
             } 
@@ -470,7 +470,7 @@ public class BasicForumPost implements ForumPost {
                 System.out.println("error!!!");
             }
         } catch (Exception ex) {
-            //ex.printStackTrace();
+            ex.printStackTrace();
             System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] getCurrentPostCount has an error! Waiting for next getCurrentPostCount running!");
             WaitFixedTime(500);
             result = getCurrentPostCount();
