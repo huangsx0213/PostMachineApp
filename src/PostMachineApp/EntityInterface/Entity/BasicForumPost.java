@@ -379,7 +379,7 @@ public class BasicForumPost implements ForumPost {
         long printTime = 0;
         int PostCountBefore = 0;
         int PostCountAfter = 0;
-        if (PostEntity.equals("Meizu") |PostEntity.equals("MeizuFixed") | PostEntity.equals("Flyme") |PostEntity.equals("FlymeFixed") | PostEntity.equals("Vivo")| PostEntity.equals("VivoFixed")|PostEntity.equals("YunOS") |PostEntity.equals("YunOSFixed")|PostEntity.equals("Oppo") |PostEntity.equals("OppoFixed")|PostEntity.equals("Huawei") |PostEntity.equals("HuaweiFixed")|PostEntity.equals("OneplusFixed") | PostEntity.equals("Oneplus")) {
+        if (PostEntity.equals("Meizu") |PostEntity.equals("MeizuFixed") | PostEntity.equals("Flyme") |PostEntity.equals("FlymeFixed") | PostEntity.equals("Vivo")| PostEntity.equals("VivoFixed")|PostEntity.equals("YunOS") |PostEntity.equals("YunOSFixed")|PostEntity.equals("Oppo") |PostEntity.equals("OppoFixed")|PostEntity.equals("Huawei") |PostEntity.equals("HuaweiFixed")|PostEntity.equals("OneplusFixed") | PostEntity.equals("Oneplus")|PostEntity.equals("LenovoFixed") | PostEntity.equals("Lenovo")) {
             
             PostCountBefore = getCurrentPostCount();
 
@@ -388,7 +388,7 @@ public class BasicForumPost implements ForumPost {
 
             PostCountAfter = getCurrentPostCount();
 
-            if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo")|PostEntity.equals("YunOS")) {
+            if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo")|PostEntity.equals("YunOS")| PostEntity.equals("Lenovo")) {
                 while (true) {
                     if (PostCountBefore - PostCountAfter >= 0) {
                         WaitFixedTime(20000);
@@ -466,7 +466,11 @@ public class BasicForumPost implements ForumPost {
                 String Spliter1="<sup>F</sup>";
                 String Spliter2="<em class=\\\"am-fr\\\">";
                 result = getLastPostCountMode2(responseBody,Spliter1,Spliter2);
-            } else {
+            } else if (PostEntity.equals("LenovoFixed") | PostEntity.equals("Lenovo")) {
+                String Spliter1="</em><sup>#</sup></a>";
+                String Spliter2="<em>";
+                result = getLastPostCountMode2(responseBody,Spliter1,Spliter2);
+            }else {
                 System.out.println("error!!!");
             }
         } catch (Exception ex) {
