@@ -368,7 +368,7 @@ public class BasicForumPost implements ForumPost {
         }
 
         if (Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0) {
-            RestWaitTime(PostCountBefore,RestWaitTime);
+            RestWaitTime(PostCountBefore, RestWaitTime);
             RestWaitPostCountTemp = (int) (RestWaitPostCount - RestWaitPostCountOffset + Math.random() * (RestWaitPostCount + RestWaitPostCountOffset - (RestWaitPostCount - RestWaitPostCountOffset) + 1));
             System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] will take a next rest after " + RestWaitPostCountTemp + " posts.");
             NextWait = 0;
@@ -376,39 +376,34 @@ public class BasicForumPost implements ForumPost {
     }
 
     //休息等待时间
-    public void RestWaitTime(int PostCountBefore,Integer WaitTime) {
+    public void RestWaitTime(int PostCountBefore, Integer WaitTime) {
 
         Integer AdjustedWaitTime;
         AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
         long printTime = 0;
         int PostCountAfter = 0;
-        
-        if (PostEntity.equals("Meizu") | PostEntity.equals("MeizuFixed") | PostEntity.equals("Flyme") | PostEntity.equals("FlymeFixed") | PostEntity.equals("Vivo") | PostEntity.equals("VivoFixed") | PostEntity.equals("YunOS") | PostEntity.equals("YunOSFixed") | PostEntity.equals("Oppo") | PostEntity.equals("OppoFixed") | PostEntity.equals("Huawei") | PostEntity.equals("HuaweiFixed") | PostEntity.equals("OneplusFixed") | PostEntity.equals("Oneplus") | PostEntity.equals("LenovoFixed") | PostEntity.equals("Lenovo")) {
 
-            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
-            WaitFixedTime(AdjustedWaitTime);
+        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
+        WaitFixedTime(AdjustedWaitTime);
 
-            PostCountAfter = getCurrentPostCount();
+        PostCountAfter = getCurrentPostCount();
 
-            if (PostEntity.equals("Meizu") | PostEntity.equals("Flyme") | PostEntity.equals("Vivo") | PostEntity.equals("YunOS") | PostEntity.equals("Lenovo")) {
-                while (true) {
-                    if (PostCountBefore - PostCountAfter >= 0) {
-                        WaitFixedTime(20000);
-                        printTime += 20;
-                    } else if (PostCountBefore - PostCountAfter < 0) {
-                        //System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
-                        break;
-                    }
-                    if (printTime == 20 | printTime % 300 == 0) {
-                        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] has been taking an additional rest " + printTime + "s. Current real time post count is： " + PostCountAfter);
-                    }
-                    PostCountAfter = getCurrentPostCount();
+        if (!PostEntity.contains("Fixed")) {
+            while (true) {
+                if (PostCountBefore - PostCountAfter >= 0) {
+                    WaitFixedTime(20000);
+                    printTime += 20;
+                } else if (PostCountBefore - PostCountAfter < 0) {
+                    //System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
+                    break;
                 }
+                if (printTime == 20 | printTime % 300 == 0) {
+                    System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] has been taking an additional rest " + printTime + "s. Current real time post count is： " + PostCountAfter);
+                }
+                PostCountAfter = getCurrentPostCount();
             }
-        } else {
-            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
-            WaitFixedTime(AdjustedWaitTime);
         }
+
     }
 
     //固定等待时间
@@ -470,11 +465,15 @@ public class BasicForumPost implements ForumPost {
                 String Spliter1 = "</em><sup>#</sup></a>";
                 String Spliter2 = "<em>";
                 result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
+            } else if (PostEntity.equals("GimiFixed") | PostEntity.equals("Gimi")) {
+                String Spliter1 = "<sup>#</sup>";
+                String Spliter2 = "<!--楼层号-->";
+                result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
             } else {
                 System.out.println("error!!!");
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
             System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] getCurrentPostCount has an error! Waiting for next getCurrentPostCount running!");
             WaitFixedTime(500);
             result = getCurrentPostCount();
