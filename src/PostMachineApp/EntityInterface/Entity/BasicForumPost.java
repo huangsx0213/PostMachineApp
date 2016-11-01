@@ -66,7 +66,8 @@ public class BasicForumPost implements ForumPost {
     public Integer FixedPostFast;
     public Integer FixedPostTriggerNumber;
     public HttpClient httpclient;
-
+    public int PostCountBefore;
+    public int PostCountAfter;
     //构造函数
     public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String FixedPostTrigger, String Remark) {
         this.EnableThread = EnableThread;
@@ -252,6 +253,10 @@ public class BasicForumPost implements ForumPost {
         httpclient = getHttpClient();
 
         NextWait = 0;
+        
+        PostCountBefore=0;
+        
+        PostCountAfter=0;
 
         tempPostContent = this.PostContent;
 
@@ -356,19 +361,18 @@ public class BasicForumPost implements ForumPost {
 
     //发贴等待时间
     public void sendPostWait(int i, WebDriver driver) {
-        int PostCountBefore = 0;
+                
         NextWait++;
-        if (Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0) {
-            PostCountBefore = getCurrentPostCount();
+        if (!(Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0)) {
+            WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
         }
-        WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
 
         if (i % RefreshPostCount == 0) {
             driver.navigate().refresh();
         }
 
         if (Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0) {
-            RestWaitTime(PostCountBefore, RestWaitTime);
+            RestWaitTime(RestWaitTime);
             RestWaitPostCountTemp = (int) (RestWaitPostCount - RestWaitPostCountOffset + Math.random() * (RestWaitPostCount + RestWaitPostCountOffset - (RestWaitPostCount - RestWaitPostCountOffset) + 1));
             System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] will take a next rest after " + RestWaitPostCountTemp + " posts.");
             NextWait = 0;
@@ -376,12 +380,21 @@ public class BasicForumPost implements ForumPost {
     }
 
     //休息等待时间
-    public void RestWaitTime(int PostCountBefore, Integer WaitTime) {
+    public void RestWaitTime(Integer WaitTime) {
 
         Integer AdjustedWaitTime;
         AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
         long printTime = 0;
-        int PostCountAfter = 0;
+
+        PostCountBefore = getCurrentPostCount();
+        while (true) {
+            if (PostCountBefore <= PostCountAfter) {
+                WaitFixedTime(1000);
+                PostCountBefore = getCurrentPostCount();
+            } else {
+                break;
+            }
+        }
 
         System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
         WaitFixedTime(AdjustedWaitTime);
