@@ -364,9 +364,8 @@ public class BasicForumPost implements ForumPost {
     public void sendPostWait(int i, WebDriver driver) {
 
         NextWait++;
-        if (!(Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0)) {
-            WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
-        }
+
+        WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
 
         if (i % RefreshPostCount == 0) {
             driver.navigate().refresh();
@@ -381,25 +380,17 @@ public class BasicForumPost implements ForumPost {
     }
 
     //休息等待时间
-    public void RestWaitTime(Integer WaitTime) {
+    public void RestWaitTime(Integer RestWaitTime) {
 
-        Integer AdjustedWaitTime;
-        AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
+        Integer AdjustedRestWaitTime;
+        AdjustedRestWaitTime = (int) (RestWaitTime * (1 - 0.2) + Math.random() * (RestWaitTime * (1 + 0.2) - RestWaitTime * (1 - 0.2) + 1)) * 1000;
         long printTime = 0;
         if (!(PostEntity.contains("Common") | PostEntity.contains("Qiku360") | PostEntity.contains("WangYi") | PostEntity.contains("LiCai"))) {
+            
             PostCountBefore = getCurrentPostCount();
-            while (true) {
-                if (PostCountBefore <= PostCountAfter) {
-                    WaitFixedTime(1000);
-                    PostCountBefore = getCurrentPostCount();
-                } else {
-                    WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
-                    break;
-                }
-            }
 
-            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
-            WaitFixedTime(AdjustedWaitTime);
+            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedRestWaitTime / 1000 + "s.");
+            WaitFixedTime(AdjustedRestWaitTime);
 
             PostCountAfter = getCurrentPostCount();
 
@@ -419,8 +410,8 @@ public class BasicForumPost implements ForumPost {
                 }
             }
         } else {
-            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
-            WaitFixedTime(AdjustedWaitTime);
+            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedRestWaitTime / 1000 + "s.");
+            WaitFixedTime(AdjustedRestWaitTime);
         }
 
     }
