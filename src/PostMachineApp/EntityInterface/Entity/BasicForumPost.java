@@ -68,6 +68,7 @@ public class BasicForumPost implements ForumPost {
     public HttpClient httpclient;
     public int PostCountBefore;
     public int PostCountAfter;
+
     //构造函数
     public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String FixedPostTrigger, String Remark) {
         this.EnableThread = EnableThread;
@@ -253,10 +254,10 @@ public class BasicForumPost implements ForumPost {
         httpclient = getHttpClient();
 
         NextWait = 0;
-        
-        PostCountBefore=0;
-        
-        PostCountAfter=0;
+
+        PostCountBefore = 0;
+
+        PostCountAfter = 0;
 
         tempPostContent = this.PostContent;
 
@@ -361,7 +362,7 @@ public class BasicForumPost implements ForumPost {
 
     //发贴等待时间
     public void sendPostWait(int i, WebDriver driver) {
-                
+
         NextWait++;
         if (!(Objects.equals(RestWaitPostCountTemp, NextWait) && RestWaitPostCountTemp > 0 && RestWaitTime > 0)) {
             WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
@@ -385,36 +386,41 @@ public class BasicForumPost implements ForumPost {
         Integer AdjustedWaitTime;
         AdjustedWaitTime = (int) (WaitTime * (1 - 0.2) + Math.random() * (WaitTime * (1 + 0.2) - WaitTime * (1 - 0.2) + 1)) * 1000;
         long printTime = 0;
-
-        PostCountBefore = getCurrentPostCount();
-        while (true) {
-            if (PostCountBefore <= PostCountAfter) {
-                WaitFixedTime(1000);
-                PostCountBefore = getCurrentPostCount();
-            } else {
-                break;
-            }
-        }
-
-        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
-        WaitFixedTime(AdjustedWaitTime);
-
-        PostCountAfter = getCurrentPostCount();
-
-        if (!PostEntity.contains("Fixed")) {
+        if (!(PostEntity.contains("Common") | PostEntity.contains("Qiku360") | PostEntity.contains("WangYi") | PostEntity.contains("LiCai"))) {
+            PostCountBefore = getCurrentPostCount();
             while (true) {
-                if (PostCountBefore - PostCountAfter >= 0) {
-                    WaitFixedTime(20000);
-                    printTime += 20;
-                } else if (PostCountBefore - PostCountAfter < 0) {
-                    //System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
+                if (PostCountBefore <= PostCountAfter) {
+                    WaitFixedTime(1000);
+                    PostCountBefore = getCurrentPostCount();
+                } else {
+                    WaitFixedTime(FixedWaitTime * 1000 + (int) (1 + Math.random() * (RandomWaitTime - 1 + 1)) * 1000);
                     break;
                 }
-                if (printTime == 20 | printTime % 300 == 0) {
-                    System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] has been taking an additional rest " + printTime + "s. Current real time post count is： " + PostCountAfter);
-                }
-                PostCountAfter = getCurrentPostCount();
             }
+
+            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
+            WaitFixedTime(AdjustedWaitTime);
+
+            PostCountAfter = getCurrentPostCount();
+
+            if (!PostEntity.contains("Fixed")) {
+                while (true) {
+                    if (PostCountBefore - PostCountAfter >= 0) {
+                        WaitFixedTime(20000);
+                        printTime += 20;
+                    } else if (PostCountBefore - PostCountAfter < 0) {
+                        //System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] has been taking a additional rest " + printTime + "s. (Break)Current real time post count is： " + PostCountAfter);
+                        break;
+                    }
+                    if (printTime == 20 | printTime % 300 == 0) {
+                        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] has been taking an additional rest " + printTime + "s. Current real time post count is： " + PostCountAfter);
+                    }
+                    PostCountAfter = getCurrentPostCount();
+                }
+            }
+        } else {
+            System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedWaitTime / 1000 + "s.");
+            WaitFixedTime(AdjustedWaitTime);
         }
 
     }
@@ -445,40 +451,42 @@ public class BasicForumPost implements ForumPost {
                     }
                 }
             };
+
             String responseBody = httpclient.execute(httpget, responseHandler);
-            if (PostEntity.equals("MeizuFixed") | PostEntity.equals("Meizu")) {
+
+            if (PostEntity.contains("Meizu")) {
                 String Spliter1 = "共有";
                 String Spliter2 = "条回复";
                 result = getLastPostCountMode1(responseBody, Spliter1, Spliter2) + 1;
-            } else if (PostEntity.equals("OppoFixed") | PostEntity.equals("Oppo")) {
+            } else if (PostEntity.contains("Oppo")) {
                 String Spliter1 = "<span class=\"Fr MR20\">评论";
                 String Spliter2 = "</span>";
                 result = getLastPostCountMode1(responseBody, Spliter1, Spliter2);
-            } else if (PostEntity.equals("FlymeFixed") | PostEntity.equals("Flyme")) {
+            } else if (PostEntity.contains("Flyme")) {
                 String Spliter1 = "</em><em>F</em>";
                 String Spliter2 = "<em>";
                 result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
-            } else if (PostEntity.equals("VivoFixed") | PostEntity.equals("Vivo")) {
+            } else if (PostEntity.contains("Vivo")) {
                 String Spliter1 = "楼</em>";
                 String Spliter2 = "<em>";
                 result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
-            } else if (PostEntity.equals("YunOSFixed") | PostEntity.equals("YunOS")) {
+            } else if (PostEntity.contains("YunOS")) {
                 String Spliter1 = "\\\" onmouseover=";
                 String Spliter2 = "id=\\\"readFace_";
                 result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
-            } else if (PostEntity.equals("HuaweiFixed") | PostEntity.equals("Huawei")) {
+            } else if (PostEntity.contains("Huawei")) {
                 String Spliter1 = "楼</span>";
                 String Spliter2 = "<span class=\\\"hbt-fav r\\\">";
                 result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
-            } else if (PostEntity.equals("OneplusFixed") | PostEntity.equals("Oneplus")) {
+            } else if (PostEntity.contains("Oneplus")) {
                 String Spliter1 = "<sup>F</sup>";
                 String Spliter2 = "<em class=\\\"am-fr\\\">";
                 result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
-            } else if (PostEntity.equals("LenovoFixed") | PostEntity.equals("Lenovo")) {
+            } else if (PostEntity.contains("Lenovo")) {
                 String Spliter1 = "</em><sup>#</sup></a>";
                 String Spliter2 = "<em>";
                 result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
-            } else if (PostEntity.equals("GimiFixed") | PostEntity.equals("Gimi")) {
+            } else if (PostEntity.contains("Gimi")) {
                 String Spliter1 = "<sup>#</sup>";
                 String Spliter2 = "<!--楼层号-->";
                 result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
