@@ -3,46 +3,58 @@
 <Entitys>
   <Entity EntityID="1">
     <EnableEntity>true</EnableEntity>
-    <EntityName>Vivo</EntityName>
+    <EntityName>Meizu</EntityName>
   </Entity>
   <Entity EntityID="2">
     <EnableEntity>true</EnableEntity>
-    <EntityName>Oppo</EntityName>
+    <EntityName>MeizuFixed</EntityName>
   </Entity>
   <Entity EntityID="3">
     <EnableEntity>true</EnableEntity>
-    <EntityName>Huawei</EntityName>
+    <EntityName>Flyme</EntityName>
   </Entity>
   <Entity EntityID="4">
     <EnableEntity>true</EnableEntity>
-    <EntityName>YunOS</EntityName>
+    <EntityName>Vivo</EntityName>
   </Entity>
   <Entity EntityID="5">
     <EnableEntity>true</EnableEntity>
-    <EntityName>Qiku360</EntityName>
+    <EntityName>Oppo</EntityName>
   </Entity>
   <Entity EntityID="6">
     <EnableEntity>true</EnableEntity>
-    <EntityName>VivoMobile</EntityName>
+    <EntityName>Common</EntityName>
   </Entity>
   <Entity EntityID="7">
     <EnableEntity>true</EnableEntity>
-    <EntityName>Common</EntityName>
+    <EntityName>Huawei</EntityName>
   </Entity>
   <Entity EntityID="8">
     <EnableEntity>true</EnableEntity>
-    <EntityName>WangYi</EntityName>
+    <EntityName>YunOS</EntityName>
   </Entity>
   <Entity EntityID="9">
     <EnableEntity>true</EnableEntity>
-    <EntityName>Flyme</EntityName>
+    <EntityName>LiCai</EntityName>
   </Entity>
   <Entity EntityID="10">
     <EnableEntity>true</EnableEntity>
-    <EntityName>MeizuFixed</EntityName>
+    <EntityName>Qiku360</EntityName>
   </Entity>
-    <Entity EntityID="11">
+  <Entity EntityID="11">
     <EnableEntity>true</EnableEntity>
-    <EntityName>VivoFixed</EntityName>
+    <EntityName>WangYi</EntityName>
+  </Entity>
+  <Entity EntityID="12">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>VivoMobile</EntityName>
+  </Entity>
+  <Entity EntityID="13">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>MeizuMobile</EntityName>
+  </Entity>
+  <Entity EntityID="14">
+    <EnableEntity>true</EnableEntity>
+    <EntityName>FlymeFixed</EntityName>
   </Entity>
 </Entitys>

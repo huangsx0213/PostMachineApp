@@ -5,21 +5,21 @@
     <EnableThread>true</EnableThread>
     <FirefoxPath>D:\Program Files (x86)\Mozilla Firefox\firefox.exe</FirefoxPath>
     <Profile>default</Profile>
-    <PostEntity>MeizuFixed</PostEntity>
+    <PostEntity>Meizu</PostEntity>
     <StartTime>1451577600000</StartTime>
     <EnableStopTime>false</EnableStopTime>
     <StopTime>1462636799000</StopTime>
     <RefreshPostCount>200</RefreshPostCount>
-    <PostCount>50</PostCount>
+    <PostCount>5</PostCount>
     <FixedWaitTime>11</FixedWaitTime>
-    <RandomWaitTime>2</RandomWaitTime>
-    <RestWaitTime>60</RestWaitTime>
-    <RestWaitPostCount>20</RestWaitPostCount>
-    <RestWaitPostCountOffset>5</RestWaitPostCountOffset>
-    <PostUrl>http://bbs.vivo.com.cn/thread-2274151-9999-1.html</PostUrl>
-    <PostContent>test</PostContent>
+    <RandomWaitTime>1</RandomWaitTime>
+    <RestWaitTime>1</RestWaitTime>
+    <RestWaitPostCount>1</RestWaitPostCount>
+    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
+    <PostUrl>http://bbs.vivo.com.cn/thread-6279680-9999-1.html</PostUrl>
+    <PostContent>支持一下</PostContent>
     <FixedPostTrigger>100|50|10</FixedPostTrigger>
-    <Remark>test</Remark>
+    <Remark>6279680</Remark>
   </ForumPost>
   <ForumPost ThreadID="2">
     <EnableThread>true</EnableThread>

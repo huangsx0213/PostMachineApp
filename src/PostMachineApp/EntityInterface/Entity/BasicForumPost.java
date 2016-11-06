@@ -257,7 +257,7 @@ public class BasicForumPost implements ForumPost {
 
         PostCountBefore = 0;
 
-        PostCountAfter = 0;
+        PostCountAfter = getCurrentPostCount()+RestWaitPostCount-1;
 
         tempPostContent = this.PostContent;
 
