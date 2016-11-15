@@ -385,7 +385,7 @@ public class BasicForumPost implements ForumPost {
         Integer AdjustedRestWaitTime;
         AdjustedRestWaitTime = (int) (RestWaitTime * (1 - 0.2) + Math.random() * (RestWaitTime * (1 + 0.2) - RestWaitTime * (1 - 0.2) + 1)) * 1000;
         long printTime = 0;
-        if (!(PostEntity.contains("Common") | PostEntity.contains("Qiku360") | PostEntity.contains("WangYi") | PostEntity.contains("LiCai"))) {
+        if (!(PostEntity.contains("Common") | PostEntity.contains("Qiku360") | PostEntity.contains("LiCai"))) {
             
             PostCountBefore = getCurrentPostCount();
 
