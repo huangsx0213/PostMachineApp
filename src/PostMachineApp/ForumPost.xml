@@ -3,48 +3,68 @@
 <ForumPosts>
   <ForumPost ThreadID="1">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\Program Files (x86)\Mozilla Firefox\firefox.exe</FirefoxPath>
-    <Profile>default</Profile>
-    <PostEntity>Meizu</PostEntity>
-    <StartTime>1451577600000</StartTime>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>vivo5985656</Profile>
+    <PostEntity>VivoFixed</PostEntity>
+    <StartTime>1468888199000</StartTime>
     <EnableStopTime>false</EnableStopTime>
-    <StopTime>1462636799000</StopTime>
-    <RefreshPostCount>200</RefreshPostCount>
-    <PostCount>5</PostCount>
+    <StopTime>1468943999000</StopTime>
+    <RefreshPostCount>500</RefreshPostCount>
+    <PostCount>1</PostCount>
     <FixedWaitTime>11</FixedWaitTime>
     <RandomWaitTime>1</RandomWaitTime>
     <RestWaitTime>1</RestWaitTime>
-    <RestWaitPostCount>1</RestWaitPostCount>
-    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://bbs.vivo.com.cn/thread-6279680-9999-1.html</PostUrl>
-    <PostContent>支持一下</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
-    <Remark>6279680</Remark>
+    <RestWaitPostCount>2</RestWaitPostCount>
+    <RestWaitPostCountOffset>1</RestWaitPostCountOffset>
+    <PostUrl>http://bbs.vivo.com.cn/thread-2455597-99999-1.html</PostUrl>
+    <PostContent>[TextFile]</PostContent>
+    <FixedPostTrigger>80|50|5</FixedPostTrigger>
+    <Remark/>
   </ForumPost>
   <ForumPost ThreadID="2">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\Program Files (x86)\Mozilla Firefox\firefox.exe</FirefoxPath>
-    <Profile>oppo82958013</Profile>
-    <PostEntity>Oppo</PostEntity>
-    <StartTime>1451577600000</StartTime>
-    <EnableStopTime>false</EnableStopTime>
-    <StopTime>1463133599000</StopTime>
-    <RefreshPostCount>30</RefreshPostCount>
-    <PostCount>200</PostCount>
-    <FixedWaitTime>2</FixedWaitTime>
-    <RandomWaitTime>2</RandomWaitTime>
-    <RestWaitTime>0</RestWaitTime>
-    <RestWaitPostCount>0</RestWaitPostCount>
-    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://bbs.oppo.cn/thread-11434251-1-1.html</PostUrl>
-    <PostContent>[Pool]</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>vivo5985656</Profile>
+    <PostEntity>Vivo</PostEntity>
+    <StartTime>1478084399000</StartTime>
+    <EnableStopTime>true</EnableStopTime>
+    <StopTime>1478102399000</StopTime>
+    <RefreshPostCount>100</RefreshPostCount>
+    <PostCount>600</PostCount>
+    <FixedWaitTime>11</FixedWaitTime>
+    <RandomWaitTime>5</RandomWaitTime>
+    <RestWaitTime>11</RestWaitTime>
+    <RestWaitPostCount>8</RestWaitPostCount>
+    <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
+    <PostUrl>http://bbs.vivo.com.cn/thread-2517204-99999-1.html</PostUrl>
+    <PostContent>[TextFile]</PostContent>
+    <FixedPostTrigger>60|30|5</FixedPostTrigger>
     <Remark/>
   </ForumPost>
   <ForumPost ThreadID="3">
     <EnableThread>true</EnableThread>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>oppo82383621</Profile>
+    <PostEntity>OppoMobile</PostEntity>
+    <StartTime>1451577600000</StartTime>
+    <EnableStopTime>false</EnableStopTime>
+    <StopTime>1463133599000</StopTime>
+    <RefreshPostCount>100</RefreshPostCount>
+    <PostCount>100</PostCount>
+    <FixedWaitTime>30</FixedWaitTime>
+    <RandomWaitTime>120</RandomWaitTime>
+    <RestWaitTime>120</RestWaitTime>
+    <RestWaitPostCount>4</RestWaitPostCount>
+    <RestWaitPostCountOffset>1</RestWaitPostCountOffset>
+    <PostUrl>http://www.oppo.cn/thread-40527945-1</PostUrl>
+    <PostContent>我要召唤小欧礼包和 @Oppo 陪我过冬天！</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
+    <Remark/>
+  </ForumPost>
+  <ForumPost ThreadID="4">
+    <EnableThread>true</EnableThread>
     <FirefoxPath>D:\\Program Files\\Mozilla Firefox\\firefox.exe</FirefoxPath>
-    <Profile>gqy93331529</Profile>
+    <Profile>gqy82383621</Profile>
     <PostEntity>Vivo</PostEntity>
     <StartTime>1451577600000</StartTime>
     <EnableStopTime>false</EnableStopTime>
@@ -52,193 +72,253 @@
     <RefreshPostCount>50</RefreshPostCount>
     <PostCount>150</PostCount>
     <FixedWaitTime>60</FixedWaitTime>
-    <RandomWaitTime>600</RandomWaitTime>
-    <RestWaitTime>0</RestWaitTime>
-    <RestWaitPostCount>0</RestWaitPostCount>
-    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://www.hdpfans.com/thread-689146-1-1.html</PostUrl>
-    <PostContent>祝青柠电影业务蒸蒸日上，祝高清范红红火火，帅哥美女越来越多！</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
-    <Remark/>
-  </ForumPost>
-  <ForumPost ThreadID="4">
-    <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\\Program Files\\Mozilla Firefox\\firefox.exe</FirefoxPath>
-    <Profile>znds82958013</Profile>
-    <PostEntity>Vivo</PostEntity>
-    <StartTime>1451577600000</StartTime>
-    <EnableStopTime>false</EnableStopTime>
-    <StopTime>1546271999000</StopTime>
-    <RefreshPostCount>200</RefreshPostCount>
-    <PostCount>300</PostCount>
-    <FixedWaitTime>10</FixedWaitTime>
-    <RandomWaitTime>30</RandomWaitTime>
-    <RestWaitTime>0</RestWaitTime>
-    <RestWaitPostCount>0</RestWaitPostCount>
-    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://www.znds.com/tv-399113-5729-1.html</PostUrl>
-    <PostContent>我是智能电视网的花开若相惜。，我最喜欢酷比魔方可以当笔记本用</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
+    <RandomWaitTime>120</RandomWaitTime>
+    <RestWaitTime>60</RestWaitTime>
+    <RestWaitPostCount>3</RestWaitPostCount>
+    <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
+    <PostUrl>http://www.hdpfans.com/thread-732099-9999-1.html</PostUrl>
+    <PostContent>我建议音乐频道里能多增加点胎教的歌！</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
   <ForumPost ThreadID="5">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\\Program Files\\Mozilla Firefox\\firefox.exe</FirefoxPath>
-    <Profile>huawei163</Profile>
-    <PostEntity>Huawei</PostEntity>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>znds82383621</Profile>
+    <PostEntity>Common</PostEntity>
     <StartTime>1451577600000</StartTime>
-    <EnableStopTime>true</EnableStopTime>
-    <StopTime>1462982399000</StopTime>
-    <RefreshPostCount>50</RefreshPostCount>
-    <PostCount>100</PostCount>
-    <FixedWaitTime>20</FixedWaitTime>
+    <EnableStopTime>false</EnableStopTime>
+    <StopTime>1467957599000</StopTime>
+    <RefreshPostCount>800</RefreshPostCount>
+    <PostCount>297</PostCount>
+    <FixedWaitTime>10</FixedWaitTime>
     <RandomWaitTime>60</RandomWaitTime>
-    <RestWaitTime>0</RestWaitTime>
-    <RestWaitPostCount>0</RestWaitPostCount>
-    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://club.huawei.com/thread-9202889-1-1.html</PostUrl>
-    <PostContent>#一起唤醒∞#+预祝V8发布会圆满成功,荣耀手机越做越好！</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
+    <RestWaitTime>60</RestWaitTime>
+    <RestWaitPostCount>5</RestWaitPostCount>
+    <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
+    <PostUrl>http://www.znds.com/tv-516346-9999-1.html</PostUrl>
+    <PostContent>看尚V系列全新上市，携手当贝送新品电视等豪礼！</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
   <ForumPost ThreadID="6">
     <EnableThread>true</EnableThread>
     <FirefoxPath>D:\\Program Files\\Mozilla Firefox\\firefox.exe</FirefoxPath>
-    <Profile>gimi82958013</Profile>
-    <PostEntity>Vivo</PostEntity>
+    <Profile>UC87529707</Profile>
+    <PostEntity>Common</PostEntity>
     <StartTime>1451577600000</StartTime>
     <EnableStopTime>false</EnableStopTime>
-    <StopTime>1546271999000</StopTime>
-    <RefreshPostCount>100</RefreshPostCount>
-    <PostCount>50</PostCount>
-    <FixedWaitTime>120</FixedWaitTime>
-    <RandomWaitTime>120</RandomWaitTime>
-    <RestWaitTime>0</RestWaitTime>
-    <RestWaitPostCount>0</RestWaitPostCount>
-    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://bbs.xgimi.cn/thread-64916-1-1.html</PostUrl>
-    <PostContent>wokesmart智能冰箱宝，智能生活，尽在掌握！炫酷的智能生活就要从wokesmart智能冰箱宝开始！</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
+    <StopTime>1467770399000</StopTime>
+    <RefreshPostCount>200</RefreshPostCount>
+    <PostCount>250</PostCount>
+    <FixedWaitTime>15</FixedWaitTime>
+    <RandomWaitTime>45</RandomWaitTime>
+    <RestWaitTime>60</RestWaitTime>
+    <RestWaitPostCount>1</RestWaitPostCount>
+    <RestWaitPostCountOffset>4</RestWaitPostCountOffset>
+    <PostUrl>http://bbs.uc.cn/thread-5454295-1-1.html</PostUrl>
+    <PostContent>UC夏令营，赢在执行力+祝UC校园红红火火，祝UC夏令营不断创新，越来越牛！</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
   <ForumPost ThreadID="7">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\\Program Files\\Mozilla Firefox\\firefox.exe</FirefoxPath>
-    <Profile>yunossillyu</Profile>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>YunOShuangsx0213</Profile>
     <PostEntity>YunOS</PostEntity>
     <StartTime>1451577600000</StartTime>
-    <EnableStopTime>true</EnableStopTime>
+    <EnableStopTime>false</EnableStopTime>
     <StopTime>1463155199000</StopTime>
-    <RefreshPostCount>200</RefreshPostCount>
+    <RefreshPostCount>50</RefreshPostCount>
     <PostCount>200</PostCount>
-    <FixedWaitTime>20</FixedWaitTime>
-    <RandomWaitTime>120</RandomWaitTime>
-    <RestWaitTime>0</RestWaitTime>
-    <RestWaitPostCount>0</RestWaitPostCount>
-    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://bbs.yunos.com/read/263333298</PostUrl>
-    <PostContent>支持yunos成为第三大手机操作系统，为国产争气，为国人争光！</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
+    <FixedWaitTime>10</FixedWaitTime>
+    <RandomWaitTime>5</RandomWaitTime>
+    <RestWaitTime>5</RestWaitTime>
+    <RestWaitPostCount>8</RestWaitPostCount>
+    <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
+    <PostUrl>http://bbs.yunos.com/read/263342189/9999</PostUrl>
+    <PostContent>拥抱万物互联网，生态成就大未来</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
   <ForumPost ThreadID="8">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\\Program Files\\Mozilla Firefox\\firefox.exe</FirefoxPath>
-    <Profile>UC82958013</Profile>
-    <PostEntity>Vivo</PostEntity>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>Gimi82383621</Profile>
+    <PostEntity>Gimi</PostEntity>
     <StartTime>1451577600000</StartTime>
-    <EnableStopTime>true</EnableStopTime>
-    <StopTime>1462931999000</StopTime>
-    <RefreshPostCount>200</RefreshPostCount>
-    <PostCount>1000</PostCount>
-    <FixedWaitTime>10</FixedWaitTime>
-    <RandomWaitTime>10</RandomWaitTime>
-    <RestWaitTime>0</RestWaitTime>
-    <RestWaitPostCount>0</RestWaitPostCount>
-    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://bbs.uc.cn/thread-5445104-1-1.html</PostUrl>
-    <PostContent>[img=600,1066]http://bbs.uc.cn/data/attachment/forum/201605/11/072032oi171vvfv5wwwsz8.png[/img]</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
+    <EnableStopTime>false</EnableStopTime>
+    <StopTime>1546271999000</StopTime>
+    <RefreshPostCount>100</RefreshPostCount>
+    <PostCount>30</PostCount>
+    <FixedWaitTime>30</FixedWaitTime>
+    <RandomWaitTime>30</RandomWaitTime>
+    <RestWaitTime>120</RestWaitTime>
+    <RestWaitPostCount>1</RestWaitPostCount>
+    <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
+    <PostUrl>http://bbs.xgimi.cn/thread-79972-9999-1.html</PostUrl>
+    <PostContent>懂视频，能赚钱的超级路由器！技能多多，可以拥有一个就好了。</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
   <ForumPost ThreadID="9">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\\Program Files\\Mozilla Firefox\\firefox.exe</FirefoxPath>
-    <Profile>360163</Profile>
-    <PostEntity>Qiku360</PostEntity>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>mmy82383621</Profile>
+    <PostEntity>Common</PostEntity>
     <StartTime>1451577600000</StartTime>
     <EnableStopTime>false</EnableStopTime>
     <StopTime>1546271999000</StopTime>
     <RefreshPostCount>200</RefreshPostCount>
-    <PostCount>100</PostCount>
-    <FixedWaitTime>60</FixedWaitTime>
-    <RandomWaitTime>60</RandomWaitTime>
+    <PostCount>3000</PostCount>
+    <FixedWaitTime>20</FixedWaitTime>
+    <RandomWaitTime>40</RandomWaitTime>
     <RestWaitTime>0</RestWaitTime>
     <RestWaitPostCount>0</RestWaitPostCount>
     <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://shequ.mall.360.com/thread-6222803-1-1.html</PostUrl>
-    <PostContent>实智插排，传统插排的杀手。</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
+    <PostUrl>http://bbs.mumayi.com/thread-6125107-1-1.html</PostUrl>
+    <PostContent>[img=740,580]http://file.mumayi.com/forum/201607/02/145809pg0lhp00lguu0ujj.png[/img]</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
   <ForumPost ThreadID="10">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\Program Files (x86)\Mozilla Firefox\firefox.exe</FirefoxPath>
-    <Profile>default</Profile>
-    <PostEntity>WangYi</PostEntity>
-    <StartTime>1451577600000</StartTime>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>Huawei126</Profile>
+    <PostEntity>Huawei</PostEntity>
+    <StartTime>1479182400000</StartTime>
     <EnableStopTime>false</EnableStopTime>
-    <StopTime>1546271999000</StopTime>
-    <RefreshPostCount>200</RefreshPostCount>
-    <PostCount>65535</PostCount>
-    <FixedWaitTime>11</FixedWaitTime>
-    <RandomWaitTime>30</RandomWaitTime>
-    <RestWaitTime>0</RestWaitTime>
-    <RestWaitPostCount>0</RestWaitPostCount>
-    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://club.tech.163.com/bbs/mobile_activ/612508157.html#</PostUrl>
-    <PostContent>我最喜欢1600万柔光自拍，照亮你的美 vivo X7的0.2秒急速指纹</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
-    <Remark/>
+    <StopTime>1470023999000</StopTime>
+    <RefreshPostCount>500</RefreshPostCount>
+    <PostCount>150</PostCount>
+    <FixedWaitTime>20</FixedWaitTime>
+    <RandomWaitTime>60</RandomWaitTime>
+    <RestWaitTime>60</RestWaitTime>
+    <RestWaitPostCount>6</RestWaitPostCount>
+    <RestWaitPostCountOffset>3</RestWaitPostCountOffset>
+    <PostUrl>http://club.huawei.com/thread-11207085-9999-1.html</PostUrl>
+    <PostContent>[TextFile]</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
+    <Remark>11207085</Remark>
   </ForumPost>
   <ForumPost ThreadID="11">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\Program Files (x86)\Mozilla Firefox\firefox.exe</FirefoxPath>
-    <Profile>default</Profile>
-    <PostEntity>VivoFixed</PostEntity>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>Lenovo82383621</Profile>
+    <PostEntity>Lenovo</PostEntity>
     <StartTime>1451577600000</StartTime>
     <EnableStopTime>false</EnableStopTime>
-    <StopTime>1546271999000</StopTime>
-    <RefreshPostCount>200</RefreshPostCount>
-    <PostCount>1</PostCount>
-    <FixedWaitTime>11</FixedWaitTime>
-    <RandomWaitTime>30</RandomWaitTime>
-    <RestWaitTime>1</RestWaitTime>
-    <RestWaitPostCount>2</RestWaitPostCount>
-    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
-    <PostUrl>http://bbs.vivo.com.cn/thread-2455597-99999-1.html</PostUrl>
-    <PostContent>支持一下</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
+    <StopTime>1467734399000</StopTime>
+    <RefreshPostCount>50</RefreshPostCount>
+    <PostCount>30</PostCount>
+    <FixedWaitTime>30</FixedWaitTime>
+    <RandomWaitTime>20</RandomWaitTime>
+    <RestWaitTime>20</RestWaitTime>
+    <RestWaitPostCount>1</RestWaitPostCount>
+    <RestWaitPostCountOffset>9</RestWaitPostCountOffset>
+    <PostUrl>http://club.lenovo.com.cn/thread-1866511-9999-1.html</PostUrl>
+    <PostContent>提前把钱都存起来，只留吃饭的钱。不能买了。</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
   <ForumPost ThreadID="12">
     <EnableThread>true</EnableThread>
-    <FirefoxPath>D:\Program Files (x86)\Mozilla Firefox\firefox.exe</FirefoxPath>
-    <Profile>default</Profile>
-    <PostEntity>MeizuFixed</PostEntity>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>LC80896188</Profile>
+    <PostEntity>LiCai</PostEntity>
+    <StartTime>1451577600000</StartTime>
+    <EnableStopTime>true</EnableStopTime>
+    <StopTime>1467907199000</StopTime>
+    <RefreshPostCount>200</RefreshPostCount>
+    <PostCount>65535</PostCount>
+    <FixedWaitTime>60</FixedWaitTime>
+    <RandomWaitTime>30</RandomWaitTime>
+    <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
+    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
+    <PostUrl>http://bbs.feidee.com/thread-612323-1-1.html</PostUrl>
+    <PostContent>[Pool]</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
+    <Remark/>
+  </ForumPost>
+  <ForumPost ThreadID="13">
+    <EnableThread>true</EnableThread>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>oneplus3262906</Profile>
+    <PostEntity>Common</PostEntity>
+    <StartTime>1470454800000</StartTime>
+    <EnableStopTime>false</EnableStopTime>
+    <StopTime>1546271999000</StopTime>
+    <RefreshPostCount>200</RefreshPostCount>
+    <PostCount>200</PostCount>
+    <FixedWaitTime>10</FixedWaitTime>
+    <RandomWaitTime>5</RandomWaitTime>
+    <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
+    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
+    <PostUrl>http://www.oneplusbbs.com/thread-2867318-1-1.html</PostUrl>
+    <PostContent>印象深的冠军是邓亚萍</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
+    <Remark/>
+  </ForumPost>
+  <ForumPost ThreadID="14">
+    <EnableThread>true</EnableThread>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>oneplus83126591</Profile>
+    <PostEntity>Common</PostEntity>
+    <StartTime>1470455100000</StartTime>
+    <EnableStopTime>false</EnableStopTime>
+    <StopTime>1546271999000</StopTime>
+    <RefreshPostCount>200</RefreshPostCount>
+    <PostCount>100</PostCount>
+    <FixedWaitTime>10</FixedWaitTime>
+    <RandomWaitTime>5</RandomWaitTime>
+    <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
+    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
+    <PostUrl>http://www.oneplusbbs.com/thread-2867318-1-1.html</PostUrl>
+    <PostContent>当然是邓亚萍</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
+    <Remark/>
+  </ForumPost>
+  <ForumPost ThreadID="15">
+    <EnableThread>true</EnableThread>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>oneplus89529136</Profile>
+    <PostEntity>Common</PostEntity>
+    <StartTime>1470455100000</StartTime>
+    <EnableStopTime>false</EnableStopTime>
+    <StopTime>1546271999000</StopTime>
+    <RefreshPostCount>200</RefreshPostCount>
+    <PostCount>100</PostCount>
+    <FixedWaitTime>10</FixedWaitTime>
+    <RandomWaitTime>5</RandomWaitTime>
+    <RestWaitTime>0</RestWaitTime>
+    <RestWaitPostCount>0</RestWaitPostCount>
+    <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
+    <PostUrl>http://www.oneplusbbs.com/thread-6168640-1-1.html</PostUrl>
+    <PostContent>[TextFile]</PostContent>
+    <FixedPostTrigger>120|60|15</FixedPostTrigger>
+    <Remark/>
+  </ForumPost>
+  <ForumPost ThreadID="16">
+    <EnableThread>true</EnableThread>
+    <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
+    <Profile>Remixvick</Profile>
+    <PostEntity>Common</PostEntity>
     <StartTime>1451577600000</StartTime>
     <EnableStopTime>false</EnableStopTime>
-    <StopTime>1462636799000</StopTime>
+    <StopTime>1546271999000</StopTime>
     <RefreshPostCount>200</RefreshPostCount>
-    <PostCount>50</PostCount>
-    <FixedWaitTime>11</FixedWaitTime>
-    <RandomWaitTime>2</RandomWaitTime>
-    <RestWaitTime>60</RestWaitTime>
-    <RestWaitPostCount>20</RestWaitPostCount>
-    <RestWaitPostCountOffset>5</RestWaitPostCountOffset>
-    <PostUrl>http://bbs.vivo.com.cn/thread-2274151-9999-1.html</PostUrl>
-    <PostContent>test</PostContent>
-    <FixedPostTrigger>100|50|10</FixedPostTrigger>
-    <Remark>test</Remark>
+    <PostCount>9</PostCount>
+    <FixedWaitTime>60</FixedWaitTime>
+    <RandomWaitTime>60</RandomWaitTime>
+    <RestWaitTime>3000</RestWaitTime>
+    <RestWaitPostCount>1</RestWaitPostCount>
+    <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
+    <PostUrl>https://bbs.jide.com/forum.php?mod=viewthread&amp;tid=9676</PostUrl>
+    <PostContent>[TextFile]</PostContent>
+    <FixedPostTrigger>100|50|35</FixedPostTrigger>
+    <Remark/>
   </ForumPost>
 </ForumPosts>

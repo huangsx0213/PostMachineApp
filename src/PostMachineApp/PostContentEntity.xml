@@ -2,78 +2,43 @@
 
 <PostContentEntitys>
   <PoolContent PoolContentID="1">
-    <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>default</PoolFirefoxProfile>
-    <PoolContent>test1</PoolContent>
+    <EnablePoolContent>false</EnablePoolContent>
+    <PoolFirefoxProfile>oppo82383621</PoolFirefoxProfile>
+    <PoolContent>425-613-987</PoolContent>
   </PoolContent>
   <PoolContent PoolContentID="2">
     <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>default</PoolFirefoxProfile>
-    <PoolContent>test2</PoolContent>
+    <PoolFirefoxProfile>oppo82383621</PoolFirefoxProfile>
+    <PoolContent>是425-613-987吧！</PoolContent>
   </PoolContent>
   <PoolContent PoolContentID="3">
     <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>default</PoolFirefoxProfile>
-    <PoolContent>test3</PoolContent>
+    <PoolFirefoxProfile>oppo82383621</PoolFirefoxProfile>
+    <PoolContent>应该是425-613-987！！！</PoolContent>
   </PoolContent>
   <PoolContent PoolContentID="4">
     <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>default</PoolFirefoxProfile>
-    <PoolContent>test4</PoolContent>
+    <PoolFirefoxProfile>oppo82383621</PoolFirefoxProfile>
+    <PoolContent>425-613-987 ^_^</PoolContent>
   </PoolContent>
   <PoolContent PoolContentID="5">
     <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>default</PoolFirefoxProfile>
-    <PoolContent>test5</PoolContent>
+    <PoolFirefoxProfile>oppo82383621</PoolFirefoxProfile>
+    <PoolContent>425-613-987 ，大家都说这个</PoolContent>
   </PoolContent>
   <PoolContent PoolContentID="6">
     <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>default</PoolFirefoxProfile>
-    <PoolContent>test6</PoolContent>
+    <PoolFirefoxProfile>oppo82383621</PoolFirefoxProfile>
+    <PoolContent>425-613-987 ，支持一下</PoolContent>
   </PoolContent>
   <PoolContent PoolContentID="7">
     <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>default</PoolFirefoxProfile>
-    <PoolContent>test7</PoolContent>
+    <PoolFirefoxProfile>oppo82383621</PoolFirefoxProfile>
+    <PoolContent>425-613-987，顶</PoolContent>
   </PoolContent>
   <PoolContent PoolContentID="8">
     <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>default</PoolFirefoxProfile>
-    <PoolContent>test8</PoolContent>
-  </PoolContent>
-  <PoolContent PoolContentID="9">
-    <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>default</PoolFirefoxProfile>
-    <PoolContent>test9</PoolContent>
-  </PoolContent>
-  <PoolContent PoolContentID="10">
-    <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>default</PoolFirefoxProfile>
-    <PoolContent>test10</PoolContent>
-  </PoolContent>
-  <PoolContent PoolContentID="11">
-    <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
-    <PoolContent>test11</PoolContent>
-  </PoolContent>
-  <PoolContent PoolContentID="12">
-    <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
-    <PoolContent>test12</PoolContent>
-  </PoolContent>
-  <PoolContent PoolContentID="13">
-    <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
-    <PoolContent>test13</PoolContent>
-  </PoolContent>
-  <PoolContent PoolContentID="14">
-    <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
-    <PoolContent>test14</PoolContent>
-  </PoolContent>
-  <PoolContent PoolContentID="15">
-    <EnablePoolContent>true</EnablePoolContent>
-    <PoolFirefoxProfile>oppo82958013</PoolFirefoxProfile>
-    <PoolContent>test15</PoolContent>
+    <PoolFirefoxProfile>oppo82383621</PoolFirefoxProfile>
+    <PoolContent>425-613-987，支持</PoolContent>
   </PoolContent>
 </PostContentEntitys>

@@ -2,36 +2,14 @@
 
 <PostSteps>
   <PostStep StepID="1">
-    <EnablePostStep>true</EnablePostStep>
+    <EnablePostStep>false</EnablePostStep>
     <EntityName>Vivo</EntityName>
-    <StepDescription>1</StepDescription>
-    <ParentProperty>Button</ParentProperty>
-    <ParentPropertyValue>2</ParentPropertyValue>
-    <ControlProperty>Button</ControlProperty>
-    <ControlPropertyValue>3</ControlPropertyValue>
-    <StepAction>Type</StepAction>
-    <StepDataValue>4</StepDataValue>
-  </PostStep>
-  <PostStep StepID="2">
-    <EnablePostStep>true</EnablePostStep>
-    <EntityName>Oppo</EntityName>
-    <StepDescription>oppo des</StepDescription>
-    <ParentProperty>Button</ParentProperty>
-    <ParentPropertyValue>pp</ParentPropertyValue>
-    <ControlProperty>Button</ControlProperty>
-    <ControlPropertyValue>cc</ControlPropertyValue>
-    <StepAction>Type</StepAction>
-    <StepDataValue>sv</StepDataValue>
-  </PostStep>
-  <PostStep StepID="3">
-    <EnablePostStep>true</EnablePostStep>
-    <EntityName>Huawei</EntityName>
-    <StepDescription>ss</StepDescription>
-    <ParentProperty>Edit</ParentProperty>
-    <ParentPropertyValue>pp</ParentPropertyValue>
-    <ControlProperty>Button</ControlProperty>
-    <ControlPropertyValue>cc</ControlPropertyValue>
-    <StepAction>Click</StepAction>
-    <StepDataValue>ssv</StepDataValue>
+    <StepDescription></StepDescription>
+    <ParentProperty>Item 1</ParentProperty>
+    <ParentPropertyValue></ParentPropertyValue>
+    <ControlProperty>Item 1</ControlProperty>
+    <ControlPropertyValue></ControlPropertyValue>
+    <StepAction></StepAction>
+    <StepDataValue>Item 1</StepDataValue>
   </PostStep>
 </PostSteps>
