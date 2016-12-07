@@ -501,7 +501,7 @@ public class BasicForumPost implements ForumPost {
         result = Integer.parseInt(sourceStrArray2[0].trim());}
         else{
         result=0;
-        System.out.println("Error!!! responseBody of getCurrentPostCount is not correct.");
+        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Error!!! responseBody of getCurrentPostCount is not correct.");
         }
         return result;
     }
@@ -518,7 +518,7 @@ public class BasicForumPost implements ForumPost {
         result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());}
         else{
         result=0;
-        System.out.println("Error!!! responseBody of getCurrentPostCount is not correct.");
+        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Error!!! responseBody of getCurrentPostCount is not correct.");
         }
         return result;
     }
