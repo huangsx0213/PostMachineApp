@@ -482,7 +482,7 @@ public class BasicForumPost implements ForumPost {
                 String Spliter2 = "<!--楼层号-->";
                 result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
             } else {
-                System.out.println("error!!!");
+                System.out.println("Error!!!getCurrentPostCount does not support this forum.");
             }
         } catch (Exception ex) {
             //ex.printStackTrace();
@@ -496,8 +496,13 @@ public class BasicForumPost implements ForumPost {
     public int getLastPostCountMode1(String responseBody, String Spliter1, String Spliter2) throws NumberFormatException {
         int result;
         String[] sourceStrArray = responseBody.split(Spliter1);
+        if (sourceStrArray.length>1){
         String[] sourceStrArray2 = sourceStrArray[1].split(Spliter2);
-        result = Integer.parseInt(sourceStrArray2[0].trim());
+        result = Integer.parseInt(sourceStrArray2[0].trim());}
+        else{
+        result=0;
+        System.out.println("Error!!! responseBody of getCurrentPostCount is not correct.");
+        }
         return result;
     }
 //切割两次，取最后一楼的层数
@@ -506,10 +511,15 @@ public class BasicForumPost implements ForumPost {
         int result;
         String[] sourceStrArray = responseBody.split(Spliter1);
         //System.out.println(responseBody);
+        if (sourceStrArray.length>1){
         int ResultIndex = sourceStrArray.length - 2;
         String[] sourceStrArray2 = sourceStrArray[ResultIndex].split(Spliter2);
         int ResultIndex2 = sourceStrArray2.length - 1;
-        result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
+        result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());}
+        else{
+        result=0;
+        System.out.println("Error!!! responseBody of getCurrentPostCount is not correct.");
+        }
         return result;
     }
 
