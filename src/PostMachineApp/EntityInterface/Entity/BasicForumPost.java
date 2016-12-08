@@ -71,7 +71,7 @@ public class BasicForumPost implements ForumPost {
     public int PostCountAfter;
 
     //构造函数
-    public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String StartFrom,String FixedPostTrigger, String Remark) {
+    public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String StartFrom, String FixedPostTrigger, String Remark) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -173,7 +173,7 @@ public class BasicForumPost implements ForumPost {
     public String getPostUrl() {
         return PostUrl;
     }
-    
+
     @Override
     public String getStartFrom() {
         return StartFrom;
@@ -264,7 +264,7 @@ public class BasicForumPost implements ForumPost {
 
         PostCountBefore = 0;
 
-        PostCountAfter = getCurrentPostCount()+RestWaitPostCount-1;
+        PostCountAfter = getCurrentPostCount() + RestWaitPostCount - 1;
 
         tempPostContent = this.PostContent;
 
@@ -394,7 +394,7 @@ public class BasicForumPost implements ForumPost {
         AdjustedRestWaitTime = (int) (RestWaitTime * (1 - 0.2) + Math.random() * (RestWaitTime * (1 + 0.2) - RestWaitTime * (1 - 0.2) + 1)) * 1000;
         long printTime = 0;
         if (!(PostEntity.contains("Common") | PostEntity.contains("Qiku360") | PostEntity.contains("LiCai"))) {
-            
+
             PostCountBefore = getCurrentPostCount();
 
             System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] is taking a rest " + AdjustedRestWaitTime / 1000 + "s.");
@@ -504,12 +504,12 @@ public class BasicForumPost implements ForumPost {
     public int getLastPostCountMode1(String responseBody, String Spliter1, String Spliter2) throws NumberFormatException {
         int result;
         String[] sourceStrArray = responseBody.split(Spliter1);
-        if (sourceStrArray.length>1){
-        String[] sourceStrArray2 = sourceStrArray[1].split(Spliter2);
-        result = Integer.parseInt(sourceStrArray2[0].trim());}
-        else{
-        result=0;
-        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Error!!! responseBody of getCurrentPostCount is not correct.");
+        if (sourceStrArray.length > 1) {
+            String[] sourceStrArray2 = sourceStrArray[1].split(Spliter2);
+            result = Integer.parseInt(sourceStrArray2[0].trim());
+        } else {
+            result = 0;
+            System.out.println("Warning! responseBody of getCurrentPostCount is not correct.");
         }
         return result;
     }
@@ -519,14 +519,14 @@ public class BasicForumPost implements ForumPost {
         int result;
         String[] sourceStrArray = responseBody.split(Spliter1);
         //System.out.println(responseBody);
-        if (sourceStrArray.length>1){
-        int ResultIndex = sourceStrArray.length - 2;
-        String[] sourceStrArray2 = sourceStrArray[ResultIndex].split(Spliter2);
-        int ResultIndex2 = sourceStrArray2.length - 1;
-        result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());}
-        else{
-        result=0;
-        System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Error!!! responseBody of getCurrentPostCount is not correct.");
+        if (sourceStrArray.length > 1) {
+            int ResultIndex = sourceStrArray.length - 2;
+            String[] sourceStrArray2 = sourceStrArray[ResultIndex].split(Spliter2);
+            int ResultIndex2 = sourceStrArray2.length - 1;
+            result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
+        } else {
+            result = 0;
+            System.out.println("Warning! responseBody of getCurrentPostCount is not correct.");
         }
         return result;
     }
@@ -604,19 +604,20 @@ public class BasicForumPost implements ForumPost {
     public void StartFromPostPolling() {
         long printTime = 0;
         int CurrentRealTimePostCount = 0;
-        while (true) {
-            CurrentRealTimePostCount = getCurrentPostCount();
-            if (CurrentRealTimePostCount> Integer.parseInt(StartFrom)) {
-                System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Starting for StartFrom post,current real time post count is： " + CurrentRealTimePostCount);
-                break;
-            } 
-            else {
-                WaitFixedTime(30000);
-                printTime += 30000;
-            }
-            if (printTime >= 300000) {
-                System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Waiting for StartFrom post: "+StartFrom+",current real time post count is： " + CurrentRealTimePostCount);
-                printTime = 0;
+        if (!(Integer.parseInt(StartFrom) == 0)) {
+            while (true) {
+                CurrentRealTimePostCount = getCurrentPostCount();
+                if (CurrentRealTimePostCount > Integer.parseInt(StartFrom)) {
+                    System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Starting for StartFrom post,current real time post count is： " + CurrentRealTimePostCount);
+                    break;
+                } else {
+                    WaitFixedTime(30000);
+                    printTime += 30000;
+                }
+                if (printTime >= 300000) {
+                    System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Waiting for StartFrom post: " + StartFrom + ",current real time post count is： " + CurrentRealTimePostCount);
+                    printTime = 0;
+                }
             }
         }
     }
