@@ -35,7 +35,9 @@ public interface ForumPost {
     public String getPostUrl();
 
     public String getPostContent();
-
+    
+    public String getStartFrom();
+ 
     public String getFixedPostTrigger();
 
     public String getRemark();
@@ -43,5 +45,4 @@ public interface ForumPost {
     public void sendPost();
 
     public void afterSendPost();
-
 }

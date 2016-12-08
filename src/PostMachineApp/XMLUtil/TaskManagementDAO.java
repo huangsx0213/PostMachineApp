@@ -35,6 +35,7 @@ public class TaskManagementDAO {
     private static Integer RestWaitPostCountOffset;
     private static String PostUrl;
     private static String PostContent;
+    private static String StartFrom;
 private static String FixedPostTrigger;
 private static String Remark;
     /**
@@ -68,9 +69,10 @@ private static String Remark;
             RestWaitPostCountOffset = Integer.parseInt(postElement.element("RestWaitPostCountOffset").getText());
             PostUrl = postElement.element("PostUrl").getTextTrim();
             PostContent = postElement.element("PostContent").getTextTrim();
+            StartFrom = postElement.element("StartFrom").getTextTrim();
             FixedPostTrigger = postElement.element("FixedPostTrigger").getTextTrim();
             Remark = postElement.element("Remark").getTextTrim();
-           ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime,RestWaitPostCount,RestWaitPostCountOffset, PostUrl, PostContent,FixedPostTrigger,Remark);
+           ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime,RestWaitPostCount,RestWaitPostCountOffset, PostUrl, PostContent,StartFrom,FixedPostTrigger,Remark);
 
             ForumPosts.add(ForumPost);
         }
@@ -102,9 +104,10 @@ private static String Remark;
             RestWaitPostCountOffset=Integer.parseInt(postElement.element("RestWaitPostCountOffset").getText());
             PostUrl = postElement.element("PostUrl").getTextTrim();
             PostContent = postElement.element("PostContent").getTextTrim();
+            StartFrom = postElement.element("StartFrom").getTextTrim();
             FixedPostTrigger = postElement.element("FixedPostTrigger").getTextTrim();
             Remark = postElement.element("Remark").getTextTrim();
-            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime,RestWaitPostCount, RestWaitPostCountOffset,PostUrl, PostContent,FixedPostTrigger,Remark);
+            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime,RestWaitPostCount, RestWaitPostCountOffset,PostUrl, PostContent,StartFrom,FixedPostTrigger,Remark);
 
             ForumPosts.add(ForumPost);}
         }
@@ -135,9 +138,10 @@ private static String Remark;
                 RestWaitPostCountOffset=Integer.parseInt(postElement.element("RestWaitPostCountOffset").getText());
                 PostUrl = postElement.element("PostUrl").getTextTrim();
                 PostContent = postElement.element("PostContent").getTextTrim();
+                StartFrom = postElement.element("StartFrom").getTextTrim();
                 FixedPostTrigger = postElement.element("FixedPostTrigger").getTextTrim();
                 Remark = postElement.element("Remark").getTextTrim();
-                ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime,RestWaitPostCount, RestWaitPostCountOffset,PostUrl, PostContent,FixedPostTrigger,Remark);
+                ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime,RestWaitPostCount, RestWaitPostCountOffset,PostUrl, PostContent,StartFrom,FixedPostTrigger,Remark);
             }
         }
         return ForumPost;
@@ -166,9 +170,10 @@ private static String Remark;
             RestWaitPostCountOffset=Integer.parseInt(postElement.element("RestWaitPostCountOffset").getText());
             PostUrl = postElement.element("PostUrl").getTextTrim();
             PostContent = postElement.element("PostContent").getTextTrim();
+             StartFrom = postElement.element("StartFrom").getTextTrim();
             FixedPostTrigger = postElement.element("FixedPostTrigger").getTextTrim();
                 Remark = postElement.element("Remark").getTextTrim();
-            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime,RestWaitPostCount, RestWaitPostCountOffset,PostUrl, PostContent,FixedPostTrigger,Remark);
+            ForumPost ForumPost = ForumPostFactory.CreateForumPost(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime,RestWaitTime,RestWaitPostCount, RestWaitPostCountOffset,PostUrl, PostContent,StartFrom,FixedPostTrigger,Remark);
 
             ForumPosts.add(ForumPost);}
         }
@@ -203,6 +208,7 @@ private static String Remark;
         Element RestWaitPostCountOffsetElement = postElement.addElement("RestWaitPostCountOffset");
         Element PostUrlElement = postElement.addElement("PostUrl");
         Element PostContentElement = postElement.addElement("PostContent");
+        Element StartFromElement = postElement.addElement("StartFrom");
         Element FixedPostTriggerElement = postElement.addElement("FixedPostTrigger");
         Element RemarkElement = postElement.addElement("Remark");
 
@@ -222,6 +228,7 @@ private static String Remark;
         RestWaitPostCountOffsetElement.setText(Integer.toString(ForumPost.getRestWaitPostCountOffset()));
         PostUrlElement.setText(ForumPost.getPostUrl());
         PostContentElement.setText(ForumPost.getPostContent());
+        FixedPostTriggerElement.setText(ForumPost.getStartFrom());
         FixedPostTriggerElement.setText(ForumPost.getFixedPostTrigger());
         RemarkElement.setText(ForumPost.getRemark());
 
@@ -309,6 +316,9 @@ private static String Remark;
                 }
                 if (!postElement.element("PostContent").getText().equals(ForumPost.getPostContent())) {
                     postElement.element("PostContent").setText(ForumPost.getPostContent());
+                }
+                if (!postElement.element("StartFrom").getText().equals(ForumPost.getStartFrom())) {
+                    postElement.element("StartFrom").setText(ForumPost.getStartFrom());
                 }
                 if (!postElement.element("FixedPostTrigger").getText().equals(ForumPost.getFixedPostTrigger())) {
                     postElement.element("FixedPostTrigger").setText(ForumPost.getFixedPostTrigger());

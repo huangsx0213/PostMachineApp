@@ -18,6 +18,7 @@
     <RestWaitPostCountOffset>1</RestWaitPostCountOffset>
     <PostUrl>http://bbs.vivo.com.cn/thread-2455597-99999-1.html</PostUrl>
     <PostContent>[TextFile]</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>80|50|5</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -38,6 +39,7 @@
     <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
     <PostUrl>http://bbs.vivo.com.cn/thread-2517204-99999-1.html</PostUrl>
     <PostContent>[TextFile]</PostContent>
+    <StartFrom>999</StartFrom>
     <FixedPostTrigger>60|30|5</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -58,6 +60,7 @@
     <RestWaitPostCountOffset>1</RestWaitPostCountOffset>
     <PostUrl>http://www.oppo.cn/thread-40527945-1</PostUrl>
     <PostContent>我要召唤小欧礼包和 @Oppo 陪我过冬天！</PostContent>
+    <StartFrom>666</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -78,6 +81,7 @@
     <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
     <PostUrl>http://www.hdpfans.com/thread-732099-9999-1.html</PostUrl>
     <PostContent>我建议音乐频道里能多增加点胎教的歌！</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -98,6 +102,7 @@
     <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
     <PostUrl>http://www.znds.com/tv-516346-9999-1.html</PostUrl>
     <PostContent>看尚V系列全新上市，携手当贝送新品电视等豪礼！</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -118,6 +123,7 @@
     <RestWaitPostCountOffset>4</RestWaitPostCountOffset>
     <PostUrl>http://bbs.uc.cn/thread-5454295-1-1.html</PostUrl>
     <PostContent>UC夏令营，赢在执行力+祝UC校园红红火火，祝UC夏令营不断创新，越来越牛！</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -138,6 +144,7 @@
     <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
     <PostUrl>http://bbs.yunos.com/read/263342189/9999</PostUrl>
     <PostContent>拥抱万物互联网，生态成就大未来</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -158,6 +165,7 @@
     <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
     <PostUrl>http://bbs.xgimi.cn/thread-79972-9999-1.html</PostUrl>
     <PostContent>懂视频，能赚钱的超级路由器！技能多多，可以拥有一个就好了。</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -178,6 +186,7 @@
     <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
     <PostUrl>http://bbs.mumayi.com/thread-6125107-1-1.html</PostUrl>
     <PostContent>[img=740,580]http://file.mumayi.com/forum/201607/02/145809pg0lhp00lguu0ujj.png[/img]</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -198,6 +207,7 @@
     <RestWaitPostCountOffset>3</RestWaitPostCountOffset>
     <PostUrl>http://club.huawei.com/thread-11207085-9999-1.html</PostUrl>
     <PostContent>[TextFile]</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark>11207085</Remark>
   </ForumPost>
@@ -218,6 +228,7 @@
     <RestWaitPostCountOffset>9</RestWaitPostCountOffset>
     <PostUrl>http://club.lenovo.com.cn/thread-1866511-9999-1.html</PostUrl>
     <PostContent>提前把钱都存起来，只留吃饭的钱。不能买了。</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -238,6 +249,7 @@
     <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
     <PostUrl>http://bbs.feidee.com/thread-612323-1-1.html</PostUrl>
     <PostContent>[Pool]</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -258,6 +270,7 @@
     <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
     <PostUrl>http://www.oneplusbbs.com/thread-2867318-1-1.html</PostUrl>
     <PostContent>印象深的冠军是邓亚萍</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -278,6 +291,7 @@
     <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
     <PostUrl>http://www.oneplusbbs.com/thread-2867318-1-1.html</PostUrl>
     <PostContent>当然是邓亚萍</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -298,6 +312,7 @@
     <RestWaitPostCountOffset>0</RestWaitPostCountOffset>
     <PostUrl>http://www.oneplusbbs.com/thread-6168640-1-1.html</PostUrl>
     <PostContent>[TextFile]</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>120|60|15</FixedPostTrigger>
     <Remark/>
   </ForumPost>
@@ -318,6 +333,7 @@
     <RestWaitPostCountOffset>2</RestWaitPostCountOffset>
     <PostUrl>https://bbs.jide.com/forum.php?mod=viewthread&amp;tid=9676</PostUrl>
     <PostContent>[TextFile]</PostContent>
+    <StartFrom>0</StartFrom>
     <FixedPostTrigger>100|50|35</FixedPostTrigger>
     <Remark/>
   </ForumPost>

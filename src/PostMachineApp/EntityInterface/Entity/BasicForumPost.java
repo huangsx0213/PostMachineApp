@@ -53,6 +53,7 @@ public class BasicForumPost implements ForumPost {
     public final Integer RestWaitPostCountOffset;
     public final String PostUrl;
     public final String PostContent;
+    public final String StartFrom;
     public final String FixedPostTrigger;
     public final String Remark;
     public String tempPostContent;
@@ -70,7 +71,7 @@ public class BasicForumPost implements ForumPost {
     public int PostCountAfter;
 
     //构造函数
-    public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String FixedPostTrigger, String Remark) {
+    public BasicForumPost(Boolean EnableThread, Integer ThreadID, String FirefoxPath, String Profile, String PostEntity, long StartTime, Boolean EnableStopTime, long StopTime, Integer RefreshPostCount, long PostCount, Integer FixedWaitTime, Integer RandomWaitTime, Integer RestWaitTime, Integer RestWaitPostCount, Integer RestWaitPostCountOffset, String PostUrl, String PostContent, String StartFrom,String FixedPostTrigger, String Remark) {
         this.EnableThread = EnableThread;
         this.ThreadID = ThreadID;
         this.FirefoxPath = FirefoxPath;
@@ -89,6 +90,7 @@ public class BasicForumPost implements ForumPost {
         this.PostUrl = PostUrl;
         this.PostContent = PostContent;
         this.FixedPostTrigger = FixedPostTrigger;
+        this.StartFrom = StartFrom;
         this.Remark = Remark;
     }
 
@@ -170,6 +172,11 @@ public class BasicForumPost implements ForumPost {
     @Override
     public String getPostUrl() {
         return PostUrl;
+    }
+    
+    @Override
+    public String getStartFrom() {
+        return StartFrom;
     }
 
     @Override
@@ -282,6 +289,7 @@ public class BasicForumPost implements ForumPost {
 
     //发贴前置操作
     public void beforeSendPost(WebDriver driver) {
+        StartFromPostPolling();
         driver = getWebDriverWithSpecifiedProfile();
         driver.get(PostUrl);
     }
@@ -588,6 +596,26 @@ public class BasicForumPost implements ForumPost {
             }
             if (printTime >= 30000) {
                 System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Vying for fixed post,current real time post count is： " + CurrentRealTimePostCount);
+                printTime = 0;
+            }
+        }
+    }
+
+    public void StartFromPostPolling() {
+        long printTime = 0;
+        int CurrentRealTimePostCount = 0;
+        while (true) {
+            CurrentRealTimePostCount = getCurrentPostCount();
+            if (CurrentRealTimePostCount> Integer.parseInt(StartFrom)) {
+                System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Starting for StartFrom post,current real time post count is： " + CurrentRealTimePostCount);
+                break;
+            } 
+            else {
+                WaitFixedTime(30000);
+                printTime += 30000;
+            }
+            if (printTime >= 300000) {
+                System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Waiting for StartFrom post: "+StartFrom+",current real time post count is： " + CurrentRealTimePostCount);
                 printTime = 0;
             }
         }
