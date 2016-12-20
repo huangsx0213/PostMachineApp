@@ -33,7 +33,7 @@ public class OppoForumPost extends BasicForumPost {
 
         driver.switchTo().defaultContent();
 
-        WebElement SubmitButton = driver.findElement(By.xpath("//form/div/button[text()='评论']"));
+        WebElement SubmitButton = driver.findElement(By.xpath("//form/button[text()='评论']"));
         SubmitButton.click();
 
         System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "]message: " + i + " " + tempPostContent);
