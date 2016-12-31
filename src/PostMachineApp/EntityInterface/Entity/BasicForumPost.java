@@ -464,7 +464,7 @@ public class BasicForumPost implements ForumPost {
             } else if (PostEntity.contains("Flyme")) {
                 String Spliter1 = "</em><em>F</em>";
                 String Spliter2 = "<em>";
-                result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
+                result = getLastPostCountMode3(responseBody, Spliter1, Spliter2);
             } else if (PostEntity.contains("Vivo")) {
                 String Spliter1 = "楼</em>";
                 String Spliter2 = "<em>";
@@ -529,8 +529,22 @@ public class BasicForumPost implements ForumPost {
             System.out.println("Warning! responseBody of getCurrentPostCount is not correct.");
         }
         return result;
-    }
-
+    }    
+    public int getLastPostCountMode3(String responseBody, String Spliter1, String Spliter2) throws NumberFormatException {
+        int result;
+        String[] sourceStrArray = responseBody.split(Spliter1);
+        //System.out.println(responseBody);
+        if (sourceStrArray.length > 1) {
+            //int ResultIndex = sourceStrArray.length - 2;
+            String[] sourceStrArray2 = sourceStrArray[0].split(Spliter2);
+            int ResultIndex2 = sourceStrArray2.length - 1;
+            result = Integer.parseInt(sourceStrArray2[ResultIndex2].trim());
+        } else {
+            result = 0;
+            System.out.println("Warning! responseBody of getCurrentPostCount is not correct.");
+        }
+        return result;
+    } 
     public HttpClient getHttpClient() {
         ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager();
         cm.setMaxTotal(100);
