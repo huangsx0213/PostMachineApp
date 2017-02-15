@@ -44,6 +44,12 @@ public class MeizuForumPost extends BasicForumPost {
 
         driver.findElement(By.xpath("//div[@class='btncont_signin btncont_signin_2']")).click();
         driver.get(PostUrl);
+        
+        WebElement LoginDiv2 = driver.findElement(By.id("mzCust"));
+        LoginDiv2.click();
+        WebElement LoginButton2 = driver.findElement(By.id("mzLogin"));
+        LoginButton2.click();
+        
         watiuntilpageloaded(driver);
     }
 
