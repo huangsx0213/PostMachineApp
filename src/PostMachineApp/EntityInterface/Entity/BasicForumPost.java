@@ -456,7 +456,7 @@ public class BasicForumPost implements ForumPost {
             if (PostEntity.contains("Meizu")) {
                 String Spliter1 = "</em>#</span>";
                 String Spliter2 = "y\"><em>";
-                result = getLastPostCountMode2(responseBody, Spliter1, Spliter2) + 1;
+                result = getLastPostCountMode2(responseBody, Spliter1, Spliter2);
             } else if (PostEntity.contains("Oppo")) {
                 String Spliter1 = "<span class=\"Fr MR20\">评论";
                 String Spliter2 = "</span>";
