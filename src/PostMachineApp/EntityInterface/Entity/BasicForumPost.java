@@ -454,9 +454,9 @@ public class BasicForumPost implements ForumPost {
             String responseBody = httpclient.execute(httpget, responseHandler);
 
             if (PostEntity.contains("Meizu")) {
-                String Spliter1 = "共有";
-                String Spliter2 = "条回复";
-                result = getLastPostCountMode1(responseBody, Spliter1, Spliter2) + 1;
+                String Spliter1 = "</em>#</span>";
+                String Spliter2 = "y\"><em>";
+                result = getLastPostCountMode2(responseBody, Spliter1, Spliter2) + 1;
             } else if (PostEntity.contains("Oppo")) {
                 String Spliter1 = "<span class=\"Fr MR20\">评论";
                 String Spliter2 = "</span>";
