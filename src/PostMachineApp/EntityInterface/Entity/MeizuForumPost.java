@@ -35,7 +35,7 @@ public class MeizuForumPost extends BasicForumPost {
         StartFromPostPolling();
         driver = getWebDriverWithSpecifiedProfile();
 
-        driver.get("http://bbs.meizu.cn/forum-22-1.html");
+        driver.get("https://bbs.meizu.cn/forum-22-1.html");
         WebElement LoginDiv1 = driver.findElement(By.id("mzCust"));
         LoginDiv1.click();
         WebElement LoginButton1 = driver.findElement(By.id("mzLogin"));
@@ -45,10 +45,10 @@ public class MeizuForumPost extends BasicForumPost {
         driver.findElement(By.xpath("//div[@class='btncont_signin btncont_signin_2']")).click();
         driver.get(PostUrl);
         
-        WebElement LoginDiv2 = driver.findElement(By.id("mzCust"));
-        LoginDiv2.click();
-        WebElement LoginButton2 = driver.findElement(By.id("mzLogin"));
-        LoginButton2.click();
+        //WebElement LoginDiv2 = driver.findElement(By.id("mzCust"));
+        //LoginDiv2.click();
+        //WebElement LoginButton2 = driver.findElement(By.id("mzLogin"));
+        //LoginButton2.click();
         
         watiuntilpageloaded(driver);
     }

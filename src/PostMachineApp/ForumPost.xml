@@ -5,7 +5,7 @@
     <EnableThread>true</EnableThread>
     <FirefoxPath>D:\Program Files\Mozilla Firefox\firefox.exe</FirefoxPath>
     <Profile>vivo5985656</Profile>
-    <PostEntity>VivoFixed</PostEntity>
+    <PostEntity>Meizu</PostEntity>
     <StartTime>1468888199000</StartTime>
     <EnableStopTime>false</EnableStopTime>
     <StopTime>1468943999000</StopTime>
@@ -16,7 +16,7 @@
     <RestWaitTime>1</RestWaitTime>
     <RestWaitPostCount>2</RestWaitPostCount>
     <RestWaitPostCountOffset>1</RestWaitPostCountOffset>
-    <PostUrl>http://bbs.vivo.com.cn/thread-2455597-99999-1.html</PostUrl>
+    <PostUrl>https://bbs.meizu.cn/thread-6593607-99-1.html</PostUrl>
     <PostContent>[TextFile]</PostContent>
     <StartFrom>0</StartFrom>
     <FixedPostTrigger>80|50|5</FixedPostTrigger>

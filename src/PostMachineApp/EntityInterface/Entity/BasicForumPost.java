@@ -546,11 +546,12 @@ public class BasicForumPost implements ForumPost {
         return result;
     } 
     public HttpClient getHttpClient() {
-        ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager();
-        cm.setMaxTotal(100);
-        HttpClient httpclient = new DefaultHttpClient(cm);
-        httpclient.getParams().setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 1000);
-        httpclient.getParams().setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 1000);
+        //ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager();
+        //cm.setMaxTotal(100);
+        //HttpClient httpclient = new DefaultHttpClient(cm);
+        //httpclient.getParams().setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 1000);
+        //httpclient.getParams().setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 1000);
+        CloseableHttpClient httpclient = HttpClients.createDefault();
         return httpclient;
     }
 
