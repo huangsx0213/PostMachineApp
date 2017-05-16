@@ -4,8 +4,6 @@ import PostMachineApp.EntityInterface.ForumPost;
 import PostMachineApp.PostContentEntity;
 import PostMachineApp.XMLUtil.PostContentPoolDAO;
 import static PostMachineApp.XMLUtil.TextUtil.TextFile2ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,11 +11,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
+
+import java.util.List;
+import java.util.Objects;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,11 +27,20 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.config.Registry;
+import org.apache.http.config.RegistryBuilder; 
+import org.apache.http.conn.socket.ConnectionSocketFactory;
+import org.apache.http.conn.socket.PlainConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.util.EntityUtils;
+import org.apache.http.ssl.SSLContextBuilder;
 
 public class BasicForumPost implements ForumPost {
 
@@ -258,7 +266,7 @@ public class BasicForumPost implements ForumPost {
 
         SetFixedPostProperty();
 
-        httpclient = getHttpClient();
+        SetHttpClient();
 
         NextWait = 0;
 
@@ -285,6 +293,11 @@ public class BasicForumPost implements ForumPost {
         afterSendPost();
 
         System.out.println(DateFormat.format(new Date()) + " [" + Thread.currentThread().getName() + "] [" + Profile + "] Post thread is Stoped.");
+    }
+
+    //设置httpclient，默认为http
+    public void SetHttpClient() {
+        httpclient = getHttpClient();
     }
 
     //发贴前置操作
@@ -546,14 +559,43 @@ public class BasicForumPost implements ForumPost {
         return result;
     } 
     public HttpClient getHttpClient() {
-        //ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager();
-        //cm.setMaxTotal(100);
-        //HttpClient httpclient = new DefaultHttpClient(cm);
-        //httpclient.getParams().setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 1000);
-        //httpclient.getParams().setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 1000);
-        CloseableHttpClient httpclient = HttpClients.createDefault();
+        ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager();
+        cm.setMaxTotal(100);
+        HttpClient httpclient = new DefaultHttpClient(cm);
+        httpclient.getParams().setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 1000);
+        httpclient.getParams().setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 1000);
         return httpclient;
     }
+     private PoolingHttpClientConnectionManager getPoolManager() {  
+        PoolingHttpClientConnectionManager cm = null;  
+        if (null == cm) {  
+            synchronized (new Object()) {  
+                if (null == cm) {  
+                    SSLContextBuilder sslContextBuilder = new SSLContextBuilder();  
+                    try {  
+                        sslContextBuilder.loadTrustMaterial(null, new TrustSelfSignedStrategy());  
+                        SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(  
+                                sslContextBuilder.build());  
+                        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create()  
+                                .register("https", socketFactory)  
+                                .register("http", new PlainConnectionSocketFactory())  
+                                .build();  
+                        cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);  
+                        cm.setMaxTotal(100);  
+                        cm.setDefaultMaxPerRoute(80);  
+                    } catch (Exception e) {  
+                    }  
+                }  
+            }  
+        }  
+        return cm;  
+    } 
+     
+      public CloseableHttpClient getHttpsClient() { 
+        RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(1000).setConnectTimeout(1000).build(); 
+        CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(requestConfig).setConnectionManager(this.getPoolManager()).build();  
+        return httpClient;  
+    } 
 
     //抢固定楼层发帖子前的较慢轮询
     public void FixedPostPolling() {

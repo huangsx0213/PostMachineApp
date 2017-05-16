@@ -6,17 +6,7 @@
 package PostMachineApp.EntityInterface.Entity;
 
 import PostMachineApp.PostContentEntity;
-import java.io.IOException;
-import java.util.Date;
 import java.util.List;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,6 +21,11 @@ public class MeizuFixedForumPost extends MeizuForumPost {
         super(EnableThread, ThreadID, FirefoxPath, Profile, PostEntity, StartTime, EnableStopTime, StopTime, RefreshPostCount, PostCount, FixedWaitTime, RandomWaitTime, RestWaitTime, RestWaitPostCount, RestWaitPostCountOffset, PostUrl, PostContent,StartFrom,FixedPostTrigger,Remark);
     }
 
+    @Override
+    public void SetHttpClient() {
+        httpclient = getHttpsClient();
+    }
+    
     @Override
     public void beforeSendPost(WebDriver driver) {
 
