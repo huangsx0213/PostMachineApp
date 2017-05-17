@@ -297,7 +297,7 @@ public class BasicForumPost implements ForumPost {
 
     //设置httpclient，默认为http
     public void SetHttpClient() {
-        httpclient = getHttpClient();
+        httpclient = getHttpsClient();
     }
 
     //发贴前置操作
@@ -558,14 +558,14 @@ public class BasicForumPost implements ForumPost {
         }
         return result;
     } 
-    public HttpClient getHttpClient() {
+    /*public HttpClient getHttpClient() {
         ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager();
         cm.setMaxTotal(100);
         HttpClient httpclient = new DefaultHttpClient(cm);
         httpclient.getParams().setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 1000);
         httpclient.getParams().setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 1000);
         return httpclient;
-    }
+    }*/
      private PoolingHttpClientConnectionManager getPoolManager() {  
         PoolingHttpClientConnectionManager cm = null;  
         if (null == cm) {  

@@ -22,11 +22,6 @@ public class MeizuForumPost extends BasicForumPost {
     }
     
     @Override
-    public void SetHttpClient() {
-        httpclient = getHttpsClient();
-    }
-    
-    @Override
     public void beforeSendPost(WebDriver driver) {
         StartFromPostPolling();
         driver = getWebDriverWithSpecifiedProfile();
